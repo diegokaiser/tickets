@@ -1,1 +1,1 @@
-aqui ira todo lo correspondiente a la base de datos, modelado, codigo sql
+aqui irá todo lo correspondiente a la base de datos, modelado, codigo sql
