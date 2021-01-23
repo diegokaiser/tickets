@@ -1,1 +1,0 @@
-aqui irá todo lo correspondiente a la base de datos, modelado, codigo sql
