@@ -2,24 +2,23 @@
 
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer')
+const autoprefixer = require('gulp-autoprefixer');
+const concat = require('gulp-concat');
 
 sass.compiler = require('node-sass');
 
 gulp.task('sass', () => {
-    return gulp.src('./sass/**/*.scss')
+    return gulp.src('./scss/**/*.scss')
         .pipe(sass())
         .pipe(autoprefixer({
-            browsers: [
-                "last 2 versions",
-                "ie 8",
-                "ie 9",
-                "> 1%",
-                "Firefox >= 20",
-                "Opera 12.1",
-                "iOS 7"
-            ],
             cascade: false
         }))
+        .pipe(concat('style.css'))
         .pipe(gulp.dest('./css'));
 });
+
+gulp.task('watch', () => {
+    gulp.watch('./scss/**/**/*.scss', gulp.series('sass'));
+});
+
+gulp.task('default', gulp.parallel('sass', 'watch'));
