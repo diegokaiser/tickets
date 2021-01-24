@@ -1,0 +1,18 @@
+/*      Indice
+    1. Base
+*/
+
+
+/*  1. Base  */
+*{
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #E0F7FA;
+    color: black;
+    overflow-x: hidden;
+}
