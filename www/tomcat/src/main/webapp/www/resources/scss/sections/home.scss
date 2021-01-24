@@ -1,0 +1,83 @@
+@import "../globals/mediaqueries";
+
+.banner {
+  &-destacado {
+    height: 100vh;
+    position: relative;
+    width: 100%;
+    .img {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+    .contenido {
+      align-items: flex-start;
+      background: rgb(0,0,0);
+      background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.45) 100%);
+      bottom: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      left: 0;
+      margin: 0 5%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 2;
+      .titulo {
+        h2 {
+
+        }
+      }
+      .timing {
+        span {
+
+        }
+      }
+      .descripcion {
+        p {
+
+        }
+      }
+      .info {
+        p {
+          strong {
+
+          }
+        }
+      }
+      .cta {
+        a {
+          &:hover {
+
+          }
+          &:active,
+          &:visited {
+
+          }
+        }
+      }
+    }
+    .playtrailer {
+      a {
+        img {
+
+        }
+        &:hover {
+
+        }
+        &:active,
+        &:visited {
+
+        }
+      }
+    }
+  }
+}
