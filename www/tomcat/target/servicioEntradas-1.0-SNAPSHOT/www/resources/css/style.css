@@ -30,8 +30,8 @@
     top: 0;
     z-index: 1; }
     .banner-destacado .img img {
-      height: 100%;
-      width: auto; }
+      height: auto;
+      width: 100%; }
   .banner-destacado .contenido {
     -webkit-box-align: start;
     -webkit-align-items: flex-start;
@@ -60,7 +60,6 @@
     -ms-flex-pack: center;
     justify-content: center;
     left: 0;
-    margin: 0 5%;
     position: absolute;
     right: 0;
     top: 0;
