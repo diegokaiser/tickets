@@ -9,7 +9,6 @@
                     All Rigths Reserved. Lorem ipsum dolor sit amet.
                 </p>
             </div>
-            <div class="col"></div>
         </div>
     </div>
 </footer>

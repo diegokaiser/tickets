@@ -5,5 +5,5 @@ ddbb/SistemaCine.mdf
 
 www/glassfish/.idea
 www/tomcat/.idea
-www/tomcat/src/main/webapp/www/resources/node_modules
-www/tomcat/src/main/webapp/www/resources/package-lock.json
+www/tomcat/src/main/webapp/resources/node_modules
+www/tomcat/src/main/webapp/resources/package-lock.json

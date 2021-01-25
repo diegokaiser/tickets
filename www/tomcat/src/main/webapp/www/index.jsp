@@ -10,7 +10,7 @@
 <head>
     <%@ include file="includes/meta.jsp" %>
     <%@ include file="includes/styles.jsp" %>
-    <title>Title</title>
+    <title>Solo Estrenos</title>
 </head>
 <body>
     <div class="preloader">
@@ -23,7 +23,7 @@
         <!-- destacado, banner hero -->
         <div class="banner-destacado">
             <div class="img">
-                <img src="resources/images/blackwidow_banner-dest.webp" alt="">
+                <img src="./../resources/images/blackwidow_banner-dest.webp" alt="">
             </div>
             <div class="contenido">
                 <div class="titulo">
@@ -48,17 +48,16 @@
                     </p>
                 </div>
                 <div class="cta">
-                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                    <a href="./notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                </div>
+                <div class="playtrailer">
+                    <a href="#">
+                        <i class="far fa-play-circle"></i>
+                        Ver trailer
+                    </a>
                 </div>
             </div>
-            <div class="playtrailer">
-                <a href="#">
-                    <i class="far fa-play-circle"></i>
-                    Ver trailer
-                </a>
-            </div>
         </div>
-
         <div class="home-grid">
             <!-- ultimos estrenos -->
             <div class="container-fluid">
@@ -73,10 +72,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/promisingyoungwoman_banner.jpg" alt="">
+                                <img src="./../resources/images/promisingyoungwoman_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -86,15 +85,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/monsterhunter_banner.jpg" alt="">
+                                <img src="./../resources/images/monsterhunter_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -104,15 +103,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/nomadland_banner.jpg" alt="">
+                                <img src="./../resources/images/nomadland_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -122,15 +121,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/mortalkombat_banner.jpg" alt="">
+                                <img src="./../resources/images/mortalkombat_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -140,7 +139,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
@@ -160,28 +159,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/fastandfurious9_banner.jpg" alt="">
+                                <img src="./../resources/images/blackwidow_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
-                                    <h4>Fast & Furious 9</h4>
+                                    <h4>Black Widow</h4>
                                 </div>
                                 <div class="timing">
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/cruella_banner.jpg" alt="">
+                                <img src="./../resources/images/cruella_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -191,15 +190,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/venomlettherebecarnage_banner.jpg" alt="">
+                                <img src="./../resources/images/venomlettherebecarnage_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -209,15 +208,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/tupgunmaverick_banner.jpg" alt="">
+                                <img src="./../resources/images/tupgunmaverick_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -227,7 +226,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
@@ -247,28 +246,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/blackwidow_banner.jpg" alt="">
+                                <img src="./../resources/images/fastandfurious9_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
-                                    <h4>Black Widow</h4>
+                                    <h4>Fast & Furious 9</h4>
                                 </div>
                                 <div class="timing">
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/monsterhunter_banner.jpg" alt="">
+                                <img src="./../resources/images/monsterhunter_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -278,15 +277,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/nomadland_banner.jpg" alt="">
+                                <img src="./../resources/images/nomadland_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -296,15 +295,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="resources/images/mortalkombat_banner.jpg" alt="">
+                                <img src="./../resources/images/mortalkombat_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -314,7 +313,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="#"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                                 </div>
                             </div>
                         </div>
