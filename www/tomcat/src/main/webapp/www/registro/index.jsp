@@ -35,11 +35,11 @@
             </nav>
         </header>
         <div class="form">
-            <form action="">
+            <form action="UsuarioController" method="POST">
                 <h2>Registrarse</h2>
                 <div class="form-group pt-4">
                     <label for="name">Nombre:</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name" name="name">
                 </div>
                 <div class="form-group">
                     <label for="lastname">Apellido:</label>
