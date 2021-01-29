@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./../../resources/css/style.css">
     <link rel="stylesheet" type="text/css" href="./../../resources/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="./../../resources/css/StyleJosue.css">
+    <link rel="stylesheet" href="">
     <title>Confirmación entradas | Solo estrenos</title>
 </head>
 <body>
@@ -40,13 +41,13 @@
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-5">
 
-                <div class="container ">
+                <div class="container mt-5">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 mt-5">
                             <h2>Confirmación de entrada</h2>
                         </div>
                         <div class="col-6">
-                            <div class="pt-5">
+                            <div class="pt-4">
                                 <label>Codigo de compra:</label>
                                 <p>7352376</p>
                             </div>
@@ -69,7 +70,7 @@
                         </div>
 
                         <div class="col-6">
-                            <div class="pt-5">
+                            <div class="pt-4">
                                 <label>Cine:</label>
                                 <p>Cineplanet</p>
                                 <p>San miguel</p>
