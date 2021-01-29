@@ -1,0 +1,4 @@
+com\isil\servicioEntradas\HelloApplication.class
+com\isil\connectionDDBB\ConnectionDDBB.class
+com\isil\servicioEntradas\HelloServlet.class
+com\isil\servicioEntradas\HelloResource.class
