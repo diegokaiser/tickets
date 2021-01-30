@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./../../resources/css/style.css">
     <link rel="stylesheet" type="text/css" href="./../../resources/fontawesome/css/all.min.css">
     <link rel="stylesheet" href=" ./../../resources/css/StyleJosue.css">
-    <title>¡Apurate!  | Solo Estrenos</title>
+    <title>¡Anotado! | Solo Estrenos</title>
 </head>
 <body>
 <div class="content">
@@ -35,27 +35,12 @@
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-5  ">
                 <img src="./../../resources/images/logo.svg " alt="">
-                <h2 class="my-4 text-white">¡Apurate!</h2>
-s
-                <div class="home-movie">
-                    <div class="img">
-                        <img src="./../../resources/images/blackwidow_banner.jpg" alt="">
-                    </div>
-                    <div class="contenido">
-                        <div class="titulo">
-                            <h4>Black Widow</h4>
-                        </div>
-                        <div class="timing">
-                            <span>2hr:22mins</span>
-                        </div>
-                    </div>
-                </div>
+                <h2 class="my-4 text-white">¡Anotado!</h2>
+                <h2 class="text-white">Gracias {nombre}, apenas abramos la venta al público te avisaremos para que puedas comprar tu entrada...junto a todos, todos los demás</h2>
+                <h2 class="text-white">Necesitarás validar tu correo electrónico para estar seguros de tu identidad.</h2>
 
-                <h2 class="text-white">La venta de entradas está abierta al público.</h2>
-                <br>
-                <h3 class="text-white">Recuerda que puedes comprar dos entradas por persona*</h3>
 
-                <button class="btn btn-block btn-success mt-4 ">Comprar una entrada</button>
+                <p>Sólo usaremos tu correo para este aviso. No lo guardaremos para el registro de ventas.</p>
             </div>
         </div>
     </div>
