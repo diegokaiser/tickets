@@ -8,9 +8,6 @@
                 <a href="index.jsp">Home</a>
             </li>
             <li>
-                <a href="estrenos/index.jsp">Estrenos</a>
-            </li>
-            <li>
                 <a href="cines/index.jsp">Cines</a>
             </li>
         </ul>

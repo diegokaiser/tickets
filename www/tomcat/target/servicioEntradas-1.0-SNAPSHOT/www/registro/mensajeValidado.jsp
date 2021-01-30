@@ -9,6 +9,11 @@
     <title>¡Validado! | Solo Estrenos</title>
 </head>
 <body>
+<div class="bkg_video">
+    <video playsinline autoplay loop poster="./../../resources/images/blackwidow_banner-dest.webp">
+        <source src="./../../resources/images/bkg_video.webm">
+    </video>
+</div>
 <div class="content">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light p-0">

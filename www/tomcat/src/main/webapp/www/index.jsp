@@ -22,7 +22,6 @@
     </div>
     <div class="content">
         <%@ include file="includes/header.jsp" %>
-        <div class="container-fluid " style="height: 70px"></div>
         <!-- destacado, banner hero -->
         <div class="banner-destacado">
             <div class="img">

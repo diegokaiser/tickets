@@ -16,28 +16,33 @@
     <title>Mensaje adjuntar | Solo Estrenos</title>
 </head>
 <body>
-<div class="content">
-    <%@ include file="../includes/header.jsp" %>
-    <div class="container-fluid " style="height: 70px"></div>
+    <div class="bkg_video">
+        <video playsinline autoplay loop poster="./../../resources/images/blackwidow_banner-dest.webp">
+            <source src="./../../resources/images/bkg_video.webm">
+        </video>
+    </div>
+    <div class="content">
+        <%@ include file="../includes/header.jsp" %>
+        <div class="container-fluid " style="height: 70px"></div>
 
-    <div class="container pb-5">
-        <div class="row justify-content-center align-items-center h-100 pb-5">
-            <div class="col-5 pb-5">
-                <img src="./../../resources/images/logo.svg " alt="">
-                <h2 class="my-2">Gracias por su compra.</h2>
-                <p>Recuerda, los códigos de las entradas puden ser reclamadas por cualquier persona,
-                    ten cuidado con ellas.</p>
-                <label>Código de ticket:</label>
-                <p>181818</p>
-                <label>Código de ticket:</label>
-                <p>171717</p>
-                <button class="btn btn-block btn-success "> Aceptar</button>
+        <div class="container pb-5">
+            <div class="row justify-content-center align-items-center h-100 pb-5">
+                <div class="col-5 pb-5">
+                    <img src="./../../resources/images/logo.svg " alt="">
+                    <h2 class="my-2">Gracias por su compra.</h2>
+                    <p>Recuerda, los códigos de las entradas puden ser reclamadas por cualquier persona,
+                        ten cuidado con ellas.</p>
+                    <label>Código de ticket:</label>
+                    <p>181818</p>
+                    <label>Código de ticket:</label>
+                    <p>171717</p>
+                    <button class="btn btn-block btn-success "> Aceptar</button>
 
+                </div>
             </div>
         </div>
     </div>
 
-</div>
 </body>
 
 <%@ include file="../includes/footer.jsp" %>

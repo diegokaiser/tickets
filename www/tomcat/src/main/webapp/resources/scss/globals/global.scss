@@ -154,9 +154,30 @@ header {
   }
 }
 
+.bkg_video {
+  height: 100vh;
+  left: 0;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.content {
+  background-color: rgba(0, 0, 0, 0.80);
+  background-image: url("./../images/bkg_video.png");
+  background-position: top left;
+  background-repeat: repeat;
+  position: relative;
+  z-index: 1;
+}
+
 footer {
   background-color: #191919;
   padding: 70px 0;
+  position: relative;
+  z-index: 1;
   p {
     color: $font-primary;
     margin-bottom: 0;

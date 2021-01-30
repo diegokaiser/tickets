@@ -9,59 +9,62 @@
     <title>¡Apurate!  | Solo Estrenos</title>
 </head>
 <body>
-<div class="content">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light p-0">
-            <a class="navbar-brand" href="">
-                <img src="./../../resources/images/logo.svg " alt=""> Solo estrenos
-            </a>
-            <ul class="navbar-nav ml-auto">
-                <li>
-                    <a href="index.jsp">Home</a>
-                </li>
-                <li>
-                    <a href="estrenos/index.jsp">Estrenos</a>
-                </li>
-                <li>
-                    <a href="cines/index.jsp">Cines</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <div class="bkg_video">
+        <video playsinline autoplay loop poster="./../../resources/images/blackwidow_banner-dest.webp">
+            <source src="./../../resources/images/bkg_video.webm">
+        </video>
+    </div>
+    <div class="content">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <a class="navbar-brand" href="">
+                    <img src="./../../resources/images/logo.svg " alt=""> Solo estrenos
+                </a>
+                <ul class="navbar-nav ml-auto">
+                    <li>
+                        <a href="index.jsp">Home</a>
+                    </li>
+                    <li>
+                        <a href="estrenos/index.jsp">Estrenos</a>
+                    </li>
+                    <li>
+                        <a href="cines/index.jsp">Cines</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
-    <%--    <div class="form">--%>
-    <%--        <form action="">--%>
-    <div class="container pb-2">
-        <div class="row justify-content-center align-items-center h-100">
-            <div class="col-5  ">
-                <img src="./../../resources/images/logo.svg " alt="">
-                <h2 class="my-4 text-white">¡Apurate!</h2>
-s
-                <div class="home-movie">
-                    <div class="img">
-                        <img src="./../../resources/images/blackwidow_banner.jpg" alt="">
-                    </div>
-                    <div class="contenido">
-                        <div class="titulo">
-                            <h4>Black Widow</h4>
+        <%--    <div class="form">--%>
+        <%--        <form action="">--%>
+        <div class="container pb-2">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-5  ">
+                    <img src="./../../resources/images/logo.svg " alt="">
+                    <h2 class="my-4 text-white">¡Apurate!</h2>
+    s
+                    <div class="home-movie">
+                        <div class="img">
+                            <img src="./../../resources/images/blackwidow_banner.jpg" alt="">
                         </div>
-                        <div class="timing">
-                            <span>2hr:22mins</span>
+                        <div class="contenido">
+                            <div class="titulo">
+                                <h4>Black Widow</h4>
+                            </div>
+                            <div class="timing">
+                                <span>2hr:22mins</span>
+                            </div>
                         </div>
                     </div>
+
+                    <h2 class="text-white">La venta de entradas está abierta al público.</h2>
+                    <br>
+                    <h3 class="text-white">Recuerda que puedes comprar dos entradas por persona*</h3>
+
+                    <button class="btn btn-block btn-success mt-4 ">Comprar una entrada</button>
                 </div>
-
-                <h2 class="text-white">La venta de entradas está abierta al público.</h2>
-                <br>
-                <h3 class="text-white">Recuerda que puedes comprar dos entradas por persona*</h3>
-
-                <button class="btn btn-block btn-success mt-4 ">Comprar una entrada</button>
             </div>
         </div>
     </div>
-</div>
-
-
 </body>
 
 <%@ include file="../includes/footer.jsp" %>
