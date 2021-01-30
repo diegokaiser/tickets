@@ -23,7 +23,7 @@
                 </a>
                 <ul class="navbar-nav ml-auto">
                     <li>
-                        <a href="index.jsp">Home</a>
+                        <a href="variasSalas.jsp">Home</a>
                     </li>
                     <li>
                         <a href="estrenos/index.jsp">Estrenos</a>
