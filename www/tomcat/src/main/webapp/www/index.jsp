@@ -85,7 +85,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"
+                                        data-title=""
+                                        data-timing=""
+                                        data-sinopsis=""
+                                        data-starring=""
+                                        data-genre=""
+                                        data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +111,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +137,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +163,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +204,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./notyet/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +230,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./notyet/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +256,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./notyet/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +282,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./notyet/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -259,7 +323,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -277,7 +349,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -295,7 +375,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -313,7 +401,15 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                                    <a href="./estrenos/index.jsp"
+                                       data-title=""
+                                       data-timing=""
+                                       data-sinopsis=""
+                                       data-starring=""
+                                       data-genre=""
+                                       data-trailer="">
+                                        <i class="fas fa-play"></i>Comprar entradas
+                                    </a>
                                 </div>
                             </div>
                         </div>
