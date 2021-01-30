@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@ include file="../includes/meta.jsp" %>
+
     <link rel="stylesheet" href="./../../resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="./../../resources/css/style.css">
     <link rel="stylesheet" type="text/css" href="./../../resources/fontawesome/css/all.min.css">
@@ -17,36 +17,19 @@
     <title>Confirmación entradas | Solo estrenos</title>
 </head>
 <body>
-<div class="content">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light p-0">
-            <a class="navbar-brand" href="">
-                <img src="./../../resources/images/logo.svg " alt=""> Solo estrenos
-            </a>
-            <ul class="navbar-nav ml-auto">
-                <li>
-                    <a href="index.jsp">Home</a>
-                </li>
-                <li>
-                    <a href="estrenos/index.jsp">Estrenos</a>
-                </li>
-                <li>
-                    <a href="cines/index.jsp">Cines</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
 
-    <div class="container pb-2">
-        <div class="row justify-content-center align-items-center h-100">
+    <%@ include file="../includes/header.jsp" %>
+    <div class="container-fluid " style="height: 70px"></div>
+
+    <div class="container pb-5">
+        <div class="row justify-content-center align-items-center h-auto pb-5">
             <div class="col-5">
-
-                <div class="container mt-5">
+                <div class="container ">
                     <div class="row">
-                        <div class="col-12 mt-5">
+                        <div class="col-12 mt-5 pb-2">
                             <h2>Confirmación de entrada</h2>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6">
                             <div class="pt-4">
                                 <label>Codigo de compra:</label>
                                 <p>7352376</p>
@@ -69,8 +52,8 @@
                             </div>
                         </div>
 
-                        <div class="col-6">
-                            <div class="pt-4">
+                        <div class="col-12 col-md-6">
+                            <div class="pt-0 pt-md-4">
                                 <label>Cine:</label>
                                 <p>Cineplanet</p>
                                 <p>San miguel</p>
@@ -93,9 +76,9 @@
                     </div>
                 </div>
 
-                <div class="pt-4">
+                <div class="pt-4" >
                     <button class="btn btn-success btn-block mb-4">Confirmar</button>
-                    <button class="btn btn-block btn-danger">Cancelar</button>
+                    <button class="btn btn-block btn-danger mb-5">Cancelar</button>
                 </div>
 
             </div>

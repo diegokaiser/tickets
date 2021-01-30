@@ -17,37 +17,19 @@
 </head>
 <body>
 <div class="content">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light p-0">
-            <a class="navbar-brand" href="">
-                <img src="./../../resources/images/logo.svg " alt=""> Solo estrenos
-            </a>
-            <ul class="navbar-nav ml-auto">
-                <li>
-                    <a href="index.jsp">Home</a>
-                </li>
-                <li>
-                    <a href="estrenos/index.jsp">Estrenos</a>
-                </li>
-                <li>
-                    <a href="cines/index.jsp">Cines</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <%@ include file="../includes/header.jsp" %>
+    <div class="container-fluid " style="height: 70px"></div>
 
-    <%--    <div class="form">--%>
-    <%--        <form action="">--%>
-    <div class="container pb-2">
-        <div class="row justify-content-center align-items-center h-100">
-            <div class="col-5  ">
+    <div class="container pb-5">
+        <div class="row justify-content-center align-items-center h-100 pb-5">
+            <div class="col-5 pb-5">
                 <img src="./../../resources/images/logo.svg " alt="">
-                <h2 class="my-4 text-white">Gracias por su compra.</h2>
+                <h2 class="my-2">Gracias por su compra.</h2>
                 <p>Recuerda, los códigos de las entradas puden ser reclamadas por cualquier persona,
                     ten cuidado con ellas.</p>
-                <label class="text-white ">Código de ticket:</label>
+                <label>Código de ticket:</label>
                 <p>181818</p>
-                <label class="text-white ">Código de ticket:</label>
+                <label>Código de ticket:</label>
                 <p>171717</p>
                 <button class="btn btn-block btn-success "> Aceptar</button>
 
