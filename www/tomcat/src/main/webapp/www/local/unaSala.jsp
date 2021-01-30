@@ -38,45 +38,14 @@
 
         <div class="form">
             <form action="">
-                <h2>Elegir una sala de cine</h2>
+                <h1>¡Perfecto!</h1>
 
 
                 <div class="form-group">
-                    <label for="cine">Cine:</label>
-                    <select class="form-control" name="cine" id="cine">
-                        <option value="0">Seleccionar</option>
-                        <option value="1">Cineplanet</option>
-                        <option value="2">Cinemark</option>
-                        <option value="2">Cinepolis</option>
-                        <option value="2">Cinestar</option>
-                    </select>
+                    <p>Hey <label>Nombre</label>! <br> Ten en cuenta que el estreno se llebara a cabo en: <label>Ubicación - Sala - Cine</label>
+                    </p>
                 </div>
 
-                <div class="form-group">
-                    <label for="lugar">Lugar:</label>
-                    <select class="form-control" name="lugar" id="lugar">
-                        <option value="0">Seleccionar</option>
-                        <option value="1">San Miguel</option>
-                        <option value="2">San Isidro</option>
-                        <option value="2">Miraflores</option>
-                        <option value="2">La Molina</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="hora">Hora:</label>
-                    <select class="form-control" name="hora" id="hora">
-                        <option value="0">Seleccionar</option>
-                        <option value="1">23:40</option>
-                        <option value="2">23:55</option>
-                    </select>
-                </div>
-
-
-
-                <div class="form-group pt-4">
-                    <button type="submit" class="btn btn-primary">Aceptar</button>
-                </div>
             </form>
         </div>
     </div>
