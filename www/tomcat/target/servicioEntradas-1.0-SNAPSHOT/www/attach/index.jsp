@@ -36,17 +36,16 @@
         </nav>
     </header>
 
-    <%--    <div class="form">--%>
-    <%--        <form action="">--%>
+
     <div class="container pb-2">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-5  ">
                 <img src="./../../resources/images/logo.svg " alt="">
-                <h2 class="my-4 text-white">Confirmar la compra de tus entradas.</h2>
-                <p>Gracias por la compra. Acercate a un agente de banco cercano y cancela tu entrada.
+                <h2 class="my-4">Confirmar la compra de tus entradas.</h2>
+                <p >Gracias por la compra. Acercate a un agente de banco cercano y cancela tu entrada.
                     Recuerda que tienes un plazo de 24h para poder hacerlo , en caso contrario perderas la
                     reserva.</p>
-                <label class="text-white ">Código de compra:</label>
+                <label>Código de compra:</label>
                 <p>7352376</p>
                 <button class="btn btn-block btn-success "> Adjuntar comprobante</button>
 

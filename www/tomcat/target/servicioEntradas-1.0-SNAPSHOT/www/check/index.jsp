@@ -38,12 +38,12 @@
     </header>
 
     <div class="container pb-2">
-        <div class="row justify-content-center align-items-center h-100">
+        <div class="row justify-content-center align-items-center h-auto">
             <div class="col-5">
 
                 <div class="container mt-5">
                     <div class="row">
-                        <div class="col-12 mt-5">
+                        <div class="col-12 mt-5 pb-2">
                             <h2>Confirmación de entrada</h2>
                         </div>
                         <div class="col-6">
@@ -93,9 +93,9 @@
                     </div>
                 </div>
 
-                <div class="pt-4">
+                <div class="pt-4" pb-5 mb-5>
                     <button class="btn btn-success btn-block mb-4">Confirmar</button>
-                    <button class="btn btn-block btn-danger">Cancelar</button>
+                    <button class="btn btn-block btn-danger mb-5">Cancelar</button>
                 </div>
 
             </div>

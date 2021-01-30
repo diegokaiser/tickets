@@ -36,18 +36,17 @@
         </nav>
     </header>
 
-    <%--    <div class="form">--%>
-    <%--        <form action="">--%>
+
     <div class="container pb-2">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-5  ">
                 <img src="./../../resources/images/logo.svg " alt="">
-                <h2 class="my-4 text-white">Gracias por su compra.</h2>
+                <h2 class="my-4">Gracias por su compra.</h2>
                 <p>Recuerda, los códigos de las entradas puden ser reclamadas por cualquier persona,
                     ten cuidado con ellas.</p>
-                <label class="text-white ">Código de ticket:</label>
+                <label>Código de ticket:</label>
                 <p>181818</p>
-                <label class="text-white ">Código de ticket:</label>
+                <label>Código de ticket:</label>
                 <p>171717</p>
                 <button class="btn btn-block btn-success "> Aceptar</button>
 

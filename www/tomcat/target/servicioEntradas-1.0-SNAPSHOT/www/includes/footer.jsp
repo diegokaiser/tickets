@@ -6,7 +6,7 @@
                     &copy; SOLO ESTRENOS.
                 </p>
                 <p>
-                    All Rigths Reserved. Lorem ipsum dolor sit amet.
+                    All Rigths Reserved.
                 </p>
             </div>
         </div>

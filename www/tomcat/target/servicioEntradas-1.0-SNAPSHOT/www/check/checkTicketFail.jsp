@@ -39,9 +39,9 @@
 
     <div class="container pb-2">
         <div class="row justify-content-center align-items-center h-100">
-            <div class="col-5  ">
+            <div class="col-5 ">
                 <img src="./../../resources/images/logo.svg " alt="">
-                <h2 class="my-4 text-white">Lo sentimos, la compra no ha sido validada.</h2>
+                <h2 class="my-4 ">Lo sentimos, la compra no ha sido validada.</h2>
                 <p>El archivo del comprobante adjunto no es valido o el plazo de las 24 horas a culminado .</p>
                 <button class="btn btn-block btn-success my-4 "> Aceptar</button>
 

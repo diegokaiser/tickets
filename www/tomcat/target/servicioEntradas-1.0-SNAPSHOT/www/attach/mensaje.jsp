@@ -36,16 +36,15 @@
         </nav>
     </header>
 
-    <%--    <div class="form">--%>
-    <%--        <form action="">--%>
+
     <div class="container pb-2">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-5  ">
                 <img src="./../../resources/images/logo.svg " alt="">
-                <h2 class="my-4 text-white">Gracias por confiar en nosotros, en breve te enviaremos
+                <h2 class="my-4 ">Gracias por confiar en nosotros, en breve te enviaremos
                     la confirmación.</h2>
-                <h2 class="text-white">Juan Garcia</h2>
-                <label class="text-white">Código de compra</label>
+                <h2>Juan Garcia</h2>
+                <label>Código de compra</label>
                 <p>7352376</p>
                 <button class="btn btn-block btn-success mt-4 "> Aceptar</button>
 
