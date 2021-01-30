@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="content">
-    <%@ include file="../includes/header.jsp" %>
+    <%@ include file="./../includes/header.jsp" %>
     <div class="container-fluid " style="height: 70px"></div>
     <div class="container pb-5">
         <div class="row justify-content-center align-items-center h-100 pb-5">

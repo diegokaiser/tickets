@@ -17,12 +17,7 @@
     <title>Confirmación entradas | Solo estrenos</title>
 </head>
 <body>
-<div class="content">
-    <div  class="preloader">
-        <div class="preloader-content">
-            <div class="logo"></div>
-        </div>
-    </div>
+
     <%@ include file="../includes/header.jsp" %>
     <div class="container-fluid " style="height: 70px"></div>
 
