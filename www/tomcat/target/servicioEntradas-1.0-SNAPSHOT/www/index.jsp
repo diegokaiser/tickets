@@ -13,7 +13,7 @@
     <title>Solo Estrenos</title>
 </head>
 <body>
-    <div class="preloader">
+    <div  class="preloader">
         <div class="preloader-content">
             <div class="logo"></div>
         </div>
