@@ -2,14 +2,13 @@ package com.isil.entities;
 
 public class Usuario {
     private Integer idUsuario;
-    private String nombre;
-    private String apellido;
-    private String contrasena;
-    private String tipoDocumento;
-    private Integer numeroDocumento;
+    private String  nombre;
+    private String  apellido;
+    private String  correo;
+    private String  contrasena;
+    private String  tipoDocumento;
+    private String numeroDocumento;
     private Integer idTipoUsuario;
-    private String fechaRegistro;
-    private String fechaModificacion;
 
     public Usuario() {
 
@@ -39,6 +38,14 @@ public class Usuario {
         this.apellido = apellido;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
     public String getContrasena() {
         return contrasena;
     }
@@ -55,11 +62,11 @@ public class Usuario {
         this.tipoDocumento = tipoDocumento;
     }
 
-    public Integer getNumeroDocumento() {
+    public String getNumeroDocumento() {
         return numeroDocumento;
     }
 
-    public void setNumeroDocumento(Integer numeroDocumento) {
+    public void setNumeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
     }
 
@@ -69,21 +76,5 @@ public class Usuario {
 
     public void setIdTipoUsuario(Integer idTipoUsuario) {
         this.idTipoUsuario = idTipoUsuario;
-    }
-
-    public String getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(String fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
-    public String getFechaModificacion() {
-        return fechaModificacion;
-    }
-
-    public void setFechaModificacion(String fechaModificacion) {
-        this.fechaModificacion = fechaModificacion;
     }
 }

@@ -73,6 +73,10 @@ header {
   position: fixed;
   width: 100%;
   z-index: 9;
+  transition: .35s ease;
+  &.scrolled {
+    background-color: rgba(20, 20, 20, 1) !important;
+  }
   nav {
     height: 100%;
     width: 100%;

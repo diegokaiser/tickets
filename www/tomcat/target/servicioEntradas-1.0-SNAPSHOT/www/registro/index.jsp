@@ -9,44 +9,28 @@
 <html>
 <head>
     <%@ include file="../includes/meta.jsp" %>
-    <link rel="stylesheet" href="./../../resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./../../resources/css/style.css">
-    <link rel="stylesheet" type="text/css" href="./../../resources/fontawesome/css/all.min.css">
+    <%@ include file="../includes/styles.jsp" %>
     <title>Registro | Solo Estrenos</title>
 </head>
 <body>
     <div class="bkg_video">
-        <video playsinline autoplay loop poster="./../../resources/images/blackwidow_banner-dest.webp">
-            <source src="./../../resources/images/bkg_video.webm">
+        <video playsinline autoplay loop poster="<%=request.getContextPath()%>/resources/images/blackwidow_banner-dest.webp">
+            <source src="<%=request.getContextPath()%>/resources/images/bkg_video.webm">
         </video>
     </div>
     <div class="content">
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light p-0">
-                <a class="navbar-brand" href="">
-                    <img src="./../../resources/images/logo.svg "alt=""> Solo estrenos
-                </a>
-                <ul class="navbar-nav ml-auto">
-                    <li>
-                        <a href="index.jsp">Home</a>
-                    </li>
-                    <li>
-                        <a href="cines/index.jsp">Cines</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <%@ include file="./../includes/header.jsp" %>
 
         <div class="form">
             <form action="UsuarioController" method="POST">
                 <h2>Registrarse</h2>
                 <div class="form-group pt-4">
-                    <label for="name">Nombre:</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre">
                 </div>
                 <div class="form-group">
-                    <label for="lastname">Apellido:</label>
-                    <input type="text" class="form-control" id="lastname">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido">
                 </div>
                 <div class="form-group">
                     <label for="tipodoc">Tipo de Documento de Identidad:</label>
@@ -57,31 +41,28 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="nrodoc">Documento de Identidad:</label>
-                    <input type="text" class="form-control" id="nrodoc">
+                    <label for="numeroDocumento">Documento de Identidad:</label>
+                    <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento">
                 </div>
                 <div class="form-group">
-                    <label for="email">Correo electrónico:</label>
-                    <input type="text" class="form-control" id="email">
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="text" class="form-control" id="correo" name="correo">
                 </div>
                 <div class="form-group">
-                    <label for="password">Contraseña:</label>
-                    <input type="text" class="form-control" id="password">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="text" class="form-control" id="contrasena">
                 </div>
                 <div class="form-group">
-                    <label for="repassword">Confirmar contraseña:</label>
-                    <input type="text" class="form-control" id="repassword">
+                    <label for="recontrasena">Confirmar contraseña:</label>
+                    <input type="text" class="form-control" id="recontrasena" name="recontrasena">
                 </div>
                 <div class="form-group">
-                    <a href="mensajeAnotado.jsp" class="btn btn-primary btn-block my-4">Registrarse</a>
+                    <button type="submit" class="btn btn-primary btn-block my-4">Registrarse</button>
                 </div>
             </form>
         </div>
     </div>
     <%@ include file="../includes/footer.jsp" %>
-    <script src="./../../resources/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="./../../resources/js/popper.min.js"></script>
-    <script src="./../../resources/js/bootstrap.min.js"></script>
-    <script src="./../../resources/js/all.js"></script>
+    <%@ include file="../includes/scripts.jsp" %>
 </body>
 </html>

@@ -9,35 +9,17 @@
 <html>
 <head>
     <%@ include file="../includes/meta.jsp" %>
-
-    <link rel="stylesheet" href="./../../resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./../../resources/css/style.css">
-    <link rel="stylesheet" type="text/css" href="./../../resources/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href=" ./../../resources/css/StyleJosue.css">
+    <%@ include file="../includes/styles.jsp" %>
     <title>Mensaje adjuntar | Solo Estrenos</title>
 </head>
 <body>
 <div class="bkg_video">
-    <video playsinline autoplay loop poster="./../../resources/images/blackwidow_banner-dest.webp">
-        <source src="./../../resources/images/bkg_video.webm">
+    <video playsinline autoplay loop poster="<%=request.getContextPath()%>/resources/images/blackwidow_banner-dest.webp">
+        <source src="<%=request.getContextPath()%>/resources/images/bkg_video.webm">
     </video>
 </div>
 <div class="content">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light p-0">
-            <a class="navbar-brand" href="">
-                <img src="./../../resources/images/logo.svg " alt=""> Solo estrenos
-            </a>
-            <ul class="navbar-nav ml-auto">
-                <li>
-                    <a href="index.jsp">Home</a>
-                </li>
-                <li>
-                    <a href="cines/index.jsp">Cines</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <%@ include file="./../includes/header.jsp" %>
 
     <div class="container">
         <div class="row justify-content-center align-items-center h-100">
@@ -47,7 +29,7 @@
                     Recuerda que tienes un plazo de 24h para poder hacerlo , en caso contrario perderas la
                     reserva.</p>
                 <p class="text-center text-white mt-3">Código de compra: <span>7352376</span></p>
-                <button class="btn btn-block btn-success my-4"> Adjuntar comprobante</button>
+                <button class="btn btn-block btn-success my-4">Adjuntar comprobante</button>
             </div>
         </div>
     </div>
@@ -56,9 +38,6 @@
 </body>
 
 <%@ include file="../includes/footer.jsp" %>
-<script src="./../../resources/js/jquery-3.5.1.slim.min.js"></script>
-<script src="./../../resources/js/popper.min.js"></script>
-<script src="./../../resources/js/bootstrap.min.js"></script>
-<script src="./../../resources/js/all.js"></script>
+<%@ include file="../includes/scripts.jsp" %>
 </body>
 </html>

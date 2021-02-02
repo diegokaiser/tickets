@@ -73,7 +73,11 @@ header {
   padding: 0 5%;
   position: fixed;
   width: 100%;
-  z-index: 9; }
+  z-index: 9;
+  -webkit-transition: .35s ease;
+  transition: .35s ease; }
+  header.scrolled {
+    background-color: #141414 !important; }
   header nav {
     height: 100%;
     width: 100%; }
@@ -280,7 +284,11 @@ header {
   padding: 0 5%;
   position: fixed;
   width: 100%;
-  z-index: 9; }
+  z-index: 9;
+  -webkit-transition: .35s ease;
+  transition: .35s ease; }
+  header.scrolled {
+    background-color: #141414 !important; }
   header nav {
     height: 100%;
     width: 100%; }
@@ -487,7 +495,11 @@ header {
   padding: 0 5%;
   position: fixed;
   width: 100%;
-  z-index: 9; }
+  z-index: 9;
+  -webkit-transition: .35s ease;
+  transition: .35s ease; }
+  header.scrolled {
+    background-color: #141414 !important; }
   header nav {
     height: 100%;
     width: 100%; }
@@ -943,7 +955,11 @@ header {
   padding: 0 5%;
   position: fixed;
   width: 100%;
-  z-index: 9; }
+  z-index: 9;
+  -webkit-transition: .35s ease;
+  transition: .35s ease; }
+  header.scrolled {
+    background-color: #141414 !important; }
   header nav {
     height: 100%;
     width: 100%; }
@@ -1147,7 +1163,11 @@ header {
   padding: 0 5%;
   position: fixed;
   width: 100%;
-  z-index: 9; }
+  z-index: 9;
+  -webkit-transition: .35s ease;
+  transition: .35s ease; }
+  header.scrolled {
+    background-color: #141414 !important; }
   header nav {
     height: 100%;
     width: 100%; }

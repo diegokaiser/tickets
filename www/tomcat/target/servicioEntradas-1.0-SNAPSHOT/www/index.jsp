@@ -12,9 +12,7 @@
     <%@ include file="includes/styles.jsp" %>
     <title>Solo Estrenos</title>
 </head>
-<body>
-
-
+<body data-basePath="<%=request.getContextPath()%>">
     <div  class="preloader">
         <div class="preloader-content">
             <div class="logo"></div>
@@ -25,7 +23,7 @@
         <!-- destacado, banner hero -->
         <div class="banner-destacado">
             <div class="img">
-                <img src="./../resources/images/blackwidow_banner-dest.webp" alt="">
+                <img src="<%=request.getContextPath()%>/resources/images/blackwidow_banner-dest.webp" alt="">
             </div>
             <div class="contenido">
                 <div class="titulo">
@@ -50,7 +48,7 @@
                     </p>
                 </div>
                 <div class="cta">
-                    <a href="./notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+                    <a href="<%=request.getContextPath()%>/www/notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
                 </div>
                 <div class="playtrailer">
                     <a href="#">
@@ -77,7 +75,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/promisingyoungwoman_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/promisingyoungwoman_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -87,7 +85,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/estrenos/index.jsp"
                                         data-title=""
                                         data-timing=""
                                         data-sinopsis=""
@@ -103,7 +101,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/monsterhunter_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/monsterhunter_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -113,7 +111,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/estrenos/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""
@@ -129,7 +127,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/nomadland_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/nomadland_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -139,7 +137,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/estrenos/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""
@@ -155,7 +153,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/mortalkombat_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/mortalkombat_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -165,7 +163,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/estrenos/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""
@@ -196,7 +194,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/blackwidow_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/blackwidow_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -206,7 +204,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./notyet/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/notyet/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""
@@ -222,7 +220,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/cruella_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/cruella_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -232,7 +230,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./notyet/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/notyet/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""
@@ -248,7 +246,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/venomlettherebecarnage_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/venomlettherebecarnage_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -258,7 +256,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./notyet/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/notyet/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""
@@ -274,7 +272,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/tupgunmaverick_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/tupgunmaverick_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -284,7 +282,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./notyet/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/notyet/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""
@@ -315,7 +313,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/fastandfurious9_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/fastandfurious9_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -325,7 +323,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/estrenos/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""
@@ -341,7 +339,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/monsterhunter_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/monsterhunter_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -351,7 +349,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/estrenos/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""
@@ -367,7 +365,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/nomadland_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/nomadland_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -377,7 +375,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/estrenos/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""
@@ -393,7 +391,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
                         <div class="home-movie">
                             <div class="img">
-                                <img src="./../resources/images/mortalkombat_banner.jpg" alt="">
+                                <img src="<%=request.getContextPath()%>/resources/images/mortalkombat_banner.jpg" alt="">
                             </div>
                             <div class="contenido">
                                 <div class="titulo">
@@ -403,7 +401,7 @@
                                     <span>2hr:22mins</span>
                                 </div>
                                 <div class="cta">
-                                    <a href="./estrenos/index.jsp"
+                                    <a href="<%=request.getContextPath()%>/www/estrenos/index.jsp"
                                        data-title=""
                                        data-timing=""
                                        data-sinopsis=""

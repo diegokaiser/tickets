@@ -1,5 +1,4 @@
 package com.isil.daos;
-
 import java.util.List;
 
 public interface crud <T> {
