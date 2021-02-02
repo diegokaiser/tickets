@@ -31,14 +31,12 @@
                         <a href="index.jsp">Home</a>
                     </li>
                     <li>
-                        <a href="estrenos/index.jsp">Estrenos</a>
-                    </li>
-                    <li>
                         <a href="cines/index.jsp">Cines</a>
                     </li>
                 </ul>
             </nav>
         </header>
+
         <div class="form">
             <form action="">
                 <h2>Accede a tu cuenta</h2>
@@ -62,7 +60,7 @@
                     <p>Sí no estás registrado, puedes:</p>
                 </div>
                 <div class="form-group">
-                    <a href="../registro/index.jsp" class="btn btn-primary">Crear cuenta</a>
+                    <a href="../registro/index.jsp" class="btn btn-primary btn-block">Crear cuenta</a>
                 </div>
             </form>
         </div>

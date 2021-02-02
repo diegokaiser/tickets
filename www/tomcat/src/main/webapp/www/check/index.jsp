@@ -22,11 +22,24 @@
         </video>
     </div>
     <div class="content">
-        <%@ include file="../includes/header.jsp" %>
-        <div class="container-fluid " style="height: 70px"></div>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <a class="navbar-brand" href="">
+                    <img src="./../../resources/images/logo.svg " alt=""> Solo estrenos
+                </a>
+                <ul class="navbar-nav ml-auto">
+                    <li>
+                        <a href="index.jsp">Home</a>
+                    </li>
+                    <li>
+                        <a href="cines/index.jsp">Cines</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
-        <div class="container pb-5">
-            <div class="row justify-content-center align-items-center h-auto pb-5">
+        <div class="container">
+            <div class="row justify-content-center align-items-center h-auto">
                 <div class="col-5">
                     <div class="container ">
                         <div class="row">

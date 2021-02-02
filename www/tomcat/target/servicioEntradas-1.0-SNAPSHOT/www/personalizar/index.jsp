@@ -32,15 +32,11 @@
                         <a href="index.jsp">Home</a>
                     </li>
                     <li>
-                        <a href="estrenos/index.jsp">Estrenos</a>
-                    </li>
-                    <li>
                         <a href="cines/index.jsp">Cines</a>
                     </li>
                 </ul>
             </nav>
         </header>
-
 
         <div class="form">
             <form action="">
@@ -64,7 +60,7 @@
                 </div>
 
                 <label>Entrada 2:</label>
-                <div class="form-group pt-4">
+                <div class="form-group pt-3">
                     <label for="fullName2">Nombre Completo:</label>
                     <input type="text" class="form-control" id="fullName2">
                 </div>
@@ -81,9 +77,8 @@
                     <input type="text" class="form-control" id="nrodoc2">
                 </div>
 
-
-                <div class="form-group pt-4">
-                    <button type="submit" class="btn btn-primary">Comprar entrada</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary my-4">Comprar entrada</button>
                 </div>
             </form>
         </div>

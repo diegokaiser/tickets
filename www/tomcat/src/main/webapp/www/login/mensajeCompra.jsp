@@ -25,9 +25,6 @@
                         <a href="index.jsp">Home</a>
                     </li>
                     <li>
-                        <a href="estrenos/index.jsp">Estrenos</a>
-                    </li>
-                    <li>
                         <a href="cines/index.jsp">Cines</a>
                     </li>
                 </ul>
@@ -36,12 +33,10 @@
 
         <%--    <div class="form">--%>
         <%--        <form action="">--%>
-        <div class="container pb-2">
+        <div class="container">
             <div class="row justify-content-center align-items-center h-100">
-                <div class="col-5  ">
-                    <img src="./../../resources/images/logo.svg " alt="">
-                    <h2 class="my-4 text-white">¡Apurate!</h2>
-    s
+                <div class="col-5">
+                    <h2 class=" text-white text-center my-4">¡Apurate!</h2>
                     <div class="home-movie">
                         <div class="img">
                             <img src="./../../resources/images/blackwidow_banner.jpg" alt="">
@@ -56,11 +51,10 @@
                         </div>
                     </div>
 
-                    <h2 class="text-white">La venta de entradas está abierta al público.</h2>
-                    <br>
-                    <h3 class="text-white">Recuerda que puedes comprar dos entradas por persona*</h3>
+                    <p class="text-white text-center">La venta de entradas está abierta al público.</p>
+                    <p class="text-white text-center">Recuerda que puedes comprar dos entradas por persona*</p>
 
-                    <button class="btn btn-block btn-success mt-4 ">Comprar una entrada</button>
+                    <button class="btn btn-block btn-success my-4 ">Comprar una entrada</button>
                 </div>
             </div>
         </div>

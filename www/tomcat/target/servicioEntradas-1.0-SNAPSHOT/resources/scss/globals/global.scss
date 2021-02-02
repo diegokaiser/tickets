@@ -171,6 +171,10 @@ header {
   background-repeat: repeat;
   position: relative;
   z-index: 1;
+  &.nobg {
+    background-color: rgba(0, 0, 0, 1);
+    background-image: none;
+  }
 }
 
 footer {

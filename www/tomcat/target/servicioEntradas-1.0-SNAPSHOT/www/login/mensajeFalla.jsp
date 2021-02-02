@@ -25,9 +25,6 @@
                         <a href="index.jsp">Home</a>
                     </li>
                     <li>
-                        <a href="estrenos/index.jsp">Estrenos</a>
-                    </li>
-                    <li>
                         <a href="cines/index.jsp">Cines</a>
                     </li>
                 </ul>
@@ -36,16 +33,12 @@
 
         <%--    <div class="form">--%>
         <%--        <form action="">--%>
-        <div class="container pb-2">
+        <div class="container">
             <div class="row justify-content-center align-items-center h-100">
                 <div class="col-5  ">
-                    <img src="./../../resources/images/logo.svg " alt="">
-                    <h2 class="my-4 text-white">¡Uy!</h2>
-                    <h2 class="text-white">No hemos podido corroborar tus datos</h2>
-                    <h2 class="text-white">Por favor, inténtalo de nuevo.</h2>
-
-
-                    <p>Sólo usaremos tu correo para este aviso. No lo guardaremos para el registro de ventas.</p>
+                    <h2 class="text-white text-center my-4">¡Uy!<br>No hemos podido corroborar tus datos</h2>
+                    <h4 class="text-white text-center">Por favor, inténtalo de nuevo.</h4>
+                    <p class="text-center mt-3">Sólo usaremos tu correo para este aviso. No lo guardaremos para el registro de ventas.</p>
                 </div>
             </div>
         </div>

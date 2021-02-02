@@ -31,20 +31,15 @@
                         <a href="variasSalas.jsp">Home</a>
                     </li>
                     <li>
-                        <a href="estrenos/index.jsp">Estrenos</a>
-                    </li>
-                    <li>
                         <a href="cines/index.jsp">Cines</a>
                     </li>
                 </ul>
             </nav>
         </header>
 
-
         <div class="form">
             <form action="">
-                <h2>Elegir una sala de cine</h2>
-
+                <h2 class="text-white text-center my-4">Elegir una sala de cine</h2>
 
                 <div class="form-group">
                     <label for="cine">Cine:</label>
@@ -77,10 +72,8 @@
                     </select>
                 </div>
 
-
-
-                <div class="form-group pt-4">
-                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary my-4">Aceptar</button>
                 </div>
             </form>
         </div>

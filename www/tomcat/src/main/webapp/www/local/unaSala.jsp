@@ -31,15 +31,11 @@
                         <a href="variasSalas.jsp">Home</a>
                     </li>
                     <li>
-                        <a href="estrenos/index.jsp">Estrenos</a>
-                    </li>
-                    <li>
                         <a href="cines/index.jsp">Cines</a>
                     </li>
                 </ul>
             </nav>
         </header>
-
 
         <div class="form">
             <form action="">

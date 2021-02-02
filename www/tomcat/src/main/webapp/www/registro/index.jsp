@@ -31,14 +31,12 @@
                         <a href="index.jsp">Home</a>
                     </li>
                     <li>
-                        <a href="estrenos/index.jsp">Estrenos</a>
-                    </li>
-                    <li>
                         <a href="cines/index.jsp">Cines</a>
                     </li>
                 </ul>
             </nav>
         </header>
+
         <div class="form">
             <form action="UsuarioController" method="POST">
                 <h2>Registrarse</h2>
@@ -74,8 +72,8 @@
                     <label for="repassword">Confirmar contraseña:</label>
                     <input type="text" class="form-control" id="repassword">
                 </div>
-                <div class="form-group pt-4">
-                    <a href="mensajeAnotado.jsp" class="btn btn-primary">Registrarse</a>
+                <div class="form-group">
+                    <a href="mensajeAnotado.jsp" class="btn btn-primary btn-block my-4">Registrarse</a>
                 </div>
             </form>
         </div>
