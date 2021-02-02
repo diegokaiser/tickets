@@ -20,7 +20,7 @@
             <div class="logo"></div>
         </div>
     </div>
-    <div class="content">
+    <div class="content nobg">
         <%@ include file="includes/header.jsp" %>
         <!-- destacado, banner hero -->
         <div class="banner-destacado">
