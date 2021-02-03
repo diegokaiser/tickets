@@ -51,11 +51,11 @@
                 </div>
                 <div class="form-group">
                     <label for="contrasena">Contraseña:</label>
-                    <input type="text" class="form-control" id="contrasena">
+                    <input type="password" class="form-control" id="contrasena" name="contrasena">
                 </div>
                 <div class="form-group">
                     <label for="recontrasena">Confirmar contraseña:</label>
-                    <input type="text" class="form-control" id="recontrasena" name="recontrasena">
+                    <input type="password" class="form-control" id="recontrasena" name="recontrasena">
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary btn-block my-4" value="Registrarse">

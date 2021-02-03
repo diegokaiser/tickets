@@ -7,13 +7,15 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "/UsuarioController", urlPatterns = {"/UsuarioController"})
 public class UsuarioController extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String processing = request.getParameter("sprocessing");
+        String processing = request.getParameter("processing");
 
         switch (processing) {
             case "registro":
@@ -22,18 +24,28 @@ public class UsuarioController extends HttpServlet {
             case "login":
                 login(request, response);
                 break;
+            case "listar":
+                listarTodo(request, response);
             default:
                 throw new IllegalStateException("Unexpected value: " + processing);
         }
     }
 
+    private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        List<Usuario> usuarios = new ArrayList<>();
+        usuarios = usuarioDAO.seleccionarTodo();
+        request.getSession().setAttribute("usuarios", usuarios);
+        request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
+    }
+
     private void registrar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String nombre          = request.getParameter("nombre");
         String apellido        = request.getParameter("apellido");
+        String tipoDocumento   = request.getParameter("tipoDocumento");
+        String numeroDocumento = request.getParameter("numeroDocumento");
         String correo          = request.getParameter("correo");
         String contrasena      = request.getParameter("contrasena");
-        String tipoDocumento   = request.getParameter("tipoDocumento");
-        String numeroDocumento = request.getParameter("numeroDocumenti");
         String recontrasena    = request.getParameter("recontrasena");
 
         if(
@@ -42,7 +54,8 @@ public class UsuarioController extends HttpServlet {
             tipoDocumento.isEmpty() ||
             numeroDocumento.trim().isEmpty() ||
             correo.trim().isEmpty() ||
-            contrasena.trim().isEmpty() &&
+            contrasena.trim().isEmpty() ||
+            recontrasena.trim().isEmpty() ||
             contrasena.trim() != recontrasena.trim()
         ) {
             request.getRequestDispatcher(request.getContextPath() + "/registro/error.jsp").forward(request, response);
@@ -64,7 +77,23 @@ public class UsuarioController extends HttpServlet {
         }
     }
 
-    private void login(HttpServletRequest request, HttpServletResponse response) {
+    private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String correo     = request.getParameter("correo");
+        String contrasena = request.getParameter("contrasena");
+
+        if(correo.trim().isEmpty() || contrasena.trim().isEmpty()) {
+            request.getRequestDispatcher(request.getContextPath() + "/login/error.jsp").forward(request, response);
+        } else {
+            Usuario usuario = new Usuario();
+            usuario.setCorreo(correo);
+            usuario.setContrasena(contrasena);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            if(usuarioDAO.login(usuario)) {
+                request.getRequestDispatcher(request.getContextPath() + "/index.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher(request.getContextPath() + "/login/error.jsp").forward(request, response);
+            }
+        }
     }
 
     @Override

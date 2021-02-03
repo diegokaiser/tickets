@@ -27,25 +27,17 @@
                 <h2>Accede a tu cuenta</h2>
                 <div class="form-group">
                     <label for="correo">Usuario</label>
-                    <input type="text" class="form-control" id="correo">
+                    <input type="text" class="form-control" id="correo" name="correo">
                 </div>
                 <div class="form-group">
                     <label for="contrasena">Contraseña:</label>
-                    <input type="text" class="form-control" id="contrasena">
-                </div>
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="recordarme">
-                        <label class="form-check-label" for="recordarme">
-                            Recordarme
-                        </label>
-                    </div>
+                    <input type="text" class="form-control" id="contrasena" name="contrasena">
                 </div>
                 <div class="form-group">
                     <p>Sí no estás registrado, puedes:</p>
                 </div>
                 <div class="form-group">
-                    <a href="<%=request.getContextPath()%>/registro/index.jsp" class="btn btn-primary btn-block">Crear cuenta</a>
+                    <button type="submit" class="btn btn-primary btn-block">Crear cuenta</button>
                 </div>
             </form>
         </div>

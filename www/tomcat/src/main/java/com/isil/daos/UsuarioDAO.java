@@ -175,13 +175,21 @@ public class UsuarioDAO implements ServiceUsuario {
     @Override
     public Boolean login(Usuario usuario) {
         Boolean resultFlag = false;
-        final String SQL_LOGIN = "{call usp_login()}";
+        final String SQL_LOGIN = "{call usp_login(?, ?)}";
 
         try {
             cstm = con.getConnection().prepareCall(SQL_LOGIN);
+            cstm.setString(1, usuario.getCorreo());
+            cstm.setString(2, usuario.getContrasena());
             res = cstm.executeQuery();
+            while(res.next()) {
+                int result = res.getInt(1);
+                if(result == 1) {
+                    resultFlag = true;
+                }
+            }
         } catch (Exception e) {
-            System.out.println("Error al actualizar el registro");
+            System.out.println("Error al iniciar sesion");
             e.printStackTrace();
         }
         finally {

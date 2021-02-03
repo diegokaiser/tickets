@@ -39,7 +39,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Users <small>Some examples to get you started</small></h3>
+                        <h3>Usuarios registrados</h3>
                     </div>
                 </div>
 
@@ -49,7 +49,6 @@
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Default Example <small>Users</small></h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
@@ -71,14 +70,33 @@
                                                     </tr>
                                                 </thead>
 
-
                                                 <tbody>
+                                                    <c:forEach var="usuario" items="#{sessionScope.usuarios}">
                                                     <tr>
-                                                        <td>Tiger Nixon</td>
-                                                        <td>System Architect</td>
-                                                        <td>Edinburgh</td>
-                                                        <td>61</td>
-                                                        <td>2011/04/25</td>
+                                                        <td>${usuario.idUsuario}</td>
+                                                        <td>${usuario.apellido},${usuario.nombre}</td>
+                                                        <td>${usuario.correo}</td>
+                                                        <td>
+                                                            <c:choose>
+                                                                <:c:when test="${usuario.tipoDocumento} == 1">
+                                                                    DNI:
+                                                                </:c:when>
+                                                                <c:otherwise>
+                                                                    C.E:
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                            ${usuario.numeroDocumento}
+                                                        </td>
+                                                        <td>
+                                                            <c:choose>
+                                                                <c:when test="${usuario.estado} == 1">
+                                                                    Validado
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    No validado
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </td>
                                                         <td>
                                                             <div class="admin-actions">
                                                                 <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</button>
@@ -86,38 +104,7 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Garrett Winters</td>
-                                                        <td>Accountant</td>
-                                                        <td>Tokyo</td>
-                                                        <td>63</td>
-                                                        <td>2011/07/25</td>
-                                                        <td>$170,750</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ashton Cox</td>
-                                                        <td>Junior Technical Author</td>
-                                                        <td>San Francisco</td>
-                                                        <td>66</td>
-                                                        <td>2009/01/12</td>
-                                                        <td>$86,000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Cedric Kelly</td>
-                                                        <td>Senior Javascript Developer</td>
-                                                        <td>Edinburgh</td>
-                                                        <td>22</td>
-                                                        <td>2012/03/29</td>
-                                                        <td>$433,060</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Airi Satou</td>
-                                                        <td>Accountant</td>
-                                                        <td>Tokyo</td>
-                                                        <td>33</td>
-                                                        <td>2008/11/28</td>
-                                                        <td>$162,700</td>
-                                                    </tr>
+                                                    </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
