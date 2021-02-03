@@ -39,7 +39,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Users <small>Some examples to get you started</small></h3>
+                        <h3>Usuarios registrados</h3>
                     </div>
                 </div>
 
@@ -49,7 +49,6 @@
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Default Example <small>Users</small></h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
@@ -77,7 +76,17 @@
                                                         <td>${usuario.idUsuario}</td>
                                                         <td>${usuario.apellido},${usuario.nombre}</td>
                                                         <td>${usuario.correo}</td>
-                                                        <td>${usuario.tipoDocumento}: ${usuario.numeroDocumento}</td>
+                                                        <td>
+                                                            <c:choose>
+                                                                <:c:when test="${usuario.tipoDocumento} == 1">
+                                                                    DNI:
+                                                                </:c:when>
+                                                                <c:otherwise>
+                                                                    C.E:
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                            ${usuario.numeroDocumento}
+                                                        </td>
                                                         <td>
                                                             <c:choose>
                                                                 <c:when test="${usuario.estado} == 1">

@@ -39,7 +39,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Cines</h3>
+                        <h3>Entradas registrados</h3>
                     </div>
                 </div>
 
@@ -55,37 +55,45 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card-box table-responsive">
+                                            <p class="text-muted font-13 m-b-30">
+                                                DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
+                                            </p>
                                             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                                 <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Cadena</th>
-                                                    <th>Direccion</th>
-                                                    <th>Salas</th>
+                                                    <th>Pelicula</th>
+                                                    <th>Cine y Sala</th>
+                                                    <th>Tipo</th>
+                                                    <th>Precio</th>
+                                                    <th>Fecha de registro</th>
                                                     <th>Estado</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                                 </thead>
 
                                                 <tbody>
-                                                <c:forEach var="cine" items="#{sessionScope.cines}">
+                                                <c:forEach var="entrada" items="#{sessionScope.entradas}">
                                                     <tr>
-                                                        <td>${cine.idCine}</td>
-                                                        <td>${cine.nombre}</td>
-                                                        <td>${cine.direccion}</td>
-                                                        <td>
-                                                            {Contar cantidad de salas}
-                                                        </td>
-                                                        <td>
+                                                        <th>${entrada.idEntrada}</th>
+                                                        <th>
+                                                            {Obtener nombre de pelicula por el id de la pelicula}
+                                                        </th>
+                                                        <th>
+                                                            {Obtener cine y numero de sala por el id del cine y de la sala}
+                                                        </th>
+                                                        <th>${entrada.tipo}</th>
+                                                        <th>${entrada.precio}</th>
+                                                        <th>${entrada.fechaRegistro}</th>
                                                             <c:choose>
-                                                                <c:when test="${cine.estado} == 1">
-                                                                    Activo
+                                                                <c:when test="${entrada.estado} == 1">
+                                                                    Activa
                                                                 </c:when>
                                                                 <c:otherwise>
-                                                                    Cerrado
+                                                                    Sin confirmar
                                                                 </c:otherwise>
                                                             </c:choose>
-                                                        </td>
+                                                        </th>
                                                         <td>
                                                             <div class="admin-actions">
                                                                 <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</button>

@@ -39,7 +39,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Cines</h3>
+                        <h3>Salas registradas</h3>
                     </div>
                 </div>
 
@@ -55,34 +55,41 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card-box table-responsive">
+                                            <p class="text-muted font-13 m-b-30">
+                                                DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
+                                            </p>
                                             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                                 <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Cadena</th>
-                                                    <th>Direccion</th>
-                                                    <th>Salas</th>
+                                                    <th>Número</th>
+                                                    <th>Cine</th>
+                                                    <th>Capacidad</th>
+                                                    <th>Tipo</th>
                                                     <th>Estado</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                                 </thead>
 
                                                 <tbody>
-                                                <c:forEach var="cine" items="#{sessionScope.cines}">
+                                                <c:forEach var="sala" items="#{sessionScope.salas}">
                                                     <tr>
-                                                        <td>${cine.idCine}</td>
-                                                        <td>${cine.nombre}</td>
-                                                        <td>${cine.direccion}</td>
+                                                        <td>${sala.idUsuario}</td>
+                                                        <td>${sala.numero}</td>
                                                         <td>
-                                                            {Contar cantidad de salas}
+                                                            {Obtener nombre del cine por idCine}
+                                                        </td>
+                                                        <td>${sala.capacidad}</td>
+                                                        <td>
+                                                            ${sala.tipoSala}
                                                         </td>
                                                         <td>
                                                             <c:choose>
-                                                                <c:when test="${cine.estado} == 1">
-                                                                    Activo
+                                                                <c:when test="${sala.estado} == 1">
+                                                                    Activa
                                                                 </c:when>
                                                                 <c:otherwise>
-                                                                    Cerrado
+                                                                    Inactiva
                                                                 </c:otherwise>
                                                             </c:choose>
                                                         </td>
