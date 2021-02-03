@@ -8,7 +8,7 @@
                 <a href="../index.jspjsp">Home</a>
             </li>
             <li>
-                <a href="<%=request.getContextPath()%>/cines/index.jsp">Cines</a>
+                <a href="<%=request.getContextPath()%>/registro/index.jsp">Login</a>
             </li>
         </ul>
     </nav>
