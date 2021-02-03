@@ -5,10 +5,20 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "UsuarioController", value = "/UsuarioController")
+@WebServlet(name = "/UsuarioController", urlPatterns = {"/UsuarioController"})
 public class UsuarioController extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String processing = request.getParameter("sprocessing");
+
+//        switch (processing) {
+//            case "registro":
+//                break;
+//            case "login":
+//                break;
+//        }
+
         String nombre          = request.getParameter("nombre");
         String apellido        = request.getParameter("apellido");
         String tipoDocumento   = request.getParameter("tipoDocumento");
@@ -26,9 +36,9 @@ public class UsuarioController extends HttpServlet {
             correo.trim().isEmpty() ||
             contrasena.trim().isEmpty()
         ) {
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/registro/error.jsp"));
         } else {
-
+            response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/"));
         }
     }
 

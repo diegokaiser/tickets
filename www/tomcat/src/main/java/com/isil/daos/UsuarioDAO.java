@@ -171,4 +171,22 @@ public class UsuarioDAO implements ServiceUsuario {
             System.out.println("Error al cerrar conexión: "+e.getMessage());
         }
     }
+
+    @Override
+    public Boolean login(Usuario usuario) {
+        Boolean resultFlag = false;
+        final String SQL_LOGIN = "{call usp_login()}";
+
+        try {
+            cstm = con.getConnection().prepareCall(SQL_LOGIN);
+            res = cstm.executeQuery();
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el registro");
+            e.printStackTrace();
+        }
+        finally {
+            close();
+        }
+        return resultFlag;
+    }
 }
