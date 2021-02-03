@@ -7,8 +7,9 @@ public class Usuario {
     private String  correo;
     private String  contrasena;
     private String  tipoDocumento;
-    private String numeroDocumento;
+    private String  numeroDocumento;
     private Integer idTipoUsuario;
+    private Integer estado;
 
     public Usuario() {
 
@@ -76,5 +77,13 @@ public class Usuario {
 
     public void setIdTipoUsuario(Integer idTipoUsuario) {
         this.idTipoUsuario = idTipoUsuario;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 }

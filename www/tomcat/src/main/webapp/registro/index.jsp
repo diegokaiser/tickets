@@ -23,7 +23,7 @@
 
         <div class="form">
             <form action="/UsuarioController" method="post">
-                <input type="hidden" id="processing" name="processing">
+                <input type="hidden" id="processing" name="processing" value="registro">
                 <h2>Registrarse</h2>
                 <div class="form-group pt-4">
                     <label for="nombre">Nombre:</label>

@@ -22,7 +22,8 @@
         <%@ include file="../includes/header.jsp" %>
 
         <div class="form">
-            <form action="">
+            <form action="/UsuarioController" method="post">
+                <input type="hidden" id="processing" name="processing" value="login">
                 <h2>Accede a tu cuenta</h2>
                 <div class="form-group">
                     <label for="correo">Usuario</label>

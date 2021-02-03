@@ -1,5 +1,3 @@
-@import url(globals/normalize.css);
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap");
 
 /****************MOBILE DEVICES*****************/
 /****************TABLET DEVICES*****************/
@@ -171,7 +169,7 @@ header {
           z-index: 10; }
 
 .bkg_video {
-  height: 100vh;
+  height: 100%;
   left: 0;
   -o-object-fit: cover;
   object-fit: cover;
@@ -179,6 +177,11 @@ header {
   top: 0;
   width: 100%;
   z-index: 0; }
+  .bkg_video video {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%; }
 
 .content {
   background-color: rgba(0, 0, 0, 0.8);
@@ -382,7 +385,7 @@ header {
           z-index: 10; }
 
 .bkg_video {
-  height: 100vh;
+  height: 100%;
   left: 0;
   -o-object-fit: cover;
   object-fit: cover;
@@ -390,6 +393,11 @@ header {
   top: 0;
   width: 100%;
   z-index: 0; }
+  .bkg_video video {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%; }
 
 .content {
   background-color: rgba(0, 0, 0, 0.8);
@@ -593,7 +601,7 @@ header {
           z-index: 10; }
 
 .bkg_video {
-  height: 100vh;
+  height: 100%;
   left: 0;
   -o-object-fit: cover;
   object-fit: cover;
@@ -601,6 +609,11 @@ header {
   top: 0;
   width: 100%;
   z-index: 0; }
+  .bkg_video video {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%; }
 
 .content {
   background-color: rgba(0, 0, 0, 0.8);
@@ -1053,7 +1066,7 @@ header {
           z-index: 10; }
 
 .bkg_video {
-  height: 100vh;
+  height: 100%;
   left: 0;
   -o-object-fit: cover;
   object-fit: cover;
@@ -1061,6 +1074,11 @@ header {
   top: 0;
   width: 100%;
   z-index: 0; }
+  .bkg_video video {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%; }
 
 .content {
   background-color: rgba(0, 0, 0, 0.8);
@@ -1261,7 +1279,7 @@ header {
           z-index: 10; }
 
 .bkg_video {
-  height: 100vh;
+  height: 100%;
   left: 0;
   -o-object-fit: cover;
   object-fit: cover;
@@ -1269,6 +1287,11 @@ header {
   top: 0;
   width: 100%;
   z-index: 0; }
+  .bkg_video video {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%; }
 
 .content {
   background-color: rgba(0, 0, 0, 0.8);
