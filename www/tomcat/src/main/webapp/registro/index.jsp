@@ -58,6 +58,8 @@
                     <input type="password" class="form-control" id="recontrasena" name="recontrasena">
                 </div>
                 <div class="form-group">
+                    <input type="hidden" id="idTipoUsuario" name="idTipoUsuario" value="3">
+                    <input type="hidden" id="estado" name="estado" value="0">
                     <input type="submit" class="btn btn-primary btn-block my-4" value="Registrarse">
                 </div>
             </form>

@@ -25,6 +25,7 @@
         <div class="animate form login_form">
             <section class="login_content">
                 <form action="/UsuarioController" method="post">
+                    <input type="hidden" id="processing" name="processing" value="loginAdmin">
                     <h1>Login Form</h1>
                     <div>
                         <input type="text" class="form-control" id="correo" name="correo" placeholder="Email" required="" />

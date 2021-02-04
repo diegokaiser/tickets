@@ -24,10 +24,32 @@ public class UsuarioController extends HttpServlet {
             case "login":
                 login(request, response);
                 break;
-            case "listar":
+            case "listarUsuarios":
                 listarTodo(request, response);
+            // admin metodos
+            case "loginAdmin":
+                loginAdmin(request, response);
             default:
                 throw new IllegalStateException("Unexpected value: " + processing);
+        }
+    }
+
+    private void loginAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String correo     = request.getParameter("correo");
+        String contrasena = request.getParameter("contrasena");
+
+        if(correo.trim().isEmpty() || contrasena.trim().isEmpty()) {
+            request.getRequestDispatcher(request.getContextPath() + "/login/error.jsp").forward(request, response);
+        } else {
+            Usuario usuario = new Usuario();
+            usuario.setCorreo(correo);
+            usuario.setContrasena(contrasena);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            if(usuarioDAO.login(usuario)) {
+                request.getRequestDispatcher(request.getContextPath() + "/admin/error404/index.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher(request.getContextPath() + "/admin/usuarios/index.jsp").forward(request, response);
+            }
         }
     }
 
@@ -81,6 +103,7 @@ public class UsuarioController extends HttpServlet {
         String contrasena = request.getParameter("contrasena");
 
         if(correo.trim().isEmpty() || contrasena.trim().isEmpty()) {
+            // error
             request.getRequestDispatcher(request.getContextPath() + "/login/error.jsp").forward(request, response);
         } else {
             Usuario usuario = new Usuario();
@@ -90,6 +113,7 @@ public class UsuarioController extends HttpServlet {
             if(usuarioDAO.login(usuario)) {
                 request.getRequestDispatcher(request.getContextPath() + "/index.jsp").forward(request, response);
             } else {
+                // error
                 request.getRequestDispatcher(request.getContextPath() + "/login/error.jsp").forward(request, response);
             }
         }

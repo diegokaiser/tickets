@@ -6,9 +6,10 @@ import com.isil.entities.Usuario;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.isil.connectionDDBB.ConnectionDDBB.*;
 
 public class UsuarioDAO implements ServiceUsuario {
     private static ConnectionDDBB con;
@@ -17,22 +18,27 @@ public class UsuarioDAO implements ServiceUsuario {
     private static CallableStatement cstm;
 
     public UsuarioDAO() {
-        con = ConnectionDDBB.getInstance();
+        con = getInstance();
     }
 
     @Override
     public Boolean insertar(Usuario usuario) {
-        Boolean resultFlag = false;
-        final String SQL_INSERT = "insert into usuario values(?,?,?,?,?,?)";
+        boolean resultFlag = false;
+        final String SQL_INSERT = "insert into usuario (nombre, apellido, correo, contrasena, tipoDocumento, numeroDocumento, idTipoUsuario, estado) values (?,?,?,?,?,?,?,?)";
 
         try {
             pstm = con.getConnection().prepareStatement(SQL_INSERT);
+
             pstm.setString(1, usuario.getNombre());
             pstm.setString(2, usuario.getApellido());
             pstm.setString(3, usuario.getCorreo());
             pstm.setString(4, usuario.getContrasena());
+
             pstm.setString(5, usuario.getTipoDocumento());
             pstm.setString(6, usuario.getNumeroDocumento());
+            pstm.setInt(7, usuario.getIdTipoUsuario());
+            pstm.setInt(8, usuario.getEstado());
+
             int result = pstm.executeUpdate();
             if(result > 0) {
                 resultFlag = true;
@@ -49,36 +55,36 @@ public class UsuarioDAO implements ServiceUsuario {
 
     @Override
     public List<Usuario> seleccionarTodo() {
-        List<Usuario> lista = new ArrayList<>();
-        final String SQL_SELECTALL = "{call usp_listar()}";
+        List<Usuario> usuarios = new ArrayList<>();
+        final String SQL_SELECTALL = "{call usp_listarUsuarios()}";
 
         try {
             cstm = con.getConnection().prepareCall(SQL_SELECTALL);
             res = cstm.executeQuery();
             while(res.next()) {
                 Usuario usuario = new Usuario();
-                usuario.setIdUsuario(res.getInt("idUsuario"));
+                usuario.setIdUsuario(res.getInt(1));
                 usuario.setNombre(res.getString("nombre"));
                 usuario.setApellido(res.getString("apellido"));
                 usuario.setCorreo(res.getString("correo"));
                 usuario.setTipoDocumento(res.getString("tipoDocumento"));
                 usuario.setNumeroDocumento(res.getString("numeroDocumento"));
-                lista.add(usuario);
+                usuarios.add(usuario);
             }
         } catch (Exception e) {
-            System.out.println("Error al recuperar los datos");
+            System.out.println("Error al recuperar el listado de usuarios");
             e.printStackTrace();
         }
         finally {
             close();
         }
-        return lista;
+        return usuarios;
     }
 
     @Override
     public Boolean actualizar(Usuario usuario) {
-        Boolean resultFlag = false;
-        final String SQL_UPDATE = "update cliente set nombre=?, apellido=?, correo=?, contrasena=?, numeroDocumento=? where id=?";
+        boolean resultFlag = false;
+        final String SQL_UPDATE = "update usuario set nombre=?, apellido=?, correo=?, contrasena=?, numeroDocumento=? where id=?";
 
         try {
             pstm = con.getConnection().prepareStatement(SQL_UPDATE);
@@ -104,7 +110,24 @@ public class UsuarioDAO implements ServiceUsuario {
 
     @Override
     public Boolean eliminar(Object id) {
-        return null;
+        boolean resultFlag = false;
+        final String SQL_DELETE = "update usuario set estado=? where id=?";
+
+        try {
+            pstm = con.getConnection().prepareStatement(SQL_DELETE);
+
+            int result = pstm.executeUpdate();
+            if(result > 0) {
+                resultFlag = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Error al eliminar al usuario");
+            e.printStackTrace();
+        }
+        finally {
+            close();
+        }
+        return resultFlag;
     }
 
     @Override
@@ -166,7 +189,6 @@ public class UsuarioDAO implements ServiceUsuario {
         try {
             if(res != null)res.close();
             if(pstm != null)pstm.close();
-            if(con != null)pstm.close();
         } catch (Exception e) {
             System.out.println("Error al cerrar conexión: "+e.getMessage());
         }
@@ -174,11 +196,12 @@ public class UsuarioDAO implements ServiceUsuario {
 
     @Override
     public Boolean login(Usuario usuario) {
-        Boolean resultFlag = false;
+        boolean resultFlag = false;
         final String SQL_LOGIN = "{call usp_login(?, ?)}";
 
         try {
             cstm = con.getConnection().prepareCall(SQL_LOGIN);
+            System.out.println(cstm);
             cstm.setString(1, usuario.getCorreo());
             cstm.setString(2, usuario.getContrasena());
             res = cstm.executeQuery();

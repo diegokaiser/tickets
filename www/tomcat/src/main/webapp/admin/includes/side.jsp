@@ -25,7 +25,7 @@
             <div class="menu_section">
                 <ul class="nav side-menu">
                     <li>
-                        <a><i class="fa fa-users"></i>Usuarios</a>
+                        <a href="/UsuarioController?processing=listarUsuarios"><i class="fa fa-users"></i>Usuarios</a>
                     </li>
                     <li>
                         <a><i class="fa fa-star"></i>Estrenos</a>

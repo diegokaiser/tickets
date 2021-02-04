@@ -31,13 +31,16 @@
                 </div>
                 <div class="form-group">
                     <label for="contrasena">Contraseña:</label>
-                    <input type="text" class="form-control" id="contrasena" name="contrasena">
+                    <input type="password" class="form-control" id="contrasena" name="contrasena">
                 </div>
                 <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block">Iniciar Sesión</button>
+                </div>
+                <div class="form-group mt-4">
                     <p>Sí no estás registrado, puedes:</p>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">Crear cuenta</button>
+                    <a href="<%=request.getContextPath()%>/registro/index.jsp" class="btn btn-primary btn-block">Crear cuenta</a>
                 </div>
             </form>
         </div>
