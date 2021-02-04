@@ -51,7 +51,6 @@ public class UsuarioController extends HttpServlet {
         if(
             nombre.trim().isEmpty() ||
             apellido.trim().isEmpty() ||
-            tipoDocumento.isEmpty() ||
             numeroDocumento.trim().isEmpty() ||
             correo.trim().isEmpty() ||
             contrasena.trim().isEmpty() ||
