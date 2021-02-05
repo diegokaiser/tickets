@@ -62,6 +62,12 @@
                     <input type="hidden" id="estado" name="estado" value="0">
                     <input type="submit" class="btn btn-primary btn-block my-4" value="Registrarse">
                 </div>
+                <div class="form-group mt-4">
+                    <p>Sí estás registrado, puedes:</p>
+                </div>
+                <div class="form-group">
+                    <a href="<%=request.getContextPath()%>/login/index.jsp" class="btn btn-success btn-block">Iniciar Sesión</a>
+                </div>
             </form>
         </div>
     </div>

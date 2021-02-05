@@ -2,14 +2,12 @@ package com.isil.daos;
 
 import com.isil.connectionDDBB.ConnectionDDBB;
 import com.isil.entities.Usuario;
-
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.isil.connectionDDBB.ConnectionDDBB.*;
 
 public class UsuarioDAO implements ServiceUsuario {
     private static ConnectionDDBB con;
@@ -18,12 +16,12 @@ public class UsuarioDAO implements ServiceUsuario {
     private static CallableStatement cstm;
 
     public UsuarioDAO() {
-        con = getInstance();
+        con = ConnectionDDBB.getInstance();
     }
 
     @Override
     public Boolean insertar(Usuario usuario) {
-        boolean resultFlag = false;
+        Boolean resultFlag = false;
         final String SQL_INSERT = "insert into usuario (nombre, apellido, correo, contrasena, tipoDocumento, numeroDocumento, idTipoUsuario, estado) values (?,?,?,?,?,?,?,?)";
 
         try {
@@ -83,7 +81,7 @@ public class UsuarioDAO implements ServiceUsuario {
 
     @Override
     public Boolean actualizar(Usuario usuario) {
-        boolean resultFlag = false;
+        Boolean resultFlag = false;
         final String SQL_UPDATE = "update usuario set nombre=?, apellido=?, correo=?, contrasena=?, numeroDocumento=? where id=?";
 
         try {
@@ -110,12 +108,13 @@ public class UsuarioDAO implements ServiceUsuario {
 
     @Override
     public Boolean eliminar(Object id) {
-        boolean resultFlag = false;
+        Boolean resultFlag = false;
         final String SQL_DELETE = "update usuario set estado=? where id=?";
 
         try {
             pstm = con.getConnection().prepareStatement(SQL_DELETE);
-
+            //pstm.setString(1, usuario.setEstado(0));
+            //pstm.setInt(2, usuario.getIdUsuario());
             int result = pstm.executeUpdate();
             if(result > 0) {
                 resultFlag = true;
@@ -185,23 +184,12 @@ public class UsuarioDAO implements ServiceUsuario {
     }
 
     @Override
-    public void close() {
-        try {
-            if(res != null)res.close();
-            if(pstm != null)pstm.close();
-        } catch (Exception e) {
-            System.out.println("Error al cerrar conexión: "+e.getMessage());
-        }
-    }
-
-    @Override
     public Boolean login(Usuario usuario) {
-        boolean resultFlag = false;
+        Boolean resultFlag = false;
         final String SQL_LOGIN = "{call usp_login(?, ?)}";
 
         try {
             cstm = con.getConnection().prepareCall(SQL_LOGIN);
-            System.out.println(cstm);
             cstm.setString(1, usuario.getCorreo());
             cstm.setString(2, usuario.getContrasena());
             res = cstm.executeQuery();
@@ -219,5 +207,23 @@ public class UsuarioDAO implements ServiceUsuario {
             close();
         }
         return resultFlag;
+    }
+
+    @Override
+    public void close() {
+        try {
+            if(res != null) {
+                res.close();
+            }
+            if(cstm != null) {
+                cstm.close();
+            }
+            if(con != null) {
+                con.close();
+            }
+            System.out.println("Conexión cerrada");
+        } catch (Exception e) {
+            System.out.println("Error al cerrar conexión: "+e.getMessage());
+        }
     }
 }

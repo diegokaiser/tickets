@@ -2,12 +2,10 @@ package com.isil.entities;
 
 public class Usuario {
     private Integer idUsuario;
-
     private String  nombre;
     private String  apellido;
     private String  correo;
     private String  contrasena;
-
     private String  tipoDocumento;
     private String  numeroDocumento;
     private Integer idTipoUsuario;

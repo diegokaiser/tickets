@@ -29,46 +29,31 @@ public class UsuarioController extends HttpServlet {
             // admin metodos
             case "loginAdmin":
                 loginAdmin(request, response);
-            default:
-                throw new IllegalStateException("Unexpected value: " + processing);
+            case "detalleUsuario":
+                detalleUsuario(request, response);
         }
     }
 
-    private void loginAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String correo     = request.getParameter("correo");
-        String contrasena = request.getParameter("contrasena");
 
-        if(correo.trim().isEmpty() || contrasena.trim().isEmpty()) {
-            request.getRequestDispatcher(request.getContextPath() + "/login/error.jsp").forward(request, response);
-        } else {
-            Usuario usuario = new Usuario();
-            usuario.setCorreo(correo);
-            usuario.setContrasena(contrasena);
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            if(usuarioDAO.login(usuario)) {
-                request.getRequestDispatcher(request.getContextPath() + "/admin/error404/index.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher(request.getContextPath() + "/admin/usuarios/index.jsp").forward(request, response);
-            }
-        }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
     }
 
-    private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        List<Usuario> usuarios = new ArrayList<>();
-        usuarios = usuarioDAO.seleccionarTodo();
-        request.getSession().setAttribute("usuarios", usuarios);
-        request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     private void registrar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String nombre          = request.getParameter("nombre");
         String apellido        = request.getParameter("apellido");
-        String tipoDocumento   = request.getParameter("tipoDocumento");
-        String numeroDocumento = request.getParameter("numeroDocumento");
         String correo          = request.getParameter("correo");
         String contrasena      = request.getParameter("contrasena");
         String recontrasena    = request.getParameter("recontrasena");
+        String tipoDocumento   = request.getParameter("tipoDocumento");
+        String numeroDocumento = request.getParameter("numeroDocumento");
 
         if(
             nombre.trim().isEmpty() ||
@@ -86,9 +71,11 @@ public class UsuarioController extends HttpServlet {
             usuario.setApellido(apellido);
             usuario.setTipoDocumento(tipoDocumento);
             usuario.setNumeroDocumento(numeroDocumento);
+
+            usuario.setIdTipoUsuario(3);
             usuario.setCorreo(correo);
             usuario.setContrasena(contrasena);
-            usuario.setEstado(0);
+            usuario.setEstado(1);
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             if(usuarioDAO.insertar(usuario)) {
                 request.getRequestDispatcher(request.getContextPath() + "/registro/mensajeAnotado.jsp").forward(request, response);
@@ -96,6 +83,14 @@ public class UsuarioController extends HttpServlet {
                 request.getRequestDispatcher(request.getContextPath() + "/registro/error.jsp").forward(request, response);
             }
         }
+    }
+
+    private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        List<Usuario> usuarios = new ArrayList<>();
+        usuarios = usuarioDAO.seleccionarTodo();
+        request.getSession().setAttribute("usuarios", usuarios);
+        request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -119,13 +114,30 @@ public class UsuarioController extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+    private void loginAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String correo     = request.getParameter("correo");
+        String contrasena = request.getParameter("contrasena");
+
+        if(correo.trim().isEmpty() || contrasena.trim().isEmpty()) {
+            request.getRequestDispatcher(request.getContextPath() + "/login/error.jsp").forward(request, response);
+        } else {
+            Usuario usuario = new Usuario();
+            usuario.setCorreo(correo);
+            usuario.setContrasena(contrasena);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            if(usuarioDAO.login(usuario)) {
+                request.getRequestDispatcher(request.getContextPath() + "/admin/error404/index.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher(request.getContextPath() + "/admin/usuarios/index.jsp").forward(request, response);
+            }
+        }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+    private void detalleUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String idUsuario = request.getParameter("idUsuario");
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        Usuario usuario = usuarioDAO.seleccionarPorId(Integer.parseInt(idUsuario));
+        request.getSession().setAttribute("usuario", usuario);
+        request.getRequestDispatcher("admin/usuario/index.jsp").forward(request, response);
     }
 }
