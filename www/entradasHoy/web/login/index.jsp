@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@ include file="../includes/meta.jsp" %>
-    <%@ include file="../includes/styles.jsp" %>
+    <%@ include file="../WEB-INF/jspf/web/meta.jsp" %>
+    <%@ include file="../WEB-INF/jspf/web/styles.jsp" %>
     <title>Acceso de usuarios | Solo Estrenos</title>
 </head>
 <body>
@@ -12,10 +12,10 @@
         </video>
     </div>
     <div class="content">
-        <%@ include file="../includes/header.jsp" %>
+        <%@ include file="../WEB-INF/jspf/web/header.jsp" %>
 
         <div class="form">
-            <form action="/UsuarioController" method="post">
+            <form action="../UsuarioController" method="POST">
                 <input type="hidden" id="processing" name="processing" value="login">
                 <h2>Accede a tu cuenta</h2>
                 <div class="form-group">
@@ -38,7 +38,7 @@
             </form>
         </div>
     </div>
-    <%@ include file="../includes/footer.jsp" %>
-    <%@ include file="../includes/scripts.jsp" %>
+    <%@ include file="../WEB-INF/jspf/web/footer.jsp" %>
+    <%@ include file="../WEB-INF/jspf/web/scripts.jsp" %>
 </body>
 </html>

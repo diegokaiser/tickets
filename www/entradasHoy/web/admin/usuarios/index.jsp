@@ -25,7 +25,6 @@
     <link href="<%=request.getContextPath()%>/RESOURCES/admin/css/custom.min.css" rel="stylesheet">
 </head>
 <body class="nav-md">
-<p><%=request.getContextPath()%></p>
 <div class="container body">
     <div class="main_container">
         <%@ include file="./../includes/side.jsp" %>
@@ -67,7 +66,7 @@
                                                 </thead>
 
                                                 <tbody>
-                                                    <c:forEach var="usuario" items="#{sessionScope.usuarios}">
+                                                    <c:forEach var="usuario" items="${sessionScope.usuarios}">
                                                     <tr>
                                                         <td>${usuario.idUsuario}</td>
                                                         <td>${usuario.apellido},${usuario.nombre}</td>
@@ -95,8 +94,8 @@
                                                         </td>
                                                         <td>
                                                             <div class="admin-actions">
-                                                                <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</button>
-                                                                <button type="button" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</button>
+                                                                <a href="<%=request.getContextPath()%>/UsuarioController?processing=editarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
+                                                                <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
                                                             </div>
                                                         </td>
                                                     </tr>

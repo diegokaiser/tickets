@@ -123,4 +123,8 @@ public class Usuario {
     public void setEstado(Integer estado) {
         this.estado = estado;
     }
+
+    public void setEstado(String estado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

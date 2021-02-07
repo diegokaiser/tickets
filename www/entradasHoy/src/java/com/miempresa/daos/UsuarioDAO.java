@@ -167,4 +167,9 @@ public class UsuarioDAO implements IServiceUsuario {
             System.out.println("Error al cerrar conexion :" + e.getMessage());
         }
     }
+
+    @Override
+    public Usuario seleccionPorId(Object id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

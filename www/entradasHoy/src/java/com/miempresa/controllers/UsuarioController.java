@@ -15,22 +15,22 @@ public class UsuarioController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String processing = request.getParameter("processing");
-        switch(processing) {
+        String proceso = request.getParameter("processing");
+        switch(proceso) {
             case "registro":
                 registrar(request, response);
-                break;
+                break;                
             case "login":
                 login(request, response);
-                break;
+                break;                
             case "listarUsuarios":
                 listarTodo(request, response);
                 break;
-            case "loginAdmin":
-                loginAdmin(request, response);
+            case "editarUsuario":
+                editarUsuario(request, response);
                 break;
-            case "detalleUsuario":
-                detalleUsuario(request, response);
+            case "eliminarUsuario":
+                eliminarUsuario(request, response);
                 break;
         }
         
@@ -52,13 +52,64 @@ public class UsuarioController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nombre          = request.getParameter("nombre");
+        String apellido        = request.getParameter("apellido");
+        String tipoDocumento   = request.getParameter("tipoDocumento");
+        String numeroDocumento = request.getParameter("numeroDocumento");
+        String correo          = request.getParameter("correo");
+        String contrasena      = request.getParameter("contrasena");        
 
-    private void registrar(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(
+            nombre.trim().isEmpty() ||
+            contrasena.trim().isEmpty()/* ||
+            apellido.trim().isEmpty() ||
+            numeroDocumento.trim().isEmpty() ||
+            correo.trim().isEmpty() ||
+            
+            recontrasena.trim().isEmpty() ||
+            contrasena.trim() != recontrasena.trim()*/
+        ) {
+            request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
+        } else {
+            Usuario usuario = new Usuario();
+            usuario.setNombre(nombre);
+            usuario.setApellido(apellido);
+            usuario.setTipoDocumento(tipoDocumento);
+            usuario.setNumeroDocumento(numeroDocumento);            
+            usuario.setCorreo(correo);
+            usuario.setContrasena(contrasena);
+            usuario.setIdTipoUsuario(3);
+            usuario.setEstado(0);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            if(usuarioDAO.insertar(usuario)) {
+                request.getRequestDispatcher("/registro/mensajeAnotado.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
+            }
+        }
     }
+    
+    private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String correo     = request.getParameter("correo");
+        String contrasena = request.getParameter("contrasena");
 
-    private void login(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(correo.trim().isEmpty() || contrasena.trim().isEmpty()) {
+            // error
+            request.getRequestDispatcher("/login/error.jsp").forward(request, response);
+        } else {
+            Usuario usuario = new Usuario();
+            usuario.setCorreo(correo);
+            usuario.setContrasena(contrasena);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            if(usuarioDAO.login(usuario)) {
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } else {
+                // error
+                request.getRequestDispatcher("/login/error.jsp").forward(request, response);
+            }
+        }
     }
 
     private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,15 +117,18 @@ public class UsuarioController extends HttpServlet {
         List<Usuario> usuarios = new ArrayList<>();
         usuarios = usuarioDAO.seleccionarTodo();
         request.getSession().setAttribute("usuarios", usuarios);
-        request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/usuarios/index.jsp").forward(request, response);
     }
-
+    
     private void loginAdmin(HttpServletRequest request, HttpServletResponse response) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void detalleUsuario(HttpServletRequest request, HttpServletResponse response) {
+    private void editarUsuario(HttpServletRequest request, HttpServletResponse response) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

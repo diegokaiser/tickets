@@ -17,15 +17,16 @@
                             <h5 class="card-header"><i class="fas fa-user-plus"></i> &nbsp;Registro</h5>
                             <div class="card-body">
                                 <h5 class="card-title">Registro de Usuario </h5>
-                                <form action="usuariocontroller" method="GET">
+                                <form action="UsuarioController" method="POST">
+                                    <input type="hidden" id="processing" name="processing" value="registro">
                                     <div class="mb-3">
                                         <label for="txtUsuario" class="form-label"><i class="fas fa-marker"></i>&nbsp;&nbsp;Nombre de Usuario</label>
-                                        <input type="text" class="form-control" id="txtUsuario" name="txtUsuario" required="" placeholder="Ingresar nombre de usuario">
+                                        <input type="text" class="form-control" id="nombre" name="nombre" required="" placeholder="Ingresar nombre de usuario">
                                 
                                     </div>
                                     <div class="mb-3">
                                         <label for="txtClave" class="form-label"><i class="fas fa-lock"></i>&nbsp;&nbsp;Clave</label>
-                                        <input type="password" class="form-control" id="txtClave" name="txtClave">
+                                        <input type="password" class="form-control" id="contrasena" name="contrasena">
                                     </div>
                                     <div class="mb-3 form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">

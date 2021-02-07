@@ -9,7 +9,7 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="./../../RESOURCES/admin/images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<%=request.getContextPath()%>/RESOURCES/admin/images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Bienvenido,</span>
@@ -25,7 +25,7 @@
             <div class="menu_section">
                 <ul class="nav side-menu">
                     <li>
-                        <a href="/UsuarioController?processing=listarUsuarios"><i class="fa fa-users"></i>Usuarios</a>
+                        <a href="<%=request.getContextPath()%>/UsuarioController?processing=listarUsuarios"><i class="fa fa-users"></i>Usuarios</a>
                     </li>
                     <li>
                         <a><i class="fa fa-star"></i>Estrenos</a>

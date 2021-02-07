@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@ include file="includes/meta.jsp" %>
-    <%@ include file="includes/styles.jsp" %>
+    <%@ include file="WEB-INF/jspf/web/meta.jsp" %>
+    <%@ include file="WEB-INF/jspf/web/styles.jsp" %>
     <title>Solo Estrenos</title>
 </head>
 <body data-basePath="<%=request.getContextPath()%>">
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="content nobg">
-        <%@ include file="includes/header.jsp" %>
+        <%@ include file="WEB-INF/jspf/web/header.jsp" %>
         <!-- destacado, banner hero -->
         <div class="banner-destacado">
             <div class="img">
@@ -418,7 +418,7 @@
             </div>
         </div>
     </div>
-    <%@ include file="includes/footer.jsp" %>
-    <%@ include file="includes/scripts.jsp" %>
+    <%@ include file="WEB-INF/jspf/web/footer.jsp" %>
+    <%@ include file="WEB-INF/jspf/web/scripts.jsp" %>
 </body>
 </html>
