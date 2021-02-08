@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tipodoc">Tipo de Documento de Identidad:</label>
-                    <select class="form-control" name="tipodoc" id="tipodoc">
+                    <select class="form-control" name="tipoDocumento" id="tipodoc">
                         <option value="0">Seleccionar</option>
                         <option value="1">DNI</option>
                         <option value="2">C.E</option>
