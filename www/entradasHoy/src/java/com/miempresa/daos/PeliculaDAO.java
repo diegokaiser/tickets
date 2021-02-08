@@ -58,7 +58,7 @@ public class PeliculaDAO implements IServicePelicula {
         peliculas.add(pelicula);
       }
     } catch (Exception e) {
-      System.out.println("Error al recuperar listado de películas ");
+      System.out.println("Error al recuperar listado de películas");
       e.printStackTrace();
     } finally {
       close();

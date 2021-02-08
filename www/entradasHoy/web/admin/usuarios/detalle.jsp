@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.miempresa.entidades.Usuario"%>
 <%
 Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
@@ -8,7 +7,7 @@ Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
 
 <html>
 <head>
-    <title>Admin Area/title>
+    <title>Admin Area</title>
     <!-- Bootstrap -->
     <link href="<%=request.getContextPath()%>/RESOURCES/admin/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -101,7 +100,5 @@ Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
 <!-- Custom Theme Scripts -->
 <script src="<%=request.getContextPath()%>/RESOURCES/admin/js/custom.min.js"></script>
     
-
-
 </body>
 </html>

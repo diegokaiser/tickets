@@ -60,7 +60,7 @@
                             </thead>
 
                             <tbody>
-                              <c:forEach var="cine" items="${sessionScope.cine}">
+                              <c:forEach var="cine" items="${sessionScope.cines}">
                                 <tr>
                                   <td>${cine.idCine}</td>
                                   <td>${cine.nombre}</td>
@@ -71,7 +71,7 @@
                                         Sí
                                       </c:when>
                                       <c:otherwise>
-                                        No
+                                        No 
                                       </c:otherwise>
                                     </c:choose>
                                   </td>

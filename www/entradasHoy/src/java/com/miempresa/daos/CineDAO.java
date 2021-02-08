@@ -15,6 +15,10 @@ public class CineDAO implements IServiceCine {
   private static CallableStatement cstm;
   private static ResultSet res;
 
+  public CineDAO() {
+    con = ConnectionDB.getInstance();
+  }
+
   @Override
   public Boolean insertar(Cine t) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -78,5 +82,4 @@ public class CineDAO implements IServiceCine {
       System.out.println("Error al cerrar conexion :" + e.getMessage());
     }
   }
-
 }

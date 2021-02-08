@@ -53,7 +53,6 @@
         </div>
       </div>         
       <div class="home-grid">
-        <!--
         <div class="container-fluid">
           <div class="row">
             <div class="col">
@@ -183,7 +182,6 @@
             </c:forEach>
           </div>
         </div>
-        -->
       </div>
     </div>
     <%@ include file="WEB-INF/jspf/web/footer.jsp" %>
