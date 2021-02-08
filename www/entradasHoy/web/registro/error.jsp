@@ -29,7 +29,6 @@
 </div>
 
 
-</body>
 
 <%@ include file="../WEB-INF/jspf/web/footer.jsp" %>
 <%@ include file="../WEB-INF/jspf/web/scripts.jsp" %>

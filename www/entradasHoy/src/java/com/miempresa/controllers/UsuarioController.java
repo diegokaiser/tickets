@@ -70,7 +70,8 @@ public class UsuarioController extends HttpServlet {
             recontrasena.trim().isEmpty() ||
             contrasena.trim() != recontrasena.trim()*/
         ) {
-            request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
+
+                request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
         } else {
             Usuario usuario = new Usuario();
             usuario.setNombre(nombre);
@@ -83,6 +84,7 @@ public class UsuarioController extends HttpServlet {
             usuario.setEstado(0);
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             if(usuarioDAO.insertar(usuario)) {
+                request.setAttribute("nombre", nombre);
                 request.getRequestDispatcher("/registro/mensajeAnotado.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
