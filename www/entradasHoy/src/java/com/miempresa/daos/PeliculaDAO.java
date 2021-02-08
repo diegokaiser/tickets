@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.miempresa.daos;
 
 import com.miempresa.connectiondb.ConnectionDB;
@@ -13,10 +8,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Diego
- */
 public class PeliculaDAO implements IServicePelicula {
 
   private static ConnectionDB con;
@@ -58,7 +49,7 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString("fechaEstreno"));
         pelicula.setIdioma(res.getString("idioma"));
         pelicula.setPais(res.getString("pais"));
-        pelicula.setSubtitulos(res.getInt("subtitlos"));
+        //pelicula.setSubtitulos(res.getInt("subtitlos"));
         pelicula.setDoblada(res.getInt("doblada"));
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));

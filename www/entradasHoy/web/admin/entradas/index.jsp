@@ -34,7 +34,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Listado de Peliculas</h3>
+                <h3>Entradas registradas</h3>
               </div>
             </div>
 
@@ -51,16 +51,10 @@
                             <thead>
                               <tr>
                                 <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Duración</th>
-                                <th>Fecha de Estreno</th>
-                                <th>Idioma</th>
-                                <th>País de origen</th>
-                                <th>Subtítulos</th>
-                                <th>Doblada</th>
-                                <th>Portada</th>
-                                <th>Descripción</th>
-                                <th>Género</th>
+                                <th>Película</th>
+                                <th>Sala</th>
+                                <th>Tipo</th>
+                                <th>Precio</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                               </tr>
@@ -69,69 +63,25 @@
                             <tbody>
                               <c:forEach var="pelicula" items="${sessionScope.peliculas}">
                                 <tr>
-                                  <td>${pelicula.idPelicula}</td>
-                                  <td>${pelicula.nombre}</td>
-                                  <td>${pelicula.duracion}</td>
+                                  <td>${pelicula.idUsuario}</td>
+                                  <td>${pelicula.pelicula}</td>
+                                  <td>${pelicula.sala}</td>
+                                  <td>${pelicula.tipo}</td>
+                                  <td>${pelicula.precio}</td>
                                   <td>
-                                    ${pelicula.fechaEstreno}
-                                  </td>
-                                  <td>${pelicula.idioma}</td>
-                                  <td>${pelicula.pais}</td>
-                                  <td>
-                                    <c:choose>
-                                      <c:when test="${pelicula.subtitulos == 1}">
-                                        Sí
-                                      </c:when>
-                                      <c:otherwise>
-                                        No
-                                      </c:otherwise>
-                                    </c:choose>
-                                  </td>
-                                  <td>
-                                    <c:choose>
-                                      <c:when test="${pelicula.doblada == 1}">
-                                        Sí
-                                      </c:when>
-                                      <c:otherwise>
-                                        No
-                                      </c:otherwise>
-                                    </c:choose>
-                                  </td>
-                                  <td>
-                                    <c:choose>
-                                      <c:when test="${pelicula.portada != ''}">
-                                        Sí
-                                      </c:when>
-                                      <c:otherwise>
-                                        No
-                                      </c:otherwise>
-                                    </c:choose>
-                                  </td>
-                                  <td>
-                                    <c:choose>
-                                      <c:when test="${pelicula.descripcion != '}'}">
-                                        Sí
-                                      </c:when>
-                                      <c:otherwise>
-                                        No
-                                      </c:otherwise>
-                                    </c:choose>
-                                  </td>
-                                  <td>${pelicula.genero}</td>
-                                  <td>
-                                    <c:choose>
+                                    <c:choose>                                      
                                       <c:when test="${pelicula.estado == 1}">
-                                        En estreno
+                                        Validado
                                       </c:when>
                                       <c:otherwise>
-                                        Por estrenar
+                                        No validado
                                       </c:otherwise>
                                     </c:choose>
                                   </td>
                                   <td>
                                     <div class="admin-actions">
-                                      <a href="<%=request.getContextPath()%>/PeliculaController?processing=editarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
-                                      <a href="<%=request.getContextPath()%>/PeliculaController?processing=eliminarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
+                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=editarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
+                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
                                     </div>
                                   </td>
                                 </tr>

@@ -32,3 +32,9 @@ begin
 select * from entrada 
 end
 go
+
+ALTER procedure usp_listarUsuarios
+as
+begin
+select * from usuario
+end
