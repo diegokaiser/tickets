@@ -1,7 +1,7 @@
 package com.miempresa.controllers;
 
-import com.miempresa.daos.PeliculaDAO;
-import com.miempresa.entidades.Pelicula;
+import com.miempresa.daos.CineDAO;
+import com.miempresa.entidades.Cine;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -11,20 +11,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PeliculasController extends HttpServlet {
+public class CineController extends HttpServlet {
 
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    String proceso = request.getParameter("loading");
-    switch(proceso) {
-      case "lastest":
-        lastest(request, response);
+    String proceso = request.getParameter("processing");
+    switch (proceso) {
+      case "registro":
+        registrar(request, response);
         break;
-      case "commingSoon":
-        commingSoon(request, response);
+      case "listarCines":
+        listarTodo(request, response);
         break;
-      case "recommended":
-        recommended(request, response);
+      case "editarCine":
+        editarUsuario(request, response);
+        break;
+      case "eliminarCine":
+        eliminarUsuario(request, response);
         break;
     }
   }
@@ -68,28 +71,24 @@ public class PeliculasController extends HttpServlet {
     return "Short description";
   }// </editor-fold>
 
-  private void lastest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    PeliculaDAO peliculaDAO = new PeliculaDAO();
-    List<Pelicula> peliculas = new ArrayList<>();
-    peliculas = peliculaDAO.seleccionarUltimos();
-    request.getSession().setAttribute("peliculas", peliculas);
-    request.getRequestDispatcher("/index.jsp").forward(request, response);
+  private void registrar(HttpServletRequest request, HttpServletResponse response) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
-  private void commingSoon(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    PeliculaDAO peliculaDAO = new PeliculaDAO();
-    List<Pelicula> peliculas = new ArrayList<>();
-    peliculas = peliculaDAO.seleccionarUltimos();
-    request.getSession().setAttribute("peliculas", peliculas);
-    request.getRequestDispatcher("/index.jsp").forward(request, response);
+  private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    CineDAO cineDAO = new CineDAO();
+    List<Cine> cines = new ArrayList<>();
+    cines = cineDAO.seleccionarTodo();
+    request.getSession().setAttribute("cines", cines);
+    request.getRequestDispatcher("/admin/cines/index.jsp").forward(request, response);
   }
 
-  private void recommended(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    PeliculaDAO peliculaDAO = new PeliculaDAO();
-    List<Pelicula> peliculas = new ArrayList<>();
-    peliculas = peliculaDAO.seleccionarUltimos();
-    request.getSession().setAttribute("peliculas", peliculas);
-    request.getRequestDispatcher("/index.jsp").forward(request, response);
+  private void editarUsuario(HttpServletRequest request, HttpServletResponse response) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
 }

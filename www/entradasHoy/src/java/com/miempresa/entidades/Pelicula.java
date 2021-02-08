@@ -36,6 +36,21 @@ public class Pelicula {
     this.estado = estado;
   }
 
+  public Pelicula(Integer idPelicula, String nombre, String duracion, String fechaEstreno, String idioma, String pais, Integer subtitulos, Integer doblada, String portada, String descripcion, String genero, Integer estado) {
+    this.idPelicula = idPelicula;
+    this.nombre = nombre;
+    this.duracion = duracion;
+    this.fechaEstreno = fechaEstreno;
+    this.idioma = idioma;
+    this.pais = pais;
+    this.subtitulos = subtitulos;
+    this.doblada = doblada;
+    this.portada = portada;
+    this.descripcion = descripcion;
+    this.genero = genero;
+    this.estado = estado;
+  }
+
   public Integer getIdPelicula() {
     return idPelicula;
   }

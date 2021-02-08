@@ -9,8 +9,12 @@
         <servlet-class>com.miempresa.controllers.EntradaController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PeliculasController</servlet-name>
-        <servlet-class>com.miempresa.controllers.PeliculasController</servlet-class>
+        <servlet-name>PeliculaController</servlet-name>
+        <servlet-class>com.miempresa.controllers.PeliculaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CineController</servlet-name>
+        <servlet-class>com.miempresa.controllers.CineController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioController</servlet-name>
@@ -21,8 +25,12 @@
         <url-pattern>/EntradaController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PeliculasController</servlet-name>
-        <url-pattern>/PeliculasController</url-pattern>
+        <servlet-name>PeliculaController</servlet-name>
+        <url-pattern>/PeliculaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CineController</servlet-name>
+        <url-pattern>/CineController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

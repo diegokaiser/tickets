@@ -34,7 +34,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Usuarios registrados</h3>
+                <h3>Listado de Peliculas</h3>
               </div>
             </div>
 
@@ -52,44 +52,83 @@
                               <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Documento</th>
+                                <th>Duración</th>
+                                <th>Fecha de Estreno</th>
+                                <th>Idioma</th>
+                                <th>País de origen</th>
+                                <th>Subtítulos</th>
+                                <th>Doblada</th>
+                                <th>Portada</th>
+                                <th>Descripción</th>
+                                <th>Género</th>
                                 <th>Estado</th>
-                                <th>Acciones</th>
                               </tr>
                             </thead>
 
                             <tbody>
-                              <c:forEach var="usuario" items="${sessionScope.usuarios}">
+                              <c:forEach var="pelicula" items="${sessionScope.peliculas}">
                                 <tr>
-                                  <td>${usuario.idUsuario}</td>
-                                  <td>${usuario.apellido},${usuario.nombre}</td>
-                                  <td>${usuario.correo}</td>
+                                  <td>${pelicula.idUsuario}</td>
+                                  <td>${pelicula.nombre}</td>
+                                  <td>${pelicula.duracion}</td>
+                                  <td>DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH).format(${pelicula.duracion})</td>
+                                  <td>${pelicula.idioma}</td>
+                                  <td>${pelicula.pais}</td>
                                   <td>
                                     <c:choose>
-                                      <c:when test="${usuario.tipoDocumento == 1}">
-                                        DNI:
+                                      <c:when test="${pelicula.subtitulos} == 1">
+                                        Sí
                                       </c:when>
                                       <c:otherwise>
-                                        C.E:
+                                        No
                                       </c:otherwise>
                                     </c:choose>
-                                    ${usuario.numeroDocumento}
                                   </td>
                                   <td>
-                                    <c:choose>                                      
-                                      <c:when test="${usuario.estado == 1}">
-                                        Validado
+                                    <c:choose>
+                                      <c:when test="${pelicula.doblada} == 1">
+                                        Sí
                                       </c:when>
                                       <c:otherwise>
-                                        No validado
+                                        No
+                                      </c:otherwise>
+                                    </c:choose>
+                                  </td>
+                                  <td>
+                                    <c:choose>
+                                      <c:when test="${pelicula.portada} != ''">
+                                        Sí
+                                      </c:when>
+                                      <c:otherwise>
+                                        No
+                                      </c:otherwise>
+                                    </c:choose>
+                                  </td>
+                                  <td>
+                                    <c:choose>
+                                      <c:when test="${pelicula.descripcion} != ''">
+                                        Sí
+                                      </c:when>
+                                      <c:otherwise>
+                                        No
+                                      </c:otherwise>
+                                    </c:choose>
+                                  </td>
+                                  <td>${pelicula.genero}</td>
+                                  <td>
+                                    <c:choose>
+                                      <c:when test="${pelicula.estado} == 1">
+                                        En estreno
+                                      </c:when>
+                                      <c:otherwise>
+                                        Por estrenar
                                       </c:otherwise>
                                     </c:choose>
                                   </td>
                                   <td>
                                     <div class="admin-actions">
-                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=editarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
-                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
+                                      <a href="<%=request.getContextPath()%>/PeliculaController?processing=editarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
+                                      <a href="<%=request.getContextPath()%>/PeliculaController?processing=eliminarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
                                     </div>
                                   </td>
                                 </tr>

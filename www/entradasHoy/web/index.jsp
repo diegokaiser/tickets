@@ -51,9 +51,9 @@
             </a>
           </div>
         </div>
-      </div>
+      </div>         
       <div class="home-grid">
-        <!-- ultimos estrenos -->
+        <!--
         <div class="container-fluid">
           <div class="row">
             <div class="col">
@@ -97,7 +97,6 @@
             </c:forEach>
           </div>
         </div>
-        <!-- proximos estrenos -->
         <div class="container-fluid">
           <div class="row">
             <div class="col">
@@ -141,7 +140,6 @@
             </c:forEach>
           </div>
         </div>
-        <!-- recomendados -->
         <div class="container-fluid">
           <div class="row">
             <div class="col">
@@ -185,6 +183,7 @@
             </c:forEach>
           </div>
         </div>
+        -->
       </div>
     </div>
     <%@ include file="WEB-INF/jspf/web/footer.jsp" %>

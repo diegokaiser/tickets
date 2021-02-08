@@ -53,28 +53,28 @@ public class PeliculaDAO implements IServicePelicula {
       while (res.next()) {
         Pelicula pelicula = new Pelicula();
         pelicula.setIdPelicula(res.getInt(1));
-        pelicula.setNombre(res.getString(2));
-        pelicula.setDuracion(res.getString(3));
-        pelicula.setFechaEstreno(res.getString(4));
-        pelicula.setIdioma(res.getString(5));
-        pelicula.setPais(res.getString(6));
-        pelicula.setSubtitulos(res.getInt(7));
-        pelicula.setDoblada(res.getInt(8));
-        pelicula.setPortada(res.getString(9));
-        pelicula.setDescripcion(res.getString(10));
-        pelicula.setGenero(res.getString(12));
-        pelicula.setEstado(res.getInt(13));
+        pelicula.setNombre(res.getString("nombre"));
+        pelicula.setDuracion(res.getString("duracion"));
+        pelicula.setFechaEstreno(res.getString("fechaEstreno"));
+        pelicula.setIdioma(res.getString("idioma"));
+        pelicula.setPais(res.getString("pais"));
+        pelicula.setSubtitulos(res.getInt("subtitlos"));
+        pelicula.setDoblada(res.getInt("doblada"));
+        pelicula.setPortada(res.getString("portada"));
+        pelicula.setDescripcion(res.getString("descripcion"));
+        pelicula.setGenero(res.getString("genero"));
+        pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
     } catch (Exception e) {
-      System.out.println("Error al recuperar listado de películas");
+      System.out.println("Error al recuperar listado de películas ");
       e.printStackTrace();
     } finally {
       close();
     }
     return peliculas;
   }
-  
+
   @Override
   public List<Pelicula> seleccionarUltimos() {
     List<Pelicula> peliculas = new ArrayList<>();
@@ -85,17 +85,17 @@ public class PeliculaDAO implements IServicePelicula {
       while (res.next()) {
         Pelicula pelicula = new Pelicula();
         pelicula.setIdPelicula(res.getInt(1));
-        pelicula.setNombre(res.getString(2));
-        pelicula.setDuracion(res.getString(3));
-        pelicula.setFechaEstreno(res.getString(4));
-        pelicula.setIdioma(res.getString(5));
-        pelicula.setPais(res.getString(6));
-        pelicula.setSubtitulos(res.getInt(7));
-        pelicula.setDoblada(res.getInt(8));
-        pelicula.setPortada(res.getString(9));
-        pelicula.setDescripcion(res.getString(10));
-        pelicula.setGenero(res.getString(12));
-        pelicula.setEstado(res.getInt(13));
+        pelicula.setNombre(res.getString("nombre"));
+        pelicula.setDuracion(res.getString("duracion"));
+        pelicula.setFechaEstreno(res.getString("fechaEstreno"));
+        pelicula.setIdioma(res.getString("idioma"));
+        pelicula.setPais(res.getString("pais"));
+        pelicula.setSubtitulos(res.getInt("subtitlos"));
+        pelicula.setDoblada(res.getInt("doblada"));
+        pelicula.setPortada(res.getString("portada"));
+        pelicula.setDescripcion(res.getString("descripcion"));
+        pelicula.setGenero(res.getString("genero"));
+        pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
     } catch (Exception e) {
@@ -117,17 +117,17 @@ public class PeliculaDAO implements IServicePelicula {
       while (res.next()) {
         Pelicula pelicula = new Pelicula();
         pelicula.setIdPelicula(res.getInt(1));
-        pelicula.setNombre(res.getString(2));
-        pelicula.setDuracion(res.getString(3));
-        pelicula.setFechaEstreno(res.getString(4));
-        pelicula.setIdioma(res.getString(5));
-        pelicula.setPais(res.getString(6));
-        pelicula.setSubtitulos(res.getInt(7));
-        pelicula.setDoblada(res.getInt(8));
-        pelicula.setPortada(res.getString(9));
-        pelicula.setDescripcion(res.getString(10));
-        pelicula.setGenero(res.getString(12));
-        pelicula.setEstado(res.getInt(13));
+        pelicula.setNombre(res.getString("nombre"));
+        pelicula.setDuracion(res.getString("duracion"));
+        pelicula.setFechaEstreno(res.getString("fechaEstreno"));
+        pelicula.setIdioma(res.getString("idioma"));
+        pelicula.setPais(res.getString("pais"));
+        pelicula.setSubtitulos(res.getInt("subtitlos"));
+        pelicula.setDoblada(res.getInt("doblada"));
+        pelicula.setPortada(res.getString("portada"));
+        pelicula.setDescripcion(res.getString("descripcion"));
+        pelicula.setGenero(res.getString("genero"));
+        pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
     } catch (Exception e) {
@@ -149,17 +149,17 @@ public class PeliculaDAO implements IServicePelicula {
       while (res.next()) {
         Pelicula pelicula = new Pelicula();
         pelicula.setIdPelicula(res.getInt(1));
-        pelicula.setNombre(res.getString(2));
-        pelicula.setDuracion(res.getString(3));
-        pelicula.setFechaEstreno(res.getString(4));
-        pelicula.setIdioma(res.getString(5));
-        pelicula.setPais(res.getString(6));
-        pelicula.setSubtitulos(res.getInt(7));
-        pelicula.setDoblada(res.getInt(8));
-        pelicula.setPortada(res.getString(9));
-        pelicula.setDescripcion(res.getString(10));
-        pelicula.setGenero(res.getString(12));
-        pelicula.setEstado(res.getInt(13));
+        pelicula.setNombre(res.getString("nombre"));
+        pelicula.setDuracion(res.getString("duracion"));
+        pelicula.setFechaEstreno(res.getString("fechaEstreno"));
+        pelicula.setIdioma(res.getString("idioma"));
+        pelicula.setPais(res.getString("pais"));
+        pelicula.setSubtitulos(res.getInt("subtitlos"));
+        pelicula.setDoblada(res.getInt("doblada"));
+        pelicula.setPortada(res.getString("portada"));
+        pelicula.setDescripcion(res.getString("descripcion"));
+        pelicula.setGenero(res.getString("genero"));
+        pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
     } catch (Exception e) {
@@ -172,14 +172,26 @@ public class PeliculaDAO implements IServicePelicula {
   }
 
   @Override
-  public Boolean eliminar(Pelicula t
-  ) {
+  public Boolean eliminar(Pelicula t) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
   @Override
   public void close() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    try {
+      if (res != null) {
+        res.close();
+      }
+      if (cstm != null) {
+        cstm.close();
+      }
+      if (con != null) {
+        con.close();
+      }
+
+    } catch (Exception e) {
+      System.out.println("Error al cerrar conexion :" + e.getMessage());
+    }
   }
 
 }

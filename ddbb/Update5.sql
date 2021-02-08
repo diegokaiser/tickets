@@ -18,3 +18,17 @@ begin
 select * from pelicula where recomendada=1
 end
 go
+
+CREATE procedure usp_listarCines
+as
+begin
+select * from cine 
+end
+go
+
+CREATE procedure usp_listarEntradas
+as
+begin
+select * from entrada 
+end
+go

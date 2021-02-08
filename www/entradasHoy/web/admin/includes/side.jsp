@@ -1,3 +1,4 @@
+
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
@@ -13,7 +14,7 @@
             </div>
             <div class="profile_info">
                 <span>Bienvenido,</span>
-                <h2>{Usuario Admin}</h2>
+                <h2></h2>
             </div>
         </div>
         <!-- /menu profile quick info -->
@@ -28,13 +29,13 @@
                         <a href="<%=request.getContextPath()%>/UsuarioController?processing=listarUsuarios"><i class="fa fa-users"></i>Usuarios</a>
                     </li>
                     <li>
-                        <a><i class="fa fa-star"></i>Estrenos</a>
+                        <a href="<%=request.getContextPath()%>/PeliculaController?processing=listarPeliculas"><i class="fa fa-star"></i>Estrenos</a>
                     </li>
                     <li>
-                        <a><i class="fa fa-video-camera"></i>Cines</a>
+                        <a href="<%=request.getContextPath()%>/CineController?processing=listarCines"><i class="fa fa-video-camera"></i>Cines</a>
                     </li>
                     <li>
-                        <a><i class="fa fa-ticket"></i>Entradas</a>
+                        <a href="<%=request.getContextPath()%>/EntradaController?processing=listarEntradas"><i class="fa fa-ticket"></i>Entradas</a>
                     </li>
                 </ul>
             </div>
