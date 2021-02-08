@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Admin Area/title>
+    <title>Admin Area</title>
     <!-- Bootstrap -->
     <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/RESOURCES/admin/css/bootstrap.min.css" rel="stylesheet">

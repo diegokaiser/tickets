@@ -1,8 +1,6 @@
 <%@page import="com.miempresa.entidades.Usuario"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
-%>
+<% String userData= request.getParameter("nombre apellido");%>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light p-0">
         <a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp">
@@ -15,7 +13,7 @@ Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
             <li>
                 <c:choose>
                     <c:when test="usuario != '' ">
-                        ¡Bienvenido <strong><%=usuario.getNombre()%></strong>
+                        ¡Bienvenido <strong><%=userData%></strong>
                     </c:when>
                     <c:otherwise>
                         <a href="<%=request.getContextPath()%>/registro/index.jsp">Login</a>

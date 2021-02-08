@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<% String dato= request.getParameter("nombre");%>
 <html>
 <head>
     <%@ include file="../WEB-INF/jspf/web/meta.jsp" %>
@@ -25,7 +25,7 @@
             <div class="col-5">
 <!--                            <input value="<c:out value="${nombre}"/>">-->
                 <h2 class="text-white text-center my-4">¡Validado!</h2>
-                <h4  class="text-white text-center mt-3" >Gracias , tu cuenta ha sido validada al confirmar que el correo electrónico brindado es real y te pertecene.</h4>
+                <h4  class="text-white text-center mt-3" >Gracias <%=dato%>, tu cuenta ha sido validada al confirmar que el correo electrónico brindado es real y te pertecene.</h4>
                 <h4 class="text-white text-center">Nos comunicaremos contigo cuando la venta al público esté abierta.</h4>
                 <p class="text-center my-4">Sólo usaremos tu correo para este aviso. No lo guardaremos para el registro de ventas.</p>
                 
