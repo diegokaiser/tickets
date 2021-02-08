@@ -27,6 +27,13 @@
       &.btn-primary {
         width: 100%;
       }
+      &[disabled],
+      &:disabled,
+      &.disabled{
+        background-color: #B0BEC5;
+        color: #007bff;
+        opacity: 1;
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Admin Area/title>
     <!-- Bootstrap -->
     <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/RESOURCES/admin/css/bootstrap.min.css" rel="stylesheet">
@@ -43,16 +43,10 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
-                            <div class="x_title">
-                                <div class="clearfix"></div>
-                            </div>
                             <div class="x_content">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card-box table-responsive">
-                                            <p class="text-muted font-13 m-b-30">
-                                                DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
-                                            </p>
                                             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                                 <thead>
                                                     <tr>

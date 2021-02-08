@@ -1,130 +1,121 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.miempresa.entidades;
 
-/**
- *
- * @author User
- */
 public class Usuario {
 
-    private Integer idUsuario;
-    private String  nombre;
-    private String  apellido;
-    private String  correo;
-    private String  contrasena;
-    private String  tipoDocumento;
-    private String  numeroDocumento;
-    private Integer idTipoUsuario;
-    private Integer estado;
-    
-    public Usuario() {
-        
-    }
+  private Integer idUsuario;
+  private String nombre;
+  private String apellido;
+  private String correo;
+  private String contrasena;
+  private String tipoDocumento;
+  private String numeroDocumento;
+  private Integer idTipoUsuario;
+  private Integer estado;
 
-    public Usuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+  public Usuario() {
 
-    public Usuario(String nombre, String apellido, String correo, String contrasena, String tipoDocumento, String numeroDocumento, Integer idTipoUsuario, Integer estado) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.contrasena = contrasena;
-        this.tipoDocumento = tipoDocumento;
-        this.numeroDocumento = numeroDocumento;
-        this.idTipoUsuario = idTipoUsuario;
-        this.estado = estado;
-    }
-    
-    public Usuario(Integer idUsuario, String nombre, String apellido, String correo, String contrasena, String tipoDocumento, String numeroDocumento, Integer idTipoUsuario, Integer estado) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.contrasena = contrasena;
-        this.tipoDocumento = tipoDocumento;
-        this.numeroDocumento = numeroDocumento;
-        this.idTipoUsuario = idTipoUsuario;
-        this.estado = estado;
-    }
+  }
 
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
+  public Usuario(Integer idUsuario) {
+    this.idUsuario = idUsuario;
+  }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+  public Usuario(String nombre, String apellido, String correo, String contrasena, String tipoDocumento, String numeroDocumento, Integer idTipoUsuario, Integer estado) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.correo = correo;
+    this.contrasena = contrasena;
+    this.tipoDocumento = tipoDocumento;
+    this.numeroDocumento = numeroDocumento;
+    this.idTipoUsuario = idTipoUsuario;
+    this.estado = estado;
+  }
 
-    public String getNombre() {
-        return nombre;
-    }
+  public Usuario(Integer idUsuario, String nombre, String apellido, String correo, String contrasena, String tipoDocumento, String numeroDocumento, Integer idTipoUsuario, Integer estado) {
+    this.idUsuario = idUsuario;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.correo = correo;
+    this.contrasena = contrasena;
+    this.tipoDocumento = tipoDocumento;
+    this.numeroDocumento = numeroDocumento;
+    this.idTipoUsuario = idTipoUsuario;
+    this.estado = estado;
+  }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+  public Integer getIdUsuario() {
+    return idUsuario;
+  }
 
-    public String getApellido() {
-        return apellido;
-    }
+  public void setIdUsuario(Integer idUsuario) {
+    this.idUsuario = idUsuario;
+  }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+  public String getNombre() {
+    return nombre;
+  }
 
-    public String getCorreo() {
-        return correo;
-    }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+  public String getApellido() {
+    return apellido;
+  }
 
-    public String getContrasena() {
-        return contrasena;
-    }
+  public void setApellido(String apellido) {
+    this.apellido = apellido;
+  }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
+  public String getCorreo() {
+    return correo;
+  }
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
-    }
+  public void setCorreo(String correo) {
+    this.correo = correo;
+  }
 
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
+  public String getContrasena() {
+    return contrasena;
+  }
 
-    public String getNumeroDocumento() {
-        return numeroDocumento;
-    }
+  public void setContrasena(String contrasena) {
+    this.contrasena = contrasena;
+  }
 
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-    }
+  public String getTipoDocumento() {
+    return tipoDocumento;
+  }
 
-    public Integer getIdTipoUsuario() {
-        return idTipoUsuario;
-    }
+  public void setTipoDocumento(String tipoDocumento) {
+    this.tipoDocumento = tipoDocumento;
+  }
 
-    public void setIdTipoUsuario(Integer idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
-    }
+  public String getNumeroDocumento() {
+    return numeroDocumento;
+  }
 
-    public Integer getEstado() {
-        return estado;
-    }
+  public void setNumeroDocumento(String numeroDocumento) {
+    this.numeroDocumento = numeroDocumento;
+  }
 
-    public void setEstado(Integer estado) {
-        this.estado = estado;
-    }
+  public Integer getIdTipoUsuario() {
+    return idTipoUsuario;
+  }
 
-    public void setEstado(String estado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  public void setIdTipoUsuario(Integer idTipoUsuario) {
+    this.idTipoUsuario = idTipoUsuario;
+  }
+
+  public Integer getEstado() {
+    return estado;
+  }
+
+  public void setEstado(Integer estado) {
+    this.estado = estado;
+  }
+
+  public void setEstado(String estado) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
 }

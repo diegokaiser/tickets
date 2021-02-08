@@ -420,5 +420,10 @@
     </div>
     <%@ include file="WEB-INF/jspf/web/footer.jsp" %>
     <%@ include file="WEB-INF/jspf/web/scripts.jsp" %>
+    <script>
+      $(window).on('load', function() {
+        app.basics.header();
+      });
+    </script>
 </body>
 </html>

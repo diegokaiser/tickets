@@ -169,7 +169,30 @@ public class UsuarioDAO implements IServiceUsuario {
     }
 
     @Override
-    public Usuario seleccionPorId(Object id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Usuario seleccionPorId(Object idUsuario) {
+        Usuario usuario = new Usuario();
+        final String SQL_SELECT_BY_ID ="SELECT * FROM usuario WHERE idUsuario=?";
+        try {
+            pstm = con.getConnection().prepareStatement(SQL_SELECT_BY_ID);
+            pstm.setInt(1, Integer.parseInt(idUsuario.toString()));
+            res = pstm.executeQuery();
+            while(res.next()) {
+                usuario.setIdUsuario(res.getInt(1));
+                usuario.setNombre(res.getString(2));
+                usuario.setApellido(res.getString(3));
+                usuario.setCorreo(res.getString(4));
+                usuario.setTipoDocumento(res.getString(5));
+                usuario.setNumeroDocumento(res.getString(6));
+                usuario.setContrasena(res.getString(7));
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error al eliminar al usuario");
+            e.printStackTrace();
+        }
+        finally {
+            close();
+        }
+        return usuario;
     }
 }

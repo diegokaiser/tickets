@@ -51,7 +51,7 @@
                     <input type="password" class="form-control" id="recontrasena" name="recontrasena">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block my-4">Registrarse</button>
+                    <button id="send" type="submit" class="btn btn-primary btn-block my-4">Registrarse</button>
                 </div>
                 <div class="form-group mt-4">
                     <p>Sí estás registrado, puedes:</p>

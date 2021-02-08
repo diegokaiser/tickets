@@ -33,7 +33,6 @@ public class UsuarioController extends HttpServlet {
                 eliminarUsuario(request, response);
                 break;
         }
-        
     }
 
     @Override
@@ -124,8 +123,12 @@ public class UsuarioController extends HttpServlet {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void editarUsuario(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void editarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");   
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        Usuario usuario = usuarioDAO.seleccionPorId(Integer.parseInt(id.toString()));    
+        request.getSession().setAttribute("usuario",usuario);
+        request.getRequestDispatcher("/registro/detalle.jsp").forward(request, response);
     }
     
     private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
