@@ -139,8 +139,22 @@ public class PeliculaController extends HttpServlet {
     }    
   }  
   
-    private void eliminarPelicula(HttpServletRequest request, HttpServletResponse response) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+private void eliminarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+      
+    String id = request.getParameter("idPelicula");
+      System.out.println(id);
+    Pelicula pelicula = new Pelicula();
+    pelicula.setIdPelicula(Integer.parseInt(id.toString()));
+      pelicula.setEstado(0);
+      
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    if(peliculaDAO.eliminar(pelicula)){
+        request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);
+        System.out.println("Se desahiblito");
+    }else{
+        request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);
+        System.out.println("error en la deshabilitacion de la pelicula");
+    }   
   }
 }
 

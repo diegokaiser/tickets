@@ -23,12 +23,6 @@ public class PeliculaDAO implements IServicePelicula {
   public Boolean insertar(Pelicula t) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
-
-//  @Override
-//  public Boolean actualizar(Pelicula t) {
-//    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//  }
-  
     
  @Override
   public Boolean actualizar(Pelicula pelicula) {
@@ -60,44 +54,6 @@ public class PeliculaDAO implements IServicePelicula {
     return resultFlag;
   }
 
-
-  @Override
-  public Pelicula seleccionPorId(int idPelicula) {
-    Pelicula pelicula = new Pelicula();
-    final String SQL_SELECT_BY_ID = "SELECT * FROM pelicula WHERE idPelicula=?";
-    try {
-      pstm = con.getConnection().prepareStatement(SQL_SELECT_BY_ID);
-      pstm.setInt(1,idPelicula );
-      res = pstm.executeQuery();
-      while (res.next()) {
-        pelicula.setIdPelicula(res.getInt(1));
-        pelicula.setNombre(res.getString(2));
-        pelicula.setDuracion(res.getString(3));
-        pelicula.setFechaEstreno(res.getString(4));
-        pelicula.setIdioma(res.getString(5));
-        pelicula.setPais(res.getString(6));
-        pelicula.setSubtitulos(res.getInt(7));
-        pelicula.setDoblada(res.getInt(8));
-        pelicula.setPortada(res.getString(9));
-        pelicula.setDescripcion(res.getString(10));
-        pelicula.setGenero(res.getString(11));
-        
-          
-        System.out.println(res.getInt(1)+" ");
-        System.out.println(res.getString(2));
-        System.out.println(res.getString(3));
-        System.out.println(res.getString(4));
-      }
-
-
-    } catch (Exception e) {
-      System.out.println("Error al eliminar la pelicula");
-      e.printStackTrace();
-    } finally {
-      close();
-    }
-    return pelicula;
-  }
 
   @Override
   public List<Pelicula> seleccionarTodo() {
@@ -227,9 +183,63 @@ public class PeliculaDAO implements IServicePelicula {
     return peliculas;
   }
 
-  @Override
-  public Boolean eliminar(Pelicula t) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   @Override
+  public Boolean eliminar(Pelicula pelicula) {
+    Boolean resultFlag = false;
+    final String SQL_DELETE = "update pelicula set estado=0 where idPelicula=?";
+
+    try {
+      pstm = con.getConnection().prepareStatement(SQL_DELETE);
+      pstm.setInt(1, pelicula.getIdPelicula());
+      int result = pstm.executeUpdate();
+      if (result > 0) {
+        resultFlag = true;
+      }
+    } catch (Exception e) {
+      System.out.println("Error al eliminar la pelicula");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return resultFlag;
+  }
+  
+    @Override
+  public Pelicula seleccionPorId(int idPelicula) {
+    Pelicula pelicula = new Pelicula();
+    final String SQL_SELECT_BY_ID = "SELECT * FROM pelicula WHERE idPelicula=?";
+    try {
+      pstm = con.getConnection().prepareStatement(SQL_SELECT_BY_ID);
+      pstm.setInt(1,idPelicula );
+      res = pstm.executeQuery();
+      while (res.next()) {
+        pelicula.setIdPelicula(res.getInt(1));
+        pelicula.setNombre(res.getString(2));
+        pelicula.setDuracion(res.getString(3));
+        pelicula.setFechaEstreno(res.getString(4));
+        pelicula.setIdioma(res.getString(5));
+        pelicula.setPais(res.getString(6));
+        pelicula.setSubtitulos(res.getInt(7));
+        pelicula.setDoblada(res.getInt(8));
+        pelicula.setPortada(res.getString(9));
+        pelicula.setDescripcion(res.getString(10));
+        pelicula.setGenero(res.getString(11));
+        
+          
+        System.out.println(res.getInt(1)+" ");
+        System.out.println(res.getString(2));
+        System.out.println(res.getString(3));
+        System.out.println(res.getString(4));
+      }
+
+
+    } catch (Exception e) {
+      System.out.println("Error al eliminar la pelicula");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return pelicula;
   }
 
   @Override
