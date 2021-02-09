@@ -37,7 +37,10 @@ public class UsuarioController extends HttpServlet {
         break;
       case "editarUsuario":
         editarUsuario(request, response);
-        break;        
+        break;    
+      case "habilitarUsuario":
+         habilitarUsuario(request, response);
+        break; 
     }
   }
 
@@ -175,8 +178,17 @@ public class UsuarioController extends HttpServlet {
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     if(usuarioDAO.actualizar(usuario)){
         System.out.println("Se actualizo");
+<<<<<<< HEAD
         request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response); 
         request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
+=======
+
+        request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response); 
+
+        request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
+
+
+>>>>>>> 9471aef... eliminar
     }else{
         System.out.println("error");
     }    
@@ -194,11 +206,30 @@ public class UsuarioController extends HttpServlet {
       
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     if(usuarioDAO.eliminar(usuario)){
+       request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response); 
         request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
         System.out.println("Se desahiblito");
     }else{
+       request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response); 
         request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
         System.out.println("error en la deshabilitacion del usuario");
     }   
   }
+  
+    private void habilitarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+      
+    String id = request.getParameter("idUsuario");
+      System.out.println(id);
+    Usuario usuario = new Usuario();
+    usuario.setIdUsuario(Integer.parseInt(id.toString()));
+      usuario.setEstado(1);
+      
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    if(usuarioDAO.habilitar(usuario)){
+       request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response); 
+        System.out.println("Se Habilito");
+    }else{     request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response); 
+        System.out.println("error en la habilitacion del usuario");
+    }  
+    }
 }

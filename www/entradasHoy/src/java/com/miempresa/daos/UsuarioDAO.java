@@ -171,6 +171,26 @@ public class UsuarioDAO implements IServiceUsuario {
     }
     return resultFlag;
   }
+  
+    public Boolean habilitar(Usuario usuario) {
+    Boolean resultFlag = false;
+    final String SQL_DELETE = "update usuario set estado=1 where idUsuario=?";
+
+    try {
+      pstm = con.getConnection().prepareStatement(SQL_DELETE);
+      pstm.setInt(1, usuario.getIdUsuario());
+      int result = pstm.executeUpdate();
+      if (result > 0) {
+        resultFlag = true;
+      }
+    } catch (Exception e) {
+      System.out.println("Error al eliminar al usuario");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return resultFlag;
+  }
 
   @Override
   public Usuario seleccionPorId(int idUsuario) {

@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<html>
+<html lang="es">
   <head>
     <title>Admin Area</title>
     <!-- Bootstrap -->
@@ -78,18 +78,25 @@
                                   </td>
                                   <td>
                                     <c:choose>                                      
-                                      <c:when test="${usuario.estado == 1}">
+                                      <c:when test="${usuario.estado == 1}">                                   
                                         Validado
                                       </c:when>
-                                      <c:otherwise>
+                                      <c:otherwise>                                        
                                         No validado
                                       </c:otherwise>
                                     </c:choose>
                                   </td>
                                   <td>
                                     <div class="admin-actions">
-                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=botonEditarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
-                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
+                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=botonEditarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-primary"><i class="fa fa-pencil"></i> Editar</a>
+                                      <c:choose> 
+                                        <c:when test="${usuario.estado == 1}">
+                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar </a>
+                                       </c:when>
+                                            <c:otherwise>                                                                                                                           
+                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=habilitarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-success"><i class="fa fa-pencil"></i> Habilitar</a>
+                                            </c:otherwise>
+                                      </c:choose>
                                     </div>
                                   </td>
                                 </tr>
