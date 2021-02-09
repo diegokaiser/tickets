@@ -1,4 +1,4 @@
- package com.miempresa.controllers;
+package com.miempresa.controllers;
 
 import com.miempresa.daos.UsuarioDAO;
 import com.miempresa.entidades.Usuario;
@@ -37,7 +37,10 @@ public class UsuarioController extends HttpServlet {
         break;
       case "editarUsuario":
         editarUsuario(request, response);
-        break;        
+        break;
+      case "habilitarUsuario":
+        habilitarUsuario(request, response);
+        break;
     }
   }
 
@@ -66,15 +69,7 @@ public class UsuarioController extends HttpServlet {
     String correo = request.getParameter("correo");
     String contrasena = request.getParameter("contrasena");
 
-    if (nombre.trim().isEmpty()
-            || contrasena.trim().isEmpty()/* ||
-            apellido.trim().isEmpty() ||
-            numeroDocumento.trim().isEmpty() ||
-            correo.trim().isEmpty() ||
-            
-            recontrasena.trim().isEmpty() ||
-            contrasena.trim() != recontrasena.trim()*/) {
-
+    if (nombre.trim().isEmpty() || contrasena.trim().isEmpty()) {
       request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
     } else {
       Usuario usuario = new Usuario();
@@ -153,7 +148,7 @@ public class UsuarioController extends HttpServlet {
     request.getSession().setAttribute("usuario", usuario);
     request.getRequestDispatcher("admin/usuarios/detalle.jsp").forward(request, response);
   }
-  
+
   private void editarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String id = request.getParameter("idUsuario");
     String nombre = request.getParameter("nombre");
@@ -162,28 +157,59 @@ public class UsuarioController extends HttpServlet {
     String numeroDocumento = request.getParameter("numeroDocumento");
     String correo = request.getParameter("correo");
     String contrasena = request.getParameter("contrasena");
-    
+
     Usuario usuario = new Usuario();
     usuario.setIdUsuario(Integer.parseInt(id.toString()));
-      usuario.setNombre(nombre);
-      usuario.setApellido(apellido);
-      usuario.setTipoDocumento(tipoDocumento);
-      usuario.setNumeroDocumento(numeroDocumento);
-      usuario.setCorreo(correo);
-      usuario.setContrasena(contrasena);
-      
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
-    if(usuarioDAO.actualizar(usuario)){
-        System.out.println("Se actualizo");
-        request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
-    }else{
-        System.out.println("error");
-    }    
-//    request.getSession().setAttribute("usuario", usuario);
-//    request.getRequestDispatcher("admin/usuarios/detalle.jsp").forward(request, response);
-  }  
+    usuario.setNombre(nombre);
+    usuario.setApellido(apellido);
+    usuario.setTipoDocumento(tipoDocumento);
+    usuario.setNumeroDocumento(numeroDocumento);
+    usuario.setCorreo(correo);
+    usuario.setContrasena(contrasena);
 
-  private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    if (usuarioDAO.actualizar(usuario)) {
+      System.out.println("Se actualizo");
+      request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
+    } else {
+      System.out.println("error");
+      request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
+    }
+  }
+
+  private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    String id = request.getParameter("idUsuario");
+    System.out.println(id);
+    Usuario usuario = new Usuario();
+    usuario.setIdUsuario(Integer.parseInt(id.toString()));
+    usuario.setEstado(0);
+
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    if (usuarioDAO.eliminar(usuario)) {      
+      System.out.println("Se desahiblito");
+      request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
+    } else {      
+      System.out.println("error en la deshabilitacion del usuario");
+      request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
+    }
+  }
+
+  private void habilitarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    String id = request.getParameter("idUsuario");
+    System.out.println(id);
+    Usuario usuario = new Usuario();
+    usuario.setIdUsuario(Integer.parseInt(id.toString()));
+    usuario.setEstado(1);
+
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    if (usuarioDAO.habilitar(usuario)) {
+      System.out.println("Se Habilito");
+      request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
+    } else {      
+      System.out.println("error en la habilitacion del usuario");
+      request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
+    }
   }
 }

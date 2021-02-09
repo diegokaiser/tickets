@@ -19,14 +19,11 @@ Pelicula pelicula = (Pelicula)request.getSession().getAttribute("pelicula");
     <!-- Custom Theme Style -->
     <link href="<%=request.getContextPath()%>/RESOURCES/admin/css/custom.min.css" rel="stylesheet">    
 </head>
-
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
         <%@ include file="./../includes/side.jsp" %>
         <%@ include file="./../includes/top.jsp" %>
-        
-        
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
@@ -45,9 +42,9 @@ Pelicula pelicula = (Pelicula)request.getSession().getAttribute("pelicula");
                                     <div class="col-xs-12 col-lg-3">
                                     </div>
                                     <div class="col-sm-12 col-lg-6">
-                                        
-                                        <form action="action" method="POST">
+                                         <form action="<%=request.getContextPath()%>/PeliculaController" method="POST">
                                             <input type="hidden" id="processing" name="processing" value="editarPelicula">
+                                            <input type="hidden"  id="idPelicula" name="idPelicula" value="<%=pelicula.getIdPelicula()%>">
                                             <h2>Editar</h2>
                                             
                                             <div class="form-group pt-4">
@@ -107,7 +104,7 @@ Pelicula pelicula = (Pelicula)request.getSession().getAttribute("pelicula");
                                             
 
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary btn-block my-4">Guardar</button>
+                                                <button type="submit" class="btn btn-primary btn-block my-4">Actualiza</button>
                                             </div>
                                         </form>
                                     </div>
