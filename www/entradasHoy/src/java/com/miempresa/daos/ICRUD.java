@@ -15,8 +15,7 @@ import java.util.List;
 public interface ICRUD <T> {
     
     Boolean insertar(T t);
-    Boolean actualizar(T t);
-    T seleccionPorId(int idUsuario);
+    Boolean actualizar(T t);    
     List<T> seleccionarTodo();
     Boolean eliminar(T t);
     void close();
