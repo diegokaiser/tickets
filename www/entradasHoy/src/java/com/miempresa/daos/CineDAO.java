@@ -49,7 +49,7 @@ public class CineDAO implements IServiceCine {
         cine.setDireccion(res.getString("direccion"));
         cine.setLogo(res.getString("logo"));
         cine.setEstado(res.getInt("estado"));
-        cine.setIdDistrito(res.getInt("idDistrito"));
+        //cine.setIdDistrito(res.getInt("idDistrito"));
       }
     } catch (Exception e) {
       System.out.println("Error al recuperar el listado de cines");

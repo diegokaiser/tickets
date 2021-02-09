@@ -79,7 +79,7 @@ public class CineController extends HttpServlet {
     CineDAO cineDAO = new CineDAO();
     List<Cine> cines = new ArrayList<>();
     cines = cineDAO.seleccionarTodo();
-    request.getSession().setAttribute("cines", cines);
+    request.setAttribute("cines", cines);
     request.getRequestDispatcher("/admin/cines/index.jsp").forward(request, response);
   }
 

@@ -60,7 +60,7 @@
                             </thead>
 
                             <tbody>
-                              <c:forEach var="usuario" items="${sessionScope.usuarios}">
+                              <c:forEach var="usuario" items="${usuarios}">
                                 <tr>
                                   <td>${usuario.idUsuario}</td>
                                   <td>${usuario.apellido},${usuario.nombre}</td>

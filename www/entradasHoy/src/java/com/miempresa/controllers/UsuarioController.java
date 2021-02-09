@@ -121,7 +121,7 @@ public class UsuarioController extends HttpServlet {
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     List<Usuario> usuarios = new ArrayList<>();
     usuarios = usuarioDAO.seleccionarTodo();
-    request.getSession().setAttribute("usuarios", usuarios);
+    request.setAttribute("usuarios", usuarios);
     request.getRequestDispatcher("/admin/usuarios/index.jsp").forward(request, response);
   }
 

@@ -69,7 +69,7 @@
                             
                             <!-- Lista Pelicuals estrenadas -->
                             <tbody>
-                            <c:forEach var="pelicula" items="${sessionScope.peliculas}">
+                            <c:forEach var="pelicula" items="${peliculas}">
                                 <c:choose>
                                     <c:when test="${pelicula.estado == 1}">
                                         <tr>

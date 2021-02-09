@@ -61,30 +61,8 @@
                             </thead>
 
                             <tbody>
-                              <c:forEach var="pelicula" items="${sessionScope.peliculas}">
-                                <tr>
-                                  <td>${pelicula.idUsuario}</td>
-                                  <td>${pelicula.pelicula}</td>
-                                  <td>${pelicula.sala}</td>
-                                  <td>${pelicula.tipo}</td>
-                                  <td>${pelicula.precio}</td>
-                                  <td>
-                                    <c:choose>                                      
-                                      <c:when test="${pelicula.estado == 1}">
-                                        Validado
-                                      </c:when>
-                                      <c:otherwise>
-                                        No validado
-                                      </c:otherwise>
-                                    </c:choose>
-                                  </td>
-                                  <td>
-                                    <div class="admin-actions">
-                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=editarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
-                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
-                                    </div>
-                                  </td>
-                                </tr>
+                              <c:forEach var="entrada" items="${entrada}">
+                                
                               </c:forEach>
                             </tbody>
                           </table>

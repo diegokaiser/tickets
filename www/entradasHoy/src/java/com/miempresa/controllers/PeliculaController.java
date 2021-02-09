@@ -75,7 +75,7 @@ public class PeliculaController extends HttpServlet {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     List<Pelicula> peliculas = new ArrayList<>();
     peliculas = peliculaDAO.seleccionarUltimos();
-    request.getSession().setAttribute("peliculas", peliculas);
+    request.setAttribute("peliculas", peliculas);
     request.getRequestDispatcher("/index.jsp").forward(request, response);
   }
 
@@ -83,7 +83,7 @@ public class PeliculaController extends HttpServlet {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     List<Pelicula> peliculas = new ArrayList<>();
     peliculas = peliculaDAO.seleccionarEstrenos();
-    request.getSession().setAttribute("peliculas", peliculas);
+    request.setAttribute("peliculas", peliculas);
     request.getRequestDispatcher("/index.jsp").forward(request, response);
   }
 
@@ -91,7 +91,7 @@ public class PeliculaController extends HttpServlet {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     List<Pelicula> peliculas = new ArrayList<>();
     peliculas = peliculaDAO.seleccionarRecomendados();
-    request.getSession().setAttribute("peliculas", peliculas);
+    request.setAttribute("peliculas", peliculas);
     request.getRequestDispatcher("/index.jsp").forward(request, response);
   }
 
@@ -99,7 +99,7 @@ public class PeliculaController extends HttpServlet {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     List<Pelicula> peliculas = new ArrayList<>();
     peliculas = peliculaDAO.seleccionarTodo();
-    request.getSession().setAttribute("peliculas", peliculas);
+    request.setAttribute("peliculas", peliculas);
     request.getRequestDispatcher("/admin/estrenos/index.jsp").forward(request, response);
   }
  
@@ -107,7 +107,7 @@ public class PeliculaController extends HttpServlet {
     String id = request.getParameter("id");
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id.toString()));
-    request.getSession().setAttribute("pelicula", pelicula);
+    request.setAttribute("pelicula", pelicula);
     request.getRequestDispatcher("/registro/detalle.jsp").forward(request, response);
   }
     
