@@ -71,7 +71,7 @@
                             <tbody>
                             <c:forEach var="pelicula" items="${peliculas}">
                                 <c:choose>
-                                    <c:when test="${pelicula.estado == 1}">
+                                    <c:when test="${pelicula.estado == 1}"> <!-- listar todos, 1 y 0 -->
                                         <tr>
                                           <td>${pelicula.idPelicula}</td>
                                           <td>${pelicula.nombre}</td>
@@ -124,7 +124,14 @@
                                           <td>${pelicula.genero}</td>
 
                                           <td>${pelicula.estado} : En estreno</td>
-
+                                            <c:choose>
+                                              <c:when test="${pelicula.estado == 1}">
+                                                En estreno
+                                              </c:when>
+                                              <c:otherwise>
+                                                Por estrenar
+                                              </c:otherwise>
+                                            </c:choose>
 
                                           <td>
                                             <div class="admin-actions">

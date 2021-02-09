@@ -91,11 +91,11 @@
                                       <a href="<%=request.getContextPath()%>/UsuarioController?processing=botonEditarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-primary"><i class="fa fa-pencil"></i> Editar</a>
                                       <c:choose> 
                                         <c:when test="${usuario.estado == 1}">
-                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar </a>
-                                       </c:when>
-                                            <c:otherwise>                                                                                                                           
-                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=habilitarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-success"><i class="fa fa-pencil"></i> Habilitar</a>
-                                            </c:otherwise>
+                                          <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-danger"><i class="fa fa-times"></i> Deshabilitar </a>
+                                        </c:when>
+                                        <c:otherwise>                                                                                                                           
+                                          <a href="<%=request.getContextPath()%>/UsuarioController?processing=habilitarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-success"><i class="fa fa-check"></i> Habilitar</a>
+                                        </c:otherwise>
                                       </c:choose>
                                     </div>
                                   </td>
