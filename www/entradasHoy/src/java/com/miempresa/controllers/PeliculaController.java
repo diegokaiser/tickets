@@ -102,4 +102,17 @@ public class PeliculaController extends HttpServlet {
     request.getSession().setAttribute("peliculas", peliculas);
     request.getRequestDispatcher("/admin/estrenos/index.jsp").forward(request, response);
   }
+ 
+    private void editarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String id = request.getParameter("id");
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id.toString()));
+    request.getSession().setAttribute("pelicula", pelicula);
+    request.getRequestDispatcher("/registro/detalle.jsp").forward(request, response);
+  }
+    
+    private void eliminarPelicula(HttpServletRequest request, HttpServletResponse response) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
 }
+
