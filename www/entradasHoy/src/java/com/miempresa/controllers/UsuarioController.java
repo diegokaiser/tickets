@@ -175,7 +175,12 @@ public class UsuarioController extends HttpServlet {
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     if(usuarioDAO.actualizar(usuario)){
         System.out.println("Se actualizo");
+<<<<<<< HEAD
         request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response); 
+=======
+        request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
+
+>>>>>>> 70062ab... eliminar
     }else{
         System.out.println("error");
     }    
@@ -183,7 +188,21 @@ public class UsuarioController extends HttpServlet {
 //    request.getRequestDispatcher("admin/usuarios/detalle.jsp").forward(request, response);
   }  
 
-  private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+      
+    String id = request.getParameter("idUsuario");
+      System.out.println(id);
+    Usuario usuario = new Usuario();
+    usuario.setIdUsuario(Integer.parseInt(id.toString()));
+      usuario.setEstado(0);
+      
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    if(usuarioDAO.eliminar(usuario)){
+        request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
+        System.out.println("Se desahiblito");
+    }else{
+        request.getRequestDispatcher("admin/usuarios/index.jsp").forward(request, response);
+        System.out.println("error en la deshabilitacion del usuario");
+    }   
   }
 }
