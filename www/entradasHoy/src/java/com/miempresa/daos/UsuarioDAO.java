@@ -128,7 +128,7 @@ public class UsuarioDAO implements IServiceUsuario {
   @Override
   public Boolean actualizar(Usuario usuario) {
     Boolean resultFlag = false;
-    final String SQL_UPDATE = "update usuario set nombre=?, apellido=?, correo=?, contrasena=?, numeroDocumento=? where id=?";
+    final String SQL_UPDATE = "update usuario set nombre=?, apellido=?, correo=?, contrasena=?, numeroDocumento=? where idUsuario=?";
     try {
       pstm = con.getConnection().prepareStatement(SQL_UPDATE);
       pstm.setString(1, usuario.getNombre());
@@ -137,6 +137,7 @@ public class UsuarioDAO implements IServiceUsuario {
       pstm.setString(4, usuario.getContrasena());
       pstm.setString(5, usuario.getNumeroDocumento());
       pstm.setInt(6, usuario.getIdUsuario());
+        System.out.println(usuario.getNombre()+"update");
       int result = pstm.executeUpdate();
       if (result > 0) {
         resultFlag = true;
@@ -172,22 +173,27 @@ public class UsuarioDAO implements IServiceUsuario {
   }
 
   @Override
-  public Usuario seleccionPorId(Object idUsuario) {
+  public Usuario seleccionPorId(int idUsuario) {
     Usuario usuario = new Usuario();
     final String SQL_SELECT_BY_ID = "SELECT * FROM usuario WHERE idUsuario=?";
     try {
       pstm = con.getConnection().prepareStatement(SQL_SELECT_BY_ID);
-      pstm.setInt(1, Integer.parseInt(idUsuario.toString()));
+      pstm.setInt(1,idUsuario );
       res = pstm.executeQuery();
       while (res.next()) {
         usuario.setIdUsuario(res.getInt(1));
         usuario.setNombre(res.getString(2));
         usuario.setApellido(res.getString(3));
         usuario.setCorreo(res.getString(4));
-        usuario.setTipoDocumento(res.getString(5));
-        usuario.setNumeroDocumento(res.getString(6));
-        usuario.setContrasena(res.getString(7));
+        usuario.setTipoDocumento(res.getString(6));
+        usuario.setNumeroDocumento(res.getString(7));
+        usuario.setContrasena(res.getString(5));
+        System.out.println(res.getInt(1)+" ");
+        System.out.println(res.getString(2));
+        System.out.println(res.getString(3));
+        System.out.println(res.getString(4));
       }
+
 
     } catch (Exception e) {
       System.out.println("Error al eliminar al usuario");

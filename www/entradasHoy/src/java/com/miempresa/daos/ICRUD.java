@@ -16,7 +16,7 @@ public interface ICRUD <T> {
     
     Boolean insertar(T t);
     Boolean actualizar(T t);
-    T seleccionPorId(Object idUsuario);
+    T seleccionPorId(int idUsuario);
     List<T> seleccionarTodo();
     Boolean eliminar(T t);
     void close();

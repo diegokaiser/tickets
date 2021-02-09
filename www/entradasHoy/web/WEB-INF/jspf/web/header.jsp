@@ -6,7 +6,7 @@
     </a>
     <ul class="navbar-nav ml-auto">
       <li>
-        <a href="../index.jsp">Home</a>
+        <a href="<%=request.getContextPath()%>/index.jsp">Home</a>
       </li>
       <li>
         <a href="<%=request.getContextPath()%>/login/index.jsp">Login</a>

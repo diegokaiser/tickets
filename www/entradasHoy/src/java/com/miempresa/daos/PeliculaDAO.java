@@ -30,7 +30,7 @@ public class PeliculaDAO implements IServicePelicula {
   }
 
   @Override
-  public Pelicula seleccionPorId(Object idUsuario) {
+  public Pelicula seleccionPorId(int idUsuario) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 

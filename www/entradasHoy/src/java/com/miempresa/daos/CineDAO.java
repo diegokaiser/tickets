@@ -30,7 +30,7 @@ public class CineDAO implements IServiceCine {
   }
 
   @Override
-  public Cine seleccionPorId(Object idUsuario) {
+  public Cine seleccionPorId(int idUsuario) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 

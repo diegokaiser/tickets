@@ -1,4 +1,4 @@
-<% String dato= request.getParameter("nombre");%>
+<% String dato= request.getParameter("correo");%>
 <div class="top_nav">
     <div class="nav_menu">
         <div class="nav toggle">

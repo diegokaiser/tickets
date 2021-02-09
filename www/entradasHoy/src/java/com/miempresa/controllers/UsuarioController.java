@@ -29,12 +29,15 @@ public class UsuarioController extends HttpServlet {
       case "listarUsuarios":
         listarTodo(request, response);
         break;
-      case "editarUsuario":
-        editarUsuario(request, response);
+      case "botonEditarUsuario":
+        botonEditarUsuario(request, response);
         break;
       case "eliminarUsuario":
         eliminarUsuario(request, response);
         break;
+      case "editarUsuario":
+        editarUsuario(request, response);
+        break;        
     }
   }
 
@@ -143,13 +146,41 @@ public class UsuarioController extends HttpServlet {
     }
   }
 
-  private void editarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String id = request.getParameter("id");
+  private void botonEditarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String id = request.getParameter("idUsuario");
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     Usuario usuario = usuarioDAO.seleccionPorId(Integer.parseInt(id.toString()));
     request.getSession().setAttribute("usuario", usuario);
-    request.getRequestDispatcher("/registro/detalle.jsp").forward(request, response);
+    request.getRequestDispatcher("admin/usuarios/detalle.jsp").forward(request, response);
   }
+  
+  private void editarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String id = request.getParameter("idUsuario");
+    String nombre = request.getParameter("nombre");
+    String apellido = request.getParameter("apellido");
+    String tipoDocumento = request.getParameter("tipoDocumento");
+    String numeroDocumento = request.getParameter("numeroDocumento");
+    String correo = request.getParameter("correo");
+    String contrasena = request.getParameter("contrasena");
+    
+    Usuario usuario = new Usuario();
+    usuario.setIdUsuario(Integer.parseInt(id.toString()));
+      usuario.setNombre(nombre);
+      usuario.setApellido(apellido);
+      usuario.setTipoDocumento(tipoDocumento);
+      usuario.setNumeroDocumento(numeroDocumento);
+      usuario.setCorreo(correo);
+      usuario.setContrasena(contrasena);
+      
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    if(usuarioDAO.actualizar(usuario)){
+        System.out.println("Se actualizo");
+    }else{
+        System.out.println("error");
+    }    
+//    request.getSession().setAttribute("usuario", usuario);
+//    request.getRequestDispatcher("admin/usuarios/detalle.jsp").forward(request, response);
+  }  
 
   private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

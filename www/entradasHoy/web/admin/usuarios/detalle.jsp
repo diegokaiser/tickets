@@ -42,8 +42,9 @@ Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
                                     <div class="col-xs-12 col-lg-3">
                                     </div>
                                     <div class="col-sm-12 col-lg-6">
-                                        <form action="action" method="POST">
+                                        <form action="<%=request.getContextPath()%>/UsuarioController" method="POST">
                                             <input type="hidden" id="processing" name="processing" value="editarUsuario">
+                                                <input type="hidden"  id="idUsuario" name="idUsuario" value="<%=usuario.getIdUsuario()%>">
                                             <h2>Editar</h2>
                                             <div class="form-group pt-4">
                                                 <label for="nombre">Nombre:</label>
@@ -55,7 +56,7 @@ Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
                                             </div>
                                             <div class="form-group">
                                                 <label for="tipoDocumento">Tipo de Documento de Identidad:</label>
-                                                <select class="form-control" name="tipoDocumento" id="tipoDocumento">
+                                                <select class="form-control" name="tipoDocumento" id="tipoDocumento"  value="<%=usuario.getApellido()%>">
                                                     <option value="0">Seleccionar</option>
                                                     <option value="1">DNI</option>
                                                     <option value="2">C.E</option>
@@ -74,7 +75,7 @@ Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
                                                 <input type="password" class="form-control" id="contrasena" name="contrasena" value="<%=usuario.getContrasena()%>">
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary btn-block my-4">Registrarse</button>
+                                                <button type="submit" class="btn btn-primary btn-block my-4">Actualizar</button>
                                             </div>
                                         </form>
                                     </div>
