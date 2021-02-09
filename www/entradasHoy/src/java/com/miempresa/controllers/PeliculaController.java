@@ -103,14 +103,53 @@ public class PeliculaController extends HttpServlet {
     request.getRequestDispatcher("/admin/estrenos/index.jsp").forward(request, response);
   }
  
-    private void editarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String id = request.getParameter("id");
-    PeliculaDAO peliculaDAO = new PeliculaDAO();
-    Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id.toString()));
-    request.getSession().setAttribute("pelicula", pelicula);
-    request.getRequestDispatcher("/registro/detalle.jsp").forward(request, response);
-  }
+//  private void editarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//    String id = request.getParameter("id");
+//    PeliculaDAO peliculaDAO = new PeliculaDAO();
+//    Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id.toString()));
+//    request.getSession().setAttribute("pelicula", pelicula);
+//    request.getRequestDispatcher("/registro/detalle.jsp").forward(request, response);
+//  }
+//    
+  
+  private void editarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String id = request.getParameter("idPelicula");
+    String nombre = request.getParameter("nombre");
+    String duracion = request.getParameter("duracion");
+    String fechaEstreno = request.getParameter("fechaEstreno");
+    String idioma = request.getParameter("idioma");
+    String pais = request.getParameter("pais");
+    String subtitulos = request.getParameter("subtitulos");
+    String doblada = request.getParameter("doblada");
+    String portada = request.getParameter("portada");
+    String descripcion = request.getParameter("descripcion");
+    String genero = request.getParameter("genero");
+    String estado = request.getParameter("estado");
     
+    Pelicula pelicula = new Pelicula();
+      pelicula.setIdPelicula(Integer.parseInt(id.toString()));
+      pelicula.setNombre(nombre);
+      pelicula.setDuracion(duracion);
+      pelicula.setFechaEstreno(fechaEstreno);
+      pelicula.setIdioma(idioma);
+      pelicula.setPais(pais);
+      pelicula.setSubtitulos(Integer.parseInt(subtitulos.toString()));
+      pelicula.setDoblada(Integer.parseInt(doblada.toString()));
+      pelicula.setPortada(portada);
+      pelicula.setDescripcion(descripcion);
+      pelicula.setGenero(genero);
+      pelicula.setEstado(Integer.parseInt(estado.toString()));
+      
+      
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    if(peliculaDAO.actualizar(pelicula)){
+        System.out.println("Se actualizo");
+        request.getRequestDispatcher("/PeliculaController?processing=listarPelicula").forward(request, response);
+    }else{
+        System.out.println("error");
+    }    
+  }  
+  
     private void eliminarPelicula(HttpServletRequest request, HttpServletResponse response) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }

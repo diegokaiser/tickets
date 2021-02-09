@@ -145,7 +145,7 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString("fechaEstreno"));
         pelicula.setIdioma(res.getString("idioma"));
         pelicula.setPais(res.getString("pais"));
-        pelicula.setSubtitulos(res.getInt("subtitlos"));
+        pelicula.setSubtitulos(res.getInt("subtitulos"));
         pelicula.setDoblada(res.getInt("doblada"));
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
