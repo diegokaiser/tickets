@@ -103,7 +103,7 @@ Pelicula pelicula = (Pelicula)request.getSession().getAttribute("pelicula");
                                             
 
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary btn-block my-4">Actualizar</button>
+                                                <button type="submit" class="btn btn-primary btn-block my-4">Actualiza</button>
                                             </div>
                                         </form>
                                     </div>

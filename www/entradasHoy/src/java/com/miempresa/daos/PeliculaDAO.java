@@ -24,14 +24,79 @@ public class PeliculaDAO implements IServicePelicula {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
-  @Override
-  public Boolean actualizar(Pelicula t) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//  @Override
+//  public Boolean actualizar(Pelicula t) {
+//    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//  }
+  
+    
+ @Override
+  public Boolean actualizar(Pelicula pelicula) {
+    Boolean resultFlag = false;
+    final String SQL_UPDATE = "update pelicula set nombre=?, duracion=?, fechaEstreno=?, idioma=?, pais=?, subtitulos=?, doblada=?, portada=?, descripcion=?, genero=?, estado=? where idPelicula=?";
+    try {
+      pstm = con.getConnection().prepareStatement(SQL_UPDATE);
+      pstm.setString(1, pelicula.getNombre());
+      pstm.setString(2, pelicula.getDuracion());
+      pstm.setString(3, pelicula.getFechaEstreno());
+      pstm.setString(4, pelicula.getIdioma());
+      pstm.setString(5, pelicula.getPais());
+      pstm.setInt(6, pelicula.getSubtitulos());
+      pstm.setInt(7, pelicula.getDoblada());
+      pstm.setString(8, pelicula.getPortada());
+      pstm.setString(9, pelicula.getDescripcion());
+      pstm.setString(10, pelicula.getGenero());
+        System.out.println(pelicula.getNombre()+"update");
+      int result = pstm.executeUpdate();
+      if (result > 0) {
+        resultFlag = true;
+      }
+    } catch (Exception e) {
+      System.out.println("Error al actualizar la pelicula");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return resultFlag;
   }
+
 
   @Override
   public Pelicula seleccionPorId(int idPelicula) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Pelicula pelicula = new Pelicula();
+    final String SQL_SELECT_BY_ID = "SELECT * FROM pelicula WHERE idPelicula=?";
+    try {
+      pstm = con.getConnection().prepareStatement(SQL_SELECT_BY_ID);
+      pstm.setInt(1,idPelicula );
+      res = pstm.executeQuery();
+      while (res.next()) {
+        pelicula.setIdPelicula(res.getInt(1));
+        pelicula.setNombre(res.getString(2));
+        pelicula.setDuracion(res.getString(3));
+        pelicula.setFechaEstreno(res.getString(4));
+        pelicula.setIdioma(res.getString(5));
+        pelicula.setPais(res.getString(6));
+        pelicula.setSubtitulos(res.getInt(7));
+        pelicula.setDoblada(res.getInt(8));
+        pelicula.setPortada(res.getString(9));
+        pelicula.setDescripcion(res.getString(10));
+        pelicula.setGenero(res.getString(11));
+        
+          
+        System.out.println(res.getInt(1)+" ");
+        System.out.println(res.getString(2));
+        System.out.println(res.getString(3));
+        System.out.println(res.getString(4));
+      }
+
+
+    } catch (Exception e) {
+      System.out.println("Error al eliminar la pelicula");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return pelicula;
   }
 
   @Override
