@@ -24,8 +24,8 @@ public class ConnectionDB {
     //Información del Driver segun el motor de base de datos
     private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     //Las credenciales de la base de datos
-    private static final String USER = "root";
-    private static final String PASS = "root";
+    private static final String USER = "Josue";
+    private static final String PASS = "123456";
     //Constructor Privado
     private ConnectionDB() {
         try {
