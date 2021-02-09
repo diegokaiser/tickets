@@ -27,7 +27,7 @@ public class PeliculaController extends HttpServlet {
         recommended(request, response);
         break;
       case "listarPeliculas":
-        listarPeliculas(request, response);
+        listarTodo(request, response);
         break;
        case "botonEditarPelicula":
         botonEditarPelicula(request, response);
@@ -84,7 +84,7 @@ public class PeliculaController extends HttpServlet {
     request.getRequestDispatcher("/index.jsp").forward(request, response);
   }
 
-  private void listarPeliculas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     List<Pelicula> peliculas = new ArrayList<>();
     peliculas = peliculaDAO.seleccionarTodo();
