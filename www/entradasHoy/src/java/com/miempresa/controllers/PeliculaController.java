@@ -29,6 +29,12 @@ public class PeliculaController extends HttpServlet {
       case "listarPeliculas":
         listarPeliculas(request, response);
         break;
+       case "botonEditarPelicula":
+        botonEditarPelicula(request, response);
+        break; 
+      case "editarPelicula":
+        editarPelicula(request, response);
+        break; 
     }
   }
 
@@ -103,14 +109,14 @@ public class PeliculaController extends HttpServlet {
     request.getRequestDispatcher("/admin/estrenos/index.jsp").forward(request, response);
   }
  
-//  private void editarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//    String id = request.getParameter("id");
-//    PeliculaDAO peliculaDAO = new PeliculaDAO();
-//    Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id.toString()));
-//    request.getSession().setAttribute("pelicula", pelicula);
-//    request.getRequestDispatcher("/registro/detalle.jsp").forward(request, response);
-//  }
-//    
+
+    private void botonEditarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String id = request.getParameter("idPelicula");
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id.toString()));
+    request.getSession().setAttribute("pelicula", pelicula);
+    request.getRequestDispatcher("admin/estrenos/detalle.jsp").forward(request, response);
+  }
   
   private void editarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String id = request.getParameter("idPelicula");
@@ -144,7 +150,7 @@ public class PeliculaController extends HttpServlet {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     if(peliculaDAO.actualizar(pelicula)){
         System.out.println("Se actualizo");
-        request.getRequestDispatcher("/PeliculaController?processing=listarPelicula").forward(request, response);
+        request.getRequestDispatcher("/PeliculaController?processing=listarPeliculas").forward(request, response);
     }else{
         System.out.println("error");
     }    

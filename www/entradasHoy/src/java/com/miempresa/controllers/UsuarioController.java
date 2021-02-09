@@ -175,7 +175,7 @@ public class UsuarioController extends HttpServlet {
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     if(usuarioDAO.actualizar(usuario)){
         System.out.println("Se actualizo");
-        request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
+        request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response); 
     }else{
         System.out.println("error");
     }    

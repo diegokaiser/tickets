@@ -128,7 +128,7 @@
 
                                           <td>
                                             <div class="admin-actions">
-                                              <a href="<%=request.getContextPath()%>/PeliculaController?processing=editarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
+                                                <a href="<%=request.getContextPath()%>/PeliculaController?processing=botonEditarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
                                               <a href="<%=request.getContextPath()%>/PeliculaController?processing=eliminarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
                                             </div>
                                           </td>
