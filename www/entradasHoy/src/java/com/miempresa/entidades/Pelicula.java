@@ -13,6 +13,8 @@ public class Pelicula {
   private String portada;
   private String descripcion;
   private String genero;
+  private String trailer;
+  private String recomendada;
   private Integer estado;
   
   public Pelicula() {
@@ -23,21 +25,7 @@ public class Pelicula {
     this.idPelicula = idPelicula;
   }
 
-  public Pelicula(String nombre, String duracion, String fechaEstreno, String idioma, String pais, Integer subtitulos, Integer doblada, String portada, String genero, Integer estado) {
-    this.nombre = nombre;
-    this.duracion = duracion;
-    this.fechaEstreno = fechaEstreno;
-    this.idioma = idioma;
-    this.pais = pais;
-    this.subtitulos = subtitulos;
-    this.doblada = doblada;
-    this.portada = portada;
-    this.genero = genero;
-    this.estado = estado;
-  }
-
-  public Pelicula(Integer idPelicula, String nombre, String duracion, String fechaEstreno, String idioma, String pais, Integer subtitulos, Integer doblada, String portada, String descripcion, String genero, Integer estado) {
-    this.idPelicula = idPelicula;
+  public Pelicula(String nombre, String duracion, String fechaEstreno, String idioma, String pais, Integer subtitulos, Integer doblada, String portada, String descripcion, String genero, String trailer, String recomendada, Integer estado) {
     this.nombre = nombre;
     this.duracion = duracion;
     this.fechaEstreno = fechaEstreno;
@@ -48,6 +36,8 @@ public class Pelicula {
     this.portada = portada;
     this.descripcion = descripcion;
     this.genero = genero;
+    this.trailer = trailer;
+    this.recomendada = recomendada;
     this.estado = estado;
   }
 
@@ -145,5 +135,21 @@ public class Pelicula {
 
   public void setEstado(Integer estado) {
     this.estado = estado;
+  }
+
+  public String getTrailer() {
+    return trailer;
+  }
+
+  public void setTrailer(String trailer) {
+    this.trailer = trailer;
+  }
+
+  public String getRecomendada() {
+    return recomendada;
+  }
+
+  public void setRecomendada(String recomendada) {
+    this.recomendada = recomendada;
   }
 }

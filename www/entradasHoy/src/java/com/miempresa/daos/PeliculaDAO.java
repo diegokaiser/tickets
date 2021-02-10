@@ -35,7 +35,7 @@ public class PeliculaDAO implements IServicePelicula {
       pstm.setString(3, pelicula.getFechaEstreno());
       pstm.setString(4, pelicula.getIdioma());
       pstm.setString(5, pelicula.getPais());
-      pstm.setInt(6, pelicula.getSubtitulos());
+      //pstm.setInt(6, pelicula.getSubtitulos());
       pstm.setInt(7, pelicula.getDoblada());
       pstm.setString(8, pelicula.getPortada());
       pstm.setString(9, pelicula.getDescripcion());
@@ -102,11 +102,13 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString("fechaEstreno"));
         pelicula.setIdioma(res.getString("idioma"));
         pelicula.setPais(res.getString("pais"));
-        pelicula.setSubtitulos(res.getInt("subtitlos"));
+        //pelicula.setSubtitulos(res.getInt("subtitlos"));
         pelicula.setDoblada(res.getInt("doblada"));
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
         pelicula.setGenero(res.getString("genero"));
+        pelicula.setGenero(res.getString("trailer"));
+        pelicula.setGenero(res.getString("recomendada"));
         pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
@@ -122,7 +124,7 @@ public class PeliculaDAO implements IServicePelicula {
   @Override
   public List<Pelicula> seleccionarEstrenos() {
     List<Pelicula> peliculas = new ArrayList<>();
-    final String SQL_SELECT = "{call usp_listarPeliculas()}";
+    final String SQL_SELECT = "{call usp_listarPeliculasSinEstrenar()}";
     try {
       cstm = con.getConnection().prepareCall(SQL_SELECT);
       res = cstm.executeQuery();
@@ -134,11 +136,13 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString("fechaEstreno"));
         pelicula.setIdioma(res.getString("idioma"));
         pelicula.setPais(res.getString("pais"));
-        pelicula.setSubtitulos(res.getInt("subtitlos"));
+        //pelicula.setSubtitulos(res.getInt("subtitlos"));
         pelicula.setDoblada(res.getInt("doblada"));
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
         pelicula.setGenero(res.getString("genero"));
+        pelicula.setGenero(res.getString("trailer"));
+        pelicula.setGenero(res.getString("recomendada"));
         pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
@@ -154,7 +158,7 @@ public class PeliculaDAO implements IServicePelicula {
   @Override
   public List<Pelicula> seleccionarRecomendados() {
     List<Pelicula> peliculas = new ArrayList<>();
-    final String SQL_SELECT = "{call usp_listarPeliculas()}";
+    final String SQL_SELECT = "{call usp_listarPeliculasRecomendadas()}";
     try {
       cstm = con.getConnection().prepareCall(SQL_SELECT);
       res = cstm.executeQuery();
@@ -166,11 +170,13 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString("fechaEstreno"));
         pelicula.setIdioma(res.getString("idioma"));
         pelicula.setPais(res.getString("pais"));
-        pelicula.setSubtitulos(res.getInt("subtitulos"));
+        //pelicula.setSubtitulos(res.getInt("subtitulos"));
         pelicula.setDoblada(res.getInt("doblada"));
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
         pelicula.setGenero(res.getString("genero"));
+        pelicula.setGenero(res.getString("trailer"));
+        pelicula.setGenero(res.getString("recomendada"));
         pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
@@ -219,7 +225,7 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString(4));
         pelicula.setIdioma(res.getString(5));
         pelicula.setPais(res.getString(6));
-        pelicula.setSubtitulos(res.getInt(7));
+        //pelicula.setSubtitulos(res.getInt(7));
         pelicula.setDoblada(res.getInt(8));
         pelicula.setPortada(res.getString(9));
         pelicula.setDescripcion(res.getString(10));

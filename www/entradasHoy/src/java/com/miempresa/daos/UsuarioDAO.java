@@ -137,7 +137,7 @@ public class UsuarioDAO implements IServiceUsuario {
       pstm.setString(4, usuario.getContrasena());
       pstm.setString(5, usuario.getNumeroDocumento());
       pstm.setInt(6, usuario.getIdUsuario());
-        System.out.println(usuario.getNombre()+"update");
+      System.out.println(usuario.getNombre() + "update");
       int result = pstm.executeUpdate();
       if (result > 0) {
         resultFlag = true;
@@ -171,8 +171,8 @@ public class UsuarioDAO implements IServiceUsuario {
     }
     return resultFlag;
   }
-  
-    public Boolean habilitar(Usuario usuario) {
+
+  public Boolean habilitar(Usuario usuario) {
     Boolean resultFlag = false;
     final String SQL_DELETE = "update usuario set estado=1 where idUsuario=?";
 
@@ -198,7 +198,7 @@ public class UsuarioDAO implements IServiceUsuario {
     final String SQL_SELECT_BY_ID = "SELECT * FROM usuario WHERE idUsuario=?";
     try {
       pstm = con.getConnection().prepareStatement(SQL_SELECT_BY_ID);
-      pstm.setInt(1,idUsuario );
+      pstm.setInt(1, idUsuario);
       res = pstm.executeQuery();
       while (res.next()) {
         usuario.setIdUsuario(res.getInt(1));
@@ -208,12 +208,11 @@ public class UsuarioDAO implements IServiceUsuario {
         usuario.setTipoDocumento(res.getString(6));
         usuario.setNumeroDocumento(res.getString(7));
         usuario.setContrasena(res.getString(5));
-        System.out.println(res.getInt(1)+" ");
+        System.out.println(res.getInt(1) + " ");
         System.out.println(res.getString(2));
         System.out.println(res.getString(3));
         System.out.println(res.getString(4));
       }
-
 
     } catch (Exception e) {
       System.out.println("Error al eliminar al usuario");

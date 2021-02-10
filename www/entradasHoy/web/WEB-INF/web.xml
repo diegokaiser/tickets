@@ -16,6 +16,10 @@
         <servlet-name>CineController</servlet-name>
         <servlet-class>com.miempresa.controllers.CineController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>com.miempresa.controllers.HomeController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioController</servlet-name>
         <url-pattern>/UsuarioController</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>CineController</servlet-name>
         <url-pattern>/CineController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/HomeController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

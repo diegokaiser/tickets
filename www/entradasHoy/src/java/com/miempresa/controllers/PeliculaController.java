@@ -60,25 +60,25 @@ public class PeliculaController extends HttpServlet {
 
   private void lastest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
-    List<Pelicula> peliculas = new ArrayList<>();
-    peliculas = peliculaDAO.seleccionarUltimos();
-    request.setAttribute("peliculas", peliculas);
+    List<Pelicula> lastest = new ArrayList<>();
+    lastest = peliculaDAO.seleccionarUltimos();
+    request.setAttribute("lastest", lastest);
     request.getRequestDispatcher("/index.jsp").forward(request, response);
   }
 
   private void commingSoon(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
-    List<Pelicula> peliculas = new ArrayList<>();
-    peliculas = peliculaDAO.seleccionarEstrenos();
-    request.setAttribute("peliculas", peliculas);
+    List<Pelicula> commingSoon = new ArrayList<>();
+    commingSoon = peliculaDAO.seleccionarEstrenos();
+    request.setAttribute("commingSoon", commingSoon);
     request.getRequestDispatcher("/index.jsp").forward(request, response);
   }
 
   private void recommended(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
-    List<Pelicula> peliculas = new ArrayList<>();
-    peliculas = peliculaDAO.seleccionarRecomendados();
-    request.setAttribute("peliculas", peliculas);
+    List<Pelicula> recommended = new ArrayList<>();
+    recommended = peliculaDAO.seleccionarRecomendados();
+    request.setAttribute("recommended", recommended);
     request.getRequestDispatcher("/index.jsp").forward(request, response);
   }
 
