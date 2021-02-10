@@ -87,7 +87,7 @@
                                   </td>
                                   <td>
                                     <div class="admin-actions">
-                                      <a href="<%=request.getContextPath()%>/CineController?processing=editarCine&idCine=${cine.idCine}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
+                                      <a href="<%=request.getContextPath()%>/CineController?processing=botoneEditarCine&idCine=${cine.idCine}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
                                       <a href="<%=request.getContextPath()%>/CineController?processing=eliminarCine&idCine=${cine.idCine}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
                                     </div>
                                   </td>

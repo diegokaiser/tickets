@@ -86,12 +86,12 @@ public class CineDAO implements IServiceCine {
         cine.setDireccion(res.getString(3));
         cine.setLogo(res.getString(4));
         cine.setEstado(res.getInt(5));
-        cine.setFechaRegistro(res.getString(6));
-        cine.setIdDistrito(res.getInt(7));
-        System.out.println(res.getInt(1)+" ");
-        System.out.println(res.getString(2));
-        System.out.println(res.getString(3));
-        System.out.println(res.getString(4));
+//        cine.setFechaRegistro(res.getString(6));
+//        cine.setIdDistrito(res.getInt(7));
+//        System.out.println(res.getInt(1)+" ");
+//        System.out.println(res.getString(2));
+//        System.out.println(res.getString(3));
+//        System.out.println(res.getString(4));
       }
 
     } catch (Exception e) {
@@ -118,6 +118,7 @@ public class CineDAO implements IServiceCine {
         cine.setDireccion(res.getString("direccion"));
         cine.setLogo(res.getString("logo"));
         cine.setEstado(res.getInt("estado"));
+        cines.add(cine);
         //cine.setIdDistrito(res.getInt("idDistrito"));
       }
     } catch (Exception e) {

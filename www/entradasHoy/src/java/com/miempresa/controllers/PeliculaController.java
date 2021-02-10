@@ -17,15 +17,6 @@ public class PeliculaController extends HttpServlet {
           throws ServletException, IOException {
     String proceso = request.getParameter("processing");
     switch (proceso) {
-      case "lastest":
-        lastest(request, response);
-        break;
-      case "commingSoon":
-        commingSoon(request, response);
-        break;
-      case "recommended":
-        recommended(request, response);
-        break;
       case "listarPeliculas":
         listarTodo(request, response);
         break;
@@ -58,6 +49,7 @@ public class PeliculaController extends HttpServlet {
     return "Short description";
   }// </editor-fold>
 
+<<<<<<< HEAD
 
   private void lastest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
@@ -82,6 +74,9 @@ public class PeliculaController extends HttpServlet {
     request.getSession().setAttribute("peliculas", peliculas);
     request.getRequestDispatcher("/index.jsp").forward(request, response);
   }
+=======
+
+>>>>>>> 77280d0... em falta xd
 
   private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
