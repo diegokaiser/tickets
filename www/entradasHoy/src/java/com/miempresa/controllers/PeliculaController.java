@@ -49,6 +49,34 @@ public class PeliculaController extends HttpServlet {
     return "Short description";
   }// </editor-fold>
 
+  private void lastest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    List<Pelicula> peliculas = new ArrayList<>();
+    peliculas = peliculaDAO.seleccionarUltimos();
+    request.getSession().setAttribute("peliculas", peliculas);
+    request.getRequestDispatcher("/index.jsp").forward(request, response);
+  }
+
+  private void commingSoon(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    List<Pelicula> peliculas = new ArrayList<>();
+    peliculas = peliculaDAO.seleccionarEstrenos();
+    request.getSession().setAttribute("peliculas", peliculas);
+    request.getRequestDispatcher("/index.jsp").forward(request, response);
+  }
+
+  private void recommended(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    List<Pelicula> peliculas = new ArrayList<>();
+    peliculas = peliculaDAO.seleccionarRecomendados();
+    request.getSession().setAttribute("peliculas", peliculas);
+    request.getRequestDispatcher("/index.jsp").forward(request, response);
+  }
+=======
+
+>>>>>>> 77280d0... em falta xd
+
+>>>>>>> db17e9ca62c7ef4ba28662e4f9fe0d12a12cae9c
   private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     List<Pelicula> peliculas = new ArrayList<>();

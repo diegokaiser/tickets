@@ -23,8 +23,8 @@ public class CineController extends HttpServlet {
       case "listarCines":
         listarTodo(request, response);
         break;
-      case "editarCine":
-        editarUsuario(request, response);
+      case "botoneEditarCine":
+        botonEditarCine(request, response);
         break;
       case "eliminarCine":
         eliminarUsuario(request, response);
@@ -76,11 +76,14 @@ public class CineController extends HttpServlet {
   }
 
   private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+     
     CineDAO cineDAO = new CineDAO();
     List<Cine> cines = new ArrayList<>();
     cines = cineDAO.seleccionarTodo();
     request.setAttribute("cines", cines);
     request.getRequestDispatcher("/admin/cines/index.jsp").forward(request, response);
+     System.out.println("dasdasdashola");
+      System.out.println(cines.get(0));
   }
 
   private void editarUsuario(HttpServletRequest request, HttpServletResponse response) {
@@ -89,5 +92,17 @@ public class CineController extends HttpServlet {
 
   private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+  
+    private void botonEditarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    System.out.println("asdasdasdas");
+    String id = request.getParameter("idCine");
+    
+    CineDAO cineDAO = new CineDAO();
+    Cine cine = cineDAO.seleccionPorId(Integer.parseInt(id.toString()));
+    request.getSession().setAttribute("cine", cine);
+    request.getRequestDispatcher("/admin/cines/detalle.jsp").forward(request, response);
+    
+
   }
 }
