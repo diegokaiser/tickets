@@ -27,8 +27,12 @@ public class CineController extends HttpServlet {
         botonEditarCine(request, response);
         break;
       case "eliminarCine":
-        eliminarUsuario(request, response);
+        eliminarCine(request, response);
         break;
+      case "editarCine":
+        editarCine(request, response);
+        break;
+
     }
   }
 
@@ -76,33 +80,52 @@ public class CineController extends HttpServlet {
   }
 
   private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     
+
     CineDAO cineDAO = new CineDAO();
     List<Cine> cines = new ArrayList<>();
     cines = cineDAO.seleccionarTodo();
     request.setAttribute("cines", cines);
     request.getRequestDispatcher("/admin/cines/index.jsp").forward(request, response);
-     System.out.println("dasdasdashola");
-      System.out.println(cines.get(0));
+    System.out.println("dasdasdashola");
+    System.out.println(cines.get(0));
   }
 
-  private void editarUsuario(HttpServletRequest request, HttpServletResponse response) {
+  private void eliminarCine(HttpServletRequest request, HttpServletResponse response) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
-  private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-  
-    private void botonEditarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  private void botonEditarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     System.out.println("asdasdasdas");
     String id = request.getParameter("idCine");
-    
+
     CineDAO cineDAO = new CineDAO();
     Cine cine = cineDAO.seleccionPorId(Integer.parseInt(id.toString()));
     request.getSession().setAttribute("cine", cine);
     request.getRequestDispatcher("/admin/cines/detalle.jsp").forward(request, response);
-    
+  }
+
+  private void editarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    String id = request.getParameter("idCine");
+    String nombre = request.getParameter("nombre");
+    String direccion = request.getParameter("direccion");
+    String estado = request.getParameter("estado");
+
+    Cine cine = new Cine();
+    cine.setIdCine(Integer.parseInt(id.toString()));
+    cine.setNombre(nombre);
+    cine.setDireccion(direccion);
+    cine.setEstado(Integer.parseInt(estado.toString()));
+
+    CineDAO cineDAO = new CineDAO();
+    if (cineDAO.actualizar(cine)) {
+      System.out.println("Se actualizo el cine");
+      request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+    } else {
+      System.out.println("error");
+      request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+    }
 
   }
+
 }

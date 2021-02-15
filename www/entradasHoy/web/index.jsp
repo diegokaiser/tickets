@@ -43,7 +43,7 @@
             </p>
           </div>
           <div class="cta">
-            <a href="<%=request.getContextPath()%>/notyet/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
+            <a href="<%=request.getContextPath()%>/PeliculaController?processing=getPelicula&idPelicula=${pelicula.idPelicula}"><i class="fas fa-play"></i>Comprar entradas</a>
           </div>
           <div class="playtrailer">
             <a href="#">
@@ -83,12 +83,12 @@
                           <span>${a.duracion}</span>
                         </div>
                         <div class="cta">
-                          <a href="<%=request.getContextPath()%>/estrenos/index.jsp"
+                          <a href="<%=request.getContextPath()%>/PeliculaController?processing=getPelicula&idPelicula=${pelicula.idPelicula}"
                              data-title="${a.nombre}"
                              data-timing="${a.duracion}"
                              data-sinopsis="${a.descripcion}"
                              data-starring="${a.nombre}"
-                             data-genre=""
+                             data-genre="${c.genero}"
                              data-trailer="${a.trailer}">
                             <i class="fas fa-play"></i>Comprar entradas
                           </a>
@@ -125,12 +125,12 @@
                           <span>${b.duracion}</span>
                         </div>
                         <div class="cta">
-                          <a href="<%=request.getContextPath()%>/notyet/index.jsp"
+                          <a href="<%=request.getContextPath()%>/PeliculaController?processing=getPelicula&idPelicula=${pelicula.idPelicula}"
                              data-title="${b.nombre}"
                              data-timing="${b.duracion}"
                              data-sinopsis="${b.descripcion}"
                              data-starring="${b.nombre}"
-                             data-genre="}"
+                             data-genre="${c.genero}}"
                              data-trailer="${b.trailer}">
                             <i class="fas fa-play"></i>Comprar entradas
                           </a>
@@ -167,12 +167,12 @@
                           <span>${c.duracion}</span>
                         </div>
                         <div class="cta">
-                          <a href="<%=request.getContextPath()%>/estrenos/index.jsp"
+                          <a href="<%=request.getContextPath()%>/PeliculaController?processing=getPelicula&idPelicula=${pelicula.idPelicula}"
                              data-title="${c.nombre}"
                              data-timing="${c.duracion}"
                              data-sinopsis="${c.descripcion}"
                              data-starring="${c.nombre}"
-                             data-genre="}"
+                             data-genre="${c.genero}}"
                              data-trailer="${c.trailer}">
                             <i class="fas fa-play"></i>Comprar entradas
                           </a>

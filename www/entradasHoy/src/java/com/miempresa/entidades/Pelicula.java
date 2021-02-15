@@ -15,6 +15,8 @@ public class Pelicula {
   private String genero;
   private String trailer;
   private String recomendada;
+  private String destacada;
+  private String protagonistas;
   private Integer estado;
   
   public Pelicula() {
@@ -25,7 +27,8 @@ public class Pelicula {
     this.idPelicula = idPelicula;
   }
 
-  public Pelicula(String nombre, String duracion, String fechaEstreno, String idioma, String pais, Integer subtitulos, Integer doblada, String portada, String descripcion, String genero, String trailer, String recomendada, Integer estado) {
+  public Pelicula(Integer idPelicula, String nombre, String duracion, String fechaEstreno, String idioma, String pais, Integer subtitulos, Integer doblada, String portada, String descripcion, String genero, String trailer, String recomendada, String destacada, String protagonistas, Integer estado) {
+    this.idPelicula = idPelicula;
     this.nombre = nombre;
     this.duracion = duracion;
     this.fechaEstreno = fechaEstreno;
@@ -38,8 +41,10 @@ public class Pelicula {
     this.genero = genero;
     this.trailer = trailer;
     this.recomendada = recomendada;
+    this.destacada = destacada;
+    this.protagonistas = protagonistas;
     this.estado = estado;
-  }
+  }  
 
   public Integer getIdPelicula() {
     return idPelicula;
@@ -152,4 +157,20 @@ public class Pelicula {
   public void setRecomendada(String recomendada) {
     this.recomendada = recomendada;
   }
+
+  public String getDestacada() {
+    return destacada;
+  }
+
+  public void setDestacada(String destacada) {
+    this.destacada = destacada;
+  }
+
+  public String getProtagonistas() {
+    return protagonistas;
+  }
+
+  public void setProtagonistas(String protagonistas) {
+    this.protagonistas = protagonistas;
+  }  
 }

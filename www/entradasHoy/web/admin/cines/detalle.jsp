@@ -42,29 +42,29 @@ Cine cine = (Cine)request.getSession().getAttribute("cine");
                                     <div class="col-xs-12 col-lg-3">
                                     </div>
                                     <div class="col-sm-12 col-lg-6">
-                                         <form action="<%=request.getContextPath()%>/PeliculaController" method="POST">
-                                            <input type="hidden" id="processing" name="processing" value="editarPelicula">
-                                            <input type="hidden"  id="idPelicula" name="idPelicula" value="<%=cine.getNombre()%>">
+                                         <form action="<%=request.getContextPath()%>/CineController" method="POST">
+                                            <input type="hidden" id="processing" name="processing" value="editarCine">
+                                            <input type="hidden"  id="idCine" name="idCine" value="<%=cine.getIdCine()%>">
                                             <h2>Editar</h2>
                                             
                                             <div class="form-group pt-4">
                                                 <label for="nombre">Nombre:</label>
-                                                <input type="text" class="form-control" id="nombre" name="nombre" value="<%=cine.getDireccion()%>">
+                                                <input type="text" class="form-control" id="nombre" name="nombre" value="<%=cine.getNombre()%>">
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label for="duracion">Dirección</label>
-                                                <input type="text" class="form-control" id="duracion" name="duracion" value="<%=cine.getLogo()%>">
+                                                <label for="direccion">Dirección</label>
+                                                <input type="text" class="form-control" id="direccion" name="direccion" value="<%=cine.getDireccion()%>">
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label for="fechaEstreno">Logo</label>
-                                                <input type="text" class="form-control" id="fechaEstreno" name="fechaEstreno" value="<%=cine.getEstado()%>">
+                                                <label for="logo">Logo</label>
+                                                <input type="text" class="form-control" id="logo" name="logo" value="<%=cine.getLogo() %>">
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label for="idioma">Estado</label>
-                                                <input type="text" class="form-control" id="idioma" name="idioma" value="<%=cine.getEstado()%>">
+                                                <label for="estado">Estado</label>
+                                                <input type="text" class="form-control" id="estado" name="estado" value="<%=cine.getEstado()%>">
                                             </div>                                                                                                                           
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary btn-block my-4">Actualiza</button>
