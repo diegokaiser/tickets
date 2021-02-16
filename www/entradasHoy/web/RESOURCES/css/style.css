@@ -891,9 +891,7 @@ footer {
         .banner-destacado .contenido .playtrailer a i {
           font-size: 91px;
           margin-right: 21px; }
-        .banner-destacado .contenido .playtrailer a:hover {
-          color: #e50914; }
-        .banner-destacado .contenido .playtrailer a:active, .banner-destacado .contenido .playtrailer a:visited {
+        .banner-destacado .contenido .playtrailer a:hover, .banner-destacado .contenido .playtrailer a:active {
           color: #e50914; }
 
 /****************MOBILE DEVICES*****************/
@@ -1336,8 +1334,15 @@ footer {
       color: #d1d0cf;
       font-weight: 900;
       text-align: center; }
+    .form form h4 {
+      color: #d1d0cf;
+      font-weight: 900; }
     .form form .form-group label {
       color: #d1d0cf;
       font-weight: 700; }
     .form form button.btn-primary {
       width: 100%; }
+    .form form button[disabled], .form form button:disabled, .form form button.disabled {
+      background-color: #B0BEC5;
+      color: #007bff;
+      opacity: 1; }

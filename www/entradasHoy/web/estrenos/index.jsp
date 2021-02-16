@@ -1,56 +1,70 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <%@ include file="../includes/meta.jsp" %>
-    <%@ include file="../includes/styles.jsp" %>
-    <title>Black Widow | Solo Estrenos</title>
-</head>
-<body>
-<div class="content">
-    <%@ include file="../includes/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.miempresa.entidades.Pelicula"%>
+<%
+  Pelicula pelicula = (Pelicula) request.getSession().getAttribute("pelicula");
+%>
 
-    <div class="banner-destacado">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
+  <head>
+    <%@ include file="../WEB-INF/jspf/web/meta.jsp" %>
+    <%@ include file="../WEB-INF/jspf/web/styles.jsp" %>
+    <title><%=pelicula.getNombre()%>  | Solo Estrenos</title>
+  </head>
+  <body>
+    <div class="content">
+      <%@ include file="../WEB-INF/jspf/web/header.jsp" %>
+
+      <div class="banner-destacado">
         <div class="img">
-            <img src="<%=request.getContextPath()%>/RESOURCES/images/blackwidow_banner-dest.webp" alt="">
+          <img src="<%=request.getContextPath()%>/RESOURCES/images/<%=pelicula.getPortadaDestacada()%>" alt="">
         </div>
         <div class="contenido">
-            <div class="titulo">
-                <!-- debe obtener el titulo de la vista anterior -->
-                <h2>Black Widow</h2>
-            </div>
-            <div class="timing">
-                <!-- debe obtener el tiempo de la vista anterior -->
-                <span>2hr:22mins</span>
-            </div>
-            <div class="descripcion">
-                <!-- debe obtener la descripción de la vista anterior -->
-                <p>
-                    Al nacer, la Viuda Negra, también conocida como Natasha Romanova, se entrega a la KGB para
-                    convertirse en su agente definitivo. Cuando la URSS se separa, el gobierno intenta matarla
-                    mientras la acción se traslada a la actual Nueva York.
-                </p>
-            </div>
-            <div class="info">
-                <p>
-                    <strong>Protagonizan: </strong>Scarlett Johansson, FlorencePugh, David Harbour, Rachel Weisz
-                </p>
-                <p>
-                    <strong>Género: </strong>Ciencia ficción
-                </p>
-            </div>
-            <div class="cta">
-                <a href="<%=request.getContextPath()%>/login/index.jsp"><i class="fas fa-play"></i>Comprar entradas</a>
-            </div>
-            <div class="playtrailer">
-                <a href="#">
-                    <i class="far fa-play-circle"></i>
-                    Ver trailer
-                </a>
-            </div>
+
+          <div class="titulo">
+            <h2><%=pelicula.getNombre()%></h2>
+          </div>
+          <div class="timing">
+            <span><%=pelicula.getDuracion()%></span>
+          </div>
+          <div class="descripcion">
+            <p>
+              <%=pelicula.getDescripcion()%>
+            </p>
+          </div>
+          <div class="info">
+            <p>
+              <strong>Protagonizan: </strong><%=pelicula.getProtagonistas()%>
+            </p>
+            <p>
+              <strong>Género: </strong><%=pelicula.getGenero()%>
+            </p>
+          </div>
+          <div class="cta">
+            <c:set var="dato" value="<%=pelicula.getEstado()%>" />
+            <c:choose>
+              <c:when test="${dato == 1}">
+                <a href="<%=request.getContextPath()%>/EntradaController?processing=seleccionarEntrada&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
+                  <i class="fas fa-play"></i>Comprar entradas</a>
+                </c:when>
+                <c:otherwise>
+                <a href="<%=request.getContextPath()%>/EntradaController?processing=crearAviso&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
+                  <i class="far fa-clock"></i><strong>Faltan: </strong>21 días, 14 horas y 7 minutos</a>
+                  </c:otherwise>
+                </c:choose>            
+          </div>
+          <div class="playtrailer">
+            <a href="<%=pelicula.getTrailer()%>" target="_blank">
+              <i class="far fa-play-circle"></i>
+              Ver trailer
+            </a>
+          </div>
+
         </div>
+      </div>
     </div>
-</div>
-<%@ include file="../includes/footer.jsp" %>
-<%@ include file="../includes/scripts.jsp" %>
-</body>
+    <%@ include file="../WEB-INF/jspf/web/footer.jsp" %>
+    <%@ include file="../WEB-INF/jspf/web/scripts.jsp" %>
+    <!--</body>-->
 </html>

@@ -71,7 +71,7 @@ public class HomeController extends HttpServlet {
     return "Short description";
   }// </editor-fold>
 
-  private void in(HttpServletRequest request, HttpServletResponse response) {
+  private void in(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     HttpSession session = request.getSession(false);
     if (session != null) {
       String correo = (String) session.getAttribute("correo");
@@ -94,9 +94,13 @@ public class HomeController extends HttpServlet {
     commingSoon = peliculaDAO.seleccionarEstrenos();
     request.setAttribute("commingSoon", commingSoon);
     
+    List<Pelicula> screen = new ArrayList<>();
+    screen = peliculaDAO.seleccionarDestacado();
+    request.setAttribute("screen", screen);
+    
     List<Pelicula> recommended = new ArrayList<>();
     recommended = peliculaDAO.seleccionarRecomendados();
     request.setAttribute("recommended", recommended);
-    request.getRequestDispatcher("/index.jsp").forward(request, response);
+    request.getRequestDispatcher("/login/index.jsp").forward(request, response);
   }
 }

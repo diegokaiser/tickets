@@ -7,5 +7,6 @@ public interface IServicePelicula extends ICRUD<Pelicula> {
   List<Pelicula> seleccionarUltimos();
   List<Pelicula> seleccionarEstrenos();
   List<Pelicula> seleccionarRecomendados();
+  List<Pelicula> seleccionarDestacado();
   Pelicula seleccionPorId(int idPelicula);
 }

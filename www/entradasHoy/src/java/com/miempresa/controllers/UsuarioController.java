@@ -181,7 +181,6 @@ public class UsuarioController extends HttpServlet {
   }
 
   private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     String id = request.getParameter("idUsuario");
     System.out.println(id);
     Usuario usuario = new Usuario();
@@ -199,7 +198,6 @@ public class UsuarioController extends HttpServlet {
   }
 
   private void habilitarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     String id = request.getParameter("idUsuario");
     System.out.println(id);
     Usuario usuario = new Usuario();

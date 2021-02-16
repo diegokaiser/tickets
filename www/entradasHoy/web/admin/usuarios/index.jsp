@@ -43,7 +43,7 @@
             <div class="row">
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
-                  <div class="x_content">
+                  <div class="x_content">                    
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="card-box table-responsive">
@@ -88,13 +88,13 @@
                                   </td>
                                   <td>
                                     <div class="admin-actions">
-                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=botonEditarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-primary"><i class="fa fa-pencil"></i> Editar</a>
+                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=botonEditarUsuario&idUsuario=${usuario.idUsuario}" data-id="${usuario.idUsuario}" class="btn btn-primary"><i class="fa fa-pencil"></i> Editar</a>
                                       <c:choose> 
                                         <c:when test="${usuario.estado == 1}">
-                                          <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-danger"><i class="fa fa-times"></i> Deshabilitar </a>
+                                          <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" data-id="${usuario.idUsuario}" class="btn btn-danger"><i class="fa fa-times"></i> Deshabilitar </a>
                                         </c:when>
                                         <c:otherwise>                                                                                                                           
-                                          <a href="<%=request.getContextPath()%>/UsuarioController?processing=habilitarUsuario&idUsuario=${usuario.idUsuario}" class="btn btn-success"><i class="fa fa-check"></i> Habilitar</a>
+                                          <a href="<%=request.getContextPath()%>/UsuarioController?processing=habilitarUsuario&idUsuario=${usuario.idUsuario}" data-id="${usuario.idUsuario}" class="btn btn-success"><i class="fa fa-check"></i> Habilitar</a>
                                         </c:otherwise>
                                       </c:choose>
                                     </div>

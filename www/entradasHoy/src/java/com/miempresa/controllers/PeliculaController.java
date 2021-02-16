@@ -129,9 +129,9 @@ public class PeliculaController extends HttpServlet {
   private void getPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String id = request.getParameter("idPelicula");
     PeliculaDAO peliculaDAO = new PeliculaDAO();
-    Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id.toString()));
+    Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id));
     request.getSession().setAttribute("pelicula", pelicula);
-    request.getRequestDispatcher("/EntradaController?processing=comprarEntrada").forward(request, response);
+    request.getRequestDispatcher("estrenos/index.jsp").forward(request, response);
   }
 
   private void notyetPelicula(HttpServletRequest request, HttpServletResponse response) {

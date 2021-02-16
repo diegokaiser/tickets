@@ -45,6 +45,11 @@
                 <div class="x_panel">
                   <div class="x_content">
                     <div class="row">
+                      <div class="col-sm-12 text-right">
+                        <button class="btn btn-primary">Agregar película</button>
+                      </div>
+                    </div>
+                    <div class="row">
                       <div class="col-sm-12">
                         <div class="card-box table-responsive">
                           <table id="datatable" class="table table-striped table-bordered" style="width:100%">

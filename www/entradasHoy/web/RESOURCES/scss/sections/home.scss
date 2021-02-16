@@ -218,11 +218,8 @@
             font-size: 91px;
             margin-right: 21px;
           }
-          &:hover {
-            color: $font-strong;
-          }
-          &:active,
-          &:visited {
+          &:hover,
+          &:active {
             color: $font-strong;
           }
         }

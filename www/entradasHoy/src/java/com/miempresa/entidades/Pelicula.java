@@ -10,14 +10,16 @@ public class Pelicula {
   private String pais;
   private Integer subtitulos;
   private Integer doblada;
-  private String portada;
   private String descripcion;
   private String genero;
+  private Integer estado;
   private String trailer;
   private String recomendada;
+  private String portada;
   private String destacada;
   private String protagonistas;
-  private Integer estado;
+  private String portadaDestacada;
+  
   
   public Pelicula() {
   
@@ -27,7 +29,7 @@ public class Pelicula {
     this.idPelicula = idPelicula;
   }
 
-  public Pelicula(Integer idPelicula, String nombre, String duracion, String fechaEstreno, String idioma, String pais, Integer subtitulos, Integer doblada, String portada, String descripcion, String genero, String trailer, String recomendada, String destacada, String protagonistas, Integer estado) {
+  public Pelicula(Integer idPelicula, String nombre, String duracion, String fechaEstreno, String idioma, String pais, Integer subtitulos, Integer doblada, String descripcion, String genero, Integer estado, String trailer, String recomendada, String portada, String destacada, String protagonistas, String portadaDestacada) {
     this.idPelicula = idPelicula;
     this.nombre = nombre;
     this.duracion = duracion;
@@ -36,15 +38,16 @@ public class Pelicula {
     this.pais = pais;
     this.subtitulos = subtitulos;
     this.doblada = doblada;
-    this.portada = portada;
     this.descripcion = descripcion;
     this.genero = genero;
+    this.estado = estado;
     this.trailer = trailer;
     this.recomendada = recomendada;
+    this.portada = portada;
     this.destacada = destacada;
     this.protagonistas = protagonistas;
-    this.estado = estado;
-  }  
+    this.portadaDestacada = portadaDestacada;
+  } 
 
   public Integer getIdPelicula() {
     return idPelicula;
@@ -173,4 +176,12 @@ public class Pelicula {
   public void setProtagonistas(String protagonistas) {
     this.protagonistas = protagonistas;
   }  
+
+  public String getPortadaDestacada() {
+    return portadaDestacada;
+  }
+
+  public void setPortadaDestacada(String portadaDestacada) {
+    this.portadaDestacada = portadaDestacada;
+  }
 }

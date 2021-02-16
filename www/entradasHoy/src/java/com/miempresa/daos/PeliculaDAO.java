@@ -75,6 +75,9 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
         pelicula.setGenero(res.getString("genero"));
+        pelicula.setTrailer(res.getString("trailer"));
+        pelicula.setRecomendada(res.getString("recomendada"));
+        pelicula.setProtagonistas(res.getString("protagonistas"));
         pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
@@ -107,8 +110,9 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
         pelicula.setGenero(res.getString("genero"));
-        pelicula.setGenero(res.getString("trailer"));
-        pelicula.setGenero(res.getString("recomendada"));
+        pelicula.setTrailer(res.getString("trailer"));
+        pelicula.setRecomendada(res.getString("recomendada"));
+        pelicula.setProtagonistas(res.getString("protagonistas"));
         pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
@@ -141,8 +145,9 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
         pelicula.setGenero(res.getString("genero"));
-        pelicula.setGenero(res.getString("trailer"));
-        pelicula.setGenero(res.getString("recomendada"));
+        pelicula.setTrailer(res.getString("trailer"));
+        pelicula.setRecomendada(res.getString("recomendada"));
+        pelicula.setProtagonistas(res.getString("protagonistas"));
         pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
@@ -175,8 +180,9 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
         pelicula.setGenero(res.getString("genero"));
-        pelicula.setGenero(res.getString("trailer"));
-        pelicula.setGenero(res.getString("recomendada"));
+        pelicula.setTrailer(res.getString("trailer"));
+        pelicula.setRecomendada(res.getString("recomendada"));
+        pelicula.setProtagonistas(res.getString("protagonistas"));
         pelicula.setEstado(res.getInt("estado"));
         peliculas.add(pelicula);
       }
@@ -226,26 +232,73 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setIdioma(res.getString(5));
         pelicula.setPais(res.getString(6));
         //pelicula.setSubtitulos(res.getInt(7));
-        pelicula.setDoblada(res.getInt(8));
-        pelicula.setPortada(res.getString(9));
-        pelicula.setDescripcion(res.getString(10));
-        pelicula.setGenero(res.getString(11));
-        
-          
+        pelicula.setDoblada(res.getInt(7));
+        pelicula.setPortada(res.getString(8));
+        pelicula.setDescripcion(res.getString(9));
+        pelicula.setGenero(res.getString(10));
+        pelicula.setEstado(res.getInt(11));
+        pelicula.setTrailer(res.getString(15));
+        pelicula.setProtagonistas(res.getString(19));
+        pelicula.setPortadaDestacada(res.getString(20));
+        /*
         System.out.println(res.getInt(1)+" ");
         System.out.println(res.getString(2));
         System.out.println(res.getString(3));
         System.out.println(res.getString(4));
+        System.out.println(res.getString(5));
+        System.out.println(res.getString(6));
+        System.out.println(res.getString(7));
+        System.out.println(res.getString(8));
+        System.out.println(res.getString(9));
+        System.out.println(res.getString(10));
+        System.out.println(res.getString(11));
+        System.out.println(res.getString(15));
+        System.out.println(res.getString(19));
+        */
       }
-
-
     } catch (Exception e) {
-      System.out.println("Error al eliminar la pelicula");
+      System.out.println("Error al seleccionar la pelicula");
       e.printStackTrace();
     } finally {
       close();
     }
     return pelicula;
+  }
+  
+  @Override
+  public List<Pelicula> seleccionarDestacado() {
+    List<Pelicula> peliculas = new ArrayList<>();
+    final String SQL_SELECT = "{call usp_listarPeliculaDestacada()}";
+    try {
+      cstm = con.getConnection().prepareCall(SQL_SELECT);
+      res = cstm.executeQuery();
+      while (res.next()) {
+        Pelicula pelicula = new Pelicula();
+        pelicula.setIdPelicula(res.getInt(1));
+        pelicula.setNombre(res.getString("nombre"));
+        pelicula.setDuracion(res.getString("duracion"));
+        pelicula.setFechaEstreno(res.getString("fechaEstreno"));
+        pelicula.setIdioma(res.getString("idioma"));
+        pelicula.setPais(res.getString("pais"));
+        //pelicula.setSubtitulos(res.getInt("subtitulos"));
+        pelicula.setDoblada(res.getInt("doblada"));
+        pelicula.setDescripcion(res.getString("descripcion"));
+        pelicula.setGenero(res.getString("genero"));
+        pelicula.setEstado(res.getInt("estado"));
+        pelicula.setPortada(res.getString("portada"));
+        pelicula.setTrailer(res.getString("trailer"));
+        pelicula.setRecomendada(res.getString("recomendada"));
+        pelicula.setProtagonistas(res.getString("protagonistas"));        
+        pelicula.setPortadaDestacada(res.getString("portadaDestacada"));
+        peliculas.add(pelicula);
+      }
+    } catch (Exception e) {
+      System.out.println("Error al recuperar película destacada");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return peliculas;
   }
 
   @Override
@@ -265,5 +318,4 @@ public class PeliculaDAO implements IServicePelicula {
       System.out.println("Error al cerrar conexion :" + e.getMessage());
     }
   }
-
 }
