@@ -22,7 +22,7 @@ public class CineDAO implements IServiceCine {
   @Override
   public Boolean insertar(Cine cine) {
     Boolean resultFlag = false;
-    final String SQL_INSERT = "insert into cine (nombre, direccion, logo, estado, fechaRegistro, idDistrito) values (?,?,?,?,?,?)";
+    final String SQL_INSERT = "insert into cine (nombre, direccion, logo, estado, idDistrito) values (?,?,?,?,?)";
     try {
       pstm = con.getConnection().prepareStatement(SQL_INSERT);
 
@@ -30,8 +30,7 @@ public class CineDAO implements IServiceCine {
       pstm.setString(2, cine.getDireccion());
       pstm.setString(3, cine.getLogo());
       pstm.setInt(4, cine.getEstado());
-      pstm.setString(5, cine.getFechaRegistro());
-      pstm.setInt(6, cine.getIdDistrito());
+      pstm.setInt(5, cine.getIdDistrito());
 
       int result = pstm.executeUpdate();
       if (result > 0) {
@@ -112,10 +111,11 @@ public class CineDAO implements IServiceCine {
       while (res.next()) {
         Cine cine = new Cine();
         cine.setIdCine(res.getInt(1));
-        cine.setNombre(res.getString("nombre"));
-        cine.setDireccion(res.getString("direccion"));
-        cine.setLogo(res.getString("logo"));
-        cine.setEstado(res.getInt("estado"));
+        cine.setNombre(res.getString(2));
+        cine.setDireccion(res.getString(3));
+        cine.setLogo(res.getString(4));
+        cine.setEstado(res.getInt(5));
+      //  cine.setIdDistrito(res.getInt(6));
         cines.add(cine);
         //cine.setIdDistrito(res.getInt("idDistrito"));
       }
@@ -167,4 +167,24 @@ public class CineDAO implements IServiceCine {
       System.out.println("Error al cerrar conexion :" + e.getMessage());
     }
   }
+  public List listarDistritos() {
+    List distritos = new ArrayList<>();
+    final String SQL_SELECTALL = "{call usp_listarDistritos()}";
+
+    try {
+      cstm = con.getConnection().prepareCall(SQL_SELECTALL);
+      res = cstm.executeQuery();
+      while (res.next()) {
+      //  cine.setIdDistrito(res.getInt(6));
+        distritos.add(res.getString(1));
+        //cine.setIdDistrito(res.getInt("idDistrito"));
+      }
+    } catch (Exception e) {
+      System.out.println("Error al recuperar el listado de distritos");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return distritos;
+  }  
 }

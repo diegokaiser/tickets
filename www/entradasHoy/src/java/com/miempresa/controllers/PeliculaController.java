@@ -53,7 +53,38 @@ public class PeliculaController extends HttpServlet {
   @Override
   public String getServletInfo() {
     return "Short description";
+<<<<<<< HEAD
   }// </editor-fold>
+=======
+  }
+
+  private void lastest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    List<Pelicula> peliculas = new ArrayList<>();
+    peliculas = peliculaDAO.seleccionarUltimos();
+    request.getSession().setAttribute("peliculas", peliculas);
+    request.getRequestDispatcher("/index.jsp").forward(request, response);
+  }
+
+  private void commingSoon(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    List<Pelicula> peliculas = new ArrayList<>();
+    peliculas = peliculaDAO.seleccionarEstrenos();
+    request.getSession().setAttribute("peliculas", peliculas);
+    request.getRequestDispatcher("/index.jsp").forward(request, response);
+  }
+
+  private void recommended(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    List<Pelicula> peliculas = new ArrayList<>();
+    peliculas = peliculaDAO.seleccionarRecomendados();
+    request.getSession().setAttribute("peliculas", peliculas);
+    request.getRequestDispatcher("/index.jsp").forward(request, response);
+  }
+
+
+
+>>>>>>> 02da979... popup de cines
 
   private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
