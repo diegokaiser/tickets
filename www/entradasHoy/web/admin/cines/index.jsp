@@ -95,7 +95,7 @@
                                       </c:otherwise>
                                     </c:choose>
                                   </td>
-                                  <td>${cine.idDistrito}</td>
+                                  <td>${cine.distrito}</td>
                                   <td width="140">
                                     <div class="admin-actions">
                                       <a href="<%=request.getContextPath()%>/CineController?processing=botoneEditarCine&idCine=${cine.idCine}" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
