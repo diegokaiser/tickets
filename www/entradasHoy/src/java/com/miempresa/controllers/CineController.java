@@ -119,12 +119,14 @@ public class CineController extends HttpServlet {
     String id = request.getParameter("idCine");
     String nombre = request.getParameter("nombre");
     String direccion = request.getParameter("direccion");
+    String logo = request.getParameter("logo");
     String estado = request.getParameter("estado");
 
     Cine cine = new Cine();
     cine.setIdCine(Integer.parseInt(id.toString()));
     cine.setNombre(nombre);
     cine.setDireccion(direccion);
+    cine.setLogo(logo);
     cine.setEstado(Integer.parseInt(estado.toString()));
 
     CineDAO cineDAO = new CineDAO();
