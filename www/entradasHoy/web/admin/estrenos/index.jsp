@@ -75,82 +75,83 @@
                             <!-- Lista Pelicuals estrenadas -->
                             <tbody>
                               <c:forEach var="pelicula" items="${peliculas}">
-                                <c:choose>
-                                  <c:when test="${pelicula.estado == 1}"> <!-- listar todos, 1 y 0 -->
-                                    <tr>
-                                      <td>${pelicula.idPelicula}</td>
-                                      <td>${pelicula.nombre}</td>
-                                      <td>${pelicula.duracion}</td>
-                                      <td>
-                                        ${pelicula.fechaEstreno}
-                                      </td>
-                                      <td>${pelicula.idioma}</td>
-                                      <td>${pelicula.pais}</td>
-                                      <td>
-                                        <c:choose>
-                                          <c:when test="${pelicula.subtitulos == 1}">
-                                            Sí
-                                          </c:when>
-                                          <c:otherwise>
-                                            No
-                                          </c:otherwise>
-                                        </c:choose>
-                                      </td>
-                                      <td>
-                                        <c:choose>
-                                          <c:when test="${pelicula.doblada == 1}">
-                                            Sí
-                                          </c:when>
-                                          <c:otherwise>
-                                            No
-                                          </c:otherwise>
-                                        </c:choose>
-                                      </td>
-                                      <td>
-                                        <c:choose>
-                                          <c:when test="${pelicula.portada != ''}">
-                                            Sí
-                                          </c:when>
-                                          <c:otherwise>
-                                            No
-                                          </c:otherwise>
-                                        </c:choose>
-                                      </td>
-                                      <td>
-                                        <c:choose>
-                                          <c:when test="${pelicula.descripcion != '}'}">
-                                            Sí
-                                          </c:when>
-                                          <c:otherwise>
-                                            No
-                                          </c:otherwise>
-                                        </c:choose>
-                                      </td>
-                                      <td>${pelicula.genero}</td>
+                                <tr>
+                                  <td>${pelicula.idPelicula}</td>
+                                  <td>${pelicula.nombre}</td>
+                                  <td>${pelicula.duracion}</td>
+                                  <td>
+                                    ${pelicula.fechaEstreno}
+                                  </td>
+                                  <td>${pelicula.idioma}</td>
+                                  <td>${pelicula.pais}</td>
+                                  <td>
+                                    <c:choose>
+                                      <c:when test="${pelicula.subtitulos == 1}">
+                                        Sí
+                                      </c:when>
+                                      <c:otherwise>
+                                        No
+                                      </c:otherwise>
+                                    </c:choose>
+                                  </td>
+                                  <td>
+                                    <c:choose>
+                                      <c:when test="${pelicula.doblada == 1}">
+                                        Sí
+                                      </c:when>
+                                      <c:otherwise>
+                                        No
+                                      </c:otherwise>
+                                    </c:choose>
+                                  </td>
+                                  <td>
+                                    <c:choose>
+                                      <c:when test="${pelicula.portada != ''}">
+                                        Sí
+                                      </c:when>
+                                      <c:otherwise>
+                                        No
+                                      </c:otherwise>
+                                    </c:choose>
+                                  </td>
+                                  <td>
+                                    <c:choose>
+                                      <c:when test="${pelicula.descripcion != '}'}">
+                                        Sí
+                                      </c:when>
+                                      <c:otherwise>
+                                        No
+                                      </c:otherwise>
+                                    </c:choose>
+                                  </td>
+                                  <td>${pelicula.genero}</td>
 
-                                      <td>${pelicula.estado} : En estreno</td>
+                                  <td>
+                                  <c:choose>
+                                    <c:when test="${pelicula.estado == 1}">
+                                      En estreno
+                                    </c:when>
+                                    <c:otherwise>
+                                      Por estrenar
+                                    </c:otherwise>
+                                  </c:choose>
+                                  </td>
+
+                                  <td width="140">
+                                    <div class="admin-actions">
+                                      <a href="<%=request.getContextPath()%>/PeliculaController?processing=botonEditarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a><br>
                                       <c:choose>
                                         <c:when test="${pelicula.estado == 1}">
-                                          En estreno
+                                          <a href="<%=request.getContextPath()%>/PeliculaController?processing=eliminarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
                                         </c:when>
                                         <c:otherwise>
-                                          Por estrenar
+                                          <a href="#" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a><br>
                                         </c:otherwise>
-                                      </c:choose>
-
-                                      <td>
-                                        <div class="admin-actions">
-                                          <a href="<%=request.getContextPath()%>/PeliculaController?processing=botonEditarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
-                                          <a href="<%=request.getContextPath()%>/PeliculaController?processing=eliminarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  </c:when>
-                                  <c:otherwise>
-                                  <td style="display:none">Por estrenar</td>
-                                </c:otherwise>
-                              </c:choose>
-                            </c:forEach>
+                                      </c:choose>                                      
+                                    </div>
+                                  </td>
+                                </tr>
+                              </c:forEach>
                             </tbody>
                           </table>
                         </div>

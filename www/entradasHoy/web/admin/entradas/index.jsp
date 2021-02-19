@@ -52,55 +52,35 @@
                               <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Documento</th>
+                                <th>Película</th>
+                                <th>Cine</th>
+                                <th>Sala</th>
+                                <th>Tipo</th>
+                                <th>Precio</th>
+                                <th>Fecha registro</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                               </tr>
                             </thead>
-
                             <tbody>
-                              <c:forEach var="usuario" items="${usuarios}">
-                                <tr>
-                                  <td>${usuario.idUsuario}</td>
-                                  <td>${usuario.apellido},${usuario.nombre}</td>
-                                  <td>${usuario.correo}</td>
-                                  <td>
-                                    <c:choose>
-                                      <c:when test="${usuario.tipoDocumento == 1}">
-                                        DNI:
-                                      </c:when>
-                                      <c:otherwise>
-                                        C.E:
-                                      </c:otherwise>
-                                    </c:choose>
-                                    ${usuario.numeroDocumento}
-                                  </td>
-                                  <td>
-                                    <c:choose>                                      
-                                      <c:when test="${usuario.estado == 1}">                                   
-                                        Validado
-                                      </c:when>
-                                      <c:otherwise>                                        
-                                        No validado
-                                      </c:otherwise>
-                                    </c:choose>
-                                  </td>
-                                  <td width="140">
-                                    <div class="admin-actions">
-                                      <a href="<%=request.getContextPath()%>/UsuarioController?processing=botonEditarUsuario&idUsuario=${usuario.idUsuario}" data-id="${usuario.idUsuario}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
-                                      <c:choose> 
-                                        <c:when test="${usuario.estado == 1}">
-                                          <a href="<%=request.getContextPath()%>/UsuarioController?processing=eliminarUsuario&idUsuario=${usuario.idUsuario}" data-id="${usuario.idUsuario}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-times"></i>&nbsp;&nbsp;Deshabilitar </a>
-                                        </c:when>
-                                        <c:otherwise>                                                                                                                           
-                                          <a href="<%=request.getContextPath()%>/UsuarioController?processing=habilitarUsuario&idUsuario=${usuario.idUsuario}" data-id="${usuario.idUsuario}" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
-                                        </c:otherwise>
-                                      </c:choose>
-                                    </div>
-                                  </td>
-                                </tr>
-                              </c:forEach>
+                              <tr>
+                                <td>1</td>
+                                <td>Ivan Robles</td>
+                                <td>Venom, let there be Carnage</td>
+                                <td>UVK Larcomar</td>
+                                <td>9</td>
+                                <td>2D</td>
+                                <td>25.00</td>
+                                <td>19/02/2021</td>
+                                <td>
+                                  Por confirmar
+                                </td>
+                                <td width="140">
+                                  <div class="admin-actions">
+                                    <a href="" data-id="" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Confirmar</a>
+                                  </div>
+                                </td>
+                              </tr>
                             </tbody>
                           </table>
                         </div>

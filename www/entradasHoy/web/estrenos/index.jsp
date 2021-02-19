@@ -46,13 +46,26 @@
             <c:choose>
               <c:when test="${dato == 1}">
                 <a href="<%=request.getContextPath()%>/EntradaController?processing=seleccionarEntrada&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
-                  <i class="fas fa-play"></i>Comprar entradas</a>
-                </c:when>
-                <c:otherwise>
+                  <i class="fas fa-play"></i>Comprar entradas
+                </a>
+              </c:when>
+              <c:otherwise>
                 <a href="<%=request.getContextPath()%>/EntradaController?processing=crearAviso&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
-                  <i class="far fa-clock"></i><strong>Faltan: </strong>21 días, 14 horas y 7 minutos</a>
-                  </c:otherwise>
-                </c:choose>            
+                  <i class="far fa-clock"></i>
+                  <strong>Faltan: </strong>
+                  <%
+                    String string= pelicula.getFechaEstreno();
+                    String[] parts = string.split(" ");
+                    String primera = parts[0];
+                    String segunda = parts[1];
+                  %>
+                  <script type="text/javascript">
+                    
+                  </script>
+                  <span data-estreno="<%=pelicula.getFechaEstreno()%>" data-ano="" data-mes="" data-dia="" data-hora="" data-min="" data-seg="">21 días, 14 horas y 7 minutos</span>
+                </a>
+              </c:otherwise>
+            </c:choose>            
           </div>
           <div class="playtrailer">
             <a href="<%=pelicula.getTrailer()%>" target="_blank">
@@ -65,6 +78,7 @@
       </div>
     </div>
     <%@ include file="../WEB-INF/jspf/web/footer.jsp" %>
+    <%@ include file="../WEB-INF/jspf/web/_script_countdownjs.jsp" %>
     <%@ include file="../WEB-INF/jspf/web/scripts.jsp" %>
     <!--</body>-->
 </html>

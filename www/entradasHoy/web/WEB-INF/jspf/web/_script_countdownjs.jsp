@@ -1,0 +1,1 @@
+<script src="<%=request.getContextPath()%>/RESOURCES/js/countdownjs.js"></script>

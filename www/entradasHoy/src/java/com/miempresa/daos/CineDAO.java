@@ -47,7 +47,7 @@ public class CineDAO implements IServiceCine {
 
   @Override
   public Boolean actualizar(Cine cine) {
-    Boolean resultFlag = false;  
+    Boolean resultFlag = false;
     final String SQL_UPDATE = "update cine set nombre=?, direccion=?, estado=? where idCine=?";
     try {
       pstm = con.getConnection().prepareStatement(SQL_UPDATE);
@@ -55,7 +55,7 @@ public class CineDAO implements IServiceCine {
       pstm.setString(2, cine.getDireccion());
       pstm.setInt(3, cine.getEstado());
       pstm.setInt(4, cine.getIdCine());
-        System.out.println(cine.getNombre()+"update");
+      System.out.println(cine.getNombre() + "update");
       int result = pstm.executeUpdate();
       if (result > 0) {
         resultFlag = true;
@@ -69,13 +69,13 @@ public class CineDAO implements IServiceCine {
     return resultFlag;
   }
 
-   @Override
+  @Override
   public Cine seleccionPorId(int idCine) {
     Cine cine = new Cine();
     final String SQL_SELECT_BY_ID = "SELECT * FROM cine WHERE idCine=?";
     try {
       pstm = con.getConnection().prepareStatement(SQL_SELECT_BY_ID);
-      pstm.setInt(1,idCine );
+      pstm.setInt(1, idCine);
       res = pstm.executeQuery();
       while (res.next()) {
         cine.setIdCine(res.getInt(1));
@@ -99,7 +99,7 @@ public class CineDAO implements IServiceCine {
     }
     return cine;
   }
-  
+
   @Override
   public List<Cine> seleccionarTodo() {
     List<Cine> cines = new ArrayList<>();
@@ -115,7 +115,7 @@ public class CineDAO implements IServiceCine {
         cine.setDireccion(res.getString(3));
         cine.setLogo(res.getString(4));
         cine.setEstado(res.getInt(5));
-      //  cine.setIdDistrito(res.getInt(6));
+        cine.setIdDistrito(res.getInt(9));
         cines.add(cine);
         //cine.setIdDistrito(res.getInt("idDistrito"));
       }
@@ -127,7 +127,6 @@ public class CineDAO implements IServiceCine {
     }
     return cines;
   }
-
 
   @Override
   public Boolean eliminar(Cine cine) {
@@ -167,6 +166,7 @@ public class CineDAO implements IServiceCine {
       System.out.println("Error al cerrar conexion :" + e.getMessage());
     }
   }
+
   public List listarDistritos() {
     List distritos = new ArrayList<>();
     final String SQL_SELECTALL = "{call usp_listarDistritos()}";
@@ -175,7 +175,7 @@ public class CineDAO implements IServiceCine {
       cstm = con.getConnection().prepareCall(SQL_SELECTALL);
       res = cstm.executeQuery();
       while (res.next()) {
-      //  cine.setIdDistrito(res.getInt(6));
+        //  cine.setIdDistrito(res.getInt(6));
         distritos.add(res.getString(1));
         //cine.setIdDistrito(res.getInt("idDistrito"));
       }
@@ -186,5 +186,5 @@ public class CineDAO implements IServiceCine {
       close();
     }
     return distritos;
-  }  
+  }
 }

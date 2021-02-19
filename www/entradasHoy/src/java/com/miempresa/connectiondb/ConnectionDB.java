@@ -20,12 +20,15 @@ public class ConnectionDB {
     private static Connection con = null;
     //Definiendo los parámetro de conexion a la Base de Datos
     //Cadena de Conexion
-    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=SistemaCine";
+    //private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=SistemaCine";
+    private static final String URL = "jdbc:sqlserver://isilserviciocines.database.windows.net:1433;database=SistemaCine;user=cinesRoot@isilserviciocines;password=$(pB5c&57596-6T;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
     //Información del Driver segun el motor de base de datos
     private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     //Las credenciales de la base de datos
-    private static final String USER = "root";
-    private static final String PASS = "root";
+    //private static final String USER = "root";
+    //private static final String PASS = "root";
+    private static final String USER = "cinesRoot";
+    private static final String PASS = "$(pB5c&57596-6T";
     //Constructor Privado
     private ConnectionDB() {
         try {

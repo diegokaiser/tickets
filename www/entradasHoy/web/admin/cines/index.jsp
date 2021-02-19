@@ -88,18 +88,25 @@
                                   <td>
                                     <c:choose>                                      
                                       <c:when test="${cine.estado == 1}">
-                                        Validado
+                                        Abierto
                                       </c:when>
                                       <c:otherwise>
-                                        No validado
+                                        Cerrado al público
                                       </c:otherwise>
                                     </c:choose>
                                   </td>
                                   <td>${cine.idDistrito}</td>
-                                  <td>
+                                  <td width="140">
                                     <div class="admin-actions">
-                                      <a href="<%=request.getContextPath()%>/CineController?processing=botoneEditarCine&idCine=${cine.idCine}" class="btn btn-success"><i class="fa fa-pencil"></i> Editar</a>
-                                      <a href="<%=request.getContextPath()%>/CineController?processing=eliminarCine&idCine=${cine.idCine}" class="btn btn-danger"><i class="fa fa-times"></i> Eliminar</a>
+                                      <a href="<%=request.getContextPath()%>/CineController?processing=botoneEditarCine&idCine=${cine.idCine}" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
+                                      <c:choose>
+                                        <c:when test="${cine.estado == 1}">
+                                          <a href="<%=request.getContextPath()%>/CineController?processing=eliminarCine&idCine=${cine.idCine}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-times"></i>&nbsp;&nbsp;Cerrar</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                          <a href="<%=request.getContextPath()%>/CineController?processing=eliminarCine&idCine=${cine.idCine}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Abrir al público</a>
+                                        </c:otherwise>
+                                      </c:choose>
                                     </div>
                                   </td>
                                 </tr>
