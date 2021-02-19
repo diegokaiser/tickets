@@ -52,17 +52,8 @@
               <c:otherwise>
                 <a href="<%=request.getContextPath()%>/EntradaController?processing=crearAviso&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
                   <i class="far fa-clock"></i>
-                  <strong>Faltan: </strong>
-                  <%
-                    String string= pelicula.getFechaEstreno();
-                    String[] parts = string.split(" ");
-                    String primera = parts[0];
-                    String segunda = parts[1];
-                  %>
-                  <script type="text/javascript">
-                    
-                  </script>
-                  <span data-estreno="<%=pelicula.getFechaEstreno()%>" data-ano="" data-mes="" data-dia="" data-hora="" data-min="" data-seg="">21 días, 14 horas y 7 minutos</span>
+                  <!--<strong>Faltan: </strong>-->
+                  <span id="fechaEstreno" data-estreno="<%=pelicula.getFechaEstreno()%>" data-pri="" data-sec=""></span>
                 </a>
               </c:otherwise>
             </c:choose>            
@@ -78,7 +69,23 @@
       </div>
     </div>
     <%@ include file="../WEB-INF/jspf/web/footer.jsp" %>
-    <%@ include file="../WEB-INF/jspf/web/_script_countdownjs.jsp" %>
     <%@ include file="../WEB-INF/jspf/web/scripts.jsp" %>
+    <%@ include file="../WEB-INF/jspf/web/_script_countdownjs.jsp" %>
+    <script type="text/javascript">
+      var fechaEstreno = document.getElementById('fechaEstreno');
+      var fechaTotal = fechaEstreno.dataset.estreno;
+      var fechaA = fechaTotal.split(" ");
+      var fechaB = fechaEstreno.dataset.pri = fechaA[0];
+      var fechaC = fechaB.replace("-", "/")
+      var fechaD = fechaC.replace("-", "/")
+      
+
+      $('#fechaEstreno').countdown(fechaD + ' 23:59:59', function (event) {
+        $(this).html(event.strftime('Faltan %d días, %H horas y %M minutos'));
+      });
+      
+      console.log(fechaD); 
+
+    </script>
     <!--</body>-->
 </html>
