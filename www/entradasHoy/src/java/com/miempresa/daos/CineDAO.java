@@ -48,13 +48,15 @@ public class CineDAO implements IServiceCine {
   @Override
   public Boolean actualizar(Cine cine) {
     Boolean resultFlag = false;
-    final String SQL_UPDATE = "update cine set nombre=?, direccion=?, estado=? where idCine=?";
+    final String SQL_UPDATE = "update cine set nombre=?, direccion=?,logo=?, estado=? where idCine=?";
     try {
       pstm = con.getConnection().prepareStatement(SQL_UPDATE);
       pstm.setString(1, cine.getNombre());
       pstm.setString(2, cine.getDireccion());
-      pstm.setInt(3, cine.getEstado());
-      pstm.setInt(4, cine.getIdCine());
+      pstm.setString(3, cine.getLogo());
+      pstm.setInt(4, cine.getEstado());
+      pstm.setInt(5, cine.getIdCine());
+ 
       System.out.println(cine.getNombre() + "update");
       int result = pstm.executeUpdate();
       if (result > 0) {
@@ -81,8 +83,8 @@ public class CineDAO implements IServiceCine {
         cine.setIdCine(res.getInt(1));
         cine.setNombre(res.getString(2));
         cine.setDireccion(res.getString(3));
-        cine.setLogo(res.getString(4));
-        cine.setEstado(res.getInt(5));
+        cine.setLogo(res.getString(8));
+        cine.setEstado(res.getInt(9));
 //        cine.setFechaRegistro(res.getString(6));
 //        cine.setIdDistrito(res.getInt(7));
 //        System.out.println(res.getInt(1)+" ");
