@@ -115,7 +115,7 @@ public class CineDAO implements IServiceCine {
         cine.setDireccion(res.getString(3));
         cine.setLogo(res.getString(4));
         cine.setEstado(res.getInt(5));
-        cine.setIdDistrito(res.getInt(9));
+        cine.setDistrito(res.getString(6));
         cines.add(cine);
         //cine.setIdDistrito(res.getInt("idDistrito"));
       }

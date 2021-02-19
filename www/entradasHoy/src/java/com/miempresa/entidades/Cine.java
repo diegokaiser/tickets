@@ -9,6 +9,7 @@ public class Cine {
   private Integer estado;
   private String fechaRegistro;
   private Integer idDistrito;
+  private String distrito;
 
   public Cine() {
 
@@ -18,16 +19,17 @@ public class Cine {
     this.idCine = idCine;
   }
 
-  public Cine(String nombre, String direccion, String logo, Integer estado, String fechaRegistro, Integer idDistrito) {
+  public Cine(String nombre, String direccion, String logo, Integer estado, String fechaRegistro, Integer idDistrito,String distrito) {
     this.nombre = nombre;
     this.direccion = direccion;
     this.logo = logo;
     this.estado = estado;
     this.fechaRegistro = fechaRegistro;
     this.idDistrito = idDistrito;
+    this.distrito=distrito;
   }
 
-  public Cine(Integer idCine, String nombre, String direccion, String logo, Integer estado, String fechaRegistro, Integer idDistrito) {
+  public Cine(Integer idCine, String nombre, String direccion, String logo, Integer estado, String fechaRegistro, Integer idDistrito, String distrito) {
     this.idCine = idCine;
     this.nombre = nombre;
     this.direccion = direccion;
@@ -35,6 +37,7 @@ public class Cine {
     this.estado = estado;
     this.fechaRegistro = fechaRegistro;
     this.idDistrito = idDistrito;
+    this.distrito=distrito;
   }
 
   public Integer getIdCine() {
@@ -92,6 +95,14 @@ public class Cine {
   public void setIdDistrito(Integer idDistrito) {
     this.idDistrito = idDistrito;
   }
+
+    public String getDistrito() {
+        return distrito;
+    }
+
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
+    }
   
   
 }
