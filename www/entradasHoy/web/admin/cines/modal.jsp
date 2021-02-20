@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
-  <i class="fa fa-plus"></i> Agregar
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  <i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar cine
 </button>
 
 <!-- Modal -->
@@ -17,28 +18,29 @@
         <form action="<%=request.getContextPath()%>/CineController" method="POST">
           <input type="hidden" id="processing" name="processing" value="agregarCine">
           <input type="hidden"  id="idCine" name="idCine" >                        
-          <div class="form-group pt-4">
+          <div class="form-group pt-4 text-left">
             <label for="nombre">Nombre:</label>
             <input type="text" class="form-control" id="nombre" name="nombre" >
           </div>
 
-          <div class="form-group">
+          <div class="form-group text-left">
             <label for="direccion">Dirección</label>
             <input type="text" class="form-control" id="direccion" name="direccion" >
           </div>
 
-          <div class="form-group">
+          <div class="form-group text-left">
             <label for="logo">Logo</label>
             <input type="text" class="form-control" id="logo" name="logo" >
           </div>
 
-          <div class="form-group">
+          <div class="form-group text-left">
             <label for="estado">Estado</label>
             <input type="text" class="form-control" id="estado" name="estado" >
           </div>
-          <div class="form-group">
+          <div class="form-group text-left">
             <label for="idDistrito">Distrito</label>
             <select class="form-control" id="idDistrito" name="idDistrito">
+              ${distrito.idDistrito}
               <c:forEach var="distrito" items="${distritos}">                                
                 <option value="${distrito.idDistrito}">${distrito.Nombre}</option>
               </c:forEach>

@@ -21,10 +21,35 @@ public class PeliculaDAO implements IServicePelicula {
 
   @Override
   public Boolean insertar(Pelicula t) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Boolean resultFlag = false;
+    final String SQL_INSERTAR = "{call usp_insertarPelicula(?,?,?,?,?,?,?,?,?,?,?)}";
+    try {
+      cstm = con.getConnection().prepareCall(SQL_INSERTAR);
+      cstm.setString(1, t.getNombre());
+      cstm.setString(2, t.getDuracion());
+      cstm.setString(3, t.getFechaEstreno());
+      cstm.setString(4, t.getIdioma());
+      cstm.setString(5, t.getPais());
+      cstm.setInt(6, t.getSubtitulos());
+      cstm.setInt(7, t.getDoblada());
+      cstm.setString(8, t.getPortada());
+      cstm.setString(9, t.getDescripcion());
+      cstm.setString(10, t.getGenero());
+      cstm.setInt(11, t.getEstado());
+      int result = cstm.executeUpdate();
+      if (result > 0) {
+        resultFlag = true;
+      }
+    } catch (Exception e) {
+      System.out.println("Eror al insertar pelicula");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return resultFlag;
   }
-    
- @Override
+
+  @Override
   public Boolean actualizar(Pelicula pelicula) {
     Boolean resultFlag = false;
     final String SQL_UPDATE = "update pelicula set nombre=?, duracion=?, fechaEstreno=?, idioma=?, pais=?, subtitulos=?, doblada=?, portada=?, descripcion=?, genero=?, estado=? where idPelicula=?";
@@ -35,12 +60,13 @@ public class PeliculaDAO implements IServicePelicula {
       pstm.setString(3, pelicula.getFechaEstreno());
       pstm.setString(4, pelicula.getIdioma());
       pstm.setString(5, pelicula.getPais());
-      //pstm.setInt(6, pelicula.getSubtitulos());
+      pstm.setInt(6, pelicula.getSubtitulos());
       pstm.setInt(7, pelicula.getDoblada());
       pstm.setString(8, pelicula.getPortada());
       pstm.setString(9, pelicula.getDescripcion());
       pstm.setString(10, pelicula.getGenero());
-        System.out.println(pelicula.getNombre()+"update");
+      pstm.setInt(11, pelicula.getEstado());
+      pstm.setInt(12, pelicula.getIdPelicula());
       int result = pstm.executeUpdate();
       if (result > 0) {
         resultFlag = true;
@@ -53,7 +79,6 @@ public class PeliculaDAO implements IServicePelicula {
     }
     return resultFlag;
   }
-
 
   @Override
   public List<Pelicula> seleccionarTodo() {
@@ -70,7 +95,7 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString("fechaEstreno"));
         pelicula.setIdioma(res.getString("idioma"));
         pelicula.setPais(res.getString("pais"));
-        //pelicula.setSubtitulos(res.getInt("subtitlos"));
+        pelicula.setSubtitulos(res.getInt("subtitulos"));
         pelicula.setDoblada(res.getInt("doblada"));
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
@@ -105,7 +130,7 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString("fechaEstreno"));
         pelicula.setIdioma(res.getString("idioma"));
         pelicula.setPais(res.getString("pais"));
-        //pelicula.setSubtitulos(res.getInt("subtitlos"));
+        pelicula.setSubtitulos(res.getInt("subtitulos"));
         pelicula.setDoblada(res.getInt("doblada"));
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
@@ -140,7 +165,7 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString("fechaEstreno"));
         pelicula.setIdioma(res.getString("idioma"));
         pelicula.setPais(res.getString("pais"));
-        //pelicula.setSubtitulos(res.getInt("subtitlos"));
+        pelicula.setSubtitulos(res.getInt("subtitulos"));
         pelicula.setDoblada(res.getInt("doblada"));
         pelicula.setPortada(res.getString("portada"));
         pelicula.setDescripcion(res.getString("descripcion"));
@@ -195,14 +220,15 @@ public class PeliculaDAO implements IServicePelicula {
     return peliculas;
   }
 
-   @Override
+  @Override
   public Boolean eliminar(Pelicula pelicula) {
     Boolean resultFlag = false;
-    final String SQL_DELETE = "update pelicula set estado=0 where idPelicula=?";
+    final String SQL_DELETE = "update pelicula set estado=? where idPelicula=?";
 
     try {
       pstm = con.getConnection().prepareStatement(SQL_DELETE);
-      pstm.setInt(1, pelicula.getIdPelicula());
+      pstm.setInt(1, pelicula.getEstado());
+      pstm.setInt(2, pelicula.getIdPelicula());
       int result = pstm.executeUpdate();
       if (result > 0) {
         resultFlag = true;
@@ -215,14 +241,14 @@ public class PeliculaDAO implements IServicePelicula {
     }
     return resultFlag;
   }
-  
-    @Override
+
+  @Override
   public Pelicula seleccionPorId(int idPelicula) {
     Pelicula pelicula = new Pelicula();
     final String SQL_SELECT_BY_ID = "SELECT * FROM pelicula WHERE idPelicula=?";
     try {
       pstm = con.getConnection().prepareStatement(SQL_SELECT_BY_ID);
-      pstm.setInt(1,idPelicula );
+      pstm.setInt(1, idPelicula);
       res = pstm.executeQuery();
       while (res.next()) {
         pelicula.setIdPelicula(res.getInt(1));
@@ -231,30 +257,32 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString(4));
         pelicula.setIdioma(res.getString(5));
         pelicula.setPais(res.getString(6));
-        //pelicula.setSubtitulos(res.getInt(7));
-        pelicula.setDoblada(res.getInt(7));
-        pelicula.setPortada(res.getString(8));
+        pelicula.setSubtitulos(res.getInt(7));
+        pelicula.setDoblada(res.getInt(8));        
         pelicula.setDescripcion(res.getString(9));
         pelicula.setGenero(res.getString(10));
-        pelicula.setEstado(res.getInt(11));
-        pelicula.setTrailer(res.getString(15));
+        pelicula.setEstado(res.getInt(11));        
+        pelicula.setTrailer(res.getString(15));        
+        pelicula.setPortada(res.getString(17));
         pelicula.setProtagonistas(res.getString(19));
         pelicula.setPortadaDestacada(res.getString(20));
-        /*
-        System.out.println(res.getInt(1)+" ");
-        System.out.println(res.getString(2));
-        System.out.println(res.getString(3));
-        System.out.println(res.getString(4));
-        System.out.println(res.getString(5));
-        System.out.println(res.getString(6));
-        System.out.println(res.getString(7));
-        System.out.println(res.getString(8));
-        System.out.println(res.getString(9));
-        System.out.println(res.getString(10));
-        System.out.println(res.getString(11));
-        System.out.println(res.getString(15));
-        System.out.println(res.getString(19));
-        */
+        System.out.println("DATA FROM :seleccionPorId");
+        System.out.println("ID: "+res.getInt(1));
+        System.out.println("Nombre: "+res.getString(2));
+        System.out.println("Duración: "+res.getString(3));
+        System.out.println("Fecha de estreno: "+res.getString(4));
+        System.out.println("Idioma: "+res.getString(5));
+        System.out.println("País: "+res.getString(6));
+        System.out.println("Subtitulos: "+res.getString(7));
+        System.out.println("Doblada: "+res.getString(8));
+        System.out.println("Descripción: "+res.getString(9));
+        System.out.println("Género: "+res.getString(10));
+        System.out.println("Estado: "+res.getString(11));
+        System.out.println("Trailer URL: "+res.getString(15));
+        System.out.println("Portada: "+res.getString(17));
+        System.out.println("Protagonistas: "+res.getString(19));
+        System.out.println("Portada Destacada: "+res.getString(20));
+        System.out.println("========================================================================================");
       }
     } catch (Exception e) {
       System.out.println("Error al seleccionar la pelicula");
@@ -264,7 +292,7 @@ public class PeliculaDAO implements IServicePelicula {
     }
     return pelicula;
   }
-  
+
   @Override
   public List<Pelicula> seleccionarDestacado() {
     List<Pelicula> peliculas = new ArrayList<>();
@@ -288,7 +316,7 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setPortada(res.getString("portada"));
         pelicula.setTrailer(res.getString("trailer"));
         pelicula.setRecomendada(res.getString("recomendada"));
-        pelicula.setProtagonistas(res.getString("protagonistas"));        
+        pelicula.setProtagonistas(res.getString("protagonistas"));
         pelicula.setPortadaDestacada(res.getString("portadaDestacada"));
         peliculas.add(pelicula);
       }

@@ -86,6 +86,7 @@ public class HomeController extends HttpServlet {
 
   private void lastest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
+    
     List<Pelicula> lastest = new ArrayList<>();
     lastest = peliculaDAO.seleccionarUltimos();
     request.setAttribute("lastest", lastest);

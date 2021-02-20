@@ -5,15 +5,14 @@
     <%@ include file="WEB-INF/jspf/web/styles.jsp" %>
     <title>Acceso de usuarios | Solo Estrenos</title>
   </head>
-  <body data-path="<%=request.getContextPath()%>">
+  <body>
     <div class="bkg_video">
       <video autoplay loop poster="<%=request.getContextPath()%>/RESOURCES/images/blackwidow_banner-dest.webp">
-        <source src="<%=request.getContextPath()%>/RESOURCES/images/bkg_video.webm">
+        <source src="<%=request.getContextPath()%>/RESOURCES/images/blackwidow_banner-dest.webm">
       </video>
     </div>
     <div class="content">
       <%@ include file="WEB-INF/jspf/web/header.jsp" %>
-
       <div class="form">
         <form action="<%=request.getContextPath()%>/UsuarioController" method="POST">
           <input type="hidden" id="processing" name="processing" value="login">
@@ -39,6 +38,6 @@
       </div>
     </div>
     <%@ include file="WEB-INF/jspf/web/footer.jsp" %>
-    <%@ include file="WEB-INF/jspf/web/scripts.jsp" %>
+    <%@ include file="WEB-INF/jspf/web/scripts.jsp" %>    
   </body>
 </html>

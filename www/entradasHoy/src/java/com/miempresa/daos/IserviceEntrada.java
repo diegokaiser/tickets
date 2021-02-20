@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.miempresa.test;
+package com.miempresa.daos;
+
+import com.miempresa.entidades.Entrada;
 
 /**
  *
- * @author Diego
+ * @author JosueFlores
  */
-class List<T> {
-  
+public interface IserviceEntrada extends ICRUD<Entrada> {
+      Entrada seleccionPorId(int idEntrada);
 }
+

@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="bkg_video">
-        <video playsinline autoplay loop poster="<%=request.getContextPath()%>/RESOURCES/images/blackwidow_banner-dest.webp">
+        <video autoplay loop poster="<%=request.getContextPath()%>/RESOURCES/images/blackwidow_banner-dest.webp">
             <source src="<%=request.getContextPath()%>/RESOURCES/images/bkg_video.webm">
         </video>
     </div>
@@ -42,8 +42,6 @@
             </div>
         </div>
     </div>
-</body>
-
 <%@ include file="../includes/footer.jsp" %>
 <%@ include file="../includes/scripts.jsp" %>
 </body>

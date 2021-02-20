@@ -56,7 +56,7 @@ public class CineDAO implements IServiceCine {
       pstm.setString(3, cine.getLogo());
       pstm.setInt(4, cine.getEstado());
       pstm.setInt(5, cine.getIdCine());
- 
+
       System.out.println(cine.getNombre() + "update");
       int result = pstm.executeUpdate();
       if (result > 0) {
@@ -133,11 +133,12 @@ public class CineDAO implements IServiceCine {
   @Override
   public Boolean eliminar(Cine cine) {
     Boolean resultFlag = false;
-    final String SQL_DELETE = "update cine set estado=0 where idCine=?";
+    final String SQL_DELETE = "update cine set estado=? where idCine=?";
 
     try {
       pstm = con.getConnection().prepareStatement(SQL_DELETE);
-      pstm.setInt(1, cine.getIdCine());
+      pstm.setInt(1, cine.getEstado());
+      pstm.setInt(2, cine.getIdCine());
       int result = pstm.executeUpdate();
       if (result > 0) {
         resultFlag = true;
@@ -167,26 +168,5 @@ public class CineDAO implements IServiceCine {
     } catch (Exception e) {
       System.out.println("Error al cerrar conexion :" + e.getMessage());
     }
-  }
-
-  public List listarDistritos() {
-    List distritos = new ArrayList<>();
-    final String SQL_SELECTALL = "{call usp_listarDistritos()}";
-
-    try {
-      cstm = con.getConnection().prepareCall(SQL_SELECTALL);
-      res = cstm.executeQuery();
-      while (res.next()) {
-        //  cine.setIdDistrito(res.getInt(6));
-        distritos.add(res.getString(1));
-        //cine.setIdDistrito(res.getInt("idDistrito"));
-      }
-    } catch (Exception e) {
-      System.out.println("Error al recuperar el listado de distritos");
-      e.printStackTrace();
-    } finally {
-      close();
-    }
-    return distritos;
   }
 }

@@ -18,7 +18,7 @@
 
       <div class="banner-destacado">
         <div class="img">
-          <img src="<%=request.getContextPath()%>/RESOURCES/images/<%=pelicula.getPortadaDestacada()%>" alt="">
+          <img src="<%=request.getContextPath()%>/RESOURCES/images/<%=pelicula.getPortadaDestacada()%>" alt="<%=pelicula.getNombre()%>">
         </div>
         <div class="contenido">
 
@@ -64,7 +64,6 @@
               Ver trailer
             </a>
           </div>
-
         </div>
       </div>
     </div>
@@ -78,14 +77,9 @@
       var fechaB = fechaEstreno.dataset.pri = fechaA[0];
       var fechaC = fechaB.replace("-", "/")
       var fechaD = fechaC.replace("-", "/")
-      
-
       $('#fechaEstreno').countdown(fechaD + ' 23:59:59', function (event) {
         $(this).html(event.strftime('Faltan %d días, %H horas y %M minutos'));
       });
-      
       console.log(fechaD); 
-
     </script>
-    <!--</body>-->
 </html>

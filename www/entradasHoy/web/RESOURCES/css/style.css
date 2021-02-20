@@ -1340,9 +1340,17 @@ footer {
     .form form .form-group label {
       color: #d1d0cf;
       font-weight: 700; }
+    .form form a.btn-danger, .form form a.btn-primary,
+    .form form button.btn-danger,
     .form form button.btn-primary {
       width: 100%; }
-    .form form button[disabled], .form form button:disabled, .form form button.disabled {
+    .form form a[disabled], .form form a:disabled, .form form a.disabled,
+    .form form button[disabled],
+    .form form button:disabled,
+    .form form button.disabled {
       background-color: #B0BEC5;
       color: #007bff;
       opacity: 1; }
+  .form .user-messages p span {
+    font-family: monospace;
+    white-space: pre; }

@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<html lang="es">
+<html>
   <head>
     <title>Admin Area</title>
     <!-- Bootstrap -->
@@ -34,7 +34,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Usuarios registrados</h3>
+                <h3>Listado de entradas</h3>
               </div>
             </div>
 
@@ -43,7 +43,12 @@
             <div class="row">
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
-                  <div class="x_content">                    
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12 text-right">
+                          <%@ include file="./../estrenos/modal.jsp" %>
+                      </div>
+                    </div>
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="card-box table-responsive">
@@ -51,36 +56,47 @@
                             <thead>
                               <tr>
                                 <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Película</th>
-                                <th>Cine</th>
-                                <th>Sala</th>
-                                <th>Tipo</th>
+                                <th>Pelicula</th>
+                                <th>Fecha estreno</th>
                                 <th>Precio</th>
-                                <th>Fecha registro</th>
+                                <th>Tipo</th>
                                 <th>Estado</th>
-                                <th>Acciones</th>
+                                <th>Sala</th>
+                                <th>Cine</th>
+                                <th>Stock</th>
                               </tr>
                             </thead>
+
+
+                            <!-- Lista Pelicuals estrenadas -->
                             <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>Ivan Robles</td>
-                                <td>Venom, let there be Carnage</td>
-                                <td>UVK Larcomar</td>
-                                <td>9</td>
-                                <td>2D</td>
-                                <td>25.00</td>
-                                <td>19/02/2021</td>
-                                <td>
-                                  Por confirmar
-                                </td>
-                                <td width="140">
-                                  <div class="admin-actions">
-                                    <a href="" data-id="" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Confirmar</a>
-                                  </div>
-                                </td>
-                              </tr>
+                              <c:forEach var="entrada" items="${entradas}">
+                                <tr>
+                                  <td>${entrada.idEntrada}</td>
+                                  <td>${entrada.nombrePelicula}</td>
+                                  <td>${entrada.fechaEstreno}</td>
+                                  <td>${entrada.precio}</td>
+                                  <td>${entrada.tipo}</td>
+                                  <td>${entrada.estado}</td>
+                                  <td>${entrada.numeroSala}</td>
+                                  <td>${entrada.nombreCine}</td>
+                                  <td>${entrada.stock}</td>
+ 
+                                  <td width="140">
+                                    <div class="admin-actions">
+                                      <a href="<%=request.getContextPath()%>/EntradaController?processing=botonEditarEntrada&idEntrada=${entrada.idEntrada}" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a><br>
+                                      <c:choose>
+                                        <c:when test="${entrada.estado == 1}">
+                                          <a href="<%=request.getContextPath()%>/EntradaController?processing=deshabilitarEntrada&idEntrada=${entrada.idEntrada}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                          <a href="<%=request.getContextPath()%>/EntradaController?processing=habilitarEntrada&idEntrada=${entrada.idEntrada}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
+                                        </c:otherwise>
+                                      </c:choose>                                      
+                                    </div>
+                                  </td>
+                                </tr>
+                              </c:forEach>
                             </tbody>
                           </table>
                         </div>

@@ -189,7 +189,7 @@
           </div>
         </c:when>
         <c:otherwise>
-
+          <% response.sendRedirect("request.getContextPath()/index.jsp"); %>
         </c:otherwise>
       </c:choose>
 

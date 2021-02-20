@@ -1,7 +1,9 @@
 package com.miempresa.controllers;
 
 import com.miempresa.daos.CineDAO;
+import com.miempresa.daos.DistritoDAO;
 import com.miempresa.entidades.Cine;
+import com.miempresa.entidades.Distrito;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -26,12 +28,17 @@ public class CineController extends HttpServlet {
       case "botoneEditarCine":
         botonEditarCine(request, response);
         break;
-      case "eliminarCine":
-        eliminarCine(request, response);
+      case "deshabilitarCine":
+        deshabilitarCine(request, response);
+        break;
+      case "habilitarCine":
+        habilitarCine(request, response);
         break;
       case "editarCine":
         editarCine(request, response);
         break;
+      case "agregarCine":
+        agregarCine(request, response);
 
     }
   }
@@ -80,37 +87,99 @@ public class CineController extends HttpServlet {
   }
 
   private void listarTodo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     CineDAO cineDAO = new CineDAO();
     List<Cine> cines = new ArrayList<>();
     cines = cineDAO.seleccionarTodo();
     request.setAttribute("cines", cines);
     request.getRequestDispatcher("/admin/cines/index.jsp").forward(request, response);
-    System.out.println("dasdasdashola");
-    System.out.println(cines.get(0));
   }
+  
+  private void agregarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String nombre = request.getParameter("nombre");
+    String direccion = request.getParameter("direccion");
+    String logo = request.getParameter("logo");
+    String estado = request.getParameter("estado");
+    String distrito = request.getParameter("distrito");
 
-  private void listarDistritos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    CineDAO cineDAO = new CineDAO();
-    List distritos = new ArrayList<>();
-    distritos = cineDAO.listarDistritos();
-    request.setAttribute("distritos", distritos);
+    Cine cine = new Cine();
+    
+    cine.setNombre(nombre);
+    cine.setDireccion(direccion);
+    cine.setLogo(logo);
+    cine.setEstado(Integer.parseInt(estado));
+    cine.setIdDistrito(Integer.parseInt(distrito));
+
+    // este de aqui no se ejecuta porque el modal no ejerce ninguna accion previa, por eso no lista, deberia estar en el listar todo
+    DistritoDAO distritoDAO = new DistritoDAO();
+    List<Distrito> distritos = new ArrayList<>();
+    distritos = distritoDAO.seleccionarTodo();
+    request.setAttribute("distritos", distritos);    
     request.getRequestDispatcher("/admin/cines/modal.jsp").forward(request, response);
-    System.out.println("listar");
-    System.out.println(distritos.get(1));
+    
+    CineDAO cineDAO = new CineDAO();
+    if (cineDAO.insertar(cine)) {
+      System.out.println("Se ingreso el cine");
+      request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+    } else {
+      System.out.println("No se ingreso la cine");
+      request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+    }
   }
 
-  private void eliminarCine(HttpServletRequest request, HttpServletResponse response) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  private void deshabilitarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String id = request.getParameter("idCine");
+    System.out.println(id);
+    Cine cine = new Cine();
+    cine.setIdCine(Integer.parseInt(id.toString()));
+    cine.setEstado(0);
+
+    CineDAO cineDAO = new CineDAO();
+    if (cineDAO.eliminar(cine)) {
+      request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+      request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);
+
+      System.out.println("Se deshabilito");
+    } else {
+      request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+      request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);
+
+      System.out.println("error en la deshabilitacion de la pelicula");
+    }
+
+  }
+
+  private void habilitarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String id = request.getParameter("idCine");
+    System.out.println(id);
+    Cine cine = new Cine();
+    cine.setIdCine(Integer.parseInt(id.toString()));
+    cine.setEstado(1);
+
+    CineDAO cineDAO = new CineDAO();
+    if (cineDAO.eliminar(cine)) {
+      request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+      request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);
+      System.out.println("Se habilito");
+    } else {
+      request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+      request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);
+      System.out.println("error en la habilitacion de la pelicula");
+    }
+
   }
 
   private void botonEditarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.out.println("asdasdasdas");
     String id = request.getParameter("idCine");
 
     CineDAO cineDAO = new CineDAO();
     Cine cine = cineDAO.seleccionPorId(Integer.parseInt(id.toString()));
     request.getSession().setAttribute("cine", cine);
+    
+    DistritoDAO distritoDAO = new DistritoDAO();
+    List distritos = new ArrayList<>();
+    distritos = distritoDAO.seleccionarTodo();
+    request.setAttribute("distritos", distritos);
+    
     request.getRequestDispatcher("/admin/cines/detalle.jsp").forward(request, response);
   }
 
@@ -139,4 +208,5 @@ public class CineController extends HttpServlet {
     }
   }
 
+  
 }
