@@ -1,6 +1,6 @@
  
-<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
-    <i class="fa fa-plus"></i> Agregar
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <i class="fa fa-plus"></i> Agregar cine
 </button>
     
 <!-- Modal -->
@@ -13,7 +13,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-left">
                 <form action="<%=request.getContextPath()%>/CineController" method="POST">
                     <input type="hidden" id="processing" name="processing" value="agregarCine">
                     <input type="hidden"  id="idCine" name="idCine" >                        

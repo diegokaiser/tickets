@@ -35,6 +35,9 @@ public class PeliculaController extends HttpServlet {
       case "notyetPelicula":
         notyetPelicula(request, response);
         break;
+      case "agregarPelicula":
+          agregarPelicula(request, response);
+          break;
     }
   }
 
@@ -137,4 +140,49 @@ public class PeliculaController extends HttpServlet {
   private void notyetPelicula(HttpServletRequest request, HttpServletResponse response) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
+
+    private void agregarPelicula(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException  {
+
+        Pelicula pelicula= new Pelicula();
+        String nombre=request.getParameter("nombre");
+        String duracion=request.getParameter("duracion");
+        String fechaEstreno=request.getParameter("fechaEstreno");
+        String idioma=request.getParameter("idioma");
+        String pais=request.getParameter("pais");
+        int subtitulos=Integer.parseInt(request.getParameter("subtitulos"));
+        int doblada=Integer.parseInt(request.getParameter("doblada"));
+        String portada=request.getParameter("portada");
+        String descripcion=request.getParameter("descripcion");
+        String genero=request.getParameter("genero");
+        int estado=Integer.parseInt(request.getParameter("estado"));
+        
+        pelicula.setNombre(nombre);
+        pelicula.setDuracion(duracion);
+        pelicula.setFechaEstreno(fechaEstreno);
+        pelicula.setIdioma(idioma);
+        pelicula.setPais(pais);
+        pelicula.setSubtitulos(subtitulos);
+        pelicula.setDoblada(doblada);
+        pelicula.setPortada(portada);
+        pelicula.setDescripcion(descripcion);
+        pelicula.setGenero(genero);
+        pelicula.setEstado(estado);
+        
+        PeliculaDAO peliculaDAO= new PeliculaDAO();
+        if(peliculaDAO.insertar(pelicula)){
+            System.out.println("Se ingreso la pelicula");
+            request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);            
+            request.getRequestDispatcher("/PeliculaController?processing=listarPelicula").forward(request, response);
+            
+            
+            
+        }else{
+            System.out.println("No se ingreso la pelicula");
+            request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);           
+            request.getRequestDispatcher("/PeliculaController?processing=listarPeliculas").forward(request, response);
+            
+            
+
+        }
+            }
 }

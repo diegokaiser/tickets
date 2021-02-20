@@ -18,10 +18,35 @@ public class PeliculaDAO implements IServicePelicula {
   public PeliculaDAO() {
     con = ConnectionDB.getInstance();
   }
-
+  
   @Override
   public Boolean insertar(Pelicula t) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      Boolean resultFlag = false;
+      final String SQL_INSERTAR = "{call usp_insertarPelicula(?,?,?,?,?,?,?,?,?,?,?)}";
+      try {
+          cstm = con.getConnection().prepareCall(SQL_INSERTAR);
+          cstm.setString(1, t.getNombre());
+          cstm.setString(2, t.getDuracion());
+          cstm.setString(3, t.getFechaEstreno());
+          cstm.setString(4, t.getIdioma());
+          cstm.setString(5, t.getPais());  
+          cstm.setInt(6, t.getSubtitulos());
+          cstm.setInt(7, t.getDoblada());  
+          cstm.setString(8, t.getPortada());
+          cstm.setString(9, t.getDescripcion());  
+          cstm.setString(10, t.getGenero());
+          cstm.setInt(11, t.getEstado());            
+          int result = cstm.executeUpdate();
+          if (result > 0) {
+              resultFlag = true;
+          }
+      } catch (Exception e) {
+          System.out.println("Eror al insertar pelicula");
+          e.printStackTrace();
+      } finally {
+          close();
+      }
+      return resultFlag;
   }
     
  @Override

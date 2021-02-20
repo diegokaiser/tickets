@@ -36,7 +36,7 @@
             <div class="page-title">
               <div class="title_left ">
                 <h3>Cines registrados</h3>
-                 <%@ include file="./../cines/modal.jsp" %>
+                
 <!--                <a href="<%=request.getContextPath()%>/CineController?processing=botoneEditarCine&idCine=${cine.idCine}" class="btn btn-dark"><i class="fa fa-plus"></i> Agregar</a>                -->
               </div>
             </div>
@@ -49,7 +49,7 @@
                   <div class="x_content">
                     <div class="row">
                       <div class="col-sm-12 text-right">
-                        <button class="btn btn-primary">Agregar película</button>
+                         <%@ include file="./../cines/modal.jsp" %>
                       </div>
                     </div>
                     <div class="row">

@@ -46,7 +46,7 @@
                   <div class="x_content">
                     <div class="row">
                       <div class="col-sm-12 text-right">
-                        <button class="btn btn-primary">Agregar película</button>
+                          <%@ include file="./../estrenos/modal.jsp" %>
                       </div>
                     </div>
                     <div class="row">
