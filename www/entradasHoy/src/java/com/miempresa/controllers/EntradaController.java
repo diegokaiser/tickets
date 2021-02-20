@@ -5,8 +5,12 @@
  */
 package com.miempresa.controllers;
 
+import com.miempresa.daos.EntradaDAO;
+import com.miempresa.entidades.Entrada;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +44,10 @@ public class EntradaController extends HttpServlet {
       case "verificarEntrada":
         verificarEntrada(request, response);
         break;
+      case "listarEntradas":
+        listarEntradas(request, response);
+        break;        
+      
     }
   }
 
@@ -82,16 +90,27 @@ public class EntradaController extends HttpServlet {
     return "Short description";
   }// </editor-fold>
 
-  private void comprarEntrada(HttpServletRequest request, HttpServletResponse response) {
+  private void comprarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
-  private void cancelarEntrada(HttpServletRequest request, HttpServletResponse response) {
+  private void cancelarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
-  private void verificarEntrada(HttpServletRequest request, HttpServletResponse response) {
+  private void verificarEntrada(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
+
+    private void listarEntradas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    EntradaDAO entradaDAO = new EntradaDAO();
+    List<Entrada> entradas = new ArrayList<>();
+    entradas = entradaDAO.seleccionarTodo();
+    request.setAttribute("entradas", entradas);
+    System.out.println("dasdasdashola");
+    System.out.println(entradas.get(0));
+    request.getRequestDispatcher("/admin/entradas/index.jsp").forward(request, response);
+    }
 
 }

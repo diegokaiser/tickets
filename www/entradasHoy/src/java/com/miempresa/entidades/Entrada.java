@@ -3,13 +3,18 @@ package com.miempresa.entidades;
 public class Entrada {
 
   private Integer idEntrada;
-  private String precio;
+  private double precio;
   private String tipo;
   private Integer estado;
   private Integer idSala;
   private Integer idPelicula;
   private Integer stock;
   private String fechaRegistro;
+  //Datos extras
+  private String nombrePelicula;
+  private String fechaEstreno;
+  private Integer numeroSala;
+  private String nombreCine;
 
   public Entrada() {
 
@@ -19,7 +24,7 @@ public class Entrada {
     this.idEntrada = idEntrada;
   }
 
-  public Entrada(String precio, String tipo, Integer estado, Integer idSala, Integer idPelicula, Integer stock, String fechaRegistro) {
+  public Entrada(Double precio, String tipo, Integer estado, Integer idSala, Integer idPelicula, Integer stock, String fechaRegistro) {
     this.precio = precio;
     this.tipo = tipo;
     this.estado = estado;
@@ -28,10 +33,7 @@ public class Entrada {
     this.stock = stock;
     this.fechaRegistro = fechaRegistro;
   }
-  
-  
-
-  public Entrada(Integer idEntrada, String precio, String tipo, Integer estado, Integer idSala, Integer idPelicula, Integer stock, String fechaRegistro) {
+  public Entrada(Integer idEntrada, Double precio, String tipo, Integer estado, Integer idSala, Integer idPelicula, Integer stock, String fechaRegistro) {
     this.idEntrada = idEntrada;
     this.precio = precio;
     this.tipo = tipo;
@@ -50,11 +52,11 @@ public class Entrada {
     this.idEntrada = idEntrada;
   }
 
-  public String getPrecio() {
+  public Double getPrecio() {
     return precio;
   }
 
-  public void setPrecio(String precio) {
+  public void setPrecio(Double precio) {
     this.precio = precio;
   }
 
@@ -105,6 +107,38 @@ public class Entrada {
   public void setFechaRegistro(String fechaRegistro) {
     this.fechaRegistro = fechaRegistro;
   }
+
+    public String getNombrePelicula() {
+        return nombrePelicula;
+    }
+
+    public void setNombrePelicula(String nombrePelicula) {
+        this.nombrePelicula = nombrePelicula;
+    }
+
+    public String getFechaEstreno() {
+        return fechaEstreno;
+    }
+
+    public void setFechaEstreno(String fechaEstreno) {
+        this.fechaEstreno = fechaEstreno;
+    }
+
+    public Integer getNumeroSala() {
+        return numeroSala;
+    }
+
+    public void setNumeroSala(Integer numeroSala) {
+        this.numeroSala = numeroSala;
+    }
+
+    public String getNombreCine() {
+        return nombreCine;
+    }
+
+    public void setNombreCine(String nombreCine) {
+        this.nombreCine = nombreCine;
+    }
   
   
 }
