@@ -122,6 +122,8 @@ public class UsuarioController extends HttpServlet {
   }
 
   private void loginAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    Usuario usuario = new Usuario();    
     String correo = request.getParameter("correo");
     String contrasena = request.getParameter("contrasena");
 
@@ -129,13 +131,18 @@ public class UsuarioController extends HttpServlet {
       // error
       request.getRequestDispatcher("/login/error.jsp").forward(request, response);
     } else {
-      Usuario usuario = new Usuario();
-      usuario.setCorreo(correo);
-      usuario.setContrasena(contrasena);
-      UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+      usuario.setCorreo(correo);      
+      usuario=usuarioDAO.selecionarPorCorreo(usuario);
+    
+      correo=usuario.getCorreo();
+      String nombre= usuario.getNombre();
+
       if (usuarioDAO.loginAdmin(usuario)) {
         HttpSession session = request.getSession();
         session.setAttribute("correo", correo);
+        session.setAttribute("nombre", nombre);
+
         request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
       } else {
         // error

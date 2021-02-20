@@ -1,3 +1,5 @@
+
+
 <div class="col-md-3 left_col">
   <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
@@ -13,7 +15,7 @@
       </div>
       <div class="profile_info">
         <span>Bienvenido,<br></span>
-        <span>{admin nombre}</span>  
+        <span> <%=session.getAttribute("nombre")%> </span>  
         <h2></h2>
       </div>
     </div>
