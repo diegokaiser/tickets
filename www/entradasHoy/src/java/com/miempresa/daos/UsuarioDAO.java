@@ -94,6 +94,31 @@ public class UsuarioDAO implements IServiceUsuario {
     }
     return usuarios;
   }
+  
+  public Usuario selecionarPorCorreo(Usuario usuario) {
+    final String SQL_SELECTALL = "{call usp_listarPorCorreo(?)}";
+    try {
+      cstm = con.getConnection().prepareCall(SQL_SELECTALL);
+      cstm.setString(1, usuario.getCorreo());
+      res = cstm.executeQuery();
+      while (res.next()) {
+        usuario.setIdUsuario(res.getInt(1));
+        usuario.setNombre(res.getString("nombre"));
+        usuario.setApellido(res.getString("apellido"));
+        usuario.setContrasena(res.getString("contrasena"));
+        usuario.setCorreo(res.getString("correo"));
+        usuario.setTipoDocumento(res.getString("tipoDocumento"));
+        usuario.setNumeroDocumento(res.getString("numeroDocumento"));
+        usuario.setEstado(res.getInt("estado"));
+      }
+    } catch (Exception e) {
+      System.out.println("Error al recuperar el listado de usuarios");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return usuario;
+  }  
 
   @Override
   public Boolean insertar(Usuario usuario) {
