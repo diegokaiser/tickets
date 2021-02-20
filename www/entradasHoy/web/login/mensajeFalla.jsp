@@ -28,9 +28,6 @@
         </div>
     </div>
 
-
-</body>
-
 <%@ include file="../includes/footer.jsp" %>
 <%@ include file="../includes/scripts.jsp" %>
 </body>

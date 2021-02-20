@@ -29,8 +29,11 @@ public class PeliculaController extends HttpServlet {
       case "getPelicula":
         getPelicula(request, response);
         break;
-      case "eliminarPelicula":
-        eliminarPelicula(request, response);
+      case "habilitarPelicula":
+          habilitarPelicula(request,response);
+          break;
+      case "deshabilitarPelicula":
+        deshabilitarPelicula(request, response);
         break;
       case "notyetPelicula":
         notyetPelicula(request, response);
@@ -104,14 +107,15 @@ public class PeliculaController extends HttpServlet {
 
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     if (peliculaDAO.actualizar(pelicula)) {
-      System.out.println("Se actualizo");
+      System.out.println("Se actualizo la pelicula");
       request.getRequestDispatcher("/PeliculaController?processing=listarPeliculas").forward(request, response);
     } else {
-      System.out.println("error");
+      request.getRequestDispatcher("/PeliculaController?processing=listarPeliculas").forward(request, response);        
+      System.out.println("Error al actualizar pelicula");
     }
   }
 
-  private void eliminarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  private void deshabilitarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     String id = request.getParameter("idPelicula");
     System.out.println(id);
@@ -180,4 +184,27 @@ public class PeliculaController extends HttpServlet {
 
         }
             }
+
+    private void habilitarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    String id = request.getParameter("idPelicula");
+    System.out.println(id);
+    Pelicula pelicula = new Pelicula();
+    pelicula.setIdPelicula(Integer.parseInt(id.toString()));
+    pelicula.setEstado(1);
+    
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    if (peliculaDAO.eliminar(pelicula)) {
+        request.getRequestDispatcher("/PeliculaController?processing=listarPeliculas").forward(request, response);
+        request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);
+        
+        System.out.println("Se habilito");
+    } else {
+        request.getRequestDispatcher("/PeliculaController?processing=listarPeliculas").forward(request, response);
+        request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);
+        
+        System.out.println("error en la habilitacion de la pelicula");
+    }
+    }
 }
+

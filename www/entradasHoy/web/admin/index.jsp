@@ -19,7 +19,7 @@
             <section class="login_content">
                 <form action="<%=request.getContextPath()%>/UsuarioController" method="POST">
                     <input type="hidden" id="processing" name="processing" value="loginAdmin">
-                    <h1>Login Form</h1>
+                    <h1>Entradas hoy</h1>
                     <div>
                         <input type="text" class="form-control" id="correo" name="correo" placeholder="Email" required="" />
                     </div>

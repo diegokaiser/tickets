@@ -37,7 +37,6 @@
               <div class="title_left ">
                 <h3>Cines registrados</h3>
                 
-<!--                <a href="<%=request.getContextPath()%>/CineController?processing=botoneEditarCine&idCine=${cine.idCine}" class="btn btn-dark"><i class="fa fa-plus"></i> Agregar</a>                -->
               </div>
             </div>
 
@@ -101,10 +100,10 @@
                                       <a href="<%=request.getContextPath()%>/CineController?processing=botoneEditarCine&idCine=${cine.idCine}" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
                                       <c:choose>
                                         <c:when test="${cine.estado == 1}">
-                                          <a href="<%=request.getContextPath()%>/CineController?processing=eliminarCine&idCine=${cine.idCine}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-times"></i>&nbsp;&nbsp;Cerrar</a>
+                                          <a href="<%=request.getContextPath()%>/CineController?processing=deshabilitarCine&idCine=${cine.idCine}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-times"></i>&nbsp;&nbsp;Cerrar</a>
                                         </c:when>
                                         <c:otherwise>
-                                          <a href="<%=request.getContextPath()%>/CineController?processing=eliminarCine&idCine=${cine.idCine}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Abrir al público</a>
+                                          <a href="<%=request.getContextPath()%>/CineController?processing=habilitarCine&idCine=${cine.idCine}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Abrir</a>
                                         </c:otherwise>
                                       </c:choose>
                                     </div>

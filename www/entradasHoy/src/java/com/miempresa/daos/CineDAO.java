@@ -133,11 +133,12 @@ public class CineDAO implements IServiceCine {
   @Override
   public Boolean eliminar(Cine cine) {
     Boolean resultFlag = false;
-    final String SQL_DELETE = "update cine set estado=0 where idCine=?";
+    final String SQL_DELETE = "update cine set estado=? where idCine=?";
 
     try {
       pstm = con.getConnection().prepareStatement(SQL_DELETE);
-      pstm.setInt(1, cine.getIdCine());
+      pstm.setInt(1, cine.getEstado());
+      pstm.setInt(2, cine.getIdCine());
       int result = pstm.executeUpdate();
       if (result > 0) {
         resultFlag = true;

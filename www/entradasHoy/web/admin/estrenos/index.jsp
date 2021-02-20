@@ -142,10 +142,10 @@
                                       <a href="<%=request.getContextPath()%>/PeliculaController?processing=botonEditarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a><br>
                                       <c:choose>
                                         <c:when test="${pelicula.estado == 1}">
-                                          <a href="<%=request.getContextPath()%>/PeliculaController?processing=eliminarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
+                                          <a href="<%=request.getContextPath()%>/PeliculaController?processing=deshabilitarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
                                         </c:when>
                                         <c:otherwise>
-                                          <a href="#" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a><br>
+                                          <a href="<%=request.getContextPath()%>/PeliculaController?processing=habilitarPelicula&idPelicula=${pelicula.idPelicula}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
                                         </c:otherwise>
                                       </c:choose>                                      
                                     </div>

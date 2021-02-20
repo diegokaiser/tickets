@@ -60,12 +60,13 @@ public class PeliculaDAO implements IServicePelicula {
       pstm.setString(3, pelicula.getFechaEstreno());
       pstm.setString(4, pelicula.getIdioma());
       pstm.setString(5, pelicula.getPais());
-      //pstm.setInt(6, pelicula.getSubtitulos());
+      pstm.setInt(6, pelicula.getSubtitulos());
       pstm.setInt(7, pelicula.getDoblada());
       pstm.setString(8, pelicula.getPortada());
       pstm.setString(9, pelicula.getDescripcion());
       pstm.setString(10, pelicula.getGenero());
-        System.out.println(pelicula.getNombre()+"update");
+      pstm.setInt(11, pelicula.getEstado());
+      pstm.setInt(12, pelicula.getIdPelicula());
       int result = pstm.executeUpdate();
       if (result > 0) {
         resultFlag = true;
@@ -223,11 +224,12 @@ public class PeliculaDAO implements IServicePelicula {
    @Override
   public Boolean eliminar(Pelicula pelicula) {
     Boolean resultFlag = false;
-    final String SQL_DELETE = "update pelicula set estado=0 where idPelicula=?";
+    final String SQL_DELETE = "update pelicula set estado=? where idPelicula=?";
 
     try {
       pstm = con.getConnection().prepareStatement(SQL_DELETE);
-      pstm.setInt(1, pelicula.getIdPelicula());
+      pstm.setInt(1,pelicula.getEstado());
+      pstm.setInt(2, pelicula.getIdPelicula());     
       int result = pstm.executeUpdate();
       if (result > 0) {
         resultFlag = true;
@@ -256,15 +258,16 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setFechaEstreno(res.getString(4));
         pelicula.setIdioma(res.getString(5));
         pelicula.setPais(res.getString(6));
-        //pelicula.setSubtitulos(res.getInt(7));
-        pelicula.setDoblada(res.getInt(7));
+        pelicula.setSubtitulos(res.getInt(7));
+        pelicula.setDoblada(res.getInt(8));
         pelicula.setPortada(res.getString(8));
         pelicula.setDescripcion(res.getString(9));
         pelicula.setGenero(res.getString(10));
         pelicula.setEstado(res.getInt(11));
-        pelicula.setTrailer(res.getString(15));
-        pelicula.setProtagonistas(res.getString(19));
-        pelicula.setPortadaDestacada(res.getString(20));
+//        
+//        pelicula.setTrailer(res.getString(15));
+//        pelicula.setProtagonistas(res.getString(19));
+//        pelicula.setPortadaDestacada(res.getString(20));
         /*
         System.out.println(res.getInt(1)+" ");
         System.out.println(res.getString(2));

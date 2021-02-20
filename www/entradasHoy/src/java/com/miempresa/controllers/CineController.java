@@ -26,9 +26,12 @@ public class CineController extends HttpServlet {
       case "botoneEditarCine":
         botonEditarCine(request, response);
         break;
-      case "eliminarCine":
-        eliminarCine(request, response);
+      case "deshabilitarCine":
+        deshabilitarCine(request, response);
         break;
+      case "habilitarCine":
+        habilitarCine(request, response);
+        break;        
       case "editarCine":
         editarCine(request, response);
         break;
@@ -102,8 +105,45 @@ public class CineController extends HttpServlet {
     System.out.println(distritos.get(1));
   }
 
-  private void eliminarCine(HttpServletRequest request, HttpServletResponse response) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  private void deshabilitarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String id = request.getParameter("idCine");
+    System.out.println(id);
+    Cine cine = new Cine();
+    cine.setIdCine(Integer.parseInt(id.toString()));
+    cine.setEstado(0);
+    
+    CineDAO cineDAO = new CineDAO();
+    if (cineDAO.eliminar(cine)) {
+        request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+        request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);
+        
+        System.out.println("Se deshabilito");
+    } else {
+        request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+        request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);
+        
+        System.out.println("error en la deshabilitacion de la pelicula");
+    }      
+      
+  }
+    private void habilitarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String id = request.getParameter("idCine");
+    System.out.println(id);
+    Cine cine = new Cine();
+    cine.setIdCine(Integer.parseInt(id.toString()));
+    cine.setEstado(1);
+    
+    CineDAO cineDAO = new CineDAO();
+    if (cineDAO.eliminar(cine)) {
+       request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+        request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);        
+        System.out.println("Se habilito");
+    } else {
+       request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+        request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);        
+        System.out.println("error en la habilitacion de la pelicula");
+    }      
+      
   }
 
   private void botonEditarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
