@@ -32,6 +32,8 @@ public class CineController extends HttpServlet {
       case "editarCine":
         editarCine(request, response);
         break;
+      case "agregarCine":
+         agregarCine(request, response);
 
     }
   }
@@ -138,5 +140,33 @@ public class CineController extends HttpServlet {
       request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
     }
   }
+
+    private void agregarCine(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException  {
+        Cine cine= new Cine();
+        
+        String nombre=request.getParameter("nombre");
+        String direccion=request.getParameter("direccion");
+        String logo=request.getParameter("logo");
+        String estado=request.getParameter("estado");
+        String distrito=request.getParameter("distrito"); 
+       
+        
+        cine.setNombre(nombre);
+        cine.setDireccion(direccion);
+        cine.setLogo(logo);
+        cine.setEstado(Integer.parseInt(estado));
+        cine.setIdDistrito(Integer.parseInt(distrito));
+   
+        CineDAO cineDAO= new CineDAO();
+        if(cineDAO.insertar(cine)){
+            System.out.println("Se ingreso el cine"); 
+               request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+
+        }else{
+            System.out.println("No se ingreso la cine");
+            request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
+        }
+            
+    }
 
 }

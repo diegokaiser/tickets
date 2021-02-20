@@ -171,14 +171,9 @@ public class PeliculaController extends HttpServlet {
         PeliculaDAO peliculaDAO= new PeliculaDAO();
         if(peliculaDAO.insertar(pelicula)){
             System.out.println("Se ingreso la pelicula");
-            request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);            
-            request.getRequestDispatcher("/PeliculaController?processing=listarPelicula").forward(request, response);
-            
-            
-            
+            request.getRequestDispatcher("/PeliculaController?processing=listarPeliculas").forward(request, response);
         }else{
             System.out.println("No se ingreso la pelicula");
-            request.getRequestDispatcher("admin/estrenos/index.jsp").forward(request, response);           
             request.getRequestDispatcher("/PeliculaController?processing=listarPeliculas").forward(request, response);
             
             
