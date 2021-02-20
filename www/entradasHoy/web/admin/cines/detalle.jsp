@@ -62,18 +62,20 @@
                             <label for="logo">Logo</label>
                             <input type="text" class="form-control" id="logo" name="logo" value="<%=cine.getLogo()%>">
                           </div>
-                          
+
                           <div class="form-group">
                             <label for="distrito">Distrito</label>
                             <select class="form-control" id="distrito" name="distrito">
-                              <c:forEach var="distrito" items="${distritos}">
-                                <c:choose>
-                                  <c:when test="${cine.getIdDistrito() == distrito.getIdDistrito()}">
-                                    <option value="${distrito.idDistrito}" selected>${distrito.Nombre}</option>
-                                  </c:when>
-                                </c:choose>
-                                <option value="${distrito.idDistrito}">${distrito.Nombre}</option>
-                              </c:forEach>
+                              <c:choose>
+                                <c:when test="${cine.getIdDistrito() == distrito.getIdDistrito()}">
+                                  <option value="${distrito.idDistrito}" selected>${distrito.Nombre}</option>
+                                </c:when>
+                                <c:otherwise>
+                                  <c:forEach var="distrito" items="${distritos}">                                
+                                    <option value="${distrito.idDistrito}">${distrito.Nombre}</option>
+                                  </c:forEach>
+                                </c:otherwise>
+                              </c:choose>
                             </select>
                           </div>
 

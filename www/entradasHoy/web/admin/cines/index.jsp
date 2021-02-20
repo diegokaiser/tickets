@@ -27,7 +27,7 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-          
+
         <%@ include file="./../includes/side.jsp" %>
         <%@ include file="./../includes/top.jsp" %>
         <!-- page content -->
@@ -36,7 +36,7 @@
             <div class="page-title">
               <div class="title_left ">
                 <h3>Cines registrados</h3>
-                 <%@ include file="./../cines/modal.jsp" %>
+                <%@ include file="./../cines/modal.jsp" %>
 <!--                <a href="<%=request.getContextPath()%>/CineController?processing=botoneEditarCine&idCine=${cine.idCine}" class="btn btn-dark"><i class="fa fa-plus"></i> Agregar</a>                -->
               </div>
             </div>
@@ -65,7 +65,7 @@
                                 <th>Estado</th>
                                 <th>Distrito</th>
                                 <th>Acciones</th>
-                                
+
                               </tr>
                             </thead>
 
@@ -126,7 +126,7 @@
         <%@ include file="./../includes/footer.jsp" %>
       </div>
     </div>
-      
+
 
     <!-- jQuery -->
     <script src="<%=request.getContextPath()%>/RESOURCES/admin/js/jquery.min.js"></script>
