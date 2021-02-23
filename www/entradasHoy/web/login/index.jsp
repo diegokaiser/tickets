@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% 
-  String user = request.getParameter("correo");  
+<%
+  String user = request.getParameter("correo");
 %>
 <html>
   <head>
@@ -9,6 +9,32 @@
     <%@ include file="../WEB-INF/jspf/web/styles.jsp" %>
     <title>Solo Estrenos</title>
   </head>
+  <style type="text/css">
+    .for_slick_slider{
+      display: flex;
+    }
+
+    .for_slick_slider .item{
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    .for_slick_slider .item .overlay{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba (0,0,0,0.10);
+    }
+
+    .for_slick_slider .item img{
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
+
   <body data-basePath="<%=request.getContextPath()%>">
     <div  class="preloader">
       <div class="preloader-content">
@@ -18,41 +44,44 @@
     <div class="content nobg">
       <%@ include file="../WEB-INF/jspf/web/header.jsp" %>
       <!-- destacado, banner hero -->
+
+      <!-- for_slick_slider single-item -->
       <div class="banner-destacado">
         <c:forEach var="s" items="${screen}">
-        <div class="img">
-          <img src="<%=request.getContextPath()%>/RESOURCES/images/${s.portadaDestacada}" alt="">
-        </div>
-        <div class="contenido">
-          <div class="titulo">
-            <h2>${s.nombre}</h2>
+          <div class="img">
+            <img src="<%=request.getContextPath()%>/RESOURCES/images/${s.portadaDestacada}" alt="">
           </div>
-          <div class="timing">
-            <span>${s.duracion}</span>
+
+          <div class="contenido overlay">
+            <div class="titulo">
+              <h2>${s.nombre}</h2>
+            </div>
+            <div class="timing">
+              <span><i class="far fa-clock"></i> ${s.duracion}</span>
+            </div>
+            <div class="descripcion">
+              <p>
+                ${s.descripcion}
+              </p>
+            </div>
+            <div class="info">
+              <p>
+                <strong>Protagonizan: </strong>${s.protagonistas}
+              </p>
+              <p>
+                <strong>Género: </strong>${s.genero}
+              </p>
+            </div>
+            <div class="cta">
+              <a href="<%=request.getContextPath()%>/PeliculaController?processing=getPelicula&idPelicula=${s.idPelicula}" data-id="${s.idPelicula}"><i class="fas fa-play"></i>Comprar entradas</a>
+            </div>
+            <div class="playtrailer">
+              <a href="${s.trailer}" target="_blank">
+                <i class="far fa-play-circle"></i>
+                Ver trailer
+              </a>
+            </div>
           </div>
-          <div class="descripcion">
-            <p>
-              ${s.descripcion}
-            </p>
-          </div>
-          <div class="info">
-            <p>
-              <strong>Protagonizan: </strong>${s.protagonistas}
-            </p>
-            <p>
-              <strong>Género: </strong>${s.genero}
-            </p>
-          </div>
-          <div class="cta">
-            <a href="<%=request.getContextPath()%>/PeliculaController?processing=getPelicula&idPelicula=${s.idPelicula}" data-id="${s.idPelicula}"><i class="fas fa-play"></i>Comprar entradas</a>
-          </div>
-          <div class="playtrailer">
-            <a href="${s.trailer}" target="_blank">
-              <i class="far fa-play-circle"></i>
-              Ver trailer
-            </a>
-          </div>
-        </div>
         </c:forEach>
       </div>
       <c:set var="dato" value="<%=user%>" />
@@ -191,7 +220,7 @@
           </div>
         </c:when>
         <c:otherwise>
-          <% response.sendRedirect("request.getContextPath()/index.jsp"); %>
+          <% response.sendRedirect("request.getContextPath()/index.jsp");%>
         </c:otherwise>
       </c:choose>
 
@@ -201,6 +230,14 @@
     <script>
       $(window).on('load', function () {
         app.basics.header();
+      });
+
+      $(function () {
+        $('.single-item').slick({
+          arrows: false,
+          autoplay: true,
+          autoplaySpeed: 1000
+        });
       });
     </script>
   </body>

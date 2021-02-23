@@ -12,7 +12,8 @@
     <%@ include file="../WEB-INF/jspf/web/styles.jsp" %>
     <title><%=pelicula.getNombre()%>  | Solo Estrenos</title>
   </head>
-  <style>
+
+  <style type="text/css">
     .for_slick_slider{
       display: flex;
     }
@@ -42,17 +43,18 @@
     <div class="content">
       <%@ include file="../WEB-INF/jspf/web/header.jsp" %>
 
-      <div class="banner-destacado for_slick_slider single-item">
+      <!-- for_slick_slider single-item -->
+      <div class="banner-destacado">
         <div class="img">
           <img src="<%=request.getContextPath()%>/RESOURCES/images/<%=pelicula.getPortadaDestacada()%>" alt="<%=pelicula.getNombre()%>">
         </div>
-        <div class="contenido overlay">
-
+        
+        <div class="contenido">
           <div class="titulo">
             <h2><%=pelicula.getNombre()%></h2>
           </div>
           <div class="timing">
-            <span><%=pelicula.getDuracion()%></span>
+            <span><i class="far fa-clock"></i> <%=pelicula.getDuracion()%></span>
           </div>
           <div class="descripcion">
             <p>
@@ -115,6 +117,6 @@
           autoplay: true,
           autoplaySpeed: 1000,
         });
-      })
+      });
     </script>
 </html>
