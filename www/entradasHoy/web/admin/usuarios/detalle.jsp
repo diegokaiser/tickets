@@ -40,9 +40,9 @@
                 <div class="x_panel">
                   <div class="x_content">
                     <div class="row">
-                      <div class="col-xs-12 col-lg-3">
+                      <div class="col-xs-12 col-lg-4">
                       </div>
-                      <div class="col-sm-12 col-lg-6">
+                      <div class="col-sm-12 col-lg-4">
                         <form action="<%=request.getContextPath()%>/UsuarioController" method="POST">
                           <input type="hidden" id="processing" name="processing" value="editarUsuario">
                           <input type="hidden"  id="idUsuario" name="idUsuario" value="<%=usuario.getIdUsuario()%>">
@@ -88,7 +88,7 @@
                           </div>
                         </form>
                       </div>
-                      <div class="col-xs-12 col-lg-3">
+                      <div class="col-xs-12 col-lg-4">
                       </div>
                     </div>
                   </div>

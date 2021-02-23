@@ -64,6 +64,7 @@
                                 <th>Sala</th>
                                 <th>Cine</th>
                                 <th>Stock</th>
+                                <th>Acciones</th>
                               </tr>
                             </thead>
 
