@@ -7,6 +7,32 @@
     <%@ include file="../WEB-INF/jspf/web/styles.jsp" %>
     <title>Solo Estrenos</title>
   </head>
+  <style>
+      .for_slick_slider{
+          display: flex;
+      }
+      
+      .for_slick_slider .item{
+          width: 100%;
+          height: 100vh;
+          position: relative;
+      }
+      
+      .for_slick_slider .item .overlay{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: rgba (0,0,0,0.10);
+      }
+      
+      .for_slick_slider .item img{
+          width: 100%;
+          height: 100vh;
+      }
+  </style>
+  
   <body data-basePath="<%=request.getContextPath()%>">
     <div  class="preloader">
       <div class="preloader-content">
@@ -16,12 +42,15 @@
     <div class="content nobg">
       <%@ include file="../WEB-INF/jspf/web/header.jsp" %>
       <!-- destacado, banner hero -->
-      <div class="banner-destacado">
+      
+      
+      <div class="banner-destacado for_slick_slider single-item">
         <c:forEach var="s" items="${screen}">
         <div class="img">
           <img src="<%=request.getContextPath()%>/RESOURCES/images/${s.portadaDestacada}" alt="">
         </div>
-        <div class="contenido">
+        
+        <div class="contenido overlay">
           <div class="titulo">
             <h2>${s.nombre}</h2>
           </div>
@@ -199,6 +228,14 @@
     <script>
       $(window).on('load', function () {
         app.basics.header();
+      });
+      
+      $(function(){
+          $('.single-item').slick({
+              arrows: false,
+              autoplay: true,
+              autoplaySpeed: 1000
+          });
       });
     </script>
   </body>
