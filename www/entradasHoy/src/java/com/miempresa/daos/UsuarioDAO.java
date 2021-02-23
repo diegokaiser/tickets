@@ -36,12 +36,14 @@ public class UsuarioDAO implements IServiceUsuario {
         usuario.setCorreo(res.getString(4));
         usuario.setTipoDocumento(res.getString(6));
         usuario.setNumeroDocumento(res.getString(7));
-        System.out.println("ID: "+res.getInt(1));
-        System.out.println("Nombre: "+res.getString(2));
-        System.out.println("Apellido: "+res.getString(3));
-        System.out.println("Correo: "+res.getString(4));
-        System.out.println("Tipo documento: "+res.getString(6));
-        System.out.println("Numero documento: "+res.getString(7));
+        //System.out.println("UsuarioDAO: login");
+        //System.out.println("ID: "+res.getInt(1));
+        //System.out.println("Nombre: "+res.getString(2));
+        //System.out.println("Apellido: "+res.getString(3));
+        //System.out.println("Correo: "+res.getString(4));
+        //System.out.println("Tipo documento: "+res.getString(6));
+        //System.out.println("Numero documento: "+res.getString(7));
+        //System.out.println("==================================================");
       }
     } catch (Exception e) {
       System.out.println("Error al iniciar sesion");
@@ -103,7 +105,7 @@ public class UsuarioDAO implements IServiceUsuario {
     }
     return usuarios;
   }
-  
+
   public Usuario selecionarPorCorreo(Usuario usuario) {
     final String SQL_SELECTALL = "{call usp_listarPorCorreo(?)}";
     try {
@@ -127,7 +129,7 @@ public class UsuarioDAO implements IServiceUsuario {
       close();
     }
     return usuario;
-  }  
+  }
 
   @Override
   public Boolean insertar(Usuario usuario) {
@@ -135,17 +137,14 @@ public class UsuarioDAO implements IServiceUsuario {
     final String SQL_INSERT = "insert into usuario (nombre, apellido, correo, contrasena, tipoDocumento, numeroDocumento, idTipoUsuario, estado) values (?,?,?,?,?,?,?,?)";
     try {
       pstm = con.getConnection().prepareStatement(SQL_INSERT);
-
       pstm.setString(1, usuario.getNombre());
       pstm.setString(2, usuario.getApellido());
       pstm.setString(3, usuario.getCorreo());
       pstm.setString(4, usuario.getContrasena());
-
       pstm.setString(5, usuario.getTipoDocumento());
       pstm.setString(6, usuario.getNumeroDocumento());
       pstm.setInt(7, usuario.getIdTipoUsuario());
       pstm.setInt(8, usuario.getEstado());
-
       int result = pstm.executeUpdate();
       if (result > 0) {
         resultFlag = true;

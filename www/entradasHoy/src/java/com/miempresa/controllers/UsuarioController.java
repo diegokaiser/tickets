@@ -93,41 +93,39 @@ public class UsuarioController extends HttpServlet {
   }
 
   private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//    String nombre = request.getParameter("nombre");
-//    String apellido = request.getParameter("apellido");
-//    String correo = request.getParameter("correo");
-//    String tipoDocumento = request.getParameter("tipoDocumento");
-//    String numeroDocumento = request.getParameter("numeroDocumento");
-//    String contrasena = request.getParameter("contrasena");
-//    
+    //String nombre = request.getParameter("nombre");
+    //String apellido = request.getParameter("apellido");
+    //String correo = request.getParameter("correo");
+    //String tipoDocumento = request.getParameter("tipoDocumento");
+    //String numeroDocumento = request.getParameter("numeroDocumento");
+    //String contrasena = request.getParameter("contrasena");
     String nombre = "";
-    String apellido ="";
+    String apellido = "";
     String correo = request.getParameter("correo");
     String tipoDocumento = "";
-    String numeroDocumento ="";
-    String contrasena = request.getParameter("contrasena");    
+    String numeroDocumento = "";
+    String contrasena = request.getParameter("contrasena");
 
     if (correo.trim().isEmpty() || contrasena.trim().isEmpty()) {
       request.getRequestDispatcher("/login/error.jsp").forward(request, response);
     } else {
-//      Usuario usuario = new Usuario();
-//      usuario.setNombre(nombre);
-//      usuario.setApellido(apellido);
-//      usuario.setCorreo(correo);
-//      usuario.setApellido(tipoDocumento);
-//      usuario.setApellido(numeroDocumento);
-//      usuario.setContrasena(contrasena);
-      UsuarioDAO usuarioDAO = new UsuarioDAO();      
+      //Usuario usuario = new Usuario();
+      //usuario.setNombre(nombre);
+      //usuario.setApellido(apellido);
+      //usuario.setCorreo(correo);
+      //usuario.setApellido(tipoDocumento);
+      //usuario.setApellido(numeroDocumento);
+      //usuario.setContrasena(contrasena);
+      UsuarioDAO usuarioDAO = new UsuarioDAO();
       Usuario usuario = new Usuario();
       usuario.setCorreo(correo);
-      usuario=usuarioDAO.selecionarPorCorreo(usuario);
-      
-      nombre=usuario.getNombre();
-      apellido=usuario.getApellido();
-      tipoDocumento=usuario.getTipoDocumento();
-      numeroDocumento=usuario.getNumeroDocumento();
-     
-  
+      usuario = usuarioDAO.selecionarPorCorreo(usuario);
+
+      nombre = usuario.getNombre();
+      apellido = usuario.getApellido();
+      tipoDocumento = usuario.getTipoDocumento();
+      numeroDocumento = usuario.getNumeroDocumento();
+
       if (usuarioDAO.login(usuario)) {
         HttpSession session = request.getSession();
         session.setAttribute("nombre", nombre);
@@ -135,9 +133,10 @@ public class UsuarioController extends HttpServlet {
         session.setAttribute("correo", correo);
         session.setAttribute("tipoDocumento", tipoDocumento);
         session.setAttribute("numeroDocumento", numeroDocumento);
-          System.out.println(nombre);
-          System.out.println(apellido);          
-          
+        System.out.println("UsuarioController: login");
+        System.out.println(nombre);
+        System.out.println(apellido);
+        System.out.println("==================================================");
         request.getRequestDispatcher("/HomeController?log=in").forward(request, response);
       } else {
         request.getRequestDispatcher("/login/error.jsp").forward(request, response);
@@ -155,29 +154,24 @@ public class UsuarioController extends HttpServlet {
 
   private void loginAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     UsuarioDAO usuarioDAO = new UsuarioDAO();
-    Usuario usuario = new Usuario();    
+    Usuario usuario = new Usuario();
     String correo = request.getParameter("correo");
     String contrasena = request.getParameter("contrasena");
 
     if (correo.trim().isEmpty() || contrasena.trim().isEmpty()) {
-      // error
       request.getRequestDispatcher("/login/error.jsp").forward(request, response);
     } else {
-
-      usuario.setCorreo(correo);      
-      usuario=usuarioDAO.selecionarPorCorreo(usuario);
-    
-      correo=usuario.getCorreo();
-      String nombre= usuario.getNombre();
+      usuario.setCorreo(correo);
+      usuario = usuarioDAO.selecionarPorCorreo(usuario);
+      correo = usuario.getCorreo();
+      String nombre = usuario.getNombre();
 
       if (usuarioDAO.loginAdmin(usuario)) {
         HttpSession session = request.getSession();
         session.setAttribute("correo", correo);
         session.setAttribute("nombre", nombre);
-
         request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
       } else {
-        // error
         request.getRequestDispatcher("/admin/login/index.jsp").forward(request, response);
       }
     }
@@ -227,10 +221,10 @@ public class UsuarioController extends HttpServlet {
     usuario.setEstado(0);
 
     UsuarioDAO usuarioDAO = new UsuarioDAO();
-    if (usuarioDAO.eliminar(usuario)) {      
+    if (usuarioDAO.eliminar(usuario)) {
       System.out.println("Se desahiblito");
       request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
-    } else {      
+    } else {
       System.out.println("error en la deshabilitacion del usuario");
       request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
     }
@@ -242,12 +236,12 @@ public class UsuarioController extends HttpServlet {
     Usuario usuario = new Usuario();
     usuario.setIdUsuario(Integer.parseInt(id.toString()));
     usuario.setEstado(1);
-
     UsuarioDAO usuarioDAO = new UsuarioDAO();
+
     if (usuarioDAO.habilitar(usuario)) {
       System.out.println("Se Habilito");
       request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
-    } else {      
+    } else {
       System.out.println("error en la habilitacion del usuario");
       request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
     }

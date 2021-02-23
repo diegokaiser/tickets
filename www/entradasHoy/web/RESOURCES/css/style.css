@@ -680,7 +680,9 @@ footer {
 .home-movie {
   font-family: 'Roboto', sans-serif;
   height: 189px;
-  position: relative; }
+  margin: 0 15px;
+  position: relative;
+  width: 445.75px; }
   .home-movie .img {
     bottom: 0;
     left: 0;
