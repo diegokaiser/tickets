@@ -17,13 +17,13 @@
       display: flex;
     }
 
-    .for_slick_slider . items{
+    .for_slick_slider .items{
       width: 100%;
       height: 100vh;
       position: relative;
     }
 
-    .for_slick_slider . items .overlay{
+    .for_slick_slider .items .overlay{
       position: absolute;
       top: 0;
       left: 0;

@@ -14,7 +14,7 @@
       <c:when test="${not empty dato}">
       <ul class="navbar-nav ml-auto" data-dato="${dato}">
         <li>
-          ¡Bienvenido, <%=userNombre%> <%=userApellido%>!
+            <p>¡Bienvenido, <%=session.getAttribute("nombre")%> <%=session.getAttribute("apellido")%></p>
         </li>
         <li>
           <a data-usercorreo="${dato}" href="<%=request.getContextPath()%>/HomeController?log=out">Logout</a>
