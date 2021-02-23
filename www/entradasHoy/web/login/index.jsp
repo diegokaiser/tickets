@@ -15,8 +15,8 @@
       }
       
       .for_slick_slider .item{
-          width: 100%;
-          height: 100vh;
+          width: 350px;
+          height: 250px;
           position: relative;
       }
       
@@ -24,14 +24,14 @@
           position: absolute;
           top: 0;
           left: 0;
-          width: 100%;
-          height: 100vh;
+          width: 350px;
+          height: 250px;
           background: rgba (0,0,0,0.10);
       }
       
       .for_slick_slider .item img{
-          width: 100%;
-          height: 100vh;
+          width: 350px;
+          height: 250px;
       }
   </style>
   
@@ -46,13 +46,13 @@
       <!-- destacado, banner hero -->
       
       
-      <div class="banner-destacado for_slick_slider single-item">
+      <div class="banner-destacado">
         <c:forEach var="s" items="${screen}">
         <div class="img">
           <img src="<%=request.getContextPath()%>/RESOURCES/images/${s.portadaDestacada}" alt="">
         </div>
         
-        <div class="contenido overlay">
+        <div class="contenido">
           <div class="titulo">
             <h2>${s.nombre}</h2>
           </div>
@@ -84,6 +84,8 @@
         </div>
         </c:forEach>
       </div>
+      
+      
       <c:set var="dato" value="<%=user%>" />
       <c:choose>
         <c:when test="${not empty dato}">
@@ -99,10 +101,11 @@
                   </a>
                 </div>
               </div>
-              <div class="row">
+                
+              <div class="row for_slick_slider single-item">
                 <c:forEach var="a" items="${lastest}">
                   <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
-                    <div class="home-movie">
+                    <div class="home-movie overlay">
                       <div class="img">
                         <img src="<%=request.getContextPath()%>/RESOURCES/images/${a.portada}.jpg" alt="${a.nombre}">
                       </div>
@@ -130,6 +133,7 @@
                   </div>
                 </c:forEach>
               </div>
+                
             </div>
             <div class="container-fluid">
               <div class="row">
@@ -142,10 +146,10 @@
                   </a>
                 </div>
               </div>
-              <div class="row">
+              <div class="row for_slick_slider single-item">
                 <c:forEach var="b" items="${commingSoon}">
                   <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
-                    <div class="home-movie">
+                    <div class="home-movie overlay">
                       <div class="img">
                         <img src="<%=request.getContextPath()%>/RESOURCES/images/${b.portada}.jpg" alt="${b.nombre}">
                       </div>
@@ -185,10 +189,10 @@
                   </a>
                 </div>
               </div> 
-              <div class="row">
+              <div class="row for_slick_slider single-item">
                 <c:forEach var="c" items="${recommended}">
                   <div class="col-sm-12 col-md-6 col-lg-3 pt-4">
-                    <div class="home-movie">
+                    <div class="home-movie overlay">
                       <div class="img">
                         <img src="<%=request.getContextPath()%>/RESOURCES/images/${c.portada}.jpg" alt="${c.nombre}">
                       </div>
@@ -234,6 +238,9 @@
       
       $(function(){
           $('.single-item').slick({
+              infinite: true,
+              slideToShow: 4,
+              slideToScroll: 4,
               arrows: false,
               autoplay: true,
               autoplaySpeed: 1000
