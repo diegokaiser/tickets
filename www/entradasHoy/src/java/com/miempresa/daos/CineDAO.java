@@ -2,6 +2,7 @@ package com.miempresa.daos;
 
 import com.miempresa.connectiondb.ConnectionDB;
 import com.miempresa.entidades.Cine;
+import com.miempresa.entidades.Distrito;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -169,4 +170,30 @@ public class CineDAO implements IServiceCine {
       System.out.println("Error al cerrar conexion :" + e.getMessage());
     }
   }
+<<<<<<< HEAD
+=======
+
+  public List<Distrito> listarDistritos() {
+    List<Distrito> distritos = new ArrayList<>();
+    final String SQL_SELECTALL = "{call usp_listarDistritos()}";
+
+    try {
+      cstm = con.getConnection().prepareCall(SQL_SELECTALL);
+      res = cstm.executeQuery();
+      while (res.next()) {
+        Distrito distrito= new Distrito();
+        distrito.setIdDistrito(res.getInt(1));
+        distrito.setNombre(res.getString(2));
+        distritos.add(distrito);
+        
+      }
+    } catch (Exception e) {
+      System.out.println("Error al recuperar el listado de distritos");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return distritos;
+  }
+>>>>>>> cb5b123... NO SALEEEEEEEEEE
 }

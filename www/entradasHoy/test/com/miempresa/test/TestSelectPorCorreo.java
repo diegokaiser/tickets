@@ -17,7 +17,7 @@ public class TestSelectPorCorreo {
         Usuario usuario = new Usuario();
         usuario.setCorreo("yoshuai_i@hotmail.com");
         UsuarioDAO usuarioDAO= new UsuarioDAO();
-        usuario=usuarioDAO.selecionarPorcCorreo(usuario);
+        usuario=usuarioDAO.selecionarPorCorreo(usuario);
         System.out.println(usuario.getNombre());
         
         

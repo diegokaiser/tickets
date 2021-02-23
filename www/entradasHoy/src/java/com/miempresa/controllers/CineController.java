@@ -38,7 +38,14 @@ public class CineController extends HttpServlet {
         editarCine(request, response);
         break;
       case "agregarCine":
+<<<<<<< HEAD
         agregarCine(request, response);
+=======
+         agregarCine(request, response);
+      case "listarDistritos":
+         listarDistritos(request, response);         
+      
+>>>>>>> cb5b123... NO SALEEEEEEEEEE
 
     }
   }
@@ -101,6 +108,7 @@ public class CineController extends HttpServlet {
     String estado = request.getParameter("estado");
     String distrito = request.getParameter("distrito");
 
+<<<<<<< HEAD
     Cine cine = new Cine();
     
     cine.setNombre(nombre);
@@ -124,6 +132,25 @@ public class CineController extends HttpServlet {
       System.out.println("No se ingreso la cine");
       request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
     }
+=======
+  private void listarDistritos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   
+    CineDAO cineDAO = new CineDAO();    
+    Distrito dis=new Distrito();
+    dis.setIdDistrito(1);
+    dis.setNombre("Juan");
+    List<Distrito> distritos = cineDAO.listarDistritos();
+    List<Distrito> distritos2= new ArrayList<Distrito>();
+    distritos2.add(dis);
+    
+    request.getSession().setAttribute("distritos2",distritos);
+    request.getRequestDispatcher("/admin/cines/Prueba.jsp").forward(request, response);    
+      System.out.println("holaholahahoahah");
+        for (int i = 0; i <cineDAO.listarDistritos().size() ; i++) {
+            System.out.println(distritos.get(i).getNombre());  
+        }
+      System.out.println(distritos);
+>>>>>>> cb5b123... NO SALEEEEEEEEEE
   }
 
   private void deshabilitarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
