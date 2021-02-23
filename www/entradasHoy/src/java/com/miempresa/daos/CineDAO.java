@@ -2,6 +2,7 @@ package com.miempresa.daos;
 
 import com.miempresa.connectiondb.ConnectionDB;
 import com.miempresa.entidades.Cine;
+import com.miempresa.entidades.Distrito;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

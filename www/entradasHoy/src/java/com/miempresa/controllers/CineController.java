@@ -39,7 +39,7 @@ public class CineController extends HttpServlet {
         break;
       case "agregarCine":
         agregarCine(request, response);
-
+        break;
     }
   }
 
@@ -91,15 +91,15 @@ public class CineController extends HttpServlet {
     List<Cine> cines = new ArrayList<>();
     cines = cineDAO.seleccionarTodo();
     request.setAttribute("cines", cines);
-    
+
     DistritoDAO distritoDAO = new DistritoDAO();
     List<Distrito> distritos = new ArrayList<>();
     distritos = distritoDAO.seleccionarTodo();
     request.setAttribute("distritos", distritos);
-    
+
     request.getRequestDispatcher("/admin/cines/index.jsp").forward(request, response);
   }
-  
+
   private void agregarCine(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String nombre = request.getParameter("nombre");
     String direccion = request.getParameter("direccion");
@@ -108,13 +108,13 @@ public class CineController extends HttpServlet {
     String distrito = request.getParameter("distrito");
 
     Cine cine = new Cine();
-    
+
     cine.setNombre(nombre);
     cine.setDireccion(direccion);
     cine.setLogo(logo);
     cine.setEstado(Integer.parseInt(estado));
     cine.setIdDistrito(Integer.parseInt(distrito));
-    
+
     CineDAO cineDAO = new CineDAO();
     if (cineDAO.insertar(cine)) {
       System.out.println("Se ingreso el cine");
@@ -173,12 +173,12 @@ public class CineController extends HttpServlet {
     CineDAO cineDAO = new CineDAO();
     Cine cine = cineDAO.seleccionPorId(Integer.parseInt(id.toString()));
     request.getSession().setAttribute("cine", cine);
-    
+
     DistritoDAO distritoDAO = new DistritoDAO();
     List distritos = new ArrayList<>();
     distritos = distritoDAO.seleccionarTodo();
     request.setAttribute("distritos", distritos);
-    
+
     request.getRequestDispatcher("/admin/cines/detalle.jsp").forward(request, response);
   }
 
@@ -207,5 +207,4 @@ public class CineController extends HttpServlet {
     }
   }
 
-  
 }
