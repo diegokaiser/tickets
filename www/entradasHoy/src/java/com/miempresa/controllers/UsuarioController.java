@@ -93,19 +93,31 @@ public class UsuarioController extends HttpServlet {
   }
 
   private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String nombre = request.getParameter("nombre");
+    String apellido = request.getParameter("apellido");
     String correo = request.getParameter("correo");
+    String tipoDocumento = request.getParameter("tipoDocumento");
+    String numeroDocumento = request.getParameter("numeroDocumento");
     String contrasena = request.getParameter("contrasena");
 
     if (correo.trim().isEmpty() || contrasena.trim().isEmpty()) {
       request.getRequestDispatcher("/login/error.jsp").forward(request, response);
     } else {
       Usuario usuario = new Usuario();
+      usuario.setNombre(nombre);
+      usuario.setApellido(apellido);
       usuario.setCorreo(correo);
+      usuario.setApellido(tipoDocumento);
+      usuario.setApellido(numeroDocumento);
       usuario.setContrasena(contrasena);
       UsuarioDAO usuarioDAO = new UsuarioDAO();
       if (usuarioDAO.login(usuario)) {
         HttpSession session = request.getSession();
+        session.setAttribute("nombre", nombre);
+        session.setAttribute("apellido", apellido);
         session.setAttribute("correo", correo);
+        session.setAttribute("tipoDocumento", tipoDocumento);
+        session.setAttribute("numeroDocumento", numeroDocumento);
         request.getRequestDispatcher("/HomeController?log=in").forward(request, response);
       } else {
         request.getRequestDispatcher("/login/error.jsp").forward(request, response);

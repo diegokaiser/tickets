@@ -65,17 +65,18 @@
 
                           <div class="form-group">
                             <label for="distrito">Distrito</label>
-                            <select class="form-control" id="distrito" name="distrito">
-                              <c:choose>
-                                <c:when test="${cine.getIdDistrito() == distrito.getIdDistrito()}">
-                                  <option value="${distrito.idDistrito}" selected>${distrito.Nombre}</option>
-                                </c:when>
-                                <c:otherwise>
-                                  <c:forEach var="distrito" items="${distritos}">                                
-                                    <option value="${distrito.idDistrito}">${distrito.Nombre}</option>
-                                  </c:forEach>
-                                </c:otherwise>
-                              </c:choose>
+                            <select class="form-control" id="distrito" name="distrito" data-distrito="<%=cine.getIdDistrito()%>">
+                              <c:set var="distritoSeleccionado" value="<%=cine.getIdDistrito()%>" />
+                              <c:forEach var="distrito" items="${distritos}">   
+                                <c:choose>
+                                  <c:when test="${distrito.idDistrito == distritoSeleccionado}">
+                                    <option value="${distrito.idDistrito}" selected>${distrito.nombre}</option>
+                                  </c:when>
+                                  <c:otherwise>
+                                    <option value="${distrito.idDistrito}">${distrito.nombre}</option>
+                                  </c:otherwise>
+                                </c:choose>
+                              </c:forEach>
                             </select>
                           </div>
 

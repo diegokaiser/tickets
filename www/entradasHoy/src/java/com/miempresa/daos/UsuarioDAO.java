@@ -29,10 +29,19 @@ public class UsuarioDAO implements IServiceUsuario {
       cstm.setString(2, usuario.getContrasena());
       res = cstm.executeQuery();
       while (res.next()) {
-        int result = res.getInt(1);
-        if (result == 1) {
-          resultFlag = true;
-        }
+        resultFlag = true;
+        usuario.setIdUsuario(res.getInt(1));
+        usuario.setNombre(res.getString(2));
+        usuario.setApellido(res.getString(3));
+        usuario.setCorreo(res.getString(4));
+        usuario.setTipoDocumento(res.getString(6));
+        usuario.setNumeroDocumento(res.getString(7));
+        System.out.println("ID: "+res.getInt(1));
+        System.out.println("Nombre: "+res.getString(2));
+        System.out.println("Apellido: "+res.getString(3));
+        System.out.println("Correo: "+res.getString(4));
+        System.out.println("Tipo documento: "+res.getString(6));
+        System.out.println("Numero documento: "+res.getString(7));
       }
     } catch (Exception e) {
       System.out.println("Error al iniciar sesion");
@@ -238,7 +247,6 @@ public class UsuarioDAO implements IServiceUsuario {
         System.out.println(res.getString(3));
         System.out.println(res.getString(4));
       }
-
     } catch (Exception e) {
       System.out.println("Error al eliminar al usuario");
       e.printStackTrace();
