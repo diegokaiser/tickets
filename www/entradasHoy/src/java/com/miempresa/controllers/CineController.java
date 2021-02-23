@@ -105,7 +105,7 @@ public class CineController extends HttpServlet {
     String direccion = request.getParameter("direccion");
     String logo = request.getParameter("logo");
     String estado = request.getParameter("estado");
-    String distrito = request.getParameter("distrito");
+    String distrito = request.getParameter("idDistrito");
 
     Cine cine = new Cine();
 
@@ -114,6 +114,7 @@ public class CineController extends HttpServlet {
     cine.setLogo(logo);
     cine.setEstado(Integer.parseInt(estado));
     cine.setIdDistrito(Integer.parseInt(distrito));
+      System.out.println(distrito);
 
     CineDAO cineDAO = new CineDAO();
     if (cineDAO.insertar(cine)) {
@@ -206,5 +207,4 @@ public class CineController extends HttpServlet {
       request.getRequestDispatcher("/CineController?processing=listarCines").forward(request, response);
     }
   }
-
 }

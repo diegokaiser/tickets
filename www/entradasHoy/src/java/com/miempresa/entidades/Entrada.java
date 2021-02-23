@@ -2,6 +2,10 @@ package com.miempresa.entidades;
 
 public class Entrada {
 
+    public static String getNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
   private Integer idEntrada;
   private double precio;
   private String tipo;

@@ -7,6 +7,8 @@ package com.miempresa.daos;
 
 import com.miempresa.connectiondb.ConnectionDB;
 import com.miempresa.entidades.Entrada;
+import com.miempresa.entidades.Pelicula;
+import com.miempresa.entidades.Sala;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,8 +35,32 @@ public class EntradaDAO implements IserviceEntrada{
 
     @Override
     public Boolean insertar(Entrada t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Boolean resultFlag = false;
+    final String SQL_INSERT = "{call ups_InsetarEntrada(?,?,?,?,?,?)}";
+    try {
+        
+     cstm = con.getConnection().prepareCall(SQL_INSERT);
+     
+      cstm.setDouble(1, t.getPrecio());
+      cstm.setString(2, t.getTipo());
+      cstm.setInt(3, t.getEstado());
+      cstm.setInt(4, t.getIdSala());
+      cstm.setInt(5, t.getIdPelicula());
+      cstm.setInt(6, t.getStock());
+      
+      
+
+      int result = cstm.executeUpdate();
+      if (result > 0) {
+        resultFlag = true;
+      }
+    } catch (Exception e) {
+      System.out.println("Error al insertar el entrada");
+      e.printStackTrace();
+    } finally {
+      close();
     }
+    return resultFlag;    }
 
     @Override
     public Boolean actualizar(Entrada t) {
@@ -92,5 +118,31 @@ public class EntradaDAO implements IserviceEntrada{
         } catch (Exception e) {
             System.out.println("Error al cerrar conexion :" + e.getMessage());
         }    }
+    
+  public List<Sala> seleccionarSala() {
+    List<Sala> salas = new ArrayList<>();
+    final String SQL_SELECTALL = "{call usp_listarSalas()}";
+    try {
+      cstm = con.getConnection().prepareCall(SQL_SELECTALL);
+      res = cstm.executeQuery();
+      while (res.next()) {
+        Sala sala = new Sala();
+        sala.setIdSala(res.getInt(1));
+        sala.setNumero(res.getInt(2));
+        sala.setNombreCine(res.getString(6));
+        sala.setDireccion(res.getString(7));
+        salas.add(sala);
+      }
+    } catch (Exception e) {
+      System.out.println("Error al recuperar el listado de salas");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return salas;
+  }
+  
+  
+  
     
 }

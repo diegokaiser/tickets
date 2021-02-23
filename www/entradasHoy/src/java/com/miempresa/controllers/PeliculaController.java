@@ -66,7 +66,14 @@ public class PeliculaController extends HttpServlet {
     List<Pelicula> peliculas = new ArrayList<>();
     peliculas = peliculaDAO.seleccionarTodo();
     request.getSession().setAttribute("peliculas", peliculas);
+    
+//    DistritoDAO distritoDAO = new DistritoDAO();
+//    List<Distrito> distritos = new ArrayList<>();
+//    distritos = distritoDAO.seleccionarTodo();
+//    request.setAttribute("distritos", distritos);
+    
     request.getRequestDispatcher("/admin/estrenos/index.jsp").forward(request, response);
+    
   }
 
   private void botonEditarPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
