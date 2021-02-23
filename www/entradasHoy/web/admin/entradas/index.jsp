@@ -46,7 +46,7 @@
                   <div class="x_content">
                     <div class="row">
                       <div class="col-sm-12 text-right">
-                          <%@ include file="./../estrenos/modal.jsp" %>
+                          <%@ include file="./../entradas/modal.jsp" %>
                       </div>
                     </div>
                     <div class="row">

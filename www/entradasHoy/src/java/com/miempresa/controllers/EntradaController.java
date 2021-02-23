@@ -1,9 +1,12 @@
 package com.miempresa.controllers;
 
+import com.miempresa.daos.CineDAO;
 import com.miempresa.daos.EntradaDAO;
 import com.miempresa.daos.PeliculaDAO;
+import com.miempresa.entidades.Cine;
 import com.miempresa.entidades.Entrada;
 import com.miempresa.entidades.Pelicula;
+import com.miempresa.entidades.Sala;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -37,6 +40,10 @@ public class EntradaController extends HttpServlet {
       case "cancelarEntrada":
         cancelarEntrada(request, response);
         break;
+      case "insertarEntrada":
+        insertarEntrada(request, response);
+        break;        
+        
     }
   }
 
@@ -84,8 +91,23 @@ public class EntradaController extends HttpServlet {
     List<Entrada> entradas = new ArrayList<>();
     entradas = entradaDAO.seleccionarTodo();
     request.setAttribute("entradas", entradas);
-    System.out.println("dasdasdashola");
-    System.out.println(entradas.get(0));
+
+    
+    CineDAO cineDAO = new CineDAO();
+    List<Cine> cines = new ArrayList<>();
+    cines = cineDAO.seleccionarTodo();
+    request.setAttribute("cines", cines);
+
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    List<Pelicula> peliculas = new ArrayList<>();
+    List<Sala> salas= new ArrayList<>();
+    peliculas = peliculaDAO.seleccionarTodo();
+    salas=entradaDAO.seleccionarSala();
+    request.setAttribute("peliculas", peliculas);
+    request.setAttribute("salas", salas);
+
+    
+
     request.getRequestDispatcher("/admin/entradas/index.jsp").forward(request, response);
   }
 
@@ -98,7 +120,7 @@ public class EntradaController extends HttpServlet {
   }
   
   private void verificarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.getRequestDispatcher("/entrada/validarEntrada.jsp").forward(request, response);
+    request.getRequestDispatcher("/ntrada/validarEntrada.jsp").forward(request, response);
   }
   
   private void comprarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -123,5 +145,32 @@ public class EntradaController extends HttpServlet {
   private void cancelarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     // al cancelar entrada debe borrar los datos de la session
     request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
+  }
+
+  private void insertarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   
+    String precio = request.getParameter("precio");
+    String tipo = request.getParameter("tipo");
+    String estado = request.getParameter("estado");
+    String idSala = request.getParameter("idSala");
+    String idPelicula = request.getParameter("idPelicula");
+    String stock=request.getParameter("stock");
+
+    Entrada entrada = new Entrada();
+    entrada.setPrecio(Integer.parseInt(precio)*1.0);
+    entrada.setTipo(tipo);
+    entrada.setEstado(Integer.parseInt(estado));
+    entrada.setIdSala(Integer.parseInt(idSala));
+    entrada.setIdPelicula(Integer.parseInt(idPelicula));
+    entrada.setStock(Integer.parseInt(stock));    
+
+    EntradaDAO entradaDAO = new EntradaDAO();
+    if (entradaDAO.insertar(entrada)) {
+      System.out.println("Se ingreso la entrada");
+      request.getRequestDispatcher("/EntradaController?processing=listarEntradas").forward(request, response);
+    } else {
+      System.out.println("No se ingreso la entrada");
+      request.getRequestDispatcher("/EntradaController?processing=listarEntradas").forward(request, response);
+    }
   }
 }
