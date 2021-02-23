@@ -911,6 +911,11 @@ footer {
         .banner-destacado .contenido .playtrailer a:hover, .banner-destacado .contenido .playtrailer a:active {
           color: #e50914; }
 
+.slider-ultimos,
+.slider-estrenos,
+.slider-recomendados {
+  margin: 0 15px; }
+
 /****************MOBILE DEVICES*****************/
 /****************TABLET DEVICES*****************/
 /****************DESKTOPS DEVICES*****************/

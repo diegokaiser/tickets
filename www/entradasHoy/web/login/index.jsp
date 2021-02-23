@@ -233,7 +233,7 @@
         $(function () {
           $('.slider-ultimos').slick({
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 3000,
             arrows: false,
             centerPadding: '15px',
             dots: false,
@@ -267,7 +267,7 @@
           });
           $('.slider-estrenos').slick({
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 3000,
             arrows: false,
             centerPadding: '15px',
             dots: false,
@@ -301,7 +301,7 @@
           });
           $('.slider-recomendados').slick({
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 3000,
             arrows: false,
             centerPadding: '15px',
             dots: false,
