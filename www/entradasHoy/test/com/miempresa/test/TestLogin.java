@@ -9,8 +9,8 @@ public class TestLogin {
         ConnectionDB.getInstance();
         Usuario usuario = new Usuario();
         
-        usuario.setCorreo("sandalio@brayans.pe");
-        usuario.setContrasena("1234567");
+        usuario.setCorreo("diegokaiser@gmail.com");
+        usuario.setContrasena("123123");
         
         
         UsuarioDAO usuarioDAO = new UsuarioDAO();

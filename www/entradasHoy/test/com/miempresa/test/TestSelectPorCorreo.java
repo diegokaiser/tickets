@@ -13,16 +13,14 @@ import com.miempresa.entidades.Usuario;
  * @author JosueFlores
  */
 public class TestSelectPorCorreo {
-    public static void main(String[] args) {
-        Usuario usuario = new Usuario();
-        usuario.setCorreo("yoshuai_i@hotmail.com");
-        UsuarioDAO usuarioDAO= new UsuarioDAO();
-        usuario=usuarioDAO.selecionarPorcCorreo(usuario);
-        System.out.println(usuario.getNombre());
-        
-        
-        
-        
-    }
-    
+
+  public static void main(String[] args) {
+    Usuario usuario = new Usuario();
+    usuario.setCorreo("yoshuai_i@hotmail.com");
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    usuario = usuarioDAO.selecionarPorCorreo(usuario);
+    System.out.println(usuario.getNombre());
+
+  }
+
 }
