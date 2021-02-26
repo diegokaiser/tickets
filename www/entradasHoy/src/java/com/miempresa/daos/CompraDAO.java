@@ -51,7 +51,7 @@ public class CompraDAO implements IserviceCompra{
     
     public List<Compra> llenarDropList(int idPelicula) {
         List<Compra> compras = new ArrayList<>();
-        final String SQL_SELECTALL = "{call usp_listarCinesPorPelicula(?)}";
+        final String SQL_SELECTALL ="{call usp_listarCinesPorPelicula()}";
   
         try {
 //            System.out.println(idPelicula+"el1");
