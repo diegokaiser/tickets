@@ -141,8 +141,6 @@ public class EntradaDAO implements IserviceEntrada{
     }
     return salas;
   }
-  
-  
-  
+ 
     
 }
