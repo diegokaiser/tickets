@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
   <head>
     <%@ include file="WEB-INF/jspf/web/meta.jsp" %>
@@ -36,6 +37,7 @@
           </div>
         </form>
       </div>
+
     </div>
     <%@ include file="WEB-INF/jspf/web/footer.jsp" %>
     <%@ include file="WEB-INF/jspf/web/scripts.jsp" %>    

@@ -79,7 +79,7 @@
       var fechaC = fechaB.replace("-", "/")
       var fechaD = fechaC.replace("-", "/")
       $('#fechaEstreno').countdown(fechaD + ' 23:59:59', function (event) {
-        $(this).html(event.strftime('Faltan %d días, %H horas y %M minutos'));
+        $(this).html(event.strftime('Faltan %D días, %H horas, %M minutos y %S segundos'));
       });
       console.log(fechaD);
     </script>
