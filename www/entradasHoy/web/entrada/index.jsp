@@ -47,7 +47,10 @@
                     </div>
                     <div class="form-group pt-4">
                         <label for="numeroEntradas">Numero Entradas</label>
-                        <input type="number" class="form-control" id="numeroEntradas">
+                        <select  class="form-control" name="numeroEntradas" id="numeroEntradas">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
                     </div>
 
 
