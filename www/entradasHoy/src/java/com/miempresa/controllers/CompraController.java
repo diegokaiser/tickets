@@ -78,9 +78,11 @@ public class CompraController extends HttpServlet{
 
 CompraDAO distritoDAO = new CompraDAO();
 List<Compra> compras = new ArrayList<>();
-compras=distritoDAO.llenarDropList(1);
-request.setAttribute("compras", compras);   
-    request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
+compras=distritoDAO.dropListCine(1);
+request.setAttribute("compras", compras);  
+//
+//List<Compra> compras2=new ArrayList<>();
+// request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
 
     }
 }

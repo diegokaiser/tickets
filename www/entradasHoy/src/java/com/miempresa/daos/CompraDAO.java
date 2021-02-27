@@ -63,7 +63,7 @@ public class CompraDAO implements IserviceCompra{
       System.out.println("Error al cerrar conexion :" + e.getMessage());
     }    }
     
-    public List<Compra> llenarDropList(int idPelicula) {
+    public List<Compra> dropListCine(int idPelicula) {
         List<Compra> compras = new ArrayList<>();
         final String SQL_SELECTALL ="{call usp_listarCinesPorPelicula(?)}";
 
@@ -84,6 +84,38 @@ public class CompraDAO implements IserviceCompra{
             close();
         }
         return compras;
+    }    
+    
+    public List<Compra> dropListSala(String nombreCine) {
+        List<Compra> compras = new ArrayList<>();
+        final String SQL_SELECTALL ="{call usp_listarCinesPorPelicula2(?)}";
+
+        try {
+            cstm = con.getConnection().prepareCall(SQL_SELECTALL);
+            cstm.setString(1, nombreCine);
+            res = cstm.executeQuery();
+            
+            while (res.next()) {
+                Compra compra = new Compra();
+                compra.setIdEntrada(res.getInt(1));
+                compra.setPrecio(res.getDouble(2));
+                compra.setTipo(res.getString(3));
+                compra.setNombreCine(res.getString(4));
+                compra.setDireccion(res.getString(5));
+                compra.setNumeroSala(res.getInt(6));
+                compra.setNombrePelicula(res.getString(7));
+                compra.setIdCine(res.getInt(8));
+                compras.add(compra);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al recuperar el listado de alimentacion del drop list");
+            e.printStackTrace();
+        } finally {
+            close();
+        }
+        return compras;
     }
+    
+    
     
 }
