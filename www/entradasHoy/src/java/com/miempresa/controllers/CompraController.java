@@ -5,7 +5,6 @@
  */
 package com.miempresa.controllers;
 
-
 import com.miempresa.daos.CompraDAO;
 import com.miempresa.entidades.Compra;
 import java.io.IOException;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JosueFlores
  */
-public class CompraController extends HttpServlet{
+public class CompraController extends HttpServlet {
 
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
@@ -29,8 +28,7 @@ public class CompraController extends HttpServlet{
       case "llenarDropList":
         llenarDropList(request, response);
         break;
-    
-        
+
     }
   }
 
@@ -73,17 +71,16 @@ public class CompraController extends HttpServlet{
     return "Short description";
   }// </editor-fold>
 
-    private void llenarDropList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//    String idPelicula=request.getParameter("idPelicula");
+  private void llenarDropList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //String idPelicula=request.getParameter("idPelicula");
 
-CompraDAO distritoDAO = new CompraDAO();
-List<Compra> compras = new ArrayList<>();
-compras=distritoDAO.dropListCine(1);
-request.setAttribute("compras", compras);  
-//
-//List<Compra> compras2=new ArrayList<>();
-// request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
+    CompraDAO distritoDAO = new CompraDAO();
+    List<Compra> compras = new ArrayList<>();
+    compras = distritoDAO.dropListCine(1);
+    request.setAttribute("compras", compras);
 
-    }
+    //List<Compra> compras2=new ArrayList<>();
+    request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
+
+  }
 }
-  

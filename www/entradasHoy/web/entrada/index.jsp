@@ -32,8 +32,8 @@
           <div class="form-group mt-5">
             <label for="idCompra">Elegir cine:</label>
             <select class="form-control" name="idCompra" id="idCompra">
-              <c:forEach var="compra" items="${compras}">                                
-                <option value="${compra.nombreCine}">${compra.nombreCine}</option>
+              <c:forEach var="cine" items="${cines}">                                
+                <option value="${cine.nombreCine}">${cine.nombreCine}</option>
               </c:forEach>
             </select>
           </div>

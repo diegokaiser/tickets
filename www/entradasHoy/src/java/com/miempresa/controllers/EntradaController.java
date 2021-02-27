@@ -1,9 +1,11 @@
 package com.miempresa.controllers;
 
 import com.miempresa.daos.CineDAO;
+import com.miempresa.daos.CompraDAO;
 import com.miempresa.daos.EntradaDAO;
 import com.miempresa.daos.PeliculaDAO;
 import com.miempresa.entidades.Cine;
+import com.miempresa.entidades.Compra;
 import com.miempresa.entidades.Entrada;
 import com.miempresa.entidades.Pelicula;
 import com.miempresa.entidades.Sala;
@@ -116,6 +118,12 @@ public class EntradaController extends HttpServlet {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id));
     request.setAttribute("pelicula", pelicula);
+    
+    CompraDAO compraDAO = new CompraDAO();
+    List compras = new ArrayList<>();
+    compras = compraDAO.dropListCine(Integer.parseInt(id));
+    request.setAttribute("cines", compras);
+    
     request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
   }
   
