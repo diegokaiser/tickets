@@ -14,6 +14,14 @@ import java.util.List;
  * @author JosueFlores
  */
 public class TestLlenarDropList {
+<<<<<<< HEAD
+=======
+    public static void main(String[] args) {
+        CompraDAO compraDAO= new CompraDAO();
+        List<Compra> compra=compraDAO.dropListCine(65);
+        for (int i = 0; i < compra.size(); i++) {
+                    System.out.println(compra.get(i).getNombreCine());        
+>>>>>>> 8d7c0e9... falta comprar
 
   public static void main(String[] args) {
     CompraDAO compraDAO = new CompraDAO();

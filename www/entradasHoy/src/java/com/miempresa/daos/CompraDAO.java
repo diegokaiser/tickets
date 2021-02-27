@@ -30,8 +30,32 @@ public class CompraDAO implements IserviceCompra {
 
   @Override
   public Boolean insertar(Compra t) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+ 
+    Boolean resultFlag = false;
+    final String SQL_INSERT = "{call usp_insertarCompra(?,?,?,?)}";
+    try {
+        
+     cstm = con.getConnection().prepareCall(SQL_INSERT);
+     
+      cstm.setInt(1, t.getIdUsuario());
+      cstm.setInt(2, t.getIdEntrada());
+      cstm.setInt(3, t.getNumeroEntradas());
+      cstm.setInt(4, t.getEstado());
+
+
+      int result = cstm.executeUpdate();
+      if (result > 0) {
+        resultFlag = true;
+      }
+    } catch (Exception e) {
+      System.out.println("Error al comprar entrada");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return resultFlag;    
+   }
+  
 
   @Override
   public Boolean actualizar(Compra t) {

@@ -78,12 +78,14 @@ public class CompraController extends HttpServlet {
   private void llenarDropList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     //String idPelicula=request.getParameter("idPelicula");
 
-    CompraDAO distritoDAO = new CompraDAO();
+    CompraDAO comprasDAO = new CompraDAO();
     List<Compra> compras = new ArrayList<>();
-    compras = distritoDAO.dropListCine(1);
+    compras = comprasDAO.dropListCine(1);
     request.setAttribute("compras", compras);
     
-    request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
+//    List<Compra> compras2= new ArrayList<>();
+//    compras2=comprasDAO.dropListSala();
+//    request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
 
   }
 
