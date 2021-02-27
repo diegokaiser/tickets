@@ -25,6 +25,7 @@ public class Compra {
     private String direccion;
     private int numeroSala;
     private String nombrePelicula;
+    private int idCine;
 
     public Compra() {
     }
@@ -133,5 +134,14 @@ public class Compra {
         this.nombrePelicula = nombrePelicula;
     }
 
+    public int getIdCine() {
+        return idCine;
+    }
+
+    public void setIdCine(int idCine) {
+        this.idCine = idCine;
+    }
+
+   
     
 }

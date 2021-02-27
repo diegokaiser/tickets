@@ -23,7 +23,9 @@ public class CompraDAO implements IserviceCompra{
   private static PreparedStatement pstm;
   private static CallableStatement cstm;
   private static ResultSet res;
-
+  public CompraDAO() {
+    con = ConnectionDB.getInstance();
+  }
     @Override
     public Boolean insertar(Compra t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -46,31 +48,33 @@ public class CompraDAO implements IserviceCompra{
 
     @Override
     public void close() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    try {
+      if (res != null) {
+        res.close();
+      }
+      if (cstm != null) {
+        cstm.close();
+      }
+      if (con != null) {
+        con.close();
+      }
+
+    } catch (Exception e) {
+      System.out.println("Error al cerrar conexion :" + e.getMessage());
+    }    }
     
     public List<Compra> llenarDropList(int idPelicula) {
         List<Compra> compras = new ArrayList<>();
-        final String SQL_SELECTALL ="{call usp_listarCinesPorPelicula()}";
-  
+        final String SQL_SELECTALL ="{call usp_listarCinesPorPelicula(?)}";
+
         try {
-//            System.out.println(idPelicula+"el1");
             cstm = con.getConnection().prepareCall(SQL_SELECTALL);
-//            System.out.println(idPelicula+"el2");
             cstm.setInt(1, idPelicula);
-//            System.out.println(idPelicula+"el3");
             res = cstm.executeQuery();
-//            System.out.println(idPelicula+"el4");
             
             while (res.next()) {
                 Compra compra = new Compra();
-                compra.setIdEntrada(res.getInt(1));
-                compra.setPrecio(res.getDouble(2));
-                compra.setTipo(res.getString(3));
-                compra.setNombreCine(res.getString(4));
-                compra.setDireccion(res.getString(5));
-                compra.setNumeroSala(res.getInt(6));
-                compra.setNombrePelicula(res.getString(7));
+                compra.setNombreCine(res.getString(1));
                 compras.add(compra);
             }
         } catch (Exception e) {

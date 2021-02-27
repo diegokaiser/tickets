@@ -106,7 +106,6 @@ public class CineController extends HttpServlet {
     String logo = request.getParameter("logo");
     String estado = request.getParameter("estado");
     String distrito = request.getParameter("idDistrito");
-
     Cine cine = new Cine();
 
     cine.setNombre(nombre);
