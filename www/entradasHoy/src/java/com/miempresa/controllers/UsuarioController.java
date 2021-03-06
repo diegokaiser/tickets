@@ -2,6 +2,7 @@ package com.miempresa.controllers;
 
 import com.miempresa.daos.UsuarioDAO;
 import com.miempresa.entidades.Usuario;
+import com.miempresa.mails.SendEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -42,6 +43,9 @@ public class UsuarioController extends HttpServlet {
       case "habilitarUsuario":
         habilitarUsuario(request, response);
         break;
+      case "validarUsuario":
+        validarUsuario(request, response);
+        break;
     }
   }
 
@@ -69,10 +73,11 @@ public class UsuarioController extends HttpServlet {
     String numeroDocumento = request.getParameter("numeroDocumento");
     String correo = request.getParameter("correo");
     String contrasena = request.getParameter("contrasena");
-
     if (nombre.trim().isEmpty() || contrasena.trim().isEmpty()) {
       request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
     } else {
+      SendEmail smv = new SendEmail();
+      String code = smv.getRandom();
       Usuario usuario = new Usuario();
       usuario.setNombre(nombre);
       usuario.setApellido(apellido);
@@ -82,10 +87,16 @@ public class UsuarioController extends HttpServlet {
       usuario.setContrasena(contrasena);
       usuario.setIdTipoUsuario(3);
       usuario.setEstado(0);
+      usuario.setCode(code);
       UsuarioDAO usuarioDAO = new UsuarioDAO();
+      
       if (usuarioDAO.insertar(usuario)) {
-        request.setAttribute("nombre", nombre);
-        request.getRequestDispatcher("/registro/mensajeAnotado.jsp").forward(request, response);
+        boolean testEmail = smv.sendEmail(usuario);
+        if(testEmail) {
+          HttpSession session = request.getSession();
+          session.setAttribute("authcode", code);
+        }        
+        request.getRequestDispatcher("/registro/mensajeValidacion.jsp").forward(request, response);
       } else {
         request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
       }
@@ -244,6 +255,24 @@ public class UsuarioController extends HttpServlet {
     } else {
       System.out.println("error en la habilitacion del usuario");
       request.getRequestDispatcher("/UsuarioController?processing=listarUsuarios").forward(request, response);
+    }
+  }
+
+  private void validarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    response.setContentType("text/html;charset=UTF-8");
+    HttpSession session = request.getSession();
+    Usuario usuario = (Usuario) session.getAttribute("authcode");
+    String code = request.getParameter("authcode");
+    if(code.equals(usuario.getCode())) {
+      System.out.println("Viene de: UsuarioController&validarUsuario");
+      System.out.println("Se validó al usuario");
+      request.getRequestDispatcher("registro/mensajeValidado.jsp").forward(request, response);
+      System.out.println("===================================================================================================");
+    } else {
+      System.out.println("Viene de: UsuarioController&validarUsuario");
+      System.out.println("No se validó al usuario");
+      request.getRequestDispatcher("registro/mensajeValidacion.jsp").forward(request, response);
+      System.out.println("===================================================================================================");
     }
   }
 }

@@ -119,10 +119,15 @@ public class EntradaController extends HttpServlet {
     Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id));
     request.setAttribute("pelicula", pelicula);
     
+    String nombreCine = request.getParameter("nombreCine");
     CompraDAO compraDAO = new CompraDAO();
-    List compras = new ArrayList<>();
-    compras = compraDAO.dropListCine(Integer.parseInt(id));
-    request.setAttribute("cines", compras);
+    List cines = new ArrayList<>();
+    cines = compraDAO.dropListCine(Integer.parseInt(id));
+    request.setAttribute("cines", cines);
+    
+    List salas = new ArrayList<>();
+    salas = compraDAO.dropListSala(nombreCine);
+    request.setAttribute("salas", salas);
     
     request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
   }

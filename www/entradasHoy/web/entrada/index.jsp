@@ -33,7 +33,7 @@
             <label for="idCompra">Elegir cine:</label>
             <select class="form-control" name="idCompra" id="idCompra">
               <c:forEach var="cine" items="${cines}">                                
-                <option value="${cine.nombreCine}">${cine.nombreCine}</option>
+                <option value="${cine.idCine}">${cine.nombreCine}</option>
               </c:forEach>
             </select>
           </div>
@@ -41,6 +41,15 @@
           <div class="form-group">
             <label for="idSala">Elegir sala</label>
             <select class="form-control" name="idSala" id="idSala">
+              <!-- aqui necesitamos tener el id del padre, osea el  idCine -->
+              <c:choose>
+                <c:when test="${cine.idCine == sala.idCine}">
+                  <c:forEach var="sala" items="${salas}">                                
+                    <option value="${sala.idSala}">Sala ${sala.numero}</option>
+                  </c:forEach>
+                </c:when>
+                <c:otherwise></c:otherwise>
+              </c:choose>              
             </select>
           </div>
           <div class="form-group pt-4">

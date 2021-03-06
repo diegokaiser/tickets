@@ -11,6 +11,7 @@ public class Usuario {
   private String numeroDocumento;
   private Integer idTipoUsuario;
   private Integer estado;
+  public String code;
 
   public Usuario() {
 
@@ -20,7 +21,7 @@ public class Usuario {
     this.idUsuario = idUsuario;
   }
 
-  public Usuario(String nombre, String apellido, String correo, String contrasena, String tipoDocumento, String numeroDocumento, Integer idTipoUsuario, Integer estado) {
+  public Usuario(String nombre, String apellido, String correo, String contrasena, String tipoDocumento, String numeroDocumento, Integer idTipoUsuario, Integer estado, String code) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.correo = correo;
@@ -29,9 +30,10 @@ public class Usuario {
     this.numeroDocumento = numeroDocumento;
     this.idTipoUsuario = idTipoUsuario;
     this.estado = estado;
+    this.code = code;
   }
 
-  public Usuario(Integer idUsuario, String nombre, String apellido, String correo, String contrasena, String tipoDocumento, String numeroDocumento, Integer idTipoUsuario, Integer estado) {
+  public Usuario(Integer idUsuario, String nombre, String apellido, String correo, String contrasena, String tipoDocumento, String numeroDocumento, Integer idTipoUsuario, Integer estado, String code) {
     this.idUsuario = idUsuario;
     this.nombre = nombre;
     this.apellido = apellido;
@@ -41,6 +43,7 @@ public class Usuario {
     this.numeroDocumento = numeroDocumento;
     this.idTipoUsuario = idTipoUsuario;
     this.estado = estado;
+    this.code = code;
   }
 
   public Integer getIdUsuario() {
@@ -113,5 +116,13 @@ public class Usuario {
 
   public void setEstado(Integer estado) {
     this.estado = estado;
+  }
+  
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
   }
 }

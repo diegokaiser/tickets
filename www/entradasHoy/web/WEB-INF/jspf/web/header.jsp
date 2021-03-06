@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% 
+<%
   String userCorreo = request.getParameter("correo");
   String userNombre = request.getParameter("nombre");
   String userApellido = request.getParameter("apellido");
@@ -10,19 +10,21 @@
       <img src="<%=request.getContextPath()%>/RESOURCES/images/logo.svg " alt=""><span>Solo estrenos</span>
     </a>
     <c:set var="dato" value="<%=userCorreo%>" />
+    <c:set var="nombre" value="<%=session.getAttribute("nombre")%>" />
     <c:choose>
       <c:when test="${not empty dato}">
-      <ul class="navbar-nav ml-auto" data-dato="${dato}">
-        <li>
+        <ul class="navbar-nav ml-auto" data-dato="${dato}">
+          <li>
             <p>¡Bienvenido, <%=session.getAttribute("nombre")%> <%=session.getAttribute("apellido")%>!</p>
-        </li>
-        <li>
-          <a data-usercorreo="${dato}" href="<%=request.getContextPath()%>/HomeController?log=out">Logout</a>
-        </li>
-      </ul>
+          </li>
+          <li>
+            <a data-usercorreo="${dato}" href="<%=request.getContextPath()%>/HomeController?log=out">Logout</a>
+          </li>
+        </ul>
       </c:when>
-      <c:otherwise>
-      </c:otherwise>
+      <c:when test="${nombre = null}">
+        <ul class="navbar-nav ml-auto"></ul>
+      </c:when> 
     </c:choose>
   </nav>
 </header>
