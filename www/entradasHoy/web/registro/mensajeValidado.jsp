@@ -15,7 +15,7 @@
       </video>
     </div>
     <div class="content">
-      <%@ include file="../WEB-INF/jspf/web/header.jsp" %>
+      <%@ include file="../WEB-INF/jspf/web/header_.jsp" %>
 
       <%--    <div class="form">--%>
       <%--        <form action="">--%>

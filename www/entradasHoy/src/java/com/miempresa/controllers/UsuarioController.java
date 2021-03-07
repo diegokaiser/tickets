@@ -4,7 +4,6 @@ import com.miempresa.daos.UsuarioDAO;
 import com.miempresa.entidades.Usuario;
 import com.miempresa.mails.SendEmail;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -89,14 +88,15 @@ public class UsuarioController extends HttpServlet {
       usuario.setEstado(0);
       usuario.setCode(code);
       UsuarioDAO usuarioDAO = new UsuarioDAO();
+      boolean test = smv.sendEmail(usuario, request);
       
       if (usuarioDAO.insertar(usuario)) {
-        boolean testEmail = smv.sendEmail(usuario);
-        if(testEmail) {
+        
+        if(test) {
           HttpSession session = request.getSession();
           session.setAttribute("authcode", code);
         }        
-        request.getRequestDispatcher("/registro/mensajeValidacion.jsp").forward(request, response);
+        request.getRequestDispatcher("/registro/mensajeAnotado.jsp").forward(request, response);
       } else {
         request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
       }
