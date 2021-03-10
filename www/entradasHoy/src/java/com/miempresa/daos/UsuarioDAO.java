@@ -106,31 +106,6 @@ public class UsuarioDAO implements IServiceUsuario {
     return usuarios;
   }
 
-  public Usuario selecionarPorCorreo(Usuario usuario) {
-    final String SQL_SELECTALL = "{call usp_listarPorCorreo(?)}";
-    try {
-      cstm = con.getConnection().prepareCall(SQL_SELECTALL);
-      cstm.setString(1, usuario.getCorreo());
-      res = cstm.executeQuery();
-      while (res.next()) {
-        usuario.setIdUsuario(res.getInt(1));
-        usuario.setNombre(res.getString("nombre"));
-        usuario.setApellido(res.getString("apellido"));
-        usuario.setContrasena(res.getString("contrasena"));
-        usuario.setCorreo(res.getString("correo"));
-        usuario.setTipoDocumento(res.getString("tipoDocumento"));
-        usuario.setNumeroDocumento(res.getString("numeroDocumento"));
-        usuario.setEstado(res.getInt("estado"));
-      }
-    } catch (Exception e) {
-      System.out.println("Error al recuperar el listado de usuarios");
-      e.printStackTrace();
-    } finally {
-      close();
-    }
-    return usuario;
-  }
-
   @Override
   public Boolean insertar(Usuario usuario) {
     Boolean resultFlag = false;
@@ -205,26 +180,6 @@ public class UsuarioDAO implements IServiceUsuario {
     return resultFlag;
   }
 
-  public Boolean habilitar(Usuario usuario) {
-    Boolean resultFlag = false;
-    final String SQL_DELETE = "update usuario set estado=1 where idUsuario=?";
-
-    try {
-      pstm = con.getConnection().prepareStatement(SQL_DELETE);
-      pstm.setInt(1, usuario.getIdUsuario());
-      int result = pstm.executeUpdate();
-      if (result > 0) {
-        resultFlag = true;
-      }
-    } catch (Exception e) {
-      System.out.println("Error al eliminar al usuario");
-      e.printStackTrace();
-    } finally {
-      close();
-    }
-    return resultFlag;
-  }
-
   @Override
   public Usuario seleccionPorId(int idUsuario) {
     Usuario usuario = new Usuario();
@@ -253,6 +208,80 @@ public class UsuarioDAO implements IServiceUsuario {
       close();
     }
     return usuario;
+  }
+  
+  public Usuario selecionarPorCorreo(Usuario usuario) {
+    final String SQL_SELECTALL = "{call usp_listarPorCorreo(?)}";
+    try {
+      cstm = con.getConnection().prepareCall(SQL_SELECTALL);
+      cstm.setString(1, usuario.getCorreo());
+      res = cstm.executeQuery();
+      while (res.next()) {
+        usuario.setIdUsuario(res.getInt(1));
+        usuario.setNombre(res.getString("nombre"));
+        usuario.setApellido(res.getString("apellido"));
+        usuario.setContrasena(res.getString("contrasena"));
+        usuario.setCorreo(res.getString("correo"));
+        usuario.setTipoDocumento(res.getString("tipoDocumento"));
+        usuario.setNumeroDocumento(res.getString("numeroDocumento"));
+        usuario.setEstado(res.getInt("estado"));
+      }
+    } catch (Exception e) {
+      System.out.println("Error al recuperar el listado de usuarios");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return usuario;
+  }
+  
+  public Boolean habilitar(Usuario usuario) {
+    Boolean resultFlag = false;
+    final String SQL_DELETE = "update usuario set estado=1 where idUsuario=?";
+
+    try {
+      pstm = con.getConnection().prepareStatement(SQL_DELETE);
+      pstm.setInt(1, usuario.getIdUsuario());
+      int result = pstm.executeUpdate();
+      if (result > 0) {
+        resultFlag = true;
+      }
+    } catch (Exception e) {
+      System.out.println("Error al eliminar al usuario");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return resultFlag;
+  }
+  
+  public Boolean validar(Usuario usuario) {
+    Boolean resultFlag = false;
+    final String SQL_VALIDAR = "{update usuario set estado=1 where idUsuario=?}";
+    
+    try {
+      cstm = con.getConnection().prepareCall(SQL_VALIDAR);
+      cstm.setString(1, usuario.getCorreo());
+      res = cstm.executeQuery();
+      while (res.next()) {
+        usuario.setCorreo(res.getString(1));
+        usuario.setIdUsuario(res.getInt("idUsuario"));
+        usuario.setEstado(res.getInt("estado"));
+        System.out.println("DATA FROM :UsuarioDAO - validar");
+        System.out.println("ID: "+res.getInt(1));
+        System.out.println("Correo: "+res.getString(4));
+        System.out.println("Estado: "+res.getInt(12));
+        System.out.println("========================================================================================");
+      }
+    } catch (Exception e) {
+      System.out.println("DATA FROM :UsuarioDAO - validar");
+      System.out.println("Error al recuperar el listado de usuarios");
+      System.out.println("========================================================================================");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return resultFlag;
   }
 
   @Override

@@ -85,7 +85,7 @@ public class SendEmail {
               + "<td align=\"left\" valign=\"top\">"
               + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 18px; color: #d1d0cf;\">Necesitamos que valides la propiedad el correo electrónico de la cuenta que has creado:</p>"
               + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; line-height: 18px; color: #d1d0cf; text-align: center;\">"
-              + "<a style=\"background-color: #e50914; border-radius: 4px; color: #d1d0cf; display: inline-block; padding: 11px 28px; text-decoration: none;\" href="+URI+"/UsuarioController?proccesing=validarUsuario&Correo="+toEmail+">"
+              + "<a style=\"background-color: #e50914; border-radius: 4px; color: #d1d0cf; display: inline-block; padding: 11px 28px; text-decoration: none;\" href="+URI+"/UsuarioController?processing=validarUsuario&Correo="+toEmail+">"
               + "Validar correo electrónico"
               + "</a>"
               + "</p>"

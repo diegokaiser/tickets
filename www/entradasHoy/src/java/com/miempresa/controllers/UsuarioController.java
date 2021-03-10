@@ -258,21 +258,20 @@ public class UsuarioController extends HttpServlet {
     }
   }
 
-  private void validarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    response.setContentType("text/html;charset=UTF-8");
-    HttpSession session = request.getSession();
-    Usuario usuario = (Usuario) session.getAttribute("authcode");
-    String code = request.getParameter("authcode");
-    if(code.equals(usuario.getCode())) {
-      System.out.println("Viene de: UsuarioController&validarUsuario");
-      System.out.println("Se validó al usuario");
-      request.getRequestDispatcher("registro/mensajeValidado.jsp").forward(request, response);
-      System.out.println("===================================================================================================");
+  private void validarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {   
+    String id = request.getParameter("Correo");
+    Integer estadoU = 1;
+    Usuario usuario = new Usuario();
+    usuario.setCorreo(id);
+    usuario.setEstado(estadoU);
+    UsuarioDAO usuarioDAO = new UsuarioDAO();  
+    
+    if (usuarioDAO.validar(usuario)) {
+      System.out.println("Se validó y activó al usuario ID: "+ id);
+      request.getRequestDispatcher("/registro/mensajeValidado.jsp").forward(request, response);
     } else {
-      System.out.println("Viene de: UsuarioController&validarUsuario");
-      System.out.println("No se validó al usuario");
-      request.getRequestDispatcher("registro/mensajeValidacion.jsp").forward(request, response);
-      System.out.println("===================================================================================================");
+      System.out.println("No se validó y activó al usuario ID: "+ id);
+      request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
     }
   }
 }
