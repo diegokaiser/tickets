@@ -259,13 +259,13 @@ public class UsuarioController extends HttpServlet {
   }
 
   private void validarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {   
-    String id = request.getParameter("Correo");
-    Integer estadoU = 1;
+    String id = request.getParameter("correo");
+    System.out.println(id);
     Usuario usuario = new Usuario();
     usuario.setCorreo(id);
-    usuario.setEstado(estadoU);
-    UsuarioDAO usuarioDAO = new UsuarioDAO();  
+    usuario.setEstado(1);
     
+    UsuarioDAO usuarioDAO = new UsuarioDAO();  
     if (usuarioDAO.validar(usuario)) {
       System.out.println("Se validó y activó al usuario ID: "+ id);
       request.getRequestDispatcher("/registro/mensajeValidado.jsp").forward(request, response);
@@ -274,4 +274,5 @@ public class UsuarioController extends HttpServlet {
       request.getRequestDispatcher("/registro/error.jsp").forward(request, response);
     }
   }
+  
 }

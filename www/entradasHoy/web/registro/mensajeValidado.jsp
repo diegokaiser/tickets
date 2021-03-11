@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-  String nombre = request.getParameter("nombre");
-%>
+
 <html>
   <head>
     <%@ include file="../WEB-INF/jspf/web/meta.jsp" %>
@@ -16,18 +14,11 @@
     </div>
     <div class="content">
       <%@ include file="../WEB-INF/jspf/web/header_.jsp" %>
-
-      <%--    <div class="form">--%>
-      <%--        <form action="">--%>
-
-
       <div class="container">
-
         <div class="row justify-content-center align-items-center h-100">
           <div class="col-5">
             <h2 class="text-white text-center my-4">¡Validado!</h2>
-            <h4  class="text-white text-center mt-3" >Gracias <%=nombre%>, tu cuenta ha sido validada al confirmar que el correo electrónico brindado es real y te pertecene.</h4>
-            <h4 class="text-white text-center">Nos comunicaremos contigo cuando la venta al público esté abierta.</h4>
+            <h4  class="text-white text-center mt-3" >Gracias, tu cuenta ha sido validada al confirmar que el correo electrónico brindado es real y te pertecene.</h4>
             <p class="text-center my-4">Ten en cuenta que sólo usaremos tu correo para este aviso. No lo guardaremos para el registro de ventas.</p>
 
           </div>

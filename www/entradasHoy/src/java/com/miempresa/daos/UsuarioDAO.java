@@ -158,6 +158,36 @@ public class UsuarioDAO implements IServiceUsuario {
     }
     return resultFlag;
   }
+  
+  public Boolean validar(Usuario usuario) {
+    Boolean resultFlag = false;
+    final String SQL_VALIDAR = "update usuario set estado=? where correo=?";
+    try {
+      pstm = con.getConnection().prepareStatement(SQL_VALIDAR);
+      pstm.setInt(1, usuario.getEstado());
+      pstm.setString(2, usuario.getCorreo());
+      int result = pstm.executeUpdate();
+      if (result > 0) {
+        resultFlag = true;
+        usuario.setCorreo(res.getString(1));
+        usuario.setIdUsuario(res.getInt("idUsuario"));
+        usuario.setEstado(res.getInt("estado"));
+        System.out.println("DATA FROM :UsuarioDAO - validar");
+        System.out.println("ID: "+res.getInt(1));
+        System.out.println("Correo: "+res.getString(4));
+        System.out.println("Estado: "+res.getInt(12));
+        System.out.println("========================================================================================");
+      }
+    } catch (Exception e) {
+      System.out.println("DATA FROM :UsuarioDAO - validar");
+      System.out.println("Error al recuperar el listado de usuarios");
+      System.out.println("========================================================================================");
+      e.printStackTrace();
+    } finally {
+      close();
+    }
+    return resultFlag;
+  }
 
   @Override
   public Boolean eliminar(Usuario usuario) {
@@ -255,35 +285,6 @@ public class UsuarioDAO implements IServiceUsuario {
     return resultFlag;
   }
   
-  public Boolean validar(Usuario usuario) {
-    Boolean resultFlag = false;
-    final String SQL_VALIDAR = "{update usuario set estado=1 where idUsuario=?}";
-    
-    try {
-      cstm = con.getConnection().prepareCall(SQL_VALIDAR);
-      cstm.setString(1, usuario.getCorreo());
-      res = cstm.executeQuery();
-      while (res.next()) {
-        usuario.setCorreo(res.getString(1));
-        usuario.setIdUsuario(res.getInt("idUsuario"));
-        usuario.setEstado(res.getInt("estado"));
-        System.out.println("DATA FROM :UsuarioDAO - validar");
-        System.out.println("ID: "+res.getInt(1));
-        System.out.println("Correo: "+res.getString(4));
-        System.out.println("Estado: "+res.getInt(12));
-        System.out.println("========================================================================================");
-      }
-    } catch (Exception e) {
-      System.out.println("DATA FROM :UsuarioDAO - validar");
-      System.out.println("Error al recuperar el listado de usuarios");
-      System.out.println("========================================================================================");
-      e.printStackTrace();
-    } finally {
-      close();
-    }
-    return resultFlag;
-  }
-
   @Override
   public void close() {
     try {
@@ -296,9 +297,9 @@ public class UsuarioDAO implements IServiceUsuario {
       if (con != null) {
         con.close();
       }
-
     } catch (Exception e) {
       System.out.println("Error al cerrar conexion :" + e.getMessage());
     }
   }
+  
 }

@@ -25,8 +25,8 @@ public class SendEmail {
     String toUName = usuario.getNombre();
     String fromEmail = "aquesada.dlm@gmail.com";
     String password = "300915algdgadu";
-    String URI = request.getContextPath();
-    String URIimages = URI+"RESOURCES/images";
+    String URI = "http://localhost:8080/"+request.getContextPath();
+    String URIimages = "http://localhost:8080"+URI+"RESOURCES/images";
     
     try {
       Properties pr = new Properties();
