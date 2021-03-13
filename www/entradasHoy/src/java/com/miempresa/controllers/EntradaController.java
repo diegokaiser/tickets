@@ -124,6 +124,7 @@ public class EntradaController extends HttpServlet {
     
     String nombreCine = request.getParameter("nombreCine");
     CompraDAO compraDAO = new CompraDAO();
+
     List cines = new ArrayList<>();
     cines = compraDAO.dropListCine(Integer.parseInt(id));
     request.setAttribute("cines", cines);
@@ -131,6 +132,14 @@ public class EntradaController extends HttpServlet {
     List salas = new ArrayList<>();
     salas = compraDAO.dropListSala(Integer.parseInt(id));
     request.setAttribute("salas", salas);
+    List <Compra>compras = new ArrayList<>();
+    compras = compraDAO.dropListCine(Integer.parseInt(id));
+    request.setAttribute("compras", compras);
+      System.out.println(compras.get(1).getNombreCine());     
+
+    List compras2= new ArrayList<>();
+   compras2=compraDAO.dropListSala(compras.get(1).getNombreCine());
+    request.setAttribute("compras2", compras2);
     
     // Listar los valores en sesion
     HttpSession session = request.getSession();
@@ -152,8 +161,13 @@ public class EntradaController extends HttpServlet {
   }
   
   private void comprarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.out.println("comprarEntrada");
-    request.getRequestDispatcher("/entrada/comprarEntrada.jsp").forward(request, response);
+      System.out.println("dasdas");
+      String id = request.getParameter("idPelicula");
+   String idUsuario= request.getParameter("idUsuario");
+   String idEntrada=request.getParameter("idCompra2");
+   String numeroEntradas=request.getParameter("numeroEntradas");
+      System.out.println("asdffasdfasdfasd");
+    request.getRequestDispatcher("/entrada/prueba.jsp").forward(request, response);
     /*
     EntradaDAO entradaDAO = new EntradaDAO();
     if (entradaDAO.insertar(entrada)) {

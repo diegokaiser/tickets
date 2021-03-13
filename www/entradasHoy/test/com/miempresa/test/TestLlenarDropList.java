@@ -15,12 +15,12 @@ import java.util.List;
  */
 public class TestLlenarDropList {
 
-  public static void main(String[] args) {
-    CompraDAO compraDAO = new CompraDAO();
-    //List<Compra> compra=compraDAO.llenarDropList(65);
-    //for (int i = 0; i < compra.size(); i++) {
-    //System.out.println(compra.get(i).getNombreCine());        
+    public static void main(String[] args) {
+        CompraDAO compraDAO= new CompraDAO();
+        List<Compra> compra=compraDAO.dropListCine(65);
+        for (int i = 0; i < compra.size(); i++) {
+                    System.out.println(compra.get(i).getNombreCine());        
 
-    //}
-  }
+        }
+    }
 }
