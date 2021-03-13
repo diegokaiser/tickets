@@ -1,6 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+  String userNombre = request.getParameter("nombre");
+  System.out.println("valor en index.jsp: " + userNombre);
+  if(userNombre == null) {
+    request.getRequestDispatcher("/login/index.jsp");
+  }
+%>
 <html>
+  <c:set var="sesion" value="<%=userNombre%>" />
+  <c:choose>
+    <c:when test="${sesion != null}">
+      <c:redirect url="/login/index.jsp" />
+    </c:when>
+  </c:choose>
   <head>
     <%@ include file="WEB-INF/jspf/web/meta.jsp" %>
     <%@ include file="WEB-INF/jspf/web/styles.jsp" %>

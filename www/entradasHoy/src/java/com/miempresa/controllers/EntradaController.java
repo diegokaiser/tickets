@@ -15,11 +15,13 @@ import com.miempresa.mails.SendAlert;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class EntradaController extends HttpServlet {
 
@@ -130,6 +132,18 @@ public class EntradaController extends HttpServlet {
     salas = compraDAO.dropListSala(Integer.parseInt(id));
     request.setAttribute("salas", salas);
     
+    // Listar los valores en sesion
+    HttpSession session = request.getSession();
+    System.out.println("Listado de valores en sesion - Entrada Controller - seleccionarEntrada");
+    if(session != null) {
+      Enumeration en = session.getAttributeNames();
+      for (; en.hasMoreElements(); ) {
+        String name = (String)en.nextElement();
+        System.out.println(name+": " + session.getAttribute(name));
+      }
+    }
+    System.out.println("========================================================================================");
+    
     request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
   }
   
@@ -188,10 +202,25 @@ public class EntradaController extends HttpServlet {
   }
 
   private void crearAviso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String nombre = request.getParameter("nombre");
-    String correo = request.getParameter("correo");
-    String pelicula = request.getParameter("pelicula");
-    String fechaEstreno = request.getParameter("fechaEstreno");
+    // Listar los valores en sesion
+    HttpSession session = request.getSession();
+    System.out.println("Listado de valores en sesion - Entrada Controller - crearAviso");
+    if(session != null) {
+      Enumeration en = session.getAttributeNames();
+      for (; en.hasMoreElements(); ) {
+        String name = (String)en.nextElement();
+        System.out.println(name+": " + session.getAttribute(name));
+      }
+    }
+    System.out.println("========================================================================================");
+    
+    String nombre = (String)session.getAttribute("nombre");
+    String correo = (String)session.getAttribute("correo");
+    
+    System.out.println("Listado de valores solicitados - EntradaController - crearAviso");
+    System.out.println(nombre + " " + correo);
+    System.out.println("========================================================================================");
+    /*
     
     SendAlert smv = new SendAlert();
     
@@ -206,5 +235,6 @@ public class EntradaController extends HttpServlet {
     } else {
       request.getRequestDispatcher("/estrenos/alertaError.jsp").forward(request, response);
     }
+    */
   }
 }

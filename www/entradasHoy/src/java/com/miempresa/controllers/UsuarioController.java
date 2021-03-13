@@ -5,6 +5,7 @@ import com.miempresa.entidades.Usuario;
 import com.miempresa.mails.SendEmail;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -139,15 +140,26 @@ public class UsuarioController extends HttpServlet {
 
       if (usuarioDAO.login(usuario)) {
         HttpSession session = request.getSession();
-        session.setAttribute("nombre", nombre);
-        session.setAttribute("apellido", apellido);
-        session.setAttribute("correo", correo);
-        session.setAttribute("tipoDocumento", tipoDocumento);
-        session.setAttribute("numeroDocumento", numeroDocumento);
+        session.setAttribute("nombre", nombre);//
+        session.setAttribute("apellido", apellido);//
+        session.setAttribute("correo", correo);//
+        session.setAttribute("tipoDocumento", tipoDocumento);//
+        session.setAttribute("numeroDocumento", numeroDocumento);//
         System.out.println("UsuarioController: login");
         System.out.println(nombre);
-        System.out.println(apellido);
-        System.out.println("==================================================");
+        System.out.println(apellido);        
+        // Listar los valores en sesion
+        System.out.println("========================================================================================");
+        System.out.println("Listado de valores en sesion - UsuarioController - login");
+        if(session != null) {
+          Enumeration en = session.getAttributeNames();
+          for (; en.hasMoreElements(); ) {
+            String name = (String)en.nextElement();
+            System.out.println(name+": " + session.getAttribute(name));
+          }
+        }
+        System.out.println("========================================================================================");
+        
         request.getRequestDispatcher("/HomeController?log=in").forward(request, response);
       } else {
         request.getRequestDispatcher("/login/error.jsp").forward(request, response);

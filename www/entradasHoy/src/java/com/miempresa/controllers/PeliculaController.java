@@ -5,11 +5,13 @@ import com.miempresa.entidades.Pelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class PeliculaController extends HttpServlet {
 
@@ -144,6 +146,19 @@ public class PeliculaController extends HttpServlet {
     Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id));
     request.getSession().setAttribute("pelicula", pelicula);
     request.getRequestDispatcher("estrenos/index.jsp").forward(request, response);
+    // Listar los valores en sesion
+    HttpSession session = request.getSession();
+    System.out.println("========================================================================================");
+    System.out.println("Listado de valores en sesion - PeliculaController - getPelicula");
+    if(session != null) {
+      Enumeration en = session.getAttributeNames();
+      for (; en.hasMoreElements(); ) {
+        String name = (String)en.nextElement();
+        System.out.println(name+": " + session.getAttribute(name));
+      }
+    }
+    System.out.println("========================================================================================");
+    
   }
 
   private void notyetPelicula(HttpServletRequest request, HttpServletResponse response) {

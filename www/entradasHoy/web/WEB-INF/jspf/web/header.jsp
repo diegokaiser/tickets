@@ -23,8 +23,11 @@
         </ul>
       </c:when>
       <c:when test="${nombre = null}">
-        <ul class="navbar-nav ml-auto"></ul>
+        <ul class="navbar-nav ml-auto" data-dato="${dato}"></ul>
       </c:when> 
+      <c:otherwise>
+        <ul class="navbar-nav ml-auto" data-dato="${dato}"></ul>
+      </c:otherwise>
     </c:choose>
   </nav>
 </header>

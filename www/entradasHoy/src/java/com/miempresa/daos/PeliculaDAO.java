@@ -266,6 +266,7 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setPortada(res.getString(17));
         pelicula.setProtagonistas(res.getString(19));
         pelicula.setPortadaDestacada(res.getString(20));
+        /*
         System.out.println("DATA FROM : PeliculaDAO - seleccionPorId");
         System.out.println("ID: "+res.getInt(1));
         System.out.println("Nombre: "+res.getString(2));
@@ -283,6 +284,7 @@ public class PeliculaDAO implements IServicePelicula {
         System.out.println("Protagonistas: "+res.getString(19));
         System.out.println("Portada Destacada: "+res.getString(20));
         System.out.println("========================================================================================");
+        */
       }
     } catch (Exception e) {
       System.out.println("Error al seleccionar la pelicula");
