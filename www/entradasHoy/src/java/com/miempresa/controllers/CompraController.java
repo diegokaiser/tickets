@@ -6,7 +6,9 @@
 package com.miempresa.controllers;
 
 import com.miempresa.daos.CompraDAO;
+import com.miempresa.daos.PeliculaDAO;
 import com.miempresa.entidades.Compra;
+import com.miempresa.entidades.Pelicula;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,9 @@ public class CompraController extends HttpServlet {
       case "llenarDropList":
         llenarDropList(request, response);
         break;
-
+      case "compraEntrada":
+        compraEntrada(request, response);
+        break;
     }
   }
 
@@ -81,5 +85,14 @@ public class CompraController extends HttpServlet {
     
     request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
 
+  }
+
+  private void compraEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String id = request.getParameter("idPelicula");
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id));
+    request.setAttribute("pelicula", pelicula);
+    
+    request.getRequestDispatcher("/entrada/validarEntrada.jsp").forward(request, response);
   }
 }

@@ -21,11 +21,12 @@ public class Compra {
     //Extras
     private double precio;
     private String tipo;
+    private int idCine;
     private String nombreCine;
     private String direccion;
     private int numeroSala;
     private String nombrePelicula;
-    private int idCine;
+    
 
     public Compra() {
     }

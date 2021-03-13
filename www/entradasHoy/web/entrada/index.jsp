@@ -31,25 +31,11 @@
           <!-- Si se estrena en varios cines -->
           <div class="form-group mt-5">
             <label for="idCompra">Elegir cine:</label>
-            <select class="form-control" name="idCompra" id="idCompra">
+            
+            <select class="form-control" name="idCine" id="idCine">
               <c:forEach var="cine" items="${cines}">                                
                 <option value="${cine.idCine}">${cine.nombreCine}</option>
               </c:forEach>
-            </select>
-          </div>
-          <!-- y si se proyecta en más de una sala -->
-          <div class="form-group">
-            <label for="idSala">Elegir sala</label>
-            <select class="form-control" name="idSala" id="idSala">
-              <!-- aqui necesitamos tener el id del padre, osea el  idCine -->
-              <c:choose>
-                <c:when test="${cine.idCine == sala.idCine}">
-                  <c:forEach var="sala" items="${salas}">                                
-                    <option value="${sala.idSala}">Sala ${sala.numero}</option>
-                  </c:forEach>
-                </c:when>
-                <c:otherwise></c:otherwise>
-              </c:choose>              
             </select>
           </div>
           <div class="form-group pt-4">
@@ -57,7 +43,7 @@
             <input type="number" class="form-control" id="numeroEntradas" min="1" max="2" value="1">
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary my-4">Comprar entrada</button>
+            <a href="<%=request.getContextPath()%>/CompraController?processing=compraEntrada&idPelicula<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>" class="btn btn-primary my-4">Comprar entrada</a>
           </div>
         </form>
       </div>

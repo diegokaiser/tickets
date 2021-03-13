@@ -1,8 +1,9 @@
 package com.miempresa.mails;
 
+import com.miempresa.entidades.Pelicula;
 import com.miempresa.entidades.Usuario;
+import com.miempresa.entidades.Aviso;
 import java.util.Properties;
-import java.util.Random;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -12,17 +13,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
-public class SendEmail {
-  public String getRandom() {
-    Random rnd = new Random();
-    int number = rnd.nextInt(999999);
-    return String.format("%06d", number);
-  }
-  
-  public boolean sendEmail(Usuario usuario, HttpServletRequest request) {
+public class SendAlert {
+  public boolean sendAlert(Aviso aviso, HttpServletRequest request) {
     boolean test = false;
-    String toEmail = usuario.getCorreo();
-    String toUName = usuario.getNombre();
+    String toEmail = aviso.getCorreo();
+    String toUName = aviso.getNombre();
+    String peliculaNombre = aviso.getNombre();
+    String fechaEstreno = aviso.getFechaEstreno();
     String fromEmail = "aquesada.dlm@gmail.com";
     String password = "300915algdgadu";
     String URI = "http://localhost:8080/"+request.getContextPath();
@@ -46,11 +43,11 @@ public class SendEmail {
       
       Message message = new MimeMessage(session);
       message.setFrom(new InternetAddress(fromEmail, "Solo Estrenos"));
-      message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));    
-      message.setSubject("¡Bienvenido a EntradasHoy!");
+      message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+      message.setSubject("¡Alerta creada para "+peliculaNombre+" !");
       message.setContent(""
               + "<body style=\"margin:0; padding:0; background-color:#F2F2F2;\">"
-              + "<span style=\"display: block; color: #F2F2F2; width: 640px !important; max-width: 640px; height: 1px\" class=\"mobileOff\">Necesitamos que valides tu correo electrónico</span>"
+              + "<span style=\"display: block; color: #F2F2F2; width: 640px !important; max-width: 640px; height: 1px\" class=\"mobileOff\">Ten en cuenta la fecha de estreno</span>"
               + "<center>"
               + "<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#F2F2F2\">"
               + "<tr>"
@@ -75,20 +72,25 @@ public class SendEmail {
               + "<table width=\"540\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"container\">"
               + "<tr>"
               + "<td align=\"left\" valign=\"top\">"
-              + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-weight:bold; font-size: 15px; line-height: 18px; color: #e50914;\">Bienvenido "+toUName+"!</p>"
-              + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 18px; color: #d1d0cf;\">Estamos contentos de tenerte abordo. En EstrenosHoy puedes conseguir entradas a los estrenos de las películas que tanto esperas y en venta directa con quienes manejan el evento de estreno.</p>"
+              + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-weight:bold; font-size: 15px; line-height: 18px; color: #e50914;\">Buena "+toUName+"!</p>"
+              + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 18px; color: #d1d0cf;\">Has creado una alerta para "+peliculaNombre+".</p>"
               + "</td>"
               + "</tr>"
               + "</table>"
               + "<table width=\"540\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"container\">"
               + "<tr>"
               + "<td align=\"left\" valign=\"top\">"
-              + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 18px; color: #d1d0cf;\">Necesitamos que valides la propiedad el correo electrónico de la cuenta que has creado:</p>"
-              + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; line-height: 18px; color: #d1d0cf; text-align: center;\">"
-              + "<a style=\"background-color: #e50914; border-radius: 4px; color: #d1d0cf; display: inline-block; padding: 11px 28px; text-decoration: none;\" href="+URI+"UsuarioController?processing=validarUsuario&Correo="+toEmail+">"
-              + "Validar correo electrónico"
-              + "</a>"
-              + "</p>"
+              + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 18px; color: #d1d0cf;\">Ten en cuenta que la fecha de estreno es el:"+fechaEstreno+"</p>"
+              + "</td>"
+              + "</tr>"
+              + "<tr>"
+              + "<td align=\"center\" valign=\"top\">"
+              + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 22px; color: #d1d0cf;\">"+fechaEstreno+"</p>"
+              + "</td>"
+              + "</tr>"
+              + "<tr>"
+              + "<td align=\"left\" valign=\"top\">"
+              + "<p class=\"fonta\" style=\"font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 18px; color: #d1d0cf;\">Por favor, toma en cuenta que te enviaremos otro aviso cuando empiece la venta al público.</p>"
               + "</td>"
               + "</tr>"
               + "</table>"
@@ -138,13 +140,11 @@ public class SendEmail {
               + "</table>"
               + "</center>"
               + "</body>", "text/html");
-      // message.setContent("<p><a href="+URI+"/UsuarioController?proccesing=validarUsuario&Correo="+toEmail+">Link</a></p>", "text/html");
-      // send
-      Transport.send(message);      
+      Transport.send(message);
       test = true;
     } catch (Exception e) {
       e.printStackTrace();
-      System.out.println("DATA: SendEmail.java");
+      System.out.println("DATA TO: SendAlert.java");
       System.out.println("Error: "+e);
       System.out.println("===================================================================================================");
     }

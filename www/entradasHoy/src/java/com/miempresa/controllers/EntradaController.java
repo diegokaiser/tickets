@@ -9,6 +9,9 @@ import com.miempresa.entidades.Compra;
 import com.miempresa.entidades.Entrada;
 import com.miempresa.entidades.Pelicula;
 import com.miempresa.entidades.Sala;
+import com.miempresa.entidades.Aviso;
+import com.miempresa.entidades.Usuario;
+import com.miempresa.mails.SendAlert;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -45,7 +48,9 @@ public class EntradaController extends HttpServlet {
       case "insertarEntrada":
         insertarEntrada(request, response);
         break;        
-        
+      case "crearAviso":
+        crearAviso(request, response);
+        break;
     }
   }
 
@@ -94,7 +99,6 @@ public class EntradaController extends HttpServlet {
     entradas = entradaDAO.seleccionarTodo();
     request.setAttribute("entradas", entradas);
 
-    
     CineDAO cineDAO = new CineDAO();
     List<Cine> cines = new ArrayList<>();
     cines = cineDAO.seleccionarTodo();
@@ -106,10 +110,7 @@ public class EntradaController extends HttpServlet {
     peliculas = peliculaDAO.seleccionarTodo();
     salas=entradaDAO.seleccionarSala();
     request.setAttribute("peliculas", peliculas);
-    request.setAttribute("salas", salas);
-
-    
-
+    request.setAttribute("salas", salas);    
     request.getRequestDispatcher("/admin/entradas/index.jsp").forward(request, response);
   }
 
@@ -126,7 +127,7 @@ public class EntradaController extends HttpServlet {
     request.setAttribute("cines", cines);
     
     List salas = new ArrayList<>();
-    salas = compraDAO.dropListSala(nombreCine);
+    salas = compraDAO.dropListSala(Integer.parseInt(id));
     request.setAttribute("salas", salas);
     
     request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
@@ -161,7 +162,6 @@ public class EntradaController extends HttpServlet {
   }
 
   private void insertarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-   
     String precio = request.getParameter("precio");
     String tipo = request.getParameter("tipo");
     String estado = request.getParameter("estado");
@@ -184,6 +184,27 @@ public class EntradaController extends HttpServlet {
     } else {
       System.out.println("No se ingreso la entrada");
       request.getRequestDispatcher("/EntradaController?processing=listarEntradas").forward(request, response);
+    }
+  }
+
+  private void crearAviso(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String nombre = request.getParameter("nombre");
+    String correo = request.getParameter("correo");
+    String pelicula = request.getParameter("pelicula");
+    String fechaEstreno = request.getParameter("fechaEstreno");
+    
+    SendAlert smv = new SendAlert();
+    
+    Aviso aviso = new Aviso();
+    aviso.setNombre(nombre);
+    aviso.setCorreo(correo);
+    aviso.setPelicula(pelicula);
+    aviso.setFechaEstreno(fechaEstreno);
+    boolean test = smv.sendAlert(aviso, request);    
+    if(test) {
+      request.getRequestDispatcher("/estrenos/alertaExito.jsp").forward(request, response);
+    } else {
+      request.getRequestDispatcher("/estrenos/alertaError.jsp").forward(request, response);
     }
   }
 }

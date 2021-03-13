@@ -91,11 +91,11 @@ public class UsuarioController extends HttpServlet {
       boolean test = smv.sendEmail(usuario, request);
       
       if (usuarioDAO.insertar(usuario)) {
-        
         if(test) {
           HttpSession session = request.getSession();
           session.setAttribute("authcode", code);
-        }        
+        } 
+               
         request.getRequestDispatcher("/registro/mensajeAnotado.jsp").forward(request, response);
       } else {
         request.getRequestDispatcher("/registro/error.jsp").forward(request, response);

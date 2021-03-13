@@ -27,44 +27,33 @@
           <h2 class="text-center">Valida tus datos!</h2>
           <h4 class="text-center">"<%=pelicula.getNombre()%>"</h4>
           <h4 data-estreno="<%=pelicula.getFechaEstreno()%>" id="fechaEstreno" class="text-center">Estreno el <span id="fecha"></span></h4>
-          <!-- Si se estrena en varios cines -->
-          <div class="form-group mt-5">
-            <label for="idCine">Elegir cine:</label>
-            <select class="form-control" name="idCine" id="idCine">
-              <option selected>Obtener el cine</option>
-            </select>
-          </div>
-          <!-- y si se proyecta en más de una sala -->
-          <div class="form-group">
-            <label for="idSala">Elegir sala</label>
-            <select class="form-control" name="idSala" id="idSala">
-              <option selected>Obtener la sala</option>
-            </select>
-          </div>
-          <h4 class="mt-5">Entrada 1:</h4>          
-          <div class="form-group pt-4">
-            <label for="fullName1">Nombre Completo:</label>
-            <input type="text" class="form-control" id="fullName1" value="obtener nombre">
-          </div>
-          <div class="form-group">
-            <label for="nrodoc1">Documento de Identidad:</label>
-            <input type="text" class="form-control" id="nrodoc1" value="obtener numero doc">
-          </div>
-          <!-- si existe entrada 2 -->
-          <h4 class="mt-5">Entrada 2:</h4>
-          <div class="form-group pt-4">
-            <label for="fullName2">Nombre Completo:</label>
-            <input type="text" class="form-control" id="fullName2" value="obtener nombre 2">
-          </div>
-          <div class="form-group">
-            <label for="nrodoc2">Documento de Identidad:</label>
-            <input type="text" class="form-control" id="nrodoc2" value="obtener numero doc 2">
-          </div>
-          
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary my-4">Comprar entrada</button>
-            <a href="<%=request.getContextPath()%>/EntradaController?processing=cancelarEntrada" class="btn btn-danger">Cancelar</a>
-          </div>
+          <p class="text-center my-4">Por favor, valida los datos para tus entradas:</p>
+          <table>
+            <tbody>
+              <tr>
+                <td>Cine:</td>
+                <td>aqui va el nombre del cine</td>
+              </tr>
+              <tr>
+                <td>Nombre:</td>
+                <td>Aqui va el nombre de usuario</td>
+              </tr>
+              <tr>
+                <td>Apellido:</td>
+                <td>Aqui va el apellido de usuario</td>
+              </tr>
+              <tr>
+                <td>Aqui va el tipo de documento de identidad del usuario</td>
+                <td>Aqui va el numero del documento de identidad del usuario</td>
+              </tr>
+              <tr>
+                <td>Entradas:</td>
+                <td>Aqui va 1 o 2 dependiendo el form anterior</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-center my-4">Si todos los datos son correctos, procede con la compra de tus entradas</p>
+          <a href="" class="btn btn-primary my-4">Proceder con la compra</a>
         </form>
       </div>
     </div>
