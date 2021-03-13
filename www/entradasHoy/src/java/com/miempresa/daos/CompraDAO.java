@@ -48,24 +48,6 @@ public class CompraDAO implements IserviceCompra {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
-  @Override
-  public void close() {
-    try {
-      if (res != null) {
-        res.close();
-      }
-      if (cstm != null) {
-        cstm.close();
-      }
-      if (con != null) {
-        con.close();
-      }
-
-    } catch (Exception e) {
-      System.out.println("Error al cerrar conexion :" + e.getMessage());
-    }
-  }
-
   public List<Compra> dropListCine(int idPelicula) {
     List<Compra> compras = new ArrayList<>();
     final String SQL_SELECTALL = "{call usp_listarCinesPorPelicula(?)}";
@@ -131,4 +113,21 @@ public class CompraDAO implements IserviceCompra {
     return compras;
   }
 
+  @Override
+  public void close() {
+    try {
+      if (res != null) {
+        res.close();
+      }
+      if (cstm != null) {
+        cstm.close();
+      }
+      if (con != null) {
+        con.close();
+      }
+
+    } catch (Exception e) {
+      System.out.println("Error al cerrar conexion :" + e.getMessage());
+    }
+  }
 }

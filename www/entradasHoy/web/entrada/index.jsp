@@ -54,7 +54,7 @@
           </div>
           <div class="form-group pt-4">
             <label for="numeroEntradas">Numero Entradas</label>
-            <input type="number" class="form-control" id="numeroEntradas">
+            <input type="number" class="form-control" id="numeroEntradas" min="1" max="2" value="1">
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary my-4">Comprar entrada</button>

@@ -87,12 +87,15 @@ public class CineDAO implements IServiceCine {
         cine.setIdDistrito(res.getInt(7));
         cine.setLogo(res.getString(8));
         cine.setEstado(res.getInt(9));
-//        cine.setFechaRegistro(res.getString(6));
-//        cine.setIdDistrito(res.getInt(7));
-//        System.out.println(res.getInt(1)+" ");
-//        System.out.println(res.getString(2));
-//        System.out.println(res.getString(3));
-//        System.out.println(res.getString(4));
+        
+        System.out.println("DATA FROM :CineDAO - seleccionPorId");
+        System.out.println("ID: "+res.getInt(1));
+        System.out.println("Nombre: "+res.getString(2));
+        System.out.println("Direccion: "+res.getString(3));
+        System.out.println("Distrito: "+res.getString(7));
+        System.out.println("Logo: "+res.getString(8));
+        System.out.println("Estado: "+res.getInt(9));
+        System.out.println("========================================================================================");
       }
 
     } catch (Exception e) {
