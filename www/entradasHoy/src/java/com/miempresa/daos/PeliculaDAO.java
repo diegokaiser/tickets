@@ -266,7 +266,7 @@ public class PeliculaDAO implements IServicePelicula {
         pelicula.setPortada(res.getString(17));
         pelicula.setProtagonistas(res.getString(19));
         pelicula.setPortadaDestacada(res.getString(20));
-        System.out.println("DATA FROM :seleccionPorId");
+        System.out.println("DATA FROM : PeliculaDAO - seleccionPorId");
         System.out.println("ID: "+res.getInt(1));
         System.out.println("Nombre: "+res.getString(2));
         System.out.println("Duración: "+res.getString(3));

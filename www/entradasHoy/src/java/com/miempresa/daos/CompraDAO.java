@@ -78,7 +78,7 @@ public class CompraDAO implements IserviceCompra {
         Compra compra = new Compra();
         compra.setNombreCine(res.getString(1));
         compras.add(compra);
-        System.out.println("DATA FROM :dropListCine");
+        System.out.println("DATA FROM :CompraDAO - dropListCine");
         System.out.println("Nombre: "+res.getString(1));
         System.out.println("========================================================================================");
       }
