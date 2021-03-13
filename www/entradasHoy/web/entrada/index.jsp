@@ -32,21 +32,23 @@
           <div class="form-group mt-5">
             <label for="idCompra">Elegir cine:</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
             
             <select class="form-control" name="idCine" id="idCine">
 =======
             <select class="form-control" name="idCompra" id="idCompra">
 <<<<<<< HEAD
 >>>>>>> 806dff1... falta comprar
+=======
+            
+            <select class="form-control" name="idCine" id="idCine">
+>>>>>>> de97bba... .
               <c:forEach var="cine" items="${cines}">                                
                 <option value="${cine.idCine}">${cine.nombreCine}</option>
-=======
-              <c:forEach var="compra" items="${compras}">                                
-                <option value="${compra.nombreCine}">${compra.nombreCine}</option>
->>>>>>> 8d7c0e9... falta comprar
               </c:forEach>
             </select>
           </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
           <!-- y si se proyecta en más de una sala -->
@@ -73,19 +75,19 @@
             </select>
           </div>
 >>>>>>> 806dff1... falta comprar
+=======
+>>>>>>> de97bba... .
           <div class="form-group pt-4">
             <label for="numeroEntradas">Numero Entradas</label>
-<<<<<<< HEAD
             <input type="number" class="form-control" id="numeroEntradas" min="1" max="2" value="1">
-=======
-            <select class="form-control" id="numeroEntradas">
-                <option value="1">1</option>
-                <option value="1">2</option>
-            </select>
->>>>>>> 7ff0005... falta comprar
           </div>
           <div class="form-group">
+<<<<<<< HEAD
             <a href="<%=request.getContextPath()%>/CompraController?processing=compraEntrada&idPelicula<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>" class="btn btn-primary my-4">Comprar entrada</a>
+=======
+            <a href="<%=request.getContextPath()%>/EntradaController?processing=comprarEntrada&idPelicula<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>" class="btn btn-primary my-4">Comprar entrada</a>
+            
+>>>>>>> de97bba... .
           </div>
         </form>
       </div>
