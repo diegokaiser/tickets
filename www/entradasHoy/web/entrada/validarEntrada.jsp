@@ -29,26 +29,40 @@
           <h4 data-estreno="<%=pelicula.getFechaEstreno()%>" id="fechaEstreno" class="text-center">Estreno el <span id="fecha"></span></h4>
           <p class="text-center my-4">Por favor, valida los datos para tus entradas:</p>
           <table>
-            <tbody>
+            <tbody class="text-white">
               <tr>
                 <td>Cine:</td>
-                <td>aqui va el nombre del cine</td>
+                <td ><%= request.getAttribute("idCine") %></td>
               </tr>
               <tr>
                 <td>Nombre:</td>
-                <td>Aqui va el nombre de usuario</td>
+                <td><%=session.getAttribute("nombre")%></td>
               </tr>
               <tr>
                 <td>Apellido:</td>
-                <td>Aqui va el apellido de usuario</td>
+                <td><%=session.getAttribute("apellido")%></td>
               </tr>
               <tr>
-                <td>Aqui va el tipo de documento de identidad del usuario</td>
-                <td>Aqui va el numero del documento de identidad del usuario</td>
+                 <td>Tipo de documento</td>
+                 <c:set var = "tDocumento"  value = "<%=session.getAttribute("tipoDocumento")%>"/>
+                  <c:choose>
+                  <c:when test="${tDocumento==1}">
+                  <td>DNI</td>  
+                  </c:when>    
+                  <c:otherwise>
+                   <td>Pasaporte</td>
+                  </c:otherwise>
+              </c:choose>
               </tr>
+              
+
+              <tr>
+                 <td>Numero de documento</td>
+                <td><%=session.getAttribute("numeroDocumento")%></td>
+              </tr>              
               <tr>
                 <td>Entradas:</td>
-                <td>Aqui va 1 o 2 dependiendo el form anterior</td>
+                <td><%= request.getAttribute("numeroEntradas") %></td>
               </tr>
             </tbody>
           </table>

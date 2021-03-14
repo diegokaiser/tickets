@@ -156,6 +156,11 @@ public class EntradaController extends HttpServlet {
       System.out.println("asdffasdfasdfasd");
       System.out.println(idCine);
       System.out.println(numeroEntradas);
+              
+    request.setAttribute("idCine", idCine);
+    request.setAttribute("numeroEntradas", numeroEntradas);
+
+
     request.getRequestDispatcher("/entrada/validarEntrada.jsp").forward(request, response);
     /*
     EntradaDAO entradaDAO = new EntradaDAO();

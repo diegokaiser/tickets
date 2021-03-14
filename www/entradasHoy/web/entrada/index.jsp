@@ -24,6 +24,7 @@
         <!-- este form NO envia datos a la ddbb, los sesiona y los envia al siguiente form -->
         <form action="<%=request.getContextPath()%>/EntradaController" method="POST">
           <input type="hidden" id="processing" name="processing" value="comprarEntrada">
+           
 
           <h2>Entradas para:</h2>
           <h4 class="text-center">"<%=pelicula.getNombre()%>"</h4>
@@ -34,7 +35,7 @@
             
             <select class="form-control" name="idCine" id="idCine">
               <c:forEach var="cine" items="${cines}">                                
-                <option value="${cine.idCine}">${cine.nombreCine}</option>
+                <option value="${cine.nombreCine}">${cine.nombreCine}</option>
               </c:forEach>
             </select>
           </div>
