@@ -156,6 +156,7 @@ public class EntradaController extends HttpServlet {
   }
 
   private void comprarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
     System.out.println("dasdas");
     String id = request.getParameter("idPelicula");
     String idCine=request.getParameter("idCine");
@@ -163,6 +164,22 @@ public class EntradaController extends HttpServlet {
     String idEntrada = request.getParameter("idCompra2");
     String numeroEntradas = request.getParameter("numeroEntradas");
     System.out.println("asdffasdfasdfasd");
+=======
+      System.out.println("dasdas");
+   String id = request.getParameter("idPelicula");
+   String idCine=request.getParameter("idCine");
+   String idUsuario= request.getParameter("idUsuario");
+   String idEntrada=request.getParameter("idCompra2");
+   String numeroEntradas=request.getParameter("numeroEntradas");
+      System.out.println("asdffasdfasdfasd");
+      System.out.println(idCine);
+      System.out.println(numeroEntradas);
+              
+    request.setAttribute("idCine", idCine);
+    request.setAttribute("numeroEntradas", numeroEntradas);
+
+
+>>>>>>> c6dcd967f05ac79b8fc37114f3272deedb78762b
     request.getRequestDispatcher("/entrada/validarEntrada.jsp").forward(request, response);
     /*
     EntradaDAO entradaDAO = new EntradaDAO();
