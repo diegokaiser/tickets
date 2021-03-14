@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.miempresa.entidades.Pelicula"%>
 <%
-  Pelicula pelicula = (Pelicula) request.getSession().getAttribute("pelicula");
+    Pelicula pelicula = (Pelicula) request.getSession().getAttribute("pelicula");
 %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -25,7 +25,6 @@
         <form action="<%=request.getContextPath()%>/EntradaController" method="POST">
           <input type="hidden" id="processing" name="processing" value="comprarEntrada">
            
-
           <h2>Entradas para:</h2>
           <h4 class="text-center">"<%=pelicula.getNombre()%>"</h4>
           <h4 data-estreno="<%=pelicula.getFechaEstreno()%>" id="fechaEstreno" class="text-center">Estreno el <span id="fecha"></span></h4>
@@ -46,7 +45,7 @@
             </select>
           </div>
           <div class="form-group">
-            <a href="<%=request.getContextPath()%>/EntradaController?processing=comprarEntrada&idPelicula<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>" class="btn btn-primary my-4">Comprar entrada</a>
+            <button type="submit"  class="btn btn-primary my-4"> Comprar entrada </button>
           </div>
         </form>
       </div>
