@@ -31,63 +31,21 @@
           <!-- Si se estrena en varios cines -->
           <div class="form-group mt-5">
             <label for="idCompra">Elegir cine:</label>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            
             <select class="form-control" name="idCine" id="idCine">
-=======
-            <select class="form-control" name="idCompra" id="idCompra">
-<<<<<<< HEAD
->>>>>>> 806dff1... falta comprar
-=======
-            
-            <select class="form-control" name="idCine" id="idCine">
->>>>>>> de97bba... .
               <c:forEach var="cine" items="${cines}">                                
                 <option value="${cine.idCine}">${cine.nombreCine}</option>
               </c:forEach>
             </select>
           </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-          <!-- y si se proyecta en más de una sala -->
-          <div class="form-group">
-<<<<<<< HEAD
-            <label for="idSala">Elegir sala</label>
-            <select class="form-control" name="idSala" id="idSala">
-              <!-- aqui necesitamos tener el id del padre, osea el  idCine -->
-              <c:choose>
-                <c:when test="${cine.idCine == sala.idCine}">
-                  <c:forEach var="sala" items="${salas}">                                
-                    <option value="${sala.idSala}">Sala ${sala.numero}</option>
-                  </c:forEach>
-                </c:when>
-                <c:otherwise></c:otherwise>
-              </c:choose>              
-=======
-            <label for="idCompra2">Elegir sala</label>
-            <select class="form-control" name="idCompra2" id="idCompra2">
-              <c:forEach var="compra2" items="${compras2}">                                
-                <option value="${compra2.idEntrada}">Sala ${compra2.numeroSala}</option>
-              </c:forEach>                
->>>>>>> 8d7c0e9... falta comprar
-            </select>
-          </div>
->>>>>>> 806dff1... falta comprar
-=======
->>>>>>> de97bba... .
           <div class="form-group pt-4">
             <label for="numeroEntradas">Numero Entradas</label>
             <input type="number" class="form-control" id="numeroEntradas" min="1" max="2" value="1">
           </div>
           <div class="form-group">
-<<<<<<< HEAD
-            <a href="<%=request.getContextPath()%>/CompraController?processing=compraEntrada&idPelicula<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>" class="btn btn-primary my-4">Comprar entrada</a>
-=======
             <a href="<%=request.getContextPath()%>/EntradaController?processing=comprarEntrada&idPelicula<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>" class="btn btn-primary my-4">Comprar entrada</a>
-            
->>>>>>> de97bba... .
+          </div>
+          <div class="form-group">
+            <a href="<%=request.getContextPath()%>/CompraController?processing=compraEntrada&idPelicula<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>" class="btn btn-primary my-4">Comprar entrada</a>
           </div>
         </form>
       </div>

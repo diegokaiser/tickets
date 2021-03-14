@@ -49,7 +49,7 @@ public class EntradaController extends HttpServlet {
         break;
       case "insertarEntrada":
         insertarEntrada(request, response);
-        break;        
+        break;
       case "crearAviso":
         crearAviso(request, response);
         break;
@@ -108,11 +108,11 @@ public class EntradaController extends HttpServlet {
 
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     List<Pelicula> peliculas = new ArrayList<>();
-    List<Sala> salas= new ArrayList<>();
+    List<Sala> salas = new ArrayList<>();
     peliculas = peliculaDAO.seleccionarTodo();
-    salas=entradaDAO.seleccionarSala();
+    salas = entradaDAO.seleccionarSala();
     request.setAttribute("peliculas", peliculas);
-    request.setAttribute("salas", salas);    
+    request.setAttribute("salas", salas);
     request.getRequestDispatcher("/admin/entradas/index.jsp").forward(request, response);
   }
 
@@ -121,52 +121,48 @@ public class EntradaController extends HttpServlet {
     PeliculaDAO peliculaDAO = new PeliculaDAO();
     Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id));
     request.setAttribute("pelicula", pelicula);
-    
+
     String nombreCine = request.getParameter("nombreCine");
     CompraDAO compraDAO = new CompraDAO();
 
     List cines = new ArrayList<>();
     cines = compraDAO.dropListCine(Integer.parseInt(id));
     request.setAttribute("cines", cines);
-    
+
     List salas = new ArrayList<>();
     salas = compraDAO.dropListSala(Integer.parseInt(id));
     request.setAttribute("salas", salas);
-    List <Compra>compras = new ArrayList<>();
+    List<Compra> compras = new ArrayList<>();
     compras = compraDAO.dropListCine(Integer.parseInt(id));
     request.setAttribute("compras", compras);
-      System.out.println(compras.get(1).getNombreCine());     
+    System.out.println(compras.get(1).getNombreCine());
 
-    List compras2= new ArrayList<>();
-   compras2=compraDAO.dropListSala(compras.get(1).getNombreCine());
-    request.setAttribute("compras2", compras2);
-    
     // Listar los valores en sesion
     HttpSession session = request.getSession();
     System.out.println("Listado de valores en sesion - Entrada Controller - seleccionarEntrada");
-    if(session != null) {
+    if (session != null) {
       Enumeration en = session.getAttributeNames();
-      for (; en.hasMoreElements(); ) {
-        String name = (String)en.nextElement();
-        System.out.println(name+": " + session.getAttribute(name));
+      for (; en.hasMoreElements();) {
+        String name = (String) en.nextElement();
+        System.out.println(name + ": " + session.getAttribute(name));
       }
     }
     System.out.println("========================================================================================");
-    
+
     request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
   }
-  
+
   private void verificarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     request.getRequestDispatcher("/ntrada/validarEntrada.jsp").forward(request, response);
   }
-  
+
   private void comprarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      System.out.println("dasdas");
-      String id = request.getParameter("idPelicula");
-   String idUsuario= request.getParameter("idUsuario");
-   String idEntrada=request.getParameter("idCompra2");
-   String numeroEntradas=request.getParameter("numeroEntradas");
-      System.out.println("asdffasdfasdfasd");
+    System.out.println("dasdas");
+    String id = request.getParameter("idPelicula");
+    String idUsuario = request.getParameter("idUsuario");
+    String idEntrada = request.getParameter("idCompra2");
+    String numeroEntradas = request.getParameter("numeroEntradas");
+    System.out.println("asdffasdfasdfasd");
     request.getRequestDispatcher("/entrada/prueba.jsp").forward(request, response);
     /*
     EntradaDAO entradaDAO = new EntradaDAO();
@@ -177,13 +173,13 @@ public class EntradaController extends HttpServlet {
       System.out.println("No se registraron las entradas");
       request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
     }
-    */
+     */
   }
-  
+
   private void validarCompra(HttpServletRequest request, HttpServletResponse response) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
-  
+
   private void cancelarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     // al cancelar entrada debe borrar los datos de la session
     request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
@@ -195,15 +191,15 @@ public class EntradaController extends HttpServlet {
     String estado = request.getParameter("estado");
     String idSala = request.getParameter("idSala");
     String idPelicula = request.getParameter("idPelicula");
-    String stock=request.getParameter("stock");
+    String stock = request.getParameter("stock");
 
     Entrada entrada = new Entrada();
-    entrada.setPrecio(Integer.parseInt(precio)*1.0);
+    entrada.setPrecio(Integer.parseInt(precio) * 1.0);
     entrada.setTipo(tipo);
     entrada.setEstado(Integer.parseInt(estado));
     entrada.setIdSala(Integer.parseInt(idSala));
     entrada.setIdPelicula(Integer.parseInt(idPelicula));
-    entrada.setStock(Integer.parseInt(stock));    
+    entrada.setStock(Integer.parseInt(stock));
 
     EntradaDAO entradaDAO = new EntradaDAO();
     if (entradaDAO.insertar(entrada)) {
@@ -219,18 +215,18 @@ public class EntradaController extends HttpServlet {
     // Listar los valores en sesion
     HttpSession session = request.getSession();
     System.out.println("Listado de valores en sesion - Entrada Controller - crearAviso");
-    if(session != null) {
+    if (session != null) {
       Enumeration en = session.getAttributeNames();
-      for (; en.hasMoreElements(); ) {
-        String name = (String)en.nextElement();
-        System.out.println(name+": " + session.getAttribute(name));
+      for (; en.hasMoreElements();) {
+        String name = (String) en.nextElement();
+        System.out.println(name + ": " + session.getAttribute(name));
       }
     }
     System.out.println("========================================================================================");
-    
-    String nombre = (String)session.getAttribute("nombre");
-    String correo = (String)session.getAttribute("correo");
-    
+
+    String nombre = (String) session.getAttribute("nombre");
+    String correo = (String) session.getAttribute("correo");
+
     System.out.println("Listado de valores solicitados - EntradaController - crearAviso");
     System.out.println(nombre + " " + correo);
     System.out.println("========================================================================================");
@@ -249,6 +245,6 @@ public class EntradaController extends HttpServlet {
     } else {
       request.getRequestDispatcher("/estrenos/alertaError.jsp").forward(request, response);
     }
-    */
+     */
   }
 }
