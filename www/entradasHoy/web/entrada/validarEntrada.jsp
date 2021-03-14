@@ -67,7 +67,8 @@
             </tbody>
           </table>
           <p class="text-center my-4">Si todos los datos son correctos, procede con la compra de tus entradas</p>
-          <a href="<%=request.getContextPath()%>/entrada/comprarEntrada.jsp" class="btn btn-primary my-4">Proceder con la compra</a>
+          
+          <button type="submit"class="btn btn-primary my-4">Proceder con la compra </button>
         </form>
       </div>
     </div>
