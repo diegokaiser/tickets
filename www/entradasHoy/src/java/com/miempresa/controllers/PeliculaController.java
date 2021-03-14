@@ -141,13 +141,7 @@ public class PeliculaController extends HttpServlet {
   }
 
   private void getPelicula(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String id = request.getParameter("idPelicula");
-    PeliculaDAO peliculaDAO = new PeliculaDAO();
-    Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id));
-    request.getSession().setAttribute("pelicula", pelicula);
-    request.getRequestDispatcher("estrenos/index.jsp").forward(request, response);
-    // Listar los valores en sesion
-    HttpSession session = request.getSession();
+          HttpSession session = request.getSession();
     System.out.println("========================================================================================");
     System.out.println("Listado de valores en sesion - PeliculaController - getPelicula");
     if(session != null) {
@@ -157,6 +151,17 @@ public class PeliculaController extends HttpServlet {
         System.out.println(name+": " + session.getAttribute(name));
       }
     }
+    
+    String id = request.getParameter("idPelicula");
+      System.out.println(id +" nose sque eses to jasjdasjdas");
+    PeliculaDAO peliculaDAO = new PeliculaDAO();
+    Pelicula pelicula = peliculaDAO.seleccionPorId(Integer.parseInt(id));
+    request.getSession().setAttribute("pelicula", pelicula);
+    request.getRequestDispatcher("estrenos/index.jsp").forward(request, response);
+    // Listar los valores en sesion
+    
+
+    System.out.println("holaholahola");
     System.out.println("========================================================================================");
     
   }

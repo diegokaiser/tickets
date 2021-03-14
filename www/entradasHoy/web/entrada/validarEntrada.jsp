@@ -36,7 +36,7 @@
               </tr>
               <tr>
                 <td>Nombre:</td>
-                <td><%=session.getAttribute("nombre")%></td>
+                <td><%=session.getAttribute("name")%></td>
               </tr>
               <tr>
                 <td>Apellido:</td>

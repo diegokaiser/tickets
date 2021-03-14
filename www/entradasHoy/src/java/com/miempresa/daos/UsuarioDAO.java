@@ -240,7 +240,7 @@ public class UsuarioDAO implements IServiceUsuario {
     return usuario;
   }
   
-  public Usuario selecionarPorCorreo(Usuario usuario) {
+  public Usuario seleccionarPorCorreo(Usuario usuario) {
     final String SQL_SELECTALL = "{call usp_listarPorCorreo(?)}";
     try {
       cstm = con.getConnection().prepareCall(SQL_SELECTALL);

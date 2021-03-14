@@ -105,12 +105,7 @@ public class UsuarioController extends HttpServlet {
   }
 
   private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    //String nombre = request.getParameter("nombre");
-    //String apellido = request.getParameter("apellido");
-    //String correo = request.getParameter("correo");
-    //String tipoDocumento = request.getParameter("tipoDocumento");
-    //String numeroDocumento = request.getParameter("numeroDocumento");
-    //String contrasena = request.getParameter("contrasena");
+
     String nombre = "";
     String apellido = "";
     String correo = request.getParameter("correo");
@@ -121,17 +116,10 @@ public class UsuarioController extends HttpServlet {
     if (correo.trim().isEmpty() || contrasena.trim().isEmpty()) {
       request.getRequestDispatcher("/login/error.jsp").forward(request, response);
     } else {
-      //Usuario usuario = new Usuario();
-      //usuario.setNombre(nombre);
-      //usuario.setApellido(apellido);
-      //usuario.setCorreo(correo);
-      //usuario.setApellido(tipoDocumento);
-      //usuario.setApellido(numeroDocumento);
-      //usuario.setContrasena(contrasena);
       UsuarioDAO usuarioDAO = new UsuarioDAO();
       Usuario usuario = new Usuario();
       usuario.setCorreo(correo);
-      usuario = usuarioDAO.selecionarPorCorreo(usuario);
+      usuario = usuarioDAO.seleccionarPorCorreo(usuario);
 
       nombre = usuario.getNombre();
       apellido = usuario.getApellido();
@@ -144,10 +132,18 @@ public class UsuarioController extends HttpServlet {
         session.setAttribute("apellido", apellido);//
         session.setAttribute("correo", correo);//
         session.setAttribute("tipoDocumento", tipoDocumento);//
-        session.setAttribute("numeroDocumento", numeroDocumento);//
+        session.setAttribute("name", nombre);//
+        session.setAttribute("name2", nombre);//
+        session.setAttribute("apellido2", apellido);//
+         session.setAttribute("nombre", nombre);//
+
         System.out.println("UsuarioController: login");
         System.out.println(nombre);
-        System.out.println(apellido);        
+        System.out.println(apellido);  
+          System.out.println(correo);
+          System.out.println(tipoDocumento);
+          System.out.println(numeroDocumento);
+          System.out.println("EstoEstafuncinoadnoasdasda");
         // Listar los valores en sesion
         System.out.println("========================================================================================");
         System.out.println("Listado de valores en sesion - UsuarioController - login");
@@ -185,7 +181,7 @@ public class UsuarioController extends HttpServlet {
       request.getRequestDispatcher("/login/error.jsp").forward(request, response);
     } else {
       usuario.setCorreo(correo);
-      usuario = usuarioDAO.selecionarPorCorreo(usuario);
+      usuario = usuarioDAO.seleccionarPorCorreo(usuario);
       correo = usuario.getCorreo();
       String nombre = usuario.getNombre();
 
