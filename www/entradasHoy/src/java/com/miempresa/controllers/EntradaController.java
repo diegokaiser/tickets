@@ -148,7 +148,6 @@ public class EntradaController extends HttpServlet {
       }
     }
     System.out.println("========================================================================================");
-
     request.getRequestDispatcher("/entrada/index.jsp").forward(request, response);
   }
 
@@ -159,11 +158,12 @@ public class EntradaController extends HttpServlet {
   private void comprarEntrada(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     System.out.println("dasdas");
     String id = request.getParameter("idPelicula");
+    String idCine=request.getParameter("idCine");
     String idUsuario = request.getParameter("idUsuario");
     String idEntrada = request.getParameter("idCompra2");
     String numeroEntradas = request.getParameter("numeroEntradas");
     System.out.println("asdffasdfasdfasd");
-    request.getRequestDispatcher("/entrada/prueba.jsp").forward(request, response);
+    request.getRequestDispatcher("/entrada/validarEntrada.jsp").forward(request, response);
     /*
     EntradaDAO entradaDAO = new EntradaDAO();
     if (entradaDAO.insertar(entrada)) {
