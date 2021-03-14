@@ -48,9 +48,6 @@
           <div class="form-group">
             <a href="<%=request.getContextPath()%>/EntradaController?processing=comprarEntrada&idPelicula<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>" class="btn btn-primary my-4">Comprar entrada</a>
           </div>
-          <div class="form-group">
-            <a href="<%=request.getContextPath()%>/CompraController?processing=compraEntrada&idPelicula<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>" class="btn btn-primary my-4">Comprar entrada</a>
-          </div>
         </form>
       </div>
     </div>

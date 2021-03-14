@@ -36,7 +36,7 @@
             <input type="text" class="form-control" id="email">
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary my-4">Pagar {precio}</button>
+            <a href="<%=request.getContextPath()%>/entrada/exito.jsp" class="btn btn-primary my-4">Pagar {precio}</a>
           </div>
         </form>
       </div>

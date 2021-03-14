@@ -28,7 +28,7 @@
           <h4 class="text-center">"<%=pelicula.getNombre()%>"</h4>
           <h4 data-estreno="<%=pelicula.getFechaEstreno()%>" id="fechaEstreno" class="text-center">Estreno el <span id="fecha"></span></h4>
           <p class="text-center my-4">Por favor, valida los datos para tus entradas:</p>
-          <table>
+          <table class="table table-striped table-dark">
             <tbody class="text-white">
               <tr>
                 <td>Cine:</td>
@@ -67,7 +67,7 @@
             </tbody>
           </table>
           <p class="text-center my-4">Si todos los datos son correctos, procede con la compra de tus entradas</p>
-          <a href="" class="btn btn-primary my-4">Proceder con la compra</a>
+          <a href="<%=request.getContextPath()%>/entrada/comprarEntrada.jsp" class="btn btn-primary my-4">Proceder con la compra</a>
         </form>
       </div>
     </div>
