@@ -1,4 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.miempresa.entidades.Pelicula"%>
+<%
+  Pelicula pelicula = (Pelicula) request.getSession().getAttribute("pelicula");
+%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
   <head>
     <%@ include file="../WEB-INF/jspf/web/meta.jsp" %>
@@ -7,7 +14,7 @@
   </head>
   <body>
     <div class="bkg_video">
-      <video autoplay loop poster="<%=request.getContextPath()%>/RESOURCES/images/{pelicula.getPortadaDestacada()}">
+      <video autoplay loop poster="<%=request.getContextPath()%>/RESOURCES/images/<%=pelicula.getPortadaDestacada()%>">
         <source src="<%=request.getContextPath()%>/RESOURCES/images/bkg_video.webm">
       </video>
     </div>
@@ -36,7 +43,7 @@
             <input type="text" class="form-control" id="email">
           </div>
           <div class="form-group">
-            <a href="<%=request.getContextPath()%>/entrada/exito.jsp" class="btn btn-primary my-4">Pagar {precio}</a>
+            <a href="<%=request.getContextPath()%>/entrada/exito.jsp" class="btn btn-primary my-4">Pagar</a>
           </div>
         </form>
       </div>

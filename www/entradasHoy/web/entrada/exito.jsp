@@ -18,16 +18,18 @@
         <source src="<%=request.getContextPath()%>/RESOURCES/images/bkg_video.webm">
       </video>
     </div>
-    <div class="content" data-estado="<%=pelicula.getEstado()%>">
+    <div class="content">
       <%@ include file="../WEB-INF/jspf/web/header.jsp" %>
       <div class="form">
-        <div class="user-messages">
-          <h2 class="text-center my-2">Gracias por su compra.</h2>
-          <p class="text-center text-white mt-3">Recuerda, los códigos de las entradas puden ser reclamadas por cualquier persona, ten cuidado con ellas.</p>
-          <p class="text-center text-white mt-3">Código de ticket: <span>181818</span></p>
-          <p class="text-center text-white">Código de ticket: <span>171717</span></p>
-          <a class="btn btn-block btn-success my-4"> Gracias!</a>
-        </div>
+        <form class="pt-5">
+          <div class="user-messages pt-5">
+            <h2 class="text-center my-2">Gracias por su compra.</h2>
+            <p class="text-center text-white mt-3">Recuerda, los códigos de las entradas puden ser reclamadas por cualquier persona, ten cuidado con ellas.</p>
+            <p class="text-center text-white mt-3">Código de ticket: <span>181818</span></p>
+            <p class="text-center text-white">Código de ticket: <span>171717</span></p>
+            <a href="<%=request.getContextPath()%>/index.jsp" class="btn btn-block btn-success my-4"> Gracias!</a>
+          </div>
+        </form>
       </div>
     </div>
     <%@ include file="../WEB-INF/jspf/web/footer.jsp" %>
