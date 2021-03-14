@@ -5,7 +5,6 @@ $("body").on('scroll', function () {
     $("header").removeClass("scrolled");
   }
 });
-console.log("asd");
 
 $(document).ready(function() {
 

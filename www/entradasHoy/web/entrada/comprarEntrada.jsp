@@ -21,21 +21,21 @@
     <div class="content">
       <%@ include file="../WEB-INF/jspf/web/header.jsp" %>
       <div class="form">
-        <form>
+        <form class="pt-5">
           <input type="hidden" id="processing" name="processing" value="validarCompra">
           <h2>Entradas para:</h2>
           <div class="form-group pt-4">
             <label for="card-number">Número de tarjeta:</label>
-            <input type="text" class="form-control" id="card-number">
+            <input type="text" class="form-control nnotarrow" id="card-number">
           </div>
           <div class="form-row form-group">
             <div class="col">
               <label for="card-date">Mes/Año:</label>
-              <input type="text" class="form-control" id="card-date">
+              <input type="text" class="form-control nnotarrow" id="card-date">
             </div>
             <div class="col">
               <label for="card-cvv">CVV:</label>
-              <input type="password" class="form-control" id="card-cvv">
+              <input type="text" class="form-control nnotarrow" id="card-cvv">
             </div>
           </div>
           <div class="form-group">
@@ -43,12 +43,74 @@
             <input type="text" class="form-control" id="email">
           </div>
           <div class="form-group">
-            <a href="<%=request.getContextPath()%>/entrada/exito.jsp" class="btn btn-primary my-4">Pagar</a>
+            <a href="<%=request.getContextPath()%>/entrada/exito.jsp" class="btn btn-primary my-4 disabled gotopay">Pagar</a>
           </div>
         </form>
       </div>
     </div>
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+      var tarjeta = document.getElementById('card-cvv');
+      var tarjetaMaskOptions = {
+        mask: '000'
+      };
+      var tarjetaMask = IMask(tarjeta, tarjetaMaskOptions);
+
+
+      var carddate = document.getElementById('card-date');
+      var carddateMaskOptions = {
+        mask: '00/00',
+      };
+      var carddateMask = IMask(carddate, carddateMaskOptions);
+
+
+      var cvv = document.getElementById('card-number');
+      var cvvMaskOptions = {
+        mask: '0000-0000-0000-0000'
+      };
+      var cvvMask = IMask(cvv, cvvMaskOptions);
+    </script>
     <%@ include file="../WEB-INF/jspf/web/footer.jsp" %>
     <%@ include file="../WEB-INF/jspf/web/scripts.jsp" %>
+    <script>
+      $("#card-number").on("input", function () {
+        if ($(this).val().length == 19) {
+          $(this).addClass("valid");
+          console.log("#card-number valid");
+        }
+        abrirBoton();
+      });
+      $("#card-date").on("input", function () {
+        if ($(this).val().length == 5) {
+          $(this).addClass("valid");
+          console.log("#card-date valid");
+        }
+        abrirBoton();
+      });
+      $("#card-cvv").on("input", function () {
+        if ($(this).val().length == 3) {
+          $(this).addClass("valid");
+          console.log("#card-cvv valid");
+        }
+        abrirBoton();
+      });
+      $("#email").on("input", function () {
+        if ($(this).val().indexOf('@') > -1) {
+          $(this).addClass("valid");
+          console.log("#email valid");
+        }
+        abrirBoton();
+      });
+      function abrirBoton() {
+        if ($("#card-number").hasClass("valid") && $("#card-date").hasClass("valid") && $("#card-cvv").hasClass("valid") && $("#email").hasClass("valid")) {
+          $(".gotopay").removeClass("disabled");
+        } else {
+          if (!$(".gotopay").hasClass("disabled")) {
+            $(".gotopay").addClass("disabled");
+          }
+        }
+      }
+
+    </script>
   </body>
 </html>
