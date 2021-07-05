@@ -1,0 +1,187 @@
+package com.miempresa.entidades;
+
+public class Pelicula {
+  
+  private Integer idPelicula;
+  private String nombre;
+  private String duracion;
+  private String fechaEstreno;
+  private String idioma;
+  private String pais;
+  private Integer subtitulos;
+  private Integer doblada;
+  private String descripcion;
+  private String genero;
+  private Integer estado;
+  private String trailer;
+  private String recomendada;
+  private String portada;
+  private String destacada;
+  private String protagonistas;
+  private String portadaDestacada;
+  
+  
+  public Pelicula() {
+  
+  }
+
+  public Pelicula(Integer idPelicula) {
+    this.idPelicula = idPelicula;
+  }
+
+  public Pelicula(Integer idPelicula, String nombre, String duracion, String fechaEstreno, String idioma, String pais, Integer subtitulos, Integer doblada, String descripcion, String genero, Integer estado, String trailer, String recomendada, String portada, String destacada, String protagonistas, String portadaDestacada) {
+    this.idPelicula = idPelicula;
+    this.nombre = nombre;
+    this.duracion = duracion;
+    this.fechaEstreno = fechaEstreno;
+    this.idioma = idioma;
+    this.pais = pais;
+    this.subtitulos = subtitulos;
+    this.doblada = doblada;
+    this.descripcion = descripcion;
+    this.genero = genero;
+    this.estado = estado;
+    this.trailer = trailer;
+    this.recomendada = recomendada;
+    this.portada = portada;
+    this.destacada = destacada;
+    this.protagonistas = protagonistas;
+    this.portadaDestacada = portadaDestacada;
+  } 
+
+  public Integer getIdPelicula() {
+    return idPelicula;
+  }
+
+  public void setIdPelicula(Integer idPelicula) {
+    this.idPelicula = idPelicula;
+  }
+
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public String getDuracion() {
+    return duracion;
+  }
+
+  public void setDuracion(String duracion) {
+    this.duracion = duracion;
+  }
+
+  public String getFechaEstreno() {
+    return fechaEstreno;
+  }
+
+  public void setFechaEstreno(String fechaEstreno) {
+    this.fechaEstreno = fechaEstreno;
+  }
+
+  public String getIdioma() {
+    return idioma;
+  }
+
+  public void setIdioma(String idioma) {
+    this.idioma = idioma;
+  }
+
+  public String getPais() {
+    return pais;
+  }
+
+  public void setPais(String pais) {
+    this.pais = pais;
+  }
+
+  public Integer getSubtitulos() {
+    return subtitulos;
+  }
+
+  public void setSubtitulos(Integer subtitulos) {
+    this.subtitulos = subtitulos;
+  }
+
+  public Integer getDoblada() {
+    return doblada;
+  }
+
+  public void setDoblada(Integer doblada) {
+    this.doblada = doblada;
+  }
+
+  public String getPortada() {
+    return portada;
+  }
+
+  public void setPortada(String portada) {
+    this.portada = portada;
+  }
+
+  public String getDescripcion() {
+    return descripcion;
+  }
+
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
+
+  public String getGenero() {
+    return genero;
+  }
+
+  public void setGenero(String genero) {
+    this.genero = genero;
+  }
+
+  public Integer getEstado() {
+    return estado;
+  }
+
+  public void setEstado(Integer estado) {
+    this.estado = estado;
+  }
+
+  public String getTrailer() {
+    return trailer;
+  }
+
+  public void setTrailer(String trailer) {
+    this.trailer = trailer;
+  }
+
+  public String getRecomendada() {
+    return recomendada;
+  }
+
+  public void setRecomendada(String recomendada) {
+    this.recomendada = recomendada;
+  }
+
+  public String getDestacada() {
+    return destacada;
+  }
+
+  public void setDestacada(String destacada) {
+    this.destacada = destacada;
+  }
+
+  public String getProtagonistas() {
+    return protagonistas;
+  }
+
+  public void setProtagonistas(String protagonistas) {
+    this.protagonistas = protagonistas;
+  }  
+
+  public String getPortadaDestacada() {
+    return portadaDestacada;
+  }
+
+  public void setPortadaDestacada(String portadaDestacada) {
+    this.portadaDestacada = portadaDestacada;
+  }
+}

@@ -9,3 +9,8 @@ www/tomcat/.idea
 www/tomcat/src/main/webapp/resources/node_modules
 www/tomcat/src/main/webapp/resources/package-lock.json
 **/www/tomcat/target/
+/www/entradasHoy/nbproject/private/
+/www/entradasHoy/build/
+/www/entradasHoy/dist/
+/www/entradasHoy/web/RESOURCES/node_modules
+/www/entradasHoy/src/java/com/miempresa/connectiondb/ConnectionDB.java
